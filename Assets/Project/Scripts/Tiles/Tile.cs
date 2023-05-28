@@ -6,11 +6,17 @@ namespace Project.Scripts.Tiles
 {
     public class Tile : MonoBehaviour, ITile
     {
-        private SpriteRenderer myItem;
+        private SpriteRenderer myItem,myBackground;
         private BoxCollider2D _myBoxCollider2D;
 
         private TileType myTileType;
         private Vector2Int positionInGrid;
+        private Vector3 positionInScene;
+        private Camera _camera;
+
+        private bool currentlyDraged = false;
+        
+        private const float DragRange = 1.5f;
 
         public enum TileType
         {
@@ -26,7 +32,9 @@ namespace Project.Scripts.Tiles
         private void Awake()
         {
             _myBoxCollider2D = GetComponentInChildren<BoxCollider2D>();
+            myBackground = transform.GetChild(0).GetComponent<SpriteRenderer>();
             myItem = transform.GetChild(1).GetComponent<SpriteRenderer>();
+            _camera = Camera.main;
         }
 
         public TileType GetTileType()
@@ -60,11 +68,34 @@ namespace Project.Scripts.Tiles
             return positionInGrid;
         }
 
-        public void InitializeTile(TileType type, Vector2Int positionInGird)
+        public void InitializeTile(TileType type, Vector2Int positionInGird, Vector3 localPos)
         {
             myTileType = type;
             positionInGrid = positionInGird;
             myItem.sprite = TileRecourseKeeper.instance.tileSprites[(int)myTileType];
+            positionInScene = localPos;
+        }
+
+        private void OnMouseDrag()
+        {
+            if (!currentlyDraged)DragStateChanged();
+            Vector3 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0;
+            if (Vector3.Distance(positionInScene, mousePosition) < DragRange) transform.position = mousePosition;
+            else transform.position = positionInScene + (mousePosition - positionInScene).normalized;
+        }
+
+        private void OnMouseUp()
+        {
+            if (currentlyDraged) DragStateChanged();
+            //TODO: Check For Valid Move
+        }
+
+        private void DragStateChanged()
+        {
+            currentlyDraged = !currentlyDraged;
+            myBackground.sortingOrder = currentlyDraged ? 2 : 0;
+            myItem.sortingOrder = currentlyDraged ? 3 : 1;
         }
     }
 }

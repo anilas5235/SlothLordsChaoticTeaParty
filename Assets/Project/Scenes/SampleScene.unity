@@ -167,8 +167,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePreFap: {fileID: 8191471529348642565, guid: 54a059a324de2b04d9aff0362281f02e, type: 3}
-  fieldSizeX: 9
-  fieldSizeY: 7
+  fieldSizeX: 7
+  fieldSizeY: 5
   tileSize: 2
   tileSpacing: 0.2
 --- !u!4 &689468785
@@ -238,7 +238,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

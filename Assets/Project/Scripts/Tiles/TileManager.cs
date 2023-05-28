@@ -38,7 +38,7 @@ namespace Project.Scripts.Tiles
                 {
                     fieldGridPositions[i][j] = currentPosition;
                     Tile tile = Instantiate(tilePreFap, currentPosition, quaternion.identity).GetComponent<Tile>();
-                    tile.InitializeTile(Tile.TileType.Type0,new Vector2Int(i,j));
+                    tile.InitializeTile(Tile.TileType.Type0,new Vector2Int(i,j),currentPosition);
                     tile.gameObject.transform.SetParent(transform);
                     tile.gameObject.transform.localPosition = currentPosition;
                     fieldGridTiles[i][j] = tile;
