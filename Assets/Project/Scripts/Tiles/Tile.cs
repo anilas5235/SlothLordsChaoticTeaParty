@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,8 +9,8 @@ namespace Project.Scripts.Tiles
         private BoxCollider2D _myBoxCollider2D;
 
         private TileType myTileType;
-        private Vector2Int positionInGrid;
-        private Vector3 positionInScene;
+        [SerializeField] private Vector2Int positionInGrid;
+        [SerializeField] private Vector3 positionInScene, dragVector;
         private Camera _camera;
 
         private bool currentlyDraged = false;
@@ -25,8 +24,6 @@ namespace Project.Scripts.Tiles
             Type2 = 2,
             Type3 = 3,
             Type4 = 4,
-            Type5 = 5,
-            Type6 = 6,
         }
 
         private void Awake()
@@ -46,10 +43,10 @@ namespace Project.Scripts.Tiles
         {
             List<Tile> neighbours = new List<Tile>();
             int ownX = positionInGrid.x, ownY = positionInGrid.y;
-            neighbours.Add( TileManager.instance.GetTile( ownX+1,ownY));
-            neighbours.Add( TileManager.instance.GetTile( ownX-1,ownY));
-            neighbours.Add( TileManager.instance.GetTile( ownX,ownY+1));
-            neighbours.Add( TileManager.instance.GetTile( ownX,ownY-1));
+            neighbours.Add(TileManager.instance.GetTile(new Vector2Int(ownX + 1, ownY)));
+            neighbours.Add(TileManager.instance.GetTile(new Vector2Int(ownX - 1, ownY)));
+            neighbours.Add(TileManager.instance.GetTile(new Vector2Int(ownX, ownY + 1)));
+            neighbours.Add(TileManager.instance.GetTile(new Vector2Int(ownX, ownY - 1)));
 
             for (int i = 0; i < neighbours.Count; i++)
             {
@@ -59,11 +56,15 @@ namespace Project.Scripts.Tiles
                     i--;
                 }
             }
-
             return neighbours.ToArray();
         }
 
-        public Vector2 GetTilePosition()
+        public Tile GetNeighbour(Vector2Int offset)
+        {
+            return TileManager.instance.GetTile(positionInGrid + offset);
+        }
+
+        public Vector2Int GetTilePosition()
         {
             return positionInGrid;
         }
@@ -74,21 +75,27 @@ namespace Project.Scripts.Tiles
             positionInGrid = positionInGird;
             myItem.sprite = TileRecourseKeeper.instance.tileSprites[(int)myTileType];
             positionInScene = localPos;
+            transform.localPosition = positionInScene;
         }
 
         private void OnMouseDrag()
         {
+            if (!TileManager.instance.interactable)return;
             if (!currentlyDraged)DragStateChanged();
             Vector3 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;
             if (Vector3.Distance(positionInScene, mousePosition) < DragRange) transform.position = mousePosition;
-            else transform.position = positionInScene + (mousePosition - positionInScene).normalized;
+            else transform.localPosition = positionInScene + (mousePosition - positionInScene).normalized;
+            dragVector = transform.position - positionInScene;
         }
 
         private void OnMouseUp()
         {
-            if (currentlyDraged) DragStateChanged();
-            //TODO: Check For Valid Move
+            if (currentlyDraged)
+            {
+                Move();
+                DragStateChanged();
+            }
         }
 
         private void DragStateChanged()
@@ -96,6 +103,27 @@ namespace Project.Scripts.Tiles
             currentlyDraged = !currentlyDraged;
             myBackground.sortingOrder = currentlyDraged ? 2 : 0;
             myItem.sortingOrder = currentlyDraged ? 3 : 1;
+        }
+
+        public void SetNewPosition(Vector2Int newPos)
+        {
+            positionInGrid = newPos;
+            positionInScene = TileManager.instance.fieldGridPositions[positionInGrid.x][positionInGrid.y];
+            transform.localPosition = positionInScene;
+        }
+
+        private void Move()
+        {
+            if (Mathf.Abs(dragVector.x) < 0.2f&&Mathf.Abs(dragVector.y) < 0.2f)
+            {
+                transform.position = positionInScene;
+                return;
+            }
+            Vector2Int tileOffset = Vector2Int.zero;
+            if (Mathf.Abs( dragVector.x) > Mathf.Abs(dragVector.y)) tileOffset.x = dragVector.x > 0 ? 1 : -1;
+            else tileOffset.y = dragVector.y > 0 ? -1 : 1;
+            
+            TileManager.instance.SwitchTiles(positionInGrid,positionInGrid+tileOffset);
         }
     }
 }
