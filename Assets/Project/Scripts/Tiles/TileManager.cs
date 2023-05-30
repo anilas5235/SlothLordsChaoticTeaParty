@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Project.Scripts.General;
+using Project.Scripts.UIScripts;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -11,22 +12,37 @@ namespace Project.Scripts.Tiles
     public class TileManager : Singleton<TileManager>
     {
         [SerializeField] private GameObject tilePreFap;
-        public int fieldSizeX = 10,fieldSizeY = 7;
         [SerializeField] private float tileSize =2f, tileSpacing = 0.2f;
+        
+        public int fieldSizeX = 10,fieldSizeY = 7;
         public Vector3[][] fieldGridPositions;
         public Tile[][] fieldGridTiles;
 
-        private int score;
+        private int score, comboRoll;
+        private const int minComboSize = 3;
+
+        #region Properties
 
         public int Score
         {
             get => score;
-            set
+            private set
             {
                 score = value;
                 UIManager.instance.UpdateScore();
             }
         }
+
+        public int ComboRoll
+        {
+            get => comboRoll;
+            private set
+            {
+                comboRoll = value;
+                UIManager.instance.UpdateComboRoll();
+            }
+        }
+        #endregion
 
         public bool interactable = true;
 
@@ -61,7 +77,7 @@ namespace Project.Scripts.Tiles
                 for (int j = 0; j < tileCountX; j++)
                 {
                     fieldGridPositions[j][i] = currentPosition;
-                    NewTile(new Vector2Int(j,i), GetTileType(counter));
+                    NewTile(new Vector2Int(j,i), GetTileTypeFormIndex(counter));
                     currentPosition += xAdd;
                     counter++;
                     if (counter > 4) counter = 0;
@@ -98,9 +114,9 @@ namespace Project.Scripts.Tiles
             return pos.x >= 0 && pos.x < fieldSizeX && pos.y >= 0 && pos.y < fieldSizeY;
         }
 
-        private Tile.TileType GetTileType(int i)
+        private Tile.TileType GetTileTypeFormIndex(int index)
         {
-            switch (i)
+            switch (index)
             {
                 case 0 : return Tile.TileType.Type0;
                 case 1 : return Tile.TileType.Type1;
@@ -114,17 +130,19 @@ namespace Project.Scripts.Tiles
 
         private void CheckForCombo(Vector2Int origin, Tile.TileType tileType)
         {
-            List<Tile> ComboTiles = new List<Tile>();
+            List<Tile> comboTiles = new List<Tile>();
+            comboTiles.Add(fieldGridTiles[origin.x][origin.y]);
             Comp(origin);
             
-            if(ComboTiles.Count < 3) return;
-            foreach (var t in ComboTiles)
+            if(comboTiles.Count < minComboSize) return;
+            ComboRoll++;
+            foreach (var t in comboTiles)
             {
                 Vector2Int pos = t.GetTilePosition();
                 fieldGridTiles[pos.x][pos.y] = null;
-                Score += (int) Mathf.Pow(2f, ComboTiles.Count);
                 Destroy(t.gameObject);
             }
+            ScoreCalculator( comboTiles.Count);
 
             void Comp(Vector2Int localOrigin)
             {
@@ -132,17 +150,18 @@ namespace Project.Scripts.Tiles
                 {
                     if (neighbour.GetTileType() == tileType)
                     {
-                        if(ComboTiles.Contains(neighbour)) continue;
-                        ComboTiles.Add(neighbour);
+                        if(comboTiles.Contains(neighbour)) continue;
+                        comboTiles.Add(neighbour);
                         Comp(neighbour.GetTilePosition());
                     }
                 }
             }
         }
         
-        private void  CheckForComboAfterFall()
+        private void  CheckForAllCombos()
         {
             List<Tile> checkedTiles = new List<Tile>();
+            List<Tile> toBeDeleteTiles = new List<Tile>();
 
             for (int i = 0; i < fieldSizeY - 1; i++)
             {
@@ -150,37 +169,67 @@ namespace Project.Scripts.Tiles
                 {
                     if (!checkedTiles.Contains(fieldGridTiles[j][i]))
                     {
-                        Comp(fieldGridTiles[j][i].GetTilePosition(),checkedTiles,fieldGridTiles[j][i].GetTileType());
+                        List<Tile> combTiles = Comp(fieldGridTiles[j][i].GetTilePosition(), fieldGridTiles[j][i].GetTileType());
+                        Debug.Log($"Combo Of Size {combTiles.Count} found");
+                        if (combTiles.Count < 3) continue;
+                        toBeDeleteTiles.AddRange(combTiles);
+                        ComboRoll++;
+                        ScoreCalculator(combTiles.Count);
                     }
                 }
             }
 
-            foreach (var t in checkedTiles)
+            foreach (var t in toBeDeleteTiles)
             {
                 Vector2Int pos = t.GetTilePosition();
                 fieldGridTiles[pos.x][pos.y] = null;
-                Score += (int) Mathf.Pow(2f, checkedTiles.Count);
                 Destroy(t.gameObject);
             }
 
-
-            void Comp(Vector2Int localOrigin,List<Tile> checkedTiles, Tile.TileType tileType)
+            if (toBeDeleteTiles.Count > 0) StartCoroutine(Falling());
+            else
             {
+                interactable = true;
+                ComboRoll = 0;
+            }
+
+            List<Tile> Comp(Vector2Int localOrigin, Tile.TileType tileType)
+            {
+                List<Tile> currentCombo = new List<Tile>();
+                if (!checkedTiles.Contains(fieldGridTiles[localOrigin.x][localOrigin.y]))
+                {
+                    currentCombo.Add(fieldGridTiles[localOrigin.x][localOrigin.y]);
+                    checkedTiles.Add(fieldGridTiles[localOrigin.x][localOrigin.y]);
+                }
                 foreach (Tile neighbour in GetTile(localOrigin).GetNeighbours())
                 {
-                    if (neighbour.GetTileType() == tileType)
-                    {
-                        if(checkedTiles.Contains(neighbour)) continue;
-                        checkedTiles.Add(neighbour);
-                        Comp(neighbour.GetTilePosition(),checkedTiles,tileType);
-                    }
+                    if (neighbour.GetTileType() != tileType) continue;
+                    if(checkedTiles.Contains(neighbour) || currentCombo.Contains(neighbour)) continue;
+                    currentCombo.Add(neighbour);
+                    checkedTiles.Add(neighbour);
+                    currentCombo.AddRange( Comp(neighbour.GetTilePosition(),tileType));
                 }
+                return currentCombo;
             }
         }
 
-        private bool CheckForFall()
+        private bool CheckForEmptyTiles()
+        {
+            for (int i = 0; i < fieldSizeY; i++)
+            {
+                for (int j = 0; j < fieldSizeX; j++)
+                {
+                    if (fieldGridTiles[j][i] == null) return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool CheckAndFall()
         {
             bool doneFalling = true;
+            List<Vector2Int> toSkip = new List<Vector2Int>();
             for (int i = 0; i < fieldSizeY-1; i++)
             {
                 for (int j = 0; j < fieldSizeX; j++)
@@ -189,19 +238,20 @@ namespace Project.Scripts.Tiles
                     {
                         NewTile(new Vector2Int(j,i));
                         doneFalling = false;
+                        continue;
                     }
-                    if (fieldGridTiles[j][i] != null && fieldGridTiles[j][i+1] == null)
+                    if (fieldGridTiles[j][i] != null && fieldGridTiles[j][i+1] == null && !toSkip.Contains(new Vector2Int(j,i)))
                     {
                         Tile currentTile = fieldGridTiles[j][i];
                         currentTile.SetNewPosition(new Vector2Int(j,i+1));
                         fieldGridTiles[j][i + 1] = currentTile;
                         fieldGridTiles[j][i] = null;
+                        toSkip.Add(new Vector2Int(j,i+1));
                         doneFalling = false;
                     }
                 }
             }
             return doneFalling;
-            CheckForComboAfterFall();
         }
 
         private IEnumerator Falling()
@@ -210,9 +260,10 @@ namespace Project.Scripts.Tiles
             do
             {
                 yield return new WaitForSeconds(.5f);
-            } while (!CheckForFall());
+            } while (!CheckAndFall());
 
             interactable = true;
+            CheckForAllCombos();
         }
 
         private void NewTile(Vector2Int posInGrid)
@@ -220,7 +271,7 @@ namespace Project.Scripts.Tiles
             Vector3 currentPosition = fieldGridPositions[posInGrid.x][posInGrid.y];
             Tile tile = Instantiate(tilePreFap, currentPosition, quaternion.identity).GetComponent<Tile>();
             tile.gameObject.transform.SetParent(transform);
-            tile.InitializeTile(GetTileType(Random.Range(0,4)),posInGrid,currentPosition);
+            tile.InitializeTile(GetTileTypeFormIndex(Random.Range(0,4)),posInGrid,currentPosition);
             fieldGridTiles[posInGrid.x][posInGrid.y] = tile;
         }
         
@@ -231,6 +282,12 @@ namespace Project.Scripts.Tiles
             tile.gameObject.transform.SetParent(transform);
             tile.InitializeTile(tileType,posInGrid,currentPosition);
             fieldGridTiles[posInGrid.x][posInGrid.y] = tile;
+        }
+
+        private void ScoreCalculator(int comboSize)
+        {
+            if (comboSize < minComboSize) return;
+            Score += (int) Mathf.Pow(2, comboSize) * comboRoll; 
         }
     }
 }
