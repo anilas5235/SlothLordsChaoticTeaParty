@@ -20,6 +20,7 @@ namespace Project.Scripts.Tiles
 
         private int score, comboRoll;
         private const int minComboSize = 3;
+        private const float stepTime = .3f;
 
         #region Properties
 
@@ -259,7 +260,7 @@ namespace Project.Scripts.Tiles
             interactable = false;
             do
             {
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(stepTime);
             } while (!CheckAndFall());
 
             interactable = true;

@@ -11,11 +11,12 @@ namespace Project.Scripts.Tiles
         private TileType myTileType;
         [SerializeField] private Vector2Int positionInGrid;
         [SerializeField] private Vector3 positionInScene, dragVector;
+        private Tile PreviewDragedTile;
         private Camera _camera;
 
         private bool currentlyDraged = false;
         
-        private const float DragRange = 1.5f;
+        private const float DragRange = 1.5f, MoveThreshold = .5f;
 
         public enum TileType
         {
@@ -87,6 +88,28 @@ namespace Project.Scripts.Tiles
             if (Vector3.Distance(positionInScene, mousePosition) < DragRange) transform.position = mousePosition;
             else transform.localPosition = positionInScene + (mousePosition - positionInScene).normalized;
             dragVector = transform.position - positionInScene;
+            MovePreview();
+        }
+
+        private void MovePreview()
+        {
+            if (Mathf.Abs(dragVector.x) < MoveThreshold && Mathf.Abs(dragVector.y) < MoveThreshold)
+            {
+                if (PreviewDragedTile) PreviewDragedTile.transform.localPosition = PreviewDragedTile.positionInScene;
+                PreviewDragedTile = null;
+                return;
+            }
+            Vector2Int tileOffset = Vector2Int.zero;
+            if (Mathf.Abs( dragVector.x) > Mathf.Abs(dragVector.y)) tileOffset.x = dragVector.x > 0 ? 1 : -1;
+            else tileOffset.y = dragVector.y > 0 ? -1 : 1;
+
+            if (PreviewDragedTile != TileManager.instance.GetTile(positionInGrid + tileOffset))
+            {
+                if (PreviewDragedTile) PreviewDragedTile.transform.localPosition = PreviewDragedTile.positionInScene;
+                PreviewDragedTile = TileManager.instance.GetTile(positionInGrid + tileOffset);
+            }
+
+            PreviewDragedTile.transform.localPosition = positionInScene;
         }
 
         private void OnMouseUp()
@@ -114,7 +137,7 @@ namespace Project.Scripts.Tiles
 
         private void Move()
         {
-            if (Mathf.Abs(dragVector.x) < 0.2f&&Mathf.Abs(dragVector.y) < 0.2f)
+            if (Mathf.Abs(dragVector.x) < MoveThreshold && Mathf.Abs(dragVector.y) < MoveThreshold)
             {
                 transform.position = positionInScene;
                 return;
