@@ -7,7 +7,7 @@ namespace Project.Scripts.UIScripts
 {
     public class UIManager : Singleton<UIManager>
     {
-        [SerializeField] private TextMeshProUGUI scoreText, comboRollText;
+        [SerializeField] private TextMeshProUGUI scoreText, comboRollText, turnText ;
 
         private void Start()
         {
@@ -24,10 +24,16 @@ namespace Project.Scripts.UIScripts
             comboRollText.text = $"Combos: {TileManager.instance.ComboRoll}";
         }
 
+        public void UpdateTurn()
+        {
+            turnText.text = $"Turns: {TileManager.instance.turns}";
+        }
+
         public void UpdateAllUIFields()
         {
             UpdateScore();
             UpdateComboRoll();
+            UpdateTurn();
         }
 
     }

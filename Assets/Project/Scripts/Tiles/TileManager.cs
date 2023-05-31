@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Project.Scripts.General;
@@ -12,13 +11,13 @@ namespace Project.Scripts.Tiles
     public class TileManager : Singleton<TileManager>
     {
         [SerializeField] private GameObject tilePreFap;
-        [SerializeField] private float tileSize =2f, tileSpacing = 0.2f;
         
         public int fieldSizeX = 10,fieldSizeY = 7;
         public Vector3[][] fieldGridPositions;
         public Tile[][] fieldGridTiles;
+        public int score, comboRoll, turns = 20;
 
-        private int score, comboRoll;
+        private const float tileSize =2f, tileSpacing = 0.2f;
         private const int minComboSize = 3;
         private const float stepTime = .3f;
 
@@ -43,6 +42,17 @@ namespace Project.Scripts.Tiles
                 UIManager.instance.UpdateComboRoll();
             }
         }
+
+        public int Turns
+        {
+            get => turns;
+            set
+            {
+                turns = value;
+                UIManager.instance.UpdateTurn();
+            }
+        }
+
         #endregion
 
         public bool interactable = true;
