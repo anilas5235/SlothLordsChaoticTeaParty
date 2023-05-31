@@ -1,19 +1,24 @@
+using System;
+using Project.Scripts.General;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Project.Scripts.Menu
 {
-    public class MenuManager : MonoBehaviour
+    public class MenuManager : Singleton<MenuManager>
     {
-        // Start is called before the first frame update
-        void Start()
+        public enum Scenes
         {
-            Cursor.visible = false;
+            Tutorial,
+            Level1,
+            Level2,
+            Level3,
         }
 
-        // Update is called once per frame
-        void Update()
+
+        public void LoadScene(Scenes sceneToLoad)
         {
-        
+            SceneManager.LoadScene(sceneToLoad.ToString());
         }
     }
 }
