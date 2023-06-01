@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Project.Scripts.General;
 using Project.Scripts.UIScripts;
 using Unity.Mathematics;
@@ -10,12 +11,16 @@ namespace Project.Scripts.Tiles
 {
     public class TileManager : Singleton<TileManager>
     {
-        [SerializeField] private GameObject tilePreFap;
+        private GameObject tilePreFap;
+        [SerializeField] private Level levelData;
         
-        public int fieldSizeX = 10,fieldSizeY = 7;
+        public Vector2Int fieldSize = new Vector2Int( 10, 7);
         public Vector3[][] fieldGridPositions;
         public Tile[][] fieldGridTiles;
         public int score, comboRoll, turns = 20;
+        
+        [Header("EditMode")]
+        public bool EditMode = false; 
 
         private const float tileSize =2f, tileSpacing = 0.2f;
         private const int minComboSize = 3;
@@ -60,16 +65,60 @@ namespace Project.Scripts.Tiles
         protected override void Awake()
         {
             base.Awake();
-            InitializeGrid(fieldSizeX,fieldSizeY);
+            tilePreFap =  Resources.Load<GameObject>("Prefaps/Tiles/Tile1");
+            
+            if (levelData)
+            {
+                fieldSize = levelData.FieldSize;
+                InitializeGridFromData(levelData);
+            }
+            else
+            {
+                InitializeGridRandom(fieldSize.x,fieldSize.y);
+            }
         }
 
-        private void InitializeGrid(int tileCountX, int tileCountY)
+        private void InitializeGridFromData( Level data)
+        {
+            fieldGridPositions = new Vector3[fieldSize.x][];
+            fieldGridTiles = new Tile[fieldSize.x][];
+            
+            float x = -1* GetStartingCoordinates(fieldSize.x, tileSize, tileSpacing);
+            float y = GetStartingCoordinates(fieldSize.y,tileSize,tileSpacing);
+
+            Vector3 xAdd = new Vector3(tileSize + tileSpacing, 0, 0);
+            Vector3 yAdd = new Vector3(0, tileSize + tileSpacing, 0);
+            
+            for (int i = 0; i < fieldSize.x; i++)
+            {
+                fieldGridPositions[i] = new Vector3[fieldSize.y];
+                fieldGridTiles[i] = new Tile[fieldSize.y];
+            }
+            
+            for (int i = 0; i < fieldSize.y; i++)
+            {
+                Vector3 currentPosition = new Vector3(x, y, 0) + -1* i * yAdd;
+                for (int j = 0; j < fieldSize.x; j++)
+                {
+                    fieldGridPositions[j][i] = currentPosition;
+                    NewTile(new Vector2Int(j,i), GetTileTypeFormIndex(data.StartingGrid[j].data[i]));
+                    currentPosition += xAdd;
+                }
+            }
+        }
+
+        public void CreateGrid()
+        {
+            
+        }
+
+        private void InitializeGridRandom(int tileCountX, int tileCountY)
         {
             fieldGridPositions = new Vector3[tileCountX][];
             fieldGridTiles = new Tile[tileCountX][];
 
-            float x = -1* GetStartingValue(tileCountX, tileSize, tileSpacing);
-            float y = GetStartingValue(tileCountY,tileSize,tileSpacing);
+            float x = -1* GetStartingCoordinates(tileCountX, tileSize, tileSpacing);
+            float y = GetStartingCoordinates(tileCountY,tileSize,tileSpacing);
 
             Vector3 xAdd = new Vector3(tileSize + tileSpacing, 0, 0);
             Vector3 yAdd = new Vector3(0, tileSize + tileSpacing, 0);
@@ -94,12 +143,11 @@ namespace Project.Scripts.Tiles
                     if (counter > 4) counter = 0;
                 }
             }
-
-            float GetStartingValue(int number,float size , float spacing )
-            {
-                return (number % 2 ==0) ? (number/2f - 0.5f)* (size+ spacing):
-                    Mathf.FloorToInt(number / 2f)* (size + spacing);
-            }
+        }
+        private float GetStartingCoordinates(int number,float size , float spacing )
+        {
+            return (number % 2 ==0) ? (number/2f - 0.5f)* (size+ spacing):
+                Mathf.FloorToInt(number / 2f)* (size + spacing);
         }
         
         public Tile GetTile(Vector2Int tilePosInGrid)
@@ -122,7 +170,7 @@ namespace Project.Scripts.Tiles
         
         public bool IsPositionInGrid(Vector2Int pos)
         {
-            return pos.x >= 0 && pos.x < fieldSizeX && pos.y >= 0 && pos.y < fieldSizeY;
+            return pos.x >= 0 && pos.x < fieldSize.x && pos.y >= 0 && pos.y < fieldSize.y;
         }
 
         private Tile.TileType GetTileTypeFormIndex(int index)
@@ -134,6 +182,7 @@ namespace Project.Scripts.Tiles
                 case 2 : return Tile.TileType.Type2;
                 case 3 : return Tile.TileType.Type3;
                 case 4 : return Tile.TileType.Type4;
+                case 5 : return Tile.TileType.Type5;
             }
 
             return Tile.TileType.Type0;
@@ -174,9 +223,9 @@ namespace Project.Scripts.Tiles
             List<Tile> checkedTiles = new List<Tile>();
             List<Tile> toBeDeleteTiles = new List<Tile>();
 
-            for (int i = 0; i < fieldSizeY - 1; i++)
+            for (int i = 0; i < fieldSize.y - 1; i++)
             {
-                for (int j = 0; j < fieldSizeX; j++)
+                for (int j = 0; j < fieldSize.x; j++)
                 {
                     if (!checkedTiles.Contains(fieldGridTiles[j][i]))
                     {
@@ -226,9 +275,9 @@ namespace Project.Scripts.Tiles
 
         private bool CheckForEmptyTiles()
         {
-            for (int i = 0; i < fieldSizeY; i++)
+            for (int i = 0; i < fieldSize.y; i++)
             {
-                for (int j = 0; j < fieldSizeX; j++)
+                for (int j = 0; j < fieldSize.x; j++)
                 {
                     if (fieldGridTiles[j][i] == null) return true;
                 }
@@ -241,9 +290,9 @@ namespace Project.Scripts.Tiles
         {
             bool doneFalling = true;
             List<Vector2Int> toSkip = new List<Vector2Int>();
-            for (int i = 0; i < fieldSizeY-1; i++)
+            for (int i = 0; i < fieldSize.y-1; i++)
             {
-                for (int j = 0; j < fieldSizeX; j++)
+                for (int j = 0; j < fieldSize.x; j++)
                 {
                     if(i==0 && fieldGridTiles[j][i] == null)
                     {
@@ -299,6 +348,40 @@ namespace Project.Scripts.Tiles
         {
             if (comboSize < minComboSize) return;
             Score += (int) Mathf.Pow(2, comboSize) * comboRoll; 
+        }
+
+        public void SaveCurrentGrid()
+        {
+            int[][] data = new int[fieldSize.x][];
+            for (int i = 0; i < fieldSize.x; i++)
+            {
+                data[i] = new int[fieldSize.y];
+            }
+
+            for (int i = 0; i < fieldSize.y; i++)
+            {
+                for (int j = 0; j < fieldSize.x; j++)
+                {
+                    data[j][i] = (int)fieldGridTiles[j][i].GetTileType();
+                }
+            }
+
+            float[] probs = new[] { 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f };
+
+            Level level = ScriptableObject.CreateInstance<Level>();
+            level.LevelDataSet(data,probs);
+#if UNITY_EDITOR
+            int id = 0;
+            string path; 
+            do
+            {
+                path = $"Assets/Project/Resources/LevelData/NewLevel{id}.asset";
+                id++;
+            } while (System.IO.File.Exists(Path.Combine(Directory.GetCurrentDirectory(),path)));
+
+            UnityEditor.AssetDatabase.CreateAsset(level,path);
+            UnityEditor.AssetDatabase.SaveAssets();
+#endif
         }
     }
 }

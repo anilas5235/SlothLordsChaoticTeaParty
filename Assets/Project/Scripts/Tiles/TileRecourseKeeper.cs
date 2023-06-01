@@ -17,7 +17,8 @@ namespace Project.Scripts.Tiles
                 Resources.Load<Sprite>("ArtWork/Tiles/IconButton_Small_Circle"),
                 Resources.Load<Sprite>("ArtWork/Tiles/IconButton_Small_Green_Circle"),
                 Resources.Load<Sprite>("ArtWork/Tiles/IconButton_Small_Orange_Circle"),
-                Resources.Load<Sprite>("ArtWork/Tiles/IconButton_Small_Red_Circle")
+                Resources.Load<Sprite>("ArtWork/Tiles/IconButton_Small_Red_Circle"),
+                Resources.Load<Sprite>("ArtWork/Tiles/IconButton_Small_Purpel_Circle")
             };
         }
     }

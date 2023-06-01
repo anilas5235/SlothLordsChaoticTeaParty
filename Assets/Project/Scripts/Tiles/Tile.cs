@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Project.Scripts.General;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace Project.Scripts.Tiles
         public TileType myTileType;
         [SerializeField] private Vector2Int positionInGrid;
         [SerializeField] private Vector3 positionInScene, dragVector;
+        
+        
         private Tile PreviewDragedTile;
         private Camera _camera;
         private TileManager myTileManager;
@@ -26,6 +29,7 @@ namespace Project.Scripts.Tiles
             Type2 = 2,
             Type3 = 3,
             Type4 = 4,
+            Type5 = 5,
         }
 
         private void Awake()
@@ -71,6 +75,26 @@ namespace Project.Scripts.Tiles
             return positionInGrid;
         }
 
+        private void ChangeTileType(TileType newTileType)
+        {
+            myTileType = newTileType;
+            
+            myItem.sprite = TileRecourseKeeper.instance.tileSprites[(int)myTileType];
+        }
+
+        private void OnMouseDown()
+        {
+            if (myTileManager.EditMode)
+            {
+                int id = ((int)myTileType + 1);
+                if (id > 5)
+                {
+                    id = 0;
+                }
+                ChangeTileType((TileType) id);
+            }
+        }
+
         public void InitializeTile(TileType type, Vector2Int positionInGird, Vector3 localPos)
         {
             myTileType = type;
@@ -82,6 +106,7 @@ namespace Project.Scripts.Tiles
 
         private void OnMouseDrag()
         {
+            if(myTileManager.EditMode) return;
             if (!myTileManager.interactable)return;
             if (!currentlyDraged)DragStateChanged();
             Vector3 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
@@ -122,6 +147,7 @@ namespace Project.Scripts.Tiles
 
         private void OnMouseUp()
         {
+            if(myTileManager.EditMode) return;
             if (currentlyDraged)
             {
                 Move();
