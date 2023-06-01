@@ -78,7 +78,6 @@ namespace Project.Scripts.Tiles
         private void ChangeTileType(TileType newTileType)
         {
             myTileType = newTileType;
-            
             myItem.sprite = TileRecourseKeeper.instance.tileSprites[(int)myTileType];
         }
 
@@ -86,11 +85,8 @@ namespace Project.Scripts.Tiles
         {
             if (myTileManager.EditMode)
             {
-                int id = ((int)myTileType + 1);
-                if (id > 5)
-                {
-                    id = 0;
-                }
+                int id = (int)myTileType + 1;
+                if (id > 5) id = 0;
                 ChangeTileType((TileType) id);
             }
         }
@@ -133,14 +129,13 @@ namespace Project.Scripts.Tiles
             if (Mathf.Abs( dragVector.x) > Mathf.Abs(dragVector.y)) tileOffset.x = dragVector.x > 0 ? 1 : -1;
             else tileOffset.y = dragVector.y > 0 ? -1 : 1;
 
-            if (myTileManager.IsPositionInGrid(positionInGrid + tileOffset))
+            if (!myTileManager.IsPositionInGrid(positionInGrid + tileOffset)) return;
+
+            Tile currentTile = myTileManager.GetTile(positionInGrid + tileOffset);
+            if (PreviewDragedTile != currentTile)
             {
-                Tile currentTile = myTileManager.GetTile(positionInGrid + tileOffset);
-                if (PreviewDragedTile != currentTile)
-                {
-                    if (PreviewDragedTile) PreviewDragedTile.transform.localPosition = PreviewDragedTile.positionInScene;
-                    PreviewDragedTile = currentTile;
-                }
+                if (PreviewDragedTile) PreviewDragedTile.transform.localPosition = PreviewDragedTile.positionInScene;
+                PreviewDragedTile = currentTile;
             }
             PreviewDragedTile.transform.localPosition = positionInScene;
         }
@@ -176,12 +171,18 @@ namespace Project.Scripts.Tiles
         {
             if (Mathf.Abs(dragVector.x) < MoveThreshold && Mathf.Abs(dragVector.y) < MoveThreshold)
             {
-                transform.position = positionInScene;
+                transform.localPosition = positionInScene;
                 return;
             }
             Vector2Int tileOffset = Vector2Int.zero;
             if (Mathf.Abs( dragVector.x) > Mathf.Abs(dragVector.y)) tileOffset.x = dragVector.x > 0 ? 1 : -1;
             else tileOffset.y = dragVector.y > 0 ? -1 : 1;
+
+            if (!myTileManager.IsPositionInGrid(positionInGrid+tileOffset))
+            {
+                transform.localPosition = positionInScene;
+                return;
+            }
             
             myTileManager.SwitchTiles(positionInGrid,positionInGrid+tileOffset);
             myTileManager.Turns--;

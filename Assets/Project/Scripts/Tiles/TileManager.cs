@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +19,7 @@ namespace Project.Scripts.Tiles
         public Vector3[][] fieldGridPositions;
         public Tile[][] fieldGridTiles;
         public int score, comboRoll, turns = 20;
+        public float[] probabilities = new[] { 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f };
         
         [Header("EditMode")]
         public bool EditMode = false; 
@@ -67,19 +69,14 @@ namespace Project.Scripts.Tiles
             base.Awake();
             tilePreFap =  Resources.Load<GameObject>("Prefaps/Tiles/Tile1");
             
-            if (levelData)
-            {
-                fieldSize = levelData.FieldSize;
-                InitializeGridFromData(levelData);
-            }
-            else
-            {
-                InitializeGridRandom(fieldSize.x,fieldSize.y);
-            }
+            CreateGrid();
         }
 
         private void InitializeGridFromData( Level data)
         {
+            fieldSize = data.FieldSize;
+            probabilities = data.Probabilities;
+            
             fieldGridPositions = new Vector3[fieldSize.x][];
             fieldGridTiles = new Tile[fieldSize.x][];
             
@@ -101,7 +98,7 @@ namespace Project.Scripts.Tiles
                 for (int j = 0; j < fieldSize.x; j++)
                 {
                     fieldGridPositions[j][i] = currentPosition;
-                    NewTile(new Vector2Int(j,i), GetTileTypeFormIndex(data.StartingGrid[j].data[i]));
+                    NewTile(new Vector2Int(j,i), GetTileTypeFormIndex(data.StartingGrid[j].data[i]),fieldGridTiles);
                     currentPosition += xAdd;
                 }
             }
@@ -109,11 +106,67 @@ namespace Project.Scripts.Tiles
 
         public void CreateGrid()
         {
-            
+            if (fieldGridTiles == null)
+            {
+                if (levelData) InitializeGridFromData(levelData);
+                else InitializeGridRandom();
+            }
+            else
+            {
+                Tile[][] newTileField = new Tile[fieldSize.x][];
+                fieldGridPositions = new Vector3[fieldSize.x][];
+
+                for (int i = 0; i < fieldSize.x; i++)
+                {
+                    newTileField[i] = new Tile[fieldSize.y];
+                    fieldGridPositions[i]  = new Vector3[fieldSize.y];
+                }
+                float x = -1* GetStartingCoordinates(fieldSize.x, tileSize, tileSpacing);
+                float y = GetStartingCoordinates(fieldSize.y,tileSize,tileSpacing);
+                 
+                Vector3 xAdd = new Vector3(tileSize + tileSpacing, 0, 0);
+                Vector3 yAdd = new Vector3(0, tileSize + tileSpacing, 0);
+
+                for (int i = 0; i < fieldSize.y; i++)
+                {
+                    Vector3 currentPosition = new Vector3(x, y, 0) + -1 * i * yAdd;
+                    for (int j = 0; j < fieldSize.x; j++)
+                    {
+                        fieldGridPositions[j][i] = currentPosition;
+                        
+                        if (j < fieldGridTiles.Length)
+                        {
+                            if (i < fieldGridTiles[i].Length)
+                            {
+                                Tile current =  newTileField[j][i] = fieldGridTiles[j][i];
+                                current.SetNewPosition(new Vector2Int(j,i));
+                            }
+                            else NewTile(new Vector2Int(j,i), Tile.TileType.Type0,newTileField);
+                        }
+                        else NewTile(new Vector2Int(j,i), Tile.TileType.Type0,newTileField);
+                        
+                        currentPosition += xAdd;
+                    }
+                }
+
+                for (int i = 0; i < fieldGridTiles[0].Length; i++)
+                {
+                    for (int j = 0; j < fieldGridTiles.Length; j++)
+                    {
+                        if (i >= fieldSize.y || j >= fieldSize.x)
+                        {
+                            Destroy(fieldGridTiles[j][i].gameObject);
+                        }
+                    }
+                }
+
+                fieldGridTiles = newTileField;
+            }
         }
 
-        private void InitializeGridRandom(int tileCountX, int tileCountY)
+        private void InitializeGridRandom()
         {
+            int tileCountX = fieldSize.x, tileCountY = fieldSize.y;
             fieldGridPositions = new Vector3[tileCountX][];
             fieldGridTiles = new Tile[tileCountX][];
 
@@ -137,7 +190,7 @@ namespace Project.Scripts.Tiles
                 for (int j = 0; j < tileCountX; j++)
                 {
                     fieldGridPositions[j][i] = currentPosition;
-                    NewTile(new Vector2Int(j,i), GetTileTypeFormIndex(counter));
+                    NewTile(new Vector2Int(j,i), GetTileTypeFormIndex(counter),fieldGridTiles);
                     currentPosition += xAdd;
                     counter++;
                     if (counter > 4) counter = 0;
@@ -190,8 +243,7 @@ namespace Project.Scripts.Tiles
 
         private void CheckForCombo(Vector2Int origin, Tile.TileType tileType)
         {
-            List<Tile> comboTiles = new List<Tile>();
-            comboTiles.Add(fieldGridTiles[origin.x][origin.y]);
+            List<Tile> comboTiles = new List<Tile> { fieldGridTiles[origin.x][origin.y] };
             Comp(origin);
             
             if(comboTiles.Count < minComboSize) return;
@@ -326,22 +378,38 @@ namespace Project.Scripts.Tiles
             CheckForAllCombos();
         }
 
+        private Tile.TileType GenerateTileType()
+        {
+            float randomNumber = Random.Range(0f, 100f);
+            float prob = probabilities[0];
+            int step = 0;
+
+            while (randomNumber > prob && step < probabilities.Length-1)
+            {
+                step++;
+                prob += probabilities[step];
+            }
+            
+            return (Tile.TileType)step;
+        }
+
         private void NewTile(Vector2Int posInGrid)
         {
             Vector3 currentPosition = fieldGridPositions[posInGrid.x][posInGrid.y];
             Tile tile = Instantiate(tilePreFap, currentPosition, quaternion.identity).GetComponent<Tile>();
             tile.gameObject.transform.SetParent(transform);
-            tile.InitializeTile(GetTileTypeFormIndex(Random.Range(0,4)),posInGrid,currentPosition);
+            tile.InitializeTile( GenerateTileType(),posInGrid,currentPosition);
+            Debug.Log($"{tile.GetTileType()}");
             fieldGridTiles[posInGrid.x][posInGrid.y] = tile;
         }
         
-        private void NewTile(Vector2Int posInGrid, Tile.TileType tileType)
+        private void NewTile(Vector2Int posInGrid, Tile.TileType tileType, Tile[][] tileGrid)
         {
             Vector3 currentPosition = fieldGridPositions[posInGrid.x][posInGrid.y];
             Tile tile = Instantiate(tilePreFap, currentPosition, quaternion.identity).GetComponent<Tile>();
             tile.gameObject.transform.SetParent(transform);
             tile.InitializeTile(tileType,posInGrid,currentPosition);
-            fieldGridTiles[posInGrid.x][posInGrid.y] = tile;
+            tileGrid[posInGrid.x][posInGrid.y] = tile;
         }
 
         private void ScoreCalculator(int comboSize)
@@ -366,7 +434,7 @@ namespace Project.Scripts.Tiles
                 }
             }
 
-            float[] probs = new[] { 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f };
+            float[] probs = probabilities;
 
             Level level = ScriptableObject.CreateInstance<Level>();
             level.LevelDataSet(data,probs);
