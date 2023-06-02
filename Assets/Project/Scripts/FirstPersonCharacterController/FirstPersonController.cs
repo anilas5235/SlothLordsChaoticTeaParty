@@ -17,7 +17,7 @@ namespace Project.Scripts.FirstPersonCharacterController
         [SerializeField, Range(1, 180)] private float upperLookLimit= 80f;
         [SerializeField, Range(1, 180)] private float lowerLookLimit= 80f;
 
-        private Camera playerCamera;
+        public Camera playerCamera { get; private set; }
         private CharacterController myCharacterController;
 
         private Vector3 moveDirection;
@@ -67,5 +67,8 @@ namespace Project.Scripts.FirstPersonCharacterController
             if (!myCharacterController.isGrounded) moveDirection.y -= gravity * Time.deltaTime;
             myCharacterController.Move(moveDirection * Time.deltaTime);
         }
+
+        public void FreezePlayerToggle() => CanMove = !CanMove;
+
     }
 }

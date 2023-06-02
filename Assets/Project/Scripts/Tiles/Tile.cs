@@ -24,6 +24,7 @@ namespace Project.Scripts.Tiles
 
         public enum TileType
         {
+            Clear = -1,
             Type0 = 0,
             Type1 = 1,
             Type2 = 2,
@@ -78,7 +79,14 @@ namespace Project.Scripts.Tiles
         private void ChangeTileType(TileType newTileType)
         {
             myTileType = newTileType;
-            myItem.sprite = TileRecourseKeeper.instance.tileSprites[(int)myTileType];
+            if (newTileType == TileType.Clear)
+            {
+                myItem.enabled = false;
+            }
+            else
+            {
+                myItem.sprite = TileRecourseKeeper.instance.tileSprites[(int)myTileType];
+            }
         }
 
         private void OnMouseDown()
@@ -86,7 +94,7 @@ namespace Project.Scripts.Tiles
             if (myTileManager.EditMode)
             {
                 int id = (int)myTileType + 1;
-                if (id > 5) id = 0;
+                if (id > 5) id = -1;
                 ChangeTileType((TileType) id);
             }
         }
@@ -95,7 +103,13 @@ namespace Project.Scripts.Tiles
         {
             myTileType = type;
             positionInGrid = positionInGird;
-            myItem.sprite = TileRecourseKeeper.instance.tileSprites[(int)myTileType];
+            if (myTileType == TileType.Clear) myItem.enabled = false;
+            else
+            {
+                myItem.enabled = true;
+                myItem.sprite = TileRecourseKeeper.instance.tileSprites[(int)myTileType];
+            }
+           
             positionInScene = localPos;
             transform.localPosition = positionInScene;
         }
@@ -103,7 +117,7 @@ namespace Project.Scripts.Tiles
         private void OnMouseDrag()
         {
             if(myTileManager.EditMode) return;
-            if (!myTileManager.interactable)return;
+            if (!myTileManager.interactable || myTileType == TileType.Clear)return;
             if (!currentlyDraged)DragStateChanged();
             Vector3 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;
@@ -121,7 +135,11 @@ namespace Project.Scripts.Tiles
         {
             if (Mathf.Abs(dragVector.x) < MoveThreshold && Mathf.Abs(dragVector.y) < MoveThreshold)
             {
-                if (PreviewDragedTile) PreviewDragedTile.transform.localPosition = PreviewDragedTile.positionInScene;
+                if (PreviewDragedTile)
+                {
+                    if (PreviewDragedTile.GetTileType() == TileType.Clear) return;
+                    PreviewDragedTile.transform.localPosition = PreviewDragedTile.positionInScene;
+                }
                 PreviewDragedTile = null;
                 return;
             }
@@ -129,7 +147,11 @@ namespace Project.Scripts.Tiles
             if (Mathf.Abs( dragVector.x) > Mathf.Abs(dragVector.y)) tileOffset.x = dragVector.x > 0 ? 1 : -1;
             else tileOffset.y = dragVector.y > 0 ? -1 : 1;
 
-            if (!myTileManager.IsPositionInGrid(positionInGrid + tileOffset)) return;
+            if (!myTileManager.IsPositionInGrid(positionInGrid + tileOffset) || myTileManager.GetTile(positionInGrid+tileOffset).GetTileType() == TileType.Clear)
+            {
+                if (PreviewDragedTile) PreviewDragedTile.transform.localPosition = PreviewDragedTile.positionInScene;
+                return;
+            }
 
             Tile currentTile = myTileManager.GetTile(positionInGrid + tileOffset);
             if (PreviewDragedTile != currentTile)
@@ -178,7 +200,8 @@ namespace Project.Scripts.Tiles
             if (Mathf.Abs( dragVector.x) > Mathf.Abs(dragVector.y)) tileOffset.x = dragVector.x > 0 ? 1 : -1;
             else tileOffset.y = dragVector.y > 0 ? -1 : 1;
 
-            if (!myTileManager.IsPositionInGrid(positionInGrid+tileOffset))
+            if (!myTileManager.IsPositionInGrid(positionInGrid+tileOffset) || 
+                myTileManager.GetTile(positionInGrid+tileOffset).GetTileType() == TileType.Clear)
             {
                 transform.localPosition = positionInScene;
                 return;

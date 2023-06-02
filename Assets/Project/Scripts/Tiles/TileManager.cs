@@ -17,7 +17,7 @@ namespace Project.Scripts.Tiles
         
         public Vector2Int fieldSize = new Vector2Int( 10, 7);
         public Vector3[][] fieldGridPositions;
-        public Tile[][] fieldGridTiles;
+        private Tile[][] fieldGridTiles;
         public int score, comboRoll, turns = 20;
         public float[] probabilities = new[] { 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f };
         
@@ -342,23 +342,33 @@ namespace Project.Scripts.Tiles
         {
             bool doneFalling = true;
             List<Vector2Int> toSkip = new List<Vector2Int>();
-            for (int i = 0; i < fieldSize.y-1; i++)
+            for (int i = 0; i < fieldSize.y; i++)
             {
                 for (int j = 0; j < fieldSize.x; j++)
                 {
-                    if(i==0 && fieldGridTiles[j][i] == null)
+                    Tile currentTile = fieldGridTiles[j][i];
+
+                    if (currentTile == null)
                     {
-                        NewTile(new Vector2Int(j,i));
-                        doneFalling = false;
-                        continue;
-                    }
-                    if (fieldGridTiles[j][i] != null && fieldGridTiles[j][i+1] == null && !toSkip.Contains(new Vector2Int(j,i)))
-                    {
-                        Tile currentTile = fieldGridTiles[j][i];
-                        currentTile.SetNewPosition(new Vector2Int(j,i+1));
-                        fieldGridTiles[j][i + 1] = currentTile;
-                        fieldGridTiles[j][i] = null;
-                        toSkip.Add(new Vector2Int(j,i+1));
+                        if (i == 0)
+                        {
+                            NewTile(new Vector2Int(j, i));
+                        }
+                        else if (fieldGridTiles[j][i - 1] != null && !toSkip.Contains(new Vector2Int(j, i)))
+                        {
+                            Tile aboveTile = fieldGridTiles[j][i - 1];
+                            if (aboveTile.GetTileType() == Tile.TileType.Clear)
+                            {
+                                NewTile(new Vector2Int(j, i));
+                            }
+                            else
+                            {
+                                aboveTile.SetNewPosition(new Vector2Int(j, i));
+                                fieldGridTiles[j][i] = aboveTile;
+                                fieldGridTiles[j][i - 1] = null;
+                                toSkip.Add(new Vector2Int(j, i +1));
+                            }
+                        }
                         doneFalling = false;
                     }
                 }

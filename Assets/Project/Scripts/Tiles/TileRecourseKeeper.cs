@@ -13,11 +13,11 @@ namespace Project.Scripts.Tiles
 
             tileSprites = new[]
             {
-                Resources.Load<Sprite>("ArtWork/Tiles/IconButton_Small_Blue_Circle"),
-                Resources.Load<Sprite>("ArtWork/Tiles/IconButton_Small_Circle"),
-                Resources.Load<Sprite>("ArtWork/Tiles/IconButton_Small_Green_Circle"),
-                Resources.Load<Sprite>("ArtWork/Tiles/IconButton_Small_Orange_Circle"),
-                Resources.Load<Sprite>("ArtWork/Tiles/IconButton_Small_Red_Circle"),
+                Resources.Load<Sprite>("ArtWork/Tiles/cookie"),
+                Resources.Load<Sprite>("ArtWork/Tiles/eukalyptus"),
+                Resources.Load<Sprite>("ArtWork/Tiles/maus"),
+                Resources.Load<Sprite>("ArtWork/Tiles/mooncake"),
+                Resources.Load<Sprite>("ArtWork/Tiles/strawberry"),
                 Resources.Load<Sprite>("ArtWork/Tiles/IconButton_Small_Purpel_Circle")
             };
         }

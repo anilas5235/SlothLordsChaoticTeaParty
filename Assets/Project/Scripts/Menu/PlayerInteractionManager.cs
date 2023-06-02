@@ -5,39 +5,58 @@ namespace Project.Scripts.Menu
 {
     public class PlayerInteractionManager : MonoBehaviour
     {
-        private Transform camTranform;
+        private Transform camTransform;
 
         [SerializeField] private float maxReach = 50f;
+        private IInteractable targetGameObject;
 
         private void Awake()
         {
-            camTranform = GetComponentInChildren<Camera>().transform;
+            camTransform = GetComponentInChildren<Camera>().transform;
         }
 
         private void Update()
         {
-            Ray ray = new Ray(camTranform.position, camTranform.TransformDirection(Vector3.forward));
-                         RaycastHit[] hits = Physics.RaycastAll(ray, maxReach);
-            if (Input.GetMouseButtonDown(0))
-            {
-                foreach (RaycastHit hit in hits)
-                {
-                    if (hit.transform.TryGetComponent(typeof(IInteractable), out Component component))
-                    {
-                        ((IInteractable)component).Interact();
-                    }
-                }
-            }
-            
+            Ray ray = new Ray(camTransform.position, camTransform.TransformDirection(Vector3.forward));
+            RaycastHit[] hits = Physics.RaycastAll(ray, maxReach);
+
+            bool noInteractables = true;
+
+
             foreach (RaycastHit hit in hits)
             {
                 if (hit.transform.TryGetComponent(typeof(IInteractable), out Component component))
                 {
-                    ((IInteractable)component).Highlight();
+                    IInteractable newTarget = ((IInteractable)component);
+                    if (targetGameObject == null)
+                    {
+                        targetGameObject = newTarget;
+                        targetGameObject.Highlight();
+                    }
+                    else if(targetGameObject != newTarget)
+                    {
+                         targetGameObject.Highlight();
+                         targetGameObject = newTarget;
+                         targetGameObject.Highlight();
+                    }
+                    noInteractables = false;
+                    break;
                 }
             }
-            
-            Debug.DrawRay(camTranform.position, camTranform.TransformDirection(Vector3.forward), Color.red);
+
+            if (noInteractables && targetGameObject != null)
+            {
+                targetGameObject.Highlight();
+                targetGameObject = null;
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                if(targetGameObject != null) targetGameObject.Interact();
+            }
+
+
+            Debug.DrawRay(camTransform.position, camTransform.TransformDirection(Vector3.forward), Color.red);
         }
     }
 }

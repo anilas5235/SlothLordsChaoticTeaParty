@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1e95a9f053c264e8f1754563077b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelData: {fileID: 11400000, guid: 5537f18f64327504f9833037a8b653a0, type: 2}
+  levelData: {fileID: 0}
   fieldSize: {x: 7, y: 5}
   score: 0
   comboRoll: 0
