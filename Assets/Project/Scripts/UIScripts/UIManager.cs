@@ -16,17 +16,17 @@ namespace Project.Scripts.UIScripts
 
         public void UpdateScore()
         {
-            scoreText.text = $"Score: {TileManager.instance.Score}";
+            scoreText.text = $"Score: {TileFieldManager.instance.Score}";
         }
 
         public void UpdateComboRoll()
         {
-            comboRollText.text = $"Combos: {TileManager.instance.ComboRoll}";
+            comboRollText.text = $"Combos: {TileFieldManager.instance.ComboRoll}";
         }
 
         public void UpdateTurn()
         {
-            turnText.text = $"Turns: {TileManager.instance.turns}";
+            turnText.text = $"Turns: {TileFieldManager.instance.turns}";
         }
 
         public void UpdateAllUIFields()

@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1e95a9f053c264e8f1754563077b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelData: {fileID: 0}
+  levelData: {fileID: 11400000, guid: ce06eb587cda98a419fbd40f1a01a56e, type: 2}
   fieldSize: {x: 7, y: 5}
   score: 0
   comboRoll: 0
@@ -333,7 +333,7 @@ MonoBehaviour:
   - 16.666666
   - 16.666666
   - 16.666666
-  EditMode: 0
+  editMode: 0
   interactable: 1
 --- !u!4 &689468785
 Transform:

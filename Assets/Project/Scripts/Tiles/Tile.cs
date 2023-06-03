@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Project.Scripts.General;
 using UnityEngine;
@@ -16,7 +15,7 @@ namespace Project.Scripts.Tiles
         
         private Tile PreviewDragedTile;
         private Camera _camera;
-        private TileManager myTileManager;
+        private TileFieldManager myTileFieldManager;
 
         private bool currentlyDraged = false;
         
@@ -38,8 +37,10 @@ namespace Project.Scripts.Tiles
             myBackground = transform.GetChild(0).GetComponent<SpriteRenderer>();
             myItem = transform.GetChild(1).GetComponent<SpriteRenderer>();
             _camera = Camera.main;
-            myTileManager = TileManager.instance;
+            myTileFieldManager = TileFieldManager.instance;
         }
+
+        #region TileInfoFunctions
 
         public TileType GetTileType()
         {
@@ -50,10 +51,10 @@ namespace Project.Scripts.Tiles
         {
             List<Tile> neighbours = new List<Tile>();
             int ownX = positionInGrid.x, ownY = positionInGrid.y;
-            neighbours.Add(myTileManager.GetTile(new Vector2Int(ownX + 1, ownY)));
-            neighbours.Add(myTileManager.GetTile(new Vector2Int(ownX - 1, ownY)));
-            neighbours.Add(myTileManager.GetTile(new Vector2Int(ownX, ownY + 1)));
-            neighbours.Add(myTileManager.GetTile(new Vector2Int(ownX, ownY - 1)));
+            neighbours.Add(myTileFieldManager.GetTile(new Vector2Int(ownX + 1, ownY)));
+            neighbours.Add(myTileFieldManager.GetTile(new Vector2Int(ownX - 1, ownY)));
+            neighbours.Add(myTileFieldManager.GetTile(new Vector2Int(ownX, ownY + 1)));
+            neighbours.Add(myTileFieldManager.GetTile(new Vector2Int(ownX, ownY - 1)));
 
             for (int i = 0; i < neighbours.Count; i++)
             {
@@ -68,13 +69,17 @@ namespace Project.Scripts.Tiles
 
         public Tile GetNeighbour(Vector2Int offset)
         {
-            return myTileManager.GetTile(positionInGrid + offset);
+            return myTileFieldManager.GetTile(positionInGrid + offset);
         }
 
         public Vector2Int GetTilePosition()
         {
             return positionInGrid;
         }
+        
+        #endregion
+
+        #region TileChangeFunctions
 
         private void ChangeTileType(TileType newTileType)
         {
@@ -89,16 +94,6 @@ namespace Project.Scripts.Tiles
             }
         }
 
-        private void OnMouseDown()
-        {
-            if (myTileManager.EditMode)
-            {
-                int id = (int)myTileType + 1;
-                if (id > 5) id = -1;
-                ChangeTileType((TileType) id);
-            }
-        }
-
         public void InitializeTile(TileType type, Vector2Int positionInGird, Vector3 localPos)
         {
             myTileType = type;
@@ -109,15 +104,36 @@ namespace Project.Scripts.Tiles
                 myItem.enabled = true;
                 myItem.sprite = TileRecourseKeeper.instance.tileSprites[(int)myTileType];
             }
-           
+
             positionInScene = localPos;
             transform.localPosition = positionInScene;
         }
 
+        public void SetNewPosition(Vector2Int newPos)
+        {
+            positionInGrid = newPos;
+            positionInScene = myTileFieldManager.GetScenePosition(positionInGrid);
+            transform.localPosition = positionInScene;
+        }
+
+        #endregion
+
+        #region OnMouseFunctions/Interactions
+
+        private void OnMouseDown()
+        {
+            if (myTileFieldManager.editMode)
+            {
+                int id = (int)myTileType + 1;
+                if (id > 5) id = -1;
+                ChangeTileType((TileType) id);
+            }
+        }
+
         private void OnMouseDrag()
         {
-            if(myTileManager.EditMode) return;
-            if (!myTileManager.interactable || myTileType == TileType.Clear)return;
+            if(myTileFieldManager.editMode) return;
+            if (!myTileFieldManager.interactable || myTileType == TileType.Clear)return;
             if (!currentlyDraged)DragStateChanged();
             Vector3 mousePosition = _camera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0;
@@ -147,13 +163,13 @@ namespace Project.Scripts.Tiles
             if (Mathf.Abs( dragVector.x) > Mathf.Abs(dragVector.y)) tileOffset.x = dragVector.x > 0 ? 1 : -1;
             else tileOffset.y = dragVector.y > 0 ? -1 : 1;
 
-            if (!myTileManager.IsPositionInGrid(positionInGrid + tileOffset) || myTileManager.GetTile(positionInGrid+tileOffset).GetTileType() == TileType.Clear)
+            if (!myTileFieldManager.IsPositionInGrid(positionInGrid + tileOffset) || myTileFieldManager.GetTile(positionInGrid+tileOffset).GetTileType() == TileType.Clear)
             {
                 if (PreviewDragedTile) PreviewDragedTile.transform.localPosition = PreviewDragedTile.positionInScene;
                 return;
             }
 
-            Tile currentTile = myTileManager.GetTile(positionInGrid + tileOffset);
+            Tile currentTile = myTileFieldManager.GetTile(positionInGrid + tileOffset);
             if (PreviewDragedTile != currentTile)
             {
                 if (PreviewDragedTile) PreviewDragedTile.transform.localPosition = PreviewDragedTile.positionInScene;
@@ -164,7 +180,7 @@ namespace Project.Scripts.Tiles
 
         private void OnMouseUp()
         {
-            if(myTileManager.EditMode) return;
+            if(myTileFieldManager.editMode) return;
             if (currentlyDraged)
             {
                 Move();
@@ -182,13 +198,6 @@ namespace Project.Scripts.Tiles
             myItem.sortingOrder = currentlyDraged ? 3 : 1;
         }
 
-        public void SetNewPosition(Vector2Int newPos)
-        {
-            positionInGrid = newPos;
-            positionInScene = myTileManager.fieldGridPositions[positionInGrid.x][positionInGrid.y];
-            transform.localPosition = positionInScene;
-        }
-
         private void Move()
         {
             if (Mathf.Abs(dragVector.x) < MoveThreshold && Mathf.Abs(dragVector.y) < MoveThreshold)
@@ -200,15 +209,16 @@ namespace Project.Scripts.Tiles
             if (Mathf.Abs( dragVector.x) > Mathf.Abs(dragVector.y)) tileOffset.x = dragVector.x > 0 ? 1 : -1;
             else tileOffset.y = dragVector.y > 0 ? -1 : 1;
 
-            if (!myTileManager.IsPositionInGrid(positionInGrid+tileOffset) || 
-                myTileManager.GetTile(positionInGrid+tileOffset).GetTileType() == TileType.Clear)
+            if (!myTileFieldManager.IsPositionInGrid(positionInGrid+tileOffset) || 
+                myTileFieldManager.GetTile(positionInGrid+tileOffset).GetTileType() == TileType.Clear)
             {
                 transform.localPosition = positionInScene;
                 return;
             }
             
-            myTileManager.SwitchTiles(positionInGrid,positionInGrid+tileOffset);
-            myTileManager.Turns--;
+            myTileFieldManager.SwitchTiles(positionInGrid,positionInGrid+tileOffset);
+            myTileFieldManager.Turns--;
         }
+        #endregion
     }
 }

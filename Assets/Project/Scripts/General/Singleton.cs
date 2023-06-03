@@ -19,5 +19,18 @@ namespace Project.Scripts.General
             }
         }
     }
+    
+    /// <summary>
+    ///   <para>class driving form this class will act as Singletons and will be continued through scene loads</para>
+    /// </summary>
+
+    public abstract class PersistantSingleton<T> : Singleton<T> where T : MonoBehaviour
+    {
+        protected override void Awake()
+        {
+            base.Awake();
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
 }
 

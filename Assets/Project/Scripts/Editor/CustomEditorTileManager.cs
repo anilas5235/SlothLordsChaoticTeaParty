@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Project.Scripts.Editor
 {
-    [CustomEditor(typeof(TileManager))]
+    [CustomEditor(typeof(TileFieldManager))]
     public class CustomEditorTileManager : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
-            TileManager script = (TileManager)target;
+            TileFieldManager script = (TileFieldManager)target;
 
             if (GUILayout.Button("Create Grid"))
             {
