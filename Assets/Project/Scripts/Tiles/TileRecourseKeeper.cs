@@ -15,10 +15,10 @@ namespace Project.Scripts.Tiles
             {
                 Resources.Load<Sprite>("ArtWork/Tiles/cookie"),
                 Resources.Load<Sprite>("ArtWork/Tiles/eukalyptus"),
-                Resources.Load<Sprite>("ArtWork/Tiles/maus"),
+                Resources.Load<Sprite>("ArtWork/Tiles/maus2"),
                 Resources.Load<Sprite>("ArtWork/Tiles/mooncake"),
                 Resources.Load<Sprite>("ArtWork/Tiles/strawberry"),
-                Resources.Load<Sprite>("ArtWork/Tiles/IconButton_Small_Purpel_Circle")
+                Resources.Load<Sprite>("ArtWork/Tiles/tea")
             };
         }
     }

@@ -23,7 +23,8 @@ namespace Project.Scripts.Tiles
         private Vector3[][] fieldGridPositions;
         private Tile[][] fieldGridTiles;
         private GameObject tilePreFap;
-        
+        private Transform background;
+
         [Header("EditMode")]
         public bool editMode = false;
 
@@ -73,11 +74,12 @@ namespace Project.Scripts.Tiles
         {
             base.Awake();
             tilePreFap =  Resources.Load<GameObject>("Prefaps/Tiles/Tile1");
+            background = transform.GetChild(0).transform;
 
             CreateGrid();
         }
 
-        #region GridMOveFunctions
+        #region GridMoveFunctions
 
         /// <summary>
         ///   <para>Switches two tile at given positions</para>
@@ -216,6 +218,8 @@ namespace Project.Scripts.Tiles
 
                 fieldGridTiles = newTileField;
             }
+
+            background.localScale = new Vector3((fieldSize.x+ 0.75f) * (TileSize + TileSpacing),(fieldSize.y+ 0.75f) * (TileSize + TileSpacing));
         }
         
         /// <summary>
@@ -355,6 +359,7 @@ namespace Project.Scripts.Tiles
         private void CheckForCombo(Vector2Int tilePosition)
         {
             if(!IsPositionInGrid(tilePosition)) return;
+            if(!GetTile(tilePosition)) return;
             Tile.TileType tileType = GetTile(tilePosition).GetTileType();
             List<Tile> comboTiles = new List<Tile> { fieldGridTiles[tilePosition.x][tilePosition.y] };
             Comp(tilePosition);
