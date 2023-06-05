@@ -589,13 +589,14 @@ namespace Project.Scripts.Tiles
             if (comboSize < MinComboSize) return;
             if (comboTileType == Tile.TileType.Clear)return;
 
+            int scoreToAdd = comboSize * comboRoll;
             switch ((comboTileType == preferredTile, comboTileType == dislikedTile))
             {
-                case (true,false): Score += (int) Mathf.Pow(5, comboSize) * comboRoll; break;
-                case (false,true): Score += (int) Mathf.Pow(5, comboSize) * -1 * comboRoll; break;
-                default: Score += (int) Mathf.Pow(2, comboSize) * comboRoll; break; 
+                case (true,false): scoreToAdd *= 5; break;
+                case (false,true): scoreToAdd *= -5;  break;
+                default: scoreToAdd *= 2; break; 
             }
-            
+            Score += scoreToAdd;
         }
         
         #endregion
