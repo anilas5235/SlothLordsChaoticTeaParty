@@ -13,7 +13,7 @@ namespace Project.Scripts.Tiles
         [SerializeField] private Vector3 positionInScene, dragVector;
         
         
-        private Tile PreviewDragedTile;
+        private Tile previewDragedTile;
         private Camera _camera;
         private TileFieldManager myTileFieldManager;
 
@@ -24,12 +24,12 @@ namespace Project.Scripts.Tiles
         public enum TileType
         {
             Clear = -1,
-            Type0 = 0,
-            Type1 = 1,
-            Type2 = 2,
-            Type3 = 3,
-            Type4 = 4,
-            Type5 = 5,
+            EucalyptusTea = 0,
+            AppleTea = 1,
+            Mouse = 2,
+            Cookie = 3,
+            StrawberryCake = 4,
+            MoonCake = 5,
         }
 
         private void Awake()
@@ -87,9 +87,12 @@ namespace Project.Scripts.Tiles
             if (newTileType == TileType.Clear)
             {
                 myItem.enabled = false;
+                myBackground.enabled = false;
             }
             else
             {
+                myItem.enabled = true;
+                myBackground.enabled = true;
                 myItem.sprite = TileRecourseKeeper.instance.tileSprites[(int)myTileType];
             }
         }
@@ -151,12 +154,12 @@ namespace Project.Scripts.Tiles
         {
             if (Mathf.Abs(dragVector.x) < MoveThreshold && Mathf.Abs(dragVector.y) < MoveThreshold)
             {
-                if (PreviewDragedTile)
+                if (previewDragedTile)
                 {
-                    if (PreviewDragedTile.GetTileType() == TileType.Clear) return;
-                    PreviewDragedTile.transform.localPosition = PreviewDragedTile.positionInScene;
+                    if (previewDragedTile.GetTileType() == TileType.Clear) return;
+                    previewDragedTile.transform.localPosition = previewDragedTile.positionInScene;
                 }
-                PreviewDragedTile = null;
+                previewDragedTile = null;
                 return;
             }
             Vector2Int tileOffset = Vector2Int.zero;
@@ -165,17 +168,17 @@ namespace Project.Scripts.Tiles
 
             if (!myTileFieldManager.IsPositionInGrid(positionInGrid + tileOffset) || myTileFieldManager.GetTile(positionInGrid+tileOffset).GetTileType() == TileType.Clear)
             {
-                if (PreviewDragedTile) PreviewDragedTile.transform.localPosition = PreviewDragedTile.positionInScene;
+                if (previewDragedTile) previewDragedTile.transform.localPosition = previewDragedTile.positionInScene;
                 return;
             }
 
             Tile currentTile = myTileFieldManager.GetTile(positionInGrid + tileOffset);
-            if (PreviewDragedTile != currentTile)
+            if (previewDragedTile != currentTile)
             {
-                if (PreviewDragedTile) PreviewDragedTile.transform.localPosition = PreviewDragedTile.positionInScene;
-                PreviewDragedTile = currentTile;
+                if (previewDragedTile) previewDragedTile.transform.localPosition = previewDragedTile.positionInScene;
+                previewDragedTile = currentTile;
             }
-            PreviewDragedTile.transform.localPosition = positionInScene;
+            previewDragedTile.transform.localPosition = positionInScene;
         }
 
         private void OnMouseUp()

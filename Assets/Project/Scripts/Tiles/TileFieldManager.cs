@@ -20,11 +20,11 @@ namespace Project.Scripts.Tiles
         public Vector2Int fieldSize = new Vector2Int( 10, 7);
         public int score, comboRoll, turns = 20;
         public float[] probabilities = { 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f };
+        public Tile.TileType preferredTile, dislikedTile;
         
         private Vector3[][] fieldGridPositions;
         private Tile[][] fieldGridTiles;
         private GameObject tilePreFap;
-        private Transform background;
 
         [Header("EditMode")]
         public bool editMode = false;
@@ -76,8 +76,6 @@ namespace Project.Scripts.Tiles
         {
             base.Awake();
             tilePreFap =  Resources.Load<GameObject>("Prefaps/Tiles/Tile1");
-            background = transform.GetChild(0).transform;
-           
             CreateGrid();
         }
 
@@ -142,6 +140,9 @@ namespace Project.Scripts.Tiles
         {
             fieldSize = data.FieldSize;
             probabilities = data.Probabilities;
+            turns = data.Turns;
+            preferredTile = data.PreferredTile;
+            dislikedTile = data.DislikedTile;
             
             fieldGridPositions = new Vector3[fieldSize.x][];
             fieldGridTiles = new Tile[fieldSize.x][];
@@ -206,14 +207,14 @@ namespace Project.Scripts.Tiles
                         
                         if (j < fieldGridTiles.Length)
                         {
-                            if (i < fieldGridTiles[i].Length)
+                            if (i < fieldGridTiles[j].Length)
                             {
                                 Tile current =  newTileField[j][i] = fieldGridTiles[j][i];
                                 current.SetNewPosition(new Vector2Int(j,i));
                             }
-                            else NewTile(new Vector2Int(j,i), Tile.TileType.Type0,newTileField);
+                            else NewTile(new Vector2Int(j,i), Tile.TileType.EucalyptusTea,newTileField);
                         }
-                        else NewTile(new Vector2Int(j,i), Tile.TileType.Type0,newTileField);
+                        else NewTile(new Vector2Int(j,i), Tile.TileType.EucalyptusTea,newTileField);
                         
                         currentPosition += xAdd;
                     }
@@ -232,8 +233,6 @@ namespace Project.Scripts.Tiles
 
                 fieldGridTiles = newTileField;
             }
-
-            background.localScale = new Vector3((fieldSize.x+ 0.75f) * (TileSize + TileSpacing),(fieldSize.y+ 0.75f) * (TileSize + TileSpacing));
         }
         
         /// <summary>
@@ -387,7 +386,7 @@ namespace Project.Scripts.Tiles
                 fieldGridTiles[pos.x][pos.y] = null;
                 Destroy(t.gameObject);
             }
-            ScoreCalculator( comboTiles.Count);
+            ScoreCalculator( comboTiles.Count, tileType);
 
             void Comp(Vector2Int localOrigin)
             {
@@ -418,10 +417,11 @@ namespace Project.Scripts.Tiles
                     if (!checkedTiles.Contains(fieldGridTiles[j][i]))
                     {
                         List<Tile> combTiles = Comp(fieldGridTiles[j][i].GetTilePosition(), fieldGridTiles[j][i].GetTileType());
-                        if (combTiles.Count < 3 || fieldGridTiles[j][i].GetTileType() == Tile.TileType.Clear) continue;
+                        Tile.TileType tileType = fieldGridTiles[j][i].GetTileType();
+                        if (combTiles.Count < 3 || tileType == Tile.TileType.Clear) continue;
                         toBeDeleteTiles.AddRange(combTiles);
                         ComboRoll++;
-                        ScoreCalculator(combTiles.Count);
+                        ScoreCalculator(combTiles.Count,tileType);
                     }
                 }
             }
@@ -583,10 +583,18 @@ namespace Project.Scripts.Tiles
             CheckForAllCombos();
         }
 
-        private void ScoreCalculator(int comboSize)
+        private void ScoreCalculator(int comboSize, Tile.TileType comboTileType)
         {
             if (comboSize < MinComboSize) return;
-            Score += (int) Mathf.Pow(2, comboSize) * comboRoll; 
+            if (comboTileType == Tile.TileType.Clear)return;
+
+            switch ((comboTileType == preferredTile, comboTileType == dislikedTile))
+            {
+                case (true,false): Score += (int) Mathf.Pow(3, comboSize) * comboRoll; break;
+                case (false,true): Score += (int) Mathf.Pow(2, comboSize) * -1 * comboRoll; break;
+                default: Score += (int) Mathf.Pow(2, comboSize) * comboRoll; break; 
+            }
+            
         }
         
         #endregion
@@ -613,7 +621,7 @@ namespace Project.Scripts.Tiles
             float[] probes = probabilities;
 
             Level level = ScriptableObject.CreateInstance<Level>();
-            level.LevelDataSet(data,probes);
+            level.LevelDataSet(data,probes, turns, preferredTile,dislikedTile);
 
             int id = 0;
             string path; 

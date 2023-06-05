@@ -6,43 +6,57 @@ namespace Project.Scripts.Tiles
     [CreateAssetMenu]
     public class Level : ScriptableObject
     {
-        public void LevelDataSet(int[][] startingGrid, float[] probabilities)
+        public void LevelDataSet(int[][] tileStartingGrid, float[] spawnProbabilities,int allowedTurns, Tile.TileType likedTileType, Tile.TileType dislikedTileType)
         {
-            FieldSize = new Vector2Int(startingGrid.Length, startingGrid[0].Length);
-            StartingGrid = new Colum[startingGrid.Length];
+            fieldSize = new Vector2Int(tileStartingGrid.Length, tileStartingGrid[0].Length);
+            startingGrid = new Colum[tileStartingGrid.Length];
 
-            for (int i = 0; i < startingGrid.Length; i++)
+            for (int i = 0; i < tileStartingGrid.Length; i++)
             {
-                StartingGrid[i] = new Colum
+                startingGrid[i] = new Colum
                 {
-                    data = new int[FieldSize.y]
+                    data = new int[fieldSize.y]
                 };
             }
 
-            for (int i = 0; i < FieldSize.y; i++)
+            for (int i = 0; i < fieldSize.y; i++)
             {
-                for (int j = 0; j < FieldSize.x; j++)
+                for (int j = 0; j < fieldSize.x; j++)
                 {
-                    StartingGrid[j].data[i] = startingGrid[j][i];
+                    startingGrid[j].data[i] = tileStartingGrid[j][i];
                 }
             }
 
-            Probabilities = probabilities;
-           
+            probabilities = spawnProbabilities;
+            turns = allowedTurns;
+            preferredTile = likedTileType;
+            dislikedTile = dislikedTileType;
         }
 
-        public void LevelDataSet(float[] probabilities, Vector2Int fieldSize)
+        public void LevelDataSet(Vector2Int tileFieldSize, float[] spawnProbabilities,int allowedTurns, Tile.TileType likedTileType, Tile.TileType dislikedTileType)
         {
-            Probabilities = probabilities;
-            FieldSize = fieldSize;
-            Random = true;
+            probabilities = spawnProbabilities;
+            fieldSize = tileFieldSize;
+            random = true;
+            turns = allowedTurns;
+            preferredTile = likedTileType;
+            dislikedTile = dislikedTileType;
         }
 
-        public Vector2Int FieldSize; //{ get; private set; }
-        public Colum[] StartingGrid; //{ get; private set; }
-        public float[] Probabilities; // { get; private set; }
-
-        public bool Random = false; //{ get; private set; } = false;
+        [SerializeField] private Colum[] startingGrid; 
+        [SerializeField] private Vector2Int fieldSize;
+        [SerializeField] private Tile.TileType preferredTile, dislikedTile;
+        [SerializeField] private float[] probabilities;
+        [SerializeField] private int turns;
+        [SerializeField] private bool random = false;
+        
+        public Colum[] StartingGrid { get => startingGrid; }
+        public Vector2Int FieldSize{ get => fieldSize; }
+        public Tile.TileType PreferredTile{ get => preferredTile; }
+        public Tile.TileType DislikedTile{ get => dislikedTile; }
+        public float[] Probabilities { get => probabilities; }
+        public int Turns { get => turns; }
+        public bool Random { get => random; }
     }
 
     [Serializable]
