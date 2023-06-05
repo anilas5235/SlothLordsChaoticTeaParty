@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Project.Scripts.General;
@@ -29,6 +30,7 @@ namespace Project.Scripts.Tiles
         public bool editMode = false;
 
         private int fallingCount;
+        private Transform camTransform;
 
         private const float TileSize =2f, TileSpacing = 0.2f;
         private const int MinComboSize = 3;
@@ -75,8 +77,20 @@ namespace Project.Scripts.Tiles
             base.Awake();
             tilePreFap =  Resources.Load<GameObject>("Prefaps/Tiles/Tile1");
             background = transform.GetChild(0).transform;
-
+           
             CreateGrid();
+        }
+
+        private void Start()
+        {
+            camTransform = Camera.main.transform;
+        }
+
+        private void Update()
+        {
+            if (!editMode) return;
+            Vector2 Input = new Vector2(UnityEngine.Input.GetAxis("Horizontal"), UnityEngine.Input.GetAxis("Vertical")) * (Time.deltaTime * 5);
+            camTransform.position += (Vector3) Input;
         }
 
         #region GridMoveFunctions
@@ -404,7 +418,6 @@ namespace Project.Scripts.Tiles
                     if (!checkedTiles.Contains(fieldGridTiles[j][i]))
                     {
                         List<Tile> combTiles = Comp(fieldGridTiles[j][i].GetTilePosition(), fieldGridTiles[j][i].GetTileType());
-                        Debug.Log($"Combo Of Size {combTiles.Count} found");
                         if (combTiles.Count < 3 || fieldGridTiles[j][i].GetTileType() == Tile.TileType.Clear) continue;
                         toBeDeleteTiles.AddRange(combTiles);
                         ComboRoll++;
