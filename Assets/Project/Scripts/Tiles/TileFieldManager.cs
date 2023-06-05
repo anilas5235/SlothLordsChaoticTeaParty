@@ -89,8 +89,7 @@ namespace Project.Scripts.Tiles
         private void Update()
         {
             if (!editMode) return;
-            Vector2 Input = new Vector2(UnityEngine.Input.GetAxis("Horizontal"), UnityEngine.Input.GetAxis("Vertical")) * (Time.deltaTime * 5);
-            camTransform.position += (Vector3) Input;
+            camTransform.position += (Vector3) new Vector2(UnityEngine.Input.GetAxis("Horizontal"), UnityEngine.Input.GetAxis("Vertical")) * (Time.deltaTime * 5);
         }
 
         #region GridMoveFunctions
@@ -412,7 +411,7 @@ namespace Project.Scripts.Tiles
             List<Tile> checkedTiles = new List<Tile>();
             List<Tile> toBeDeleteTiles = new List<Tile>();
 
-            for (int i = 0; i < fieldSize.y - 1; i++)
+            for (int i = 0; i < fieldSize.y; i++)
             {
                 for (int j = 0; j < fieldSize.x; j++)
                 {
@@ -593,7 +592,7 @@ namespace Project.Scripts.Tiles
             switch ((comboTileType == preferredTile, comboTileType == dislikedTile))
             {
                 case (true,false): Score += (int) Mathf.Pow(3, comboSize) * comboRoll; break;
-                case (false,true): Score += (int) Mathf.Pow(2, comboSize) * -1 * comboRoll; break;
+                case (false,true): Score += (int) Mathf.Pow(3, comboSize) * -1 * comboRoll; break;
                 default: Score += (int) Mathf.Pow(2, comboSize) * comboRoll; break; 
             }
             

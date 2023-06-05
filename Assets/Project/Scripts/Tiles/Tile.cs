@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Project.Scripts.General;
 using UnityEngine;
@@ -16,8 +17,11 @@ namespace Project.Scripts.Tiles
         private Tile previewDragedTile;
         private Camera _camera;
         private TileFieldManager myTileFieldManager;
+        private LineRenderer myLineRenderer;
+        private static Vector3[] LineRenderPoints = new []{new Vector3(1,1,0),new Vector3(-1,1,0),new Vector3(-1,-1,0),new Vector3(1,-1,0)};
 
         private bool currentlyDraged = false;
+        private bool highLighted = false;
         
         private const float DragRange = 2.2f, MoveThreshold = .5f;
 
@@ -38,6 +42,15 @@ namespace Project.Scripts.Tiles
             myItem = transform.GetChild(1).GetComponent<SpriteRenderer>();
             _camera = Camera.main;
             myTileFieldManager = TileFieldManager.instance;
+            myLineRenderer = GetComponent<LineRenderer>();
+        }
+
+        private void FixedUpdate()
+        {
+            if (highLighted)
+            {
+                HighLight();
+            }
         }
 
         #region TileInfoFunctions
@@ -123,6 +136,17 @@ namespace Project.Scripts.Tiles
             transform.localPosition = positionInScene;
         }
 
+        public void HighLight()
+        {
+            myLineRenderer.enabled = true;
+            Vector3[] points = new Vector3[4];
+            for (int i = 0; i < points.Length; i++)
+            {
+                points[i] = LineRenderPoints[i] + transform.position;
+            }
+            myLineRenderer.SetPositions(points);
+        }
+
         #endregion
 
         #region OnMouseFunctions/Interactions
@@ -203,6 +227,8 @@ namespace Project.Scripts.Tiles
         private void DragStateChanged()
         {
             currentlyDraged = !currentlyDraged;
+            highLighted = !highLighted;
+            if (!highLighted) myLineRenderer.enabled = false;
             CursorManager.instance.ChangeCursor(currentlyDraged
                 ? CursorManager.Cursors.ClosedHand
                 : CursorManager.Cursors.OpenHand);
