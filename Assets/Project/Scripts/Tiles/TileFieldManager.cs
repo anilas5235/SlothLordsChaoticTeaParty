@@ -593,7 +593,7 @@ namespace Project.Scripts.Tiles
             switch ((comboTileType == preferredTile, comboTileType == dislikedTile))
             {
                 case (true,false): scoreToAdd *= 3; break;
-                case (false,true): scoreToAdd *= -5;  break;
+                case (false,true): scoreToAdd *= 0; break;
                 default: scoreToAdd *= 1; break; 
             }
             Score += scoreToAdd;
