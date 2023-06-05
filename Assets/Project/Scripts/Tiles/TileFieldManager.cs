@@ -591,8 +591,8 @@ namespace Project.Scripts.Tiles
 
             switch ((comboTileType == preferredTile, comboTileType == dislikedTile))
             {
-                case (true,false): Score += (int) Mathf.Pow(3, comboSize) * comboRoll; break;
-                case (false,true): Score += (int) Mathf.Pow(3, comboSize) * -1 * comboRoll; break;
+                case (true,false): Score += (int) Mathf.Pow(5, comboSize) * comboRoll; break;
+                case (false,true): Score += (int) Mathf.Pow(5, comboSize) * -1 * comboRoll; break;
                 default: Score += (int) Mathf.Pow(2, comboSize) * comboRoll; break; 
             }
             
