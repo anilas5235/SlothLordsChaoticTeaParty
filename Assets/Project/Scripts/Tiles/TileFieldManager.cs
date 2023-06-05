@@ -32,11 +32,10 @@ namespace Project.Scripts.Tiles
         public Tile.TileType brushTileType;
 
         private int fallingCount;
-        private Transform camTransform;
 
         private const float TileSize =2f, TileSpacing = 0.2f;
         private const int MinComboSize = 3;
-        private const float StepTime = .3f;
+        private const float StepTime = .2f;
 
         #region Properties
 
@@ -79,17 +78,6 @@ namespace Project.Scripts.Tiles
             base.Awake();
             tilePreFap =  Resources.Load<GameObject>("Prefaps/Tiles/Tile1");
             CreateGrid();
-        }
-
-        private void Start()
-        {
-            camTransform = Camera.main.transform;
-        }
-
-        private void Update()
-        {
-            if (!editMode) return;
-            camTransform.position += (Vector3) new Vector2(UnityEngine.Input.GetAxis("Horizontal"), UnityEngine.Input.GetAxis("Vertical")) * (Time.deltaTime * 5);
         }
 
         #region GridMoveFunctions
@@ -234,6 +222,7 @@ namespace Project.Scripts.Tiles
 
                 fieldGridTiles = newTileField;
             }
+            CameraControl.instance.PlayFieldSizeChanged();
         }
         
         /// <summary>
@@ -361,6 +350,13 @@ namespace Project.Scripts.Tiles
             }
 
             return false;
+        }
+
+        public void GetPLayFieldAspects(out Vector2Int tileFieldSize, out float tileSize, out float tileSpacing)
+        {
+            tileFieldSize = fieldSize;
+            tileSize = TileSize;
+            tileSpacing = TileSpacing;
         }
 
         #endregion
@@ -576,7 +572,7 @@ namespace Project.Scripts.Tiles
             interactable = false;
             do
             {
-                yield return new WaitForSeconds(StepTime * Mathf.Pow(0.95f,fallingCount));
+                yield return new WaitForSeconds(StepTime * Mathf.Pow(0.95f,fallingCount) +.05f);
                 fallingCount++;
             } while (!CheckAndFall());
 
