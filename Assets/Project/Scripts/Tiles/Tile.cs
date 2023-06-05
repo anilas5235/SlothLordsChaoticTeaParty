@@ -101,7 +101,11 @@ namespace Project.Scripts.Tiles
         {
             myTileType = type;
             positionInGrid = positionInGird;
-            if (myTileType == TileType.Clear) myItem.enabled = false;
+            if (myTileType == TileType.Clear)
+            {
+                myItem.enabled = false;
+                myBackground.enabled = false;
+            }
             else
             {
                 myItem.enabled = true;
@@ -125,11 +129,16 @@ namespace Project.Scripts.Tiles
 
         private void OnMouseDown()
         {
-            if (myTileFieldManager.editMode)
+            if (!myTileFieldManager.editMode) return;
+            if (myTileFieldManager.brushTool)
+            {
+                ChangeTileType(myTileFieldManager.brushTileType);
+            }
+            else
             {
                 int id = (int)myTileType + 1;
                 if (id > 5) id = -1;
-                ChangeTileType((TileType) id);
+                ChangeTileType((TileType)id);
             }
         }
 

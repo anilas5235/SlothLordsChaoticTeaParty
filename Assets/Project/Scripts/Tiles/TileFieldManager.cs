@@ -28,6 +28,8 @@ namespace Project.Scripts.Tiles
 
         [Header("EditMode")]
         public bool editMode = false;
+        public bool brushTool = false;
+        public Tile.TileType brushTileType;
 
         private int fallingCount;
         private Transform camTransform;
