@@ -592,9 +592,9 @@ namespace Project.Scripts.Tiles
             int scoreToAdd = comboSize * comboRoll;
             switch ((comboTileType == preferredTile, comboTileType == dislikedTile))
             {
-                case (true,false): scoreToAdd *= 5; break;
+                case (true,false): scoreToAdd *= 3; break;
                 case (false,true): scoreToAdd *= -5;  break;
-                default: scoreToAdd *= 2; break; 
+                default: scoreToAdd *= 1; break; 
             }
             Score += scoreToAdd;
         }
