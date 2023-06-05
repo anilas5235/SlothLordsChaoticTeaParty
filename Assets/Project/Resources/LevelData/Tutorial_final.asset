@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e80c85e602d7ec84d94a6c497d44a657, type: 3}
-  m_Name: Tutorial_final
+  m_Name: tutorial_final
   m_EditorClassIdentifier: 
   startingGrid:
   - data: 0500000001000000020000000100000000000000
@@ -23,11 +23,11 @@ MonoBehaviour:
   preferredTile: 0
   dislikedTile: 5
   probabilities:
-  - 20
-  - 15
-  - 15
-  - 15
-  - 15
-  - 20
+  - 10
+  - 18
+  - 18
+  - 18
+  - 18
+  - 18
   turns: 20
   random: 0

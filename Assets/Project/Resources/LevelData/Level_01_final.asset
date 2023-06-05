@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e80c85e602d7ec84d94a6c497d44a657, type: 3}
-  m_Name: Level_1_test
+  m_Name: Level_01_final
   m_EditorClassIdentifier: 
   startingGrid:
   - data: ffffffffffffffffffffffff01000000010000000300000001000000ffffffffffffffffffffffff
@@ -27,11 +27,11 @@ MonoBehaviour:
   preferredTile: 2
   dislikedTile: 1
   probabilities:
-  - 15
-  - 20
-  - 20
-  - 15
-  - 15
-  - 15
+  - 18
+  - 18
+  - 10
+  - 18
+  - 18
+  - 18
   turns: 20
   random: 0
