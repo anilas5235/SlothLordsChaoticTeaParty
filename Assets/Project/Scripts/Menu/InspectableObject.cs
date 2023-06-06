@@ -1,4 +1,3 @@
-using Project.Scripts.FirstPersonCharacterController;
 using UnityEngine;
 
 namespace Project.Scripts.Menu
@@ -25,7 +24,7 @@ namespace Project.Scripts.Menu
 
         private void Start()
         {
-            _cameraTransform = Controller.playerCamera.transform;
+            _cameraTransform = Controller.PlayerCamera.transform;
         }
 
         public override void Interact()

@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7917398000509696992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.449, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7917398001100004960}
@@ -129,12 +129,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.6, z: 0}
 --- !u!114 &7917398001100004962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,12 +147,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a9676b059cbd240be3ef5b488cfd29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canSprint: 1
+  canJump: 1
+  sprintInput: Sprint
+  jumpInput: Jump
   walkSpeed: 3
-  gravity: 30
+  sprintSpeed: 6
   lookSpeedX: 2
   lookSpeedY: 2
   upperLookLimit: 60
   lowerLookLimit: 60
+  jumpForce: 8
+  gravity: 30
 --- !u!114 &7917398001100004975
 MonoBehaviour:
   m_ObjectHideFlags: 0

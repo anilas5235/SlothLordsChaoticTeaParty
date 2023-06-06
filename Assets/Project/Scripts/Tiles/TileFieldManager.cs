@@ -45,7 +45,7 @@ namespace Project.Scripts.Tiles
             private set
             {
                 score = value;
-                UIManager.instance.UpdateScore();
+                StatsUIManager.instance.UpdateScore();
             }
         }
 
@@ -55,7 +55,7 @@ namespace Project.Scripts.Tiles
             private set
             {
                 comboRoll = value;
-                UIManager.instance.UpdateComboRoll();
+                StatsUIManager.instance.UpdateComboRoll();
             }
         }
 
@@ -65,7 +65,7 @@ namespace Project.Scripts.Tiles
             set
             {
                 turns = value;
-                UIManager.instance.UpdateTurn();
+                StatsUIManager.instance.UpdateTurn();
             }
         }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Project.Scripts.UIScripts
 {
-    public class UIManager : Singleton<UIManager>
+    public class StatsUIManager : Singleton<StatsUIManager>
     {
         [SerializeField] private TextMeshProUGUI scoreText, comboRollText, turnText ;
 
