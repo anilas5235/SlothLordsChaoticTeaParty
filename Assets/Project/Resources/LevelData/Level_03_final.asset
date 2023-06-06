@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80c85e602d7ec84d94a6c497d44a657, type: 3}
+  m_Name: Level_03_final
+  m_EditorClassIdentifier: 
+  startingGrid:
+  - data: ffffffffffffffffffffffff0500000001000000ffffffffffffffffffffffff
+  - data: ffffffffffffffffffffffff0100000003000000ffffffffffffffffffffffff
+  - data: ffffffffffffffff05000000040000000200000002000000ffffffffffffffff
+  - data: ffffffffffffffff00000000030000000500000005000000ffffffffffffffff
+  - data: ffffffff010000000500000001000000030000000400000000000000ffffffff
+  - data: ffffffff030000000400000001000000030000000000000005000000ffffffff
+  - data: 0400000000000000020000000200000005000000040000000100000002000000
+  - data: ffffffff020000000000000004000000040000000300000004000000ffffffff
+  - data: ffffffff030000000200000000000000030000000200000001000000ffffffff
+  - data: ffffffffffffffff00000000030000000000000002000000ffffffffffffffff
+  - data: ffffffffffffffff01000000010000000300000001000000ffffffffffffffff
+  - data: ffffffffffffffffffffffff0400000005000000ffffffffffffffffffffffff
+  - data: ffffffffffffffffffffffff0400000005000000ffffffffffffffffffffffff
+  fieldSize: {x: 13, y: 8}
+  preferredTile: 4
+  dislikedTile: 0
+  probabilities:
+  - 18
+  - 18
+  - 18
+  - 18
+  - 10
+  - 18
+  turns: 15
+  random: 0
