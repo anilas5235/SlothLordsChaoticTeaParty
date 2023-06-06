@@ -77,6 +77,10 @@ namespace Project.Scripts.Tiles
         {
             base.Awake();
             tilePreFap =  Resources.Load<GameObject>("Prefaps/Tiles/Tile1");
+        }
+
+        private void Start()
+        {
             CreateGrid();
         }
 
