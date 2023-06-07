@@ -5,6 +5,7 @@ namespace Project.Scripts.General
 {
     public class CursorManager : Singleton<CursorManager>
     {
+        public bool IsCursorActive { get; private set; } = true;
         private Texture2D[] cursorCollection;
 
         private Cursors currentCursor;
@@ -22,6 +23,7 @@ namespace Project.Scripts.General
                 Resources.Load<Texture2D>("ArtWork/Cursor/Cursor_grab"),
                 Resources.Load<Texture2D>("ArtWork/Cursor/Cursor_grabbing")
             };
+            ActivateCursor();
         }
 
         public void ChangeCursor(Cursors newCursor)
@@ -35,6 +37,23 @@ namespace Project.Scripts.General
                 case Cursors.ClosedHand: Cursor.SetCursor(cursorCollection[1],new Vector2(11,14), CursorMode.Auto);
                     break;
             }
+        }
+
+        public void ActivateCursor()
+        {
+            if (IsCursorActive) return;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            
+            IsCursorActive = true;
+        }
+        
+        public void DeActivateCursor()
+        {
+            if (!IsCursorActive) return;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            IsCursorActive = false;
         }
     }
 }

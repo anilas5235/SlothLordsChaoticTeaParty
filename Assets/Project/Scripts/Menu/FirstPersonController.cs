@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Project.Scripts.General;
 using UnityEngine;
 
 namespace Project.Scripts.Menu
@@ -59,8 +60,12 @@ namespace Project.Scripts.Menu
         {
             PlayerCamera = GetComponentInChildren<Camera>();
             myCharacterController = GetComponent<CharacterController>();
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            CanMove = true;
+        }
+
+        private void Start()
+        { 
+            CursorManager.instance.DeActivateCursor();
         }
 
         void Update()
@@ -81,6 +86,7 @@ namespace Project.Scripts.Menu
             speed *= isCrouching ? .5f : 1;
             currentInput = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * speed;
          
+            Debug.Log($"{currentInput.x},{currentInput.y}");
             float moveDirectionY = moveDirection.y;
 
             moveDirection = (transform.TransformDirection(Vector3.forward) * currentInput.x) +

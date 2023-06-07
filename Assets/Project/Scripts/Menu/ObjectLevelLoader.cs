@@ -5,11 +5,11 @@ namespace Project.Scripts.Menu
     public class ObjectLevelLoader : InteractableObject
 
     {
-        [SerializeField] private MenuManager.Scenes sceneToLoad;
+        [SerializeField] private int levelID;
 
         public override void Interact()
         {
-            MenuManager.instance.LoadScene(sceneToLoad);
+            SceneMaster.instance.ChangeToLevel(levelID);
         }
     }
 }

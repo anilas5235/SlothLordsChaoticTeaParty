@@ -15,7 +15,7 @@ namespace Project.Scripts.General
             if (!instance) instance = gameObject.GetComponent<T>();
             else if(instance.GetInstanceID() != GetInstanceID())
             {
-                Destroy(gameObject.GetComponent<T>());
+                Destroy(gameObject);
             }
         }
     }
@@ -29,7 +29,7 @@ namespace Project.Scripts.General
         protected override void Awake()
         {
             base.Awake();
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this);
         }
     }
 }
