@@ -1,5 +1,4 @@
 using System;
-using Cinemachine.Editor;
 using Project.Scripts.UIScripts;
 using Project.Scripts.UIScripts.InteractableUI;
 using UnityEditor;

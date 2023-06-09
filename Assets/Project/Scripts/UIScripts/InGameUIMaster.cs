@@ -17,7 +17,7 @@ namespace Project.Scripts.UIScripts
             {
                 case UIStates.Normal:
                     Time.timeScale = 0;
-                    TileFieldManager.instance.interactable = false;
+                    TileFieldManager.Instance.interactable = false;
                     break;
                 case UIStates.Pause:
                     pause.SetActive(false);
@@ -44,7 +44,7 @@ namespace Project.Scripts.UIScripts
             {
                 case UIStates.Normal:
                     Time.timeScale = 1;
-                    TileFieldManager.instance.interactable = true;
+                    TileFieldManager.Instance.interactable = true;
                     break;
                 case UIStates.Pause:
                     pause.SetActive(true);
@@ -57,13 +57,13 @@ namespace Project.Scripts.UIScripts
                     break;
                 case UIStates.Lose:
                     lose.SetActive(true);
-                    AudioManager.instance.StopMusic();
-                    AudioManager.instance.PlayLoseSound();
+                    AudioManager.Instance.StopMusic();
+                    AudioManager.Instance.PlayLoseSound();
                     break;
                 case UIStates.Winn:
                     win.SetActive(true);
-                    AudioManager.instance.StopMusic();
-                    AudioManager.instance.PlayWinSound();
+                    AudioManager.Instance.StopMusic();
+                    AudioManager.Instance.PlayWinSound();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

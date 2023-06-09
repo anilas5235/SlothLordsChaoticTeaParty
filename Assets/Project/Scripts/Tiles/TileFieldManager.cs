@@ -45,7 +45,7 @@ namespace Project.Scripts.Tiles
             private set
             {
                 score = value;
-                StatsUIManager.instance.UpdateScore();
+                StatsUIManager.Instance.UpdateScore();
             }
         }
 
@@ -55,7 +55,7 @@ namespace Project.Scripts.Tiles
             private set
             {
                 comboRoll = value;
-                StatsUIManager.instance.UpdateComboRoll();
+                StatsUIManager.Instance.UpdateComboRoll();
             }
         }
 
@@ -65,7 +65,7 @@ namespace Project.Scripts.Tiles
             set
             {
                 turns = value;
-                StatsUIManager.instance.UpdateTurn();
+                StatsUIManager.Instance.UpdateTurn();
             }
         }
 
@@ -238,7 +238,7 @@ namespace Project.Scripts.Tiles
 
                 fieldGridTiles = newTileField;
             }
-            CameraControl.instance.PlayFieldSizeChanged();
+            CameraControl.Instance.PlayFieldSizeChanged();
         }
         
         /// <summary>

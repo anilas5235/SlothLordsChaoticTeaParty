@@ -8,12 +8,12 @@ namespace Project.Scripts.General
 
     public abstract class Singleton<T> : MonoBehaviour where T :MonoBehaviour
     {
-        public static T instance { get; private set; }
+        public static T Instance { get; private set; }
 
         protected virtual void Awake()
         {
-            if (!instance) instance = gameObject.GetComponent<T>();
-            else if(instance.GetInstanceID() != GetInstanceID())
+            if (!Instance) Instance = gameObject.GetComponent<T>();
+            else if(Instance.GetInstanceID() != GetInstanceID())
             {
                 Destroy(gameObject);
             }

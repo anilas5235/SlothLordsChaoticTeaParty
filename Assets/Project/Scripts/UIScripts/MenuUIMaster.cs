@@ -22,7 +22,7 @@ namespace Project.Scripts.UIScripts
         {
             switch (CurrentUIState)
             {
-                case UIStates.Normal:playerContoller.FreezePlayerToggle(); CursorManager.instance.ActivateCursor();
+                case UIStates.Normal:playerContoller.FreezePlayerToggle(); CursorManager.Instance.ActivateCursor();
                     break;
                 case UIStates.Pause: pause.SetActive(false);
                     break;
@@ -38,7 +38,7 @@ namespace Project.Scripts.UIScripts
 
             switch (CurrentUIState)
             {
-                case UIStates.Normal: playerContoller.FreezePlayerToggle();CursorManager.instance.DeActivateCursor();
+                case UIStates.Normal: playerContoller.FreezePlayerToggle();CursorManager.Instance.DeActivateCursor();
                     break;
                 case UIStates.Pause: pause.SetActive(true);break;
                 case UIStates.Options:

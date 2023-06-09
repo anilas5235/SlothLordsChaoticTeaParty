@@ -41,7 +41,7 @@ namespace Project.Scripts.Tiles
             myBackground = transform.GetChild(0).GetComponent<SpriteRenderer>();
             myItem = transform.GetChild(1).GetComponent<SpriteRenderer>();
             _camera = Camera.main;
-            myTileFieldManager = TileFieldManager.instance;
+            myTileFieldManager = TileFieldManager.Instance;
             myLineRenderer = GetComponent<LineRenderer>();
         }
 
@@ -106,7 +106,7 @@ namespace Project.Scripts.Tiles
             {
                 myItem.enabled = true;
                 myBackground.enabled = true;
-                myItem.sprite = TileRecourseKeeper.instance.tileSprites[(int)myTileType];
+                myItem.sprite = TileRecourseKeeper.Instance.tileSprites[(int)myTileType];
             }
         }
 
@@ -122,7 +122,7 @@ namespace Project.Scripts.Tiles
             else
             {
                 myItem.enabled = true;
-                myItem.sprite = TileRecourseKeeper.instance.tileSprites[(int)myTileType];
+                myItem.sprite = TileRecourseKeeper.Instance.tileSprites[(int)myTileType];
             }
 
             positionInScene = localPos;
@@ -229,7 +229,7 @@ namespace Project.Scripts.Tiles
             currentlyDraged = !currentlyDraged;
             highLighted = !highLighted;
             if (!highLighted) myLineRenderer.enabled = false;
-            CursorManager.instance.ChangeCursor(currentlyDraged
+            CursorManager.Instance.ChangeCursor(currentlyDraged
                 ? CursorManager.Cursors.ClosedHand
                 : CursorManager.Cursors.OpenHand);
             myBackground.sortingOrder = currentlyDraged ? 2 : 0;

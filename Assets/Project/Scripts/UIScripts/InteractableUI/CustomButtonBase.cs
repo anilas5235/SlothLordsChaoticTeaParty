@@ -19,7 +19,7 @@ namespace Project.Scripts.UIScripts.InteractableUI
 
         protected override void Interact()
         {
-            AudioManager.instance.ButtonClicked();
+            AudioManager.Instance.ButtonClicked();
         }
     }
 }

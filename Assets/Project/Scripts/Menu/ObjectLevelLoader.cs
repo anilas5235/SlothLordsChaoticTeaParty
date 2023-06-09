@@ -9,7 +9,7 @@ namespace Project.Scripts.Menu
 
         public override void Interact()
         {
-            SceneMaster.instance.ChangeToLevel(levelID);
+            SceneMaster.Instance.ChangeToLevel(levelID);
         }
     }
 }

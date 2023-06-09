@@ -17,7 +17,7 @@ namespace Project.Scripts.Tiles
         
         private void Update()
         {
-            if (!TileFieldManager.instance.editMode) return;
+            if (!TileFieldManager.Instance.editMode) return;
             transform.position += (Vector3) new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * (Time.deltaTime * 5);
         }
         
@@ -27,7 +27,7 @@ namespace Project.Scripts.Tiles
 
         public void PlayFieldSizeChanged()
         {
-            TileFieldManager.instance.GetPLayFieldAspects(out Vector2Int size,out float tileSize,out float spacing);
+            TileFieldManager.Instance.GetPLayFieldAspects(out Vector2Int size,out float tileSize,out float spacing);
 
             float tileCombined = tileSize + spacing;
 

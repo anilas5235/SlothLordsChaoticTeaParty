@@ -65,7 +65,7 @@ namespace Project.Scripts.Menu
 
         private void Start()
         { 
-            CursorManager.instance.DeActivateCursor();
+            CursorManager.Instance.DeActivateCursor();
         }
 
         void Update()

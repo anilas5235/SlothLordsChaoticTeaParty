@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using Project.Scripts.General;
 using UnityEngine;
 
@@ -11,155 +12,111 @@ namespace Project.Scripts.DialogScripts
         public event Action<string> OnTextChanged;
         public event Action OnDialogStart;
         public event Action OnDialogEnd;
-        public event Action<string, string> OnChoice;
-        public event Action OnChoiceOver; 
+        public event Action<string[]> OnChoice;
+        public event Action OnChoiceOver;
+        public event Action<AudioClip> OnVoiceLine;
 
-        public float CharactersPerSecond = 40;
+        public float charactersPerSecond = 30;
 
-        private TextAsset[] stories;
-        private Dialog dialog;
+        private Dialog currentStory;
         private Passage passage;
 
         private string speakerName;
-        private bool finishedLine;
-        private string choice1;
-        private string choice2;
-
+        public bool FinishedLine { get; private set; }
+        private bool  choiceMade = true;
+        private string[] choices;
         private int currentDialogID;
-
-        protected override void Awake()
-        {
-            base.Awake();
-            stories = Resources.LoadAll<TextAsset>("Dialogs");
-        }
 
         private void Update()
         {
-            if (Input.GetButtonDown("Jump") && finishedLine)
-            {
-                NextPassage();
-            }
+            if (Input.GetButtonDown("Jump") && FinishedLine && choiceMade) NextPassage();
         }
 
         public void StartDialog(int pid, int dialogID)
         {
-            OnDialogStart?.Invoke();
+            if (GetDialog(currentDialogID, out Dialog newDialog)) currentStory = newDialog;
+            else return;
             currentDialogID = dialogID;
-            CompilePassage(pid);
+            OnDialogStart?.Invoke();
+            LoadPassage(pid);
         }
 
-        private void CompilePassage(int pid)
+        private bool GetDialog(int id, out Dialog wantedDialog)
         {
-            finishedLine = false;
-            
+            wantedDialog = null;
+            Dialog[] dialogs = Resources.LoadAll<Dialog>("Dialogs");
+
+            foreach (Dialog dialog in dialogs.Where( dialog => dialog.ID == id))
+            {
+                wantedDialog = dialog;
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool LoadPassage(int pid)
+        {
             // Get Data
-            dialog = JsonUtility.FromJson<Dialog>(stories[currentDialogID].text);
-            passage = dialog.GetPassage(pid);
-            string text = passage.text;
+
+            if (currentStory.GetPassage(pid, out Passage nextPassage))
+                passage = nextPassage;
+            else return false;
 
             // Handle Speaker Name
-            int charsToDelete = 0;
-            speakerName = "";
-            for (int i = 0; i < text.Length; i++)
-            {
-                charsToDelete++;
-                if (text[i] == ':') break;
-                speakerName += text[i];
-            }
-            text = text.Remove(0, charsToDelete + 1);
+            speakerName = passage.Speaker;
             OnSpeakerChanged?.Invoke(speakerName);
-            
-            /*
-             * Handle Main Text
-             */
-            string result = "";
-            
+
             // Case: Choices
-            if (passage.links.Count == 2)
+
+            choices = new string[passage.Links.Count];
+            for (int i = 0; i < passage.Links.Count; i++)
             {
-                choice1 = "";
-                choice2 = "";
-                
-                int index = 0;
-                for (int i = 0; i < text.Length; i++)
-                {
-                    if (text[i] == '[')
-                    {
-                        index = i;
-                        break;
-                    }
-                    result += text[i];
-                }
-
-                int openBracketsCount = 0;
-                int closedBracketsCount = 0;
-                for (int i = index; i < text.Length; i++)
-                {
-                    if(text[i] == '[')
-                    {
-                        openBracketsCount++;
-                        continue;
-                    }
-
-                    if (text[i] == ']')
-                    {
-                        closedBracketsCount++;
-                        continue;
-                    }
-
-                    if (openBracketsCount == 2 && closedBracketsCount == 0) choice1 += text[i];
-                    if (openBracketsCount == 4 && closedBracketsCount == 2) choice2 += text[i];
-                }
+                choices[i] = passage.Links[i].OptionName;
             }
+
+            StartCoroutine(Write(passage.Text, passage.Links.Count > 1));
+
+            if (passage.AudioLine) OnVoiceLine?.Invoke(passage.AudioLine);
             
-            // Case: No Choices
-            if (passage.links.Count <= 1)
-            {
-                for (int i = 0; i < text.Length; i++)
-                {
-                    if (text[i] == '[') break;
-                    result += text[i];
-                }
-            }
-
-            StartCoroutine(Write(result, passage.links.Count > 1));
+            return true;
         }
 
-        private IEnumerator Write(string result, bool choices)
+        private IEnumerator Write(string completeText, bool choice)
         {
-            string text = "";
-            for (int i = 0; i < result.Length; i++)
+            FinishedLine = false;
+            string currentText = "";
+            foreach (char letter in completeText)
             {
-                text += result[i];
-                OnTextChanged?.Invoke(text);
-                yield return new WaitForSeconds(1 / CharactersPerSecond);
+                currentText += letter;
+                OnTextChanged?.Invoke(currentText);
+                yield return new WaitForSeconds(1 / charactersPerSecond);
             }
-            
-            if(choices) OnChoice?.Invoke(choice1, choice2);
 
-            finishedLine = true;
+            if (choice)
+            {
+                choiceMade = false;
+                OnChoice?.Invoke(choices);
+            }
+
+            FinishedLine = true;
         }
 
         private void NextPassage(int linkID = 0)
         {
-            if (passage.links.Count == 0)
+            switch (passage.Links.Count)
             {
-                OnDialogEnd.Invoke();
-            }
-            else if (passage.links.Count == 1)
-            {
-                CompilePassage(passage.links[0].pid);
-            }
-            else if (passage.links.Count == 2)
-            {
-                CompilePassage(passage.links[linkID].pid);
+                case 0: OnDialogEnd?.Invoke(); break;
+                case 1: LoadPassage(passage.Links[0].Pid);break;
+                default: LoadPassage(passage.Links[linkID].Pid); break;
             }
         }
 
-        public void Choose(int choose)
-        {   
+        public void Choose(int choiceId)
+        {
+            choiceMade = true;
             OnChoiceOver?.Invoke();
-            NextPassage(choose);
+            NextPassage(choiceId);
         }
     }
 }

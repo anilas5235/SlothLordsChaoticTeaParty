@@ -8,13 +8,13 @@ namespace Project.Scripts.Menu
     {
         public void ChangeToMenuScene()
         {
-            CursorManager.instance.DeActivateCursor();
+            CursorManager.Instance.DeActivateCursor();
             SceneManager.LoadScene("Menu");
         }
 
         public void ChangeToLevel(int levelID)
         {
-            CursorManager.instance.ActivateCursor();
+            CursorManager.Instance.ActivateCursor();
             PlayerPrefs.SetInt("levelID", levelID);
             SceneManager.LoadScene("Main");
         }
