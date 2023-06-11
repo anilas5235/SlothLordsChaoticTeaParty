@@ -19,7 +19,7 @@ namespace Project.Scripts.DialogScripts
         public float charactersPerSecond = 30;
 
         private Dialog currentStory;
-        private Passage passage;
+        private DialogPassageNode dialogPassageNode;
 
         private string speakerName;
         public bool FinishedLine { get; private set; }
@@ -32,13 +32,13 @@ namespace Project.Scripts.DialogScripts
             if (Input.GetButtonDown("Jump") && FinishedLine && choiceMade) NextPassage();
         }
 
-        public void StartDialog(int pid, int dialogID)
+        public void StartDialog(string guid, int dialogID)
         {
             if (GetDialog(currentDialogID, out Dialog newDialog)) currentStory = newDialog;
             else return;
             currentDialogID = dialogID;
             OnDialogStart?.Invoke();
-            LoadPassage(pid);
+            LoadPassage(guid);
         }
 
         private bool GetDialog(int id, out Dialog wantedDialog)
@@ -55,29 +55,29 @@ namespace Project.Scripts.DialogScripts
             return false;
         }
 
-        private bool LoadPassage(int pid)
+        private bool LoadPassage(string guid)
         {
             // Get Data
 
-            if (currentStory.GetPassage(pid, out Passage nextPassage))
-                passage = nextPassage;
+            if (currentStory.GetPassage(guid, out DialogPassageNode nextPassage))
+                dialogPassageNode = nextPassage;
             else return false;
 
             // Handle Speaker Name
-            speakerName = passage.Speaker;
+            speakerName = dialogPassageNode.speaker;
             OnSpeakerChanged?.Invoke(speakerName);
 
             // Case: Choices
 
-            choices = new string[passage.Links.Count];
-            for (int i = 0; i < passage.Links.Count; i++)
+            choices = new string[dialogPassageNode.links.Count];
+            for (int i = 0; i < dialogPassageNode.links.Count; i++)
             {
-                choices[i] = passage.Links[i].OptionName;
+                choices[i] = dialogPassageNode.links[i].OptionName;
             }
 
-            StartCoroutine(Write(passage.Text, passage.Links.Count > 1));
+            StartCoroutine(Write(dialogPassageNode.text, dialogPassageNode.links.Count > 1));
 
-            if (passage.AudioLine) OnVoiceLine?.Invoke(passage.AudioLine);
+            if (dialogPassageNode.audioLine) OnVoiceLine?.Invoke(dialogPassageNode.audioLine);
             
             return true;
         }
@@ -104,11 +104,11 @@ namespace Project.Scripts.DialogScripts
 
         private void NextPassage(int linkID = 0)
         {
-            switch (passage.Links.Count)
+            switch (dialogPassageNode.links.Count)
             {
                 case 0: OnDialogEnd?.Invoke(); break;
-                case 1: LoadPassage(passage.Links[0].Pid);break;
-                default: LoadPassage(passage.Links[linkID].Pid); break;
+                case 1: LoadPassage(dialogPassageNode.links[0].Guid);break;
+                default: LoadPassage(dialogPassageNode.links[linkID].Guid); break;
             }
         }
 

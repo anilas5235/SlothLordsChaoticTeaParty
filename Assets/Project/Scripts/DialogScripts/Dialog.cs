@@ -2,23 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Project.Scripts.DialogScripts
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu] [Serializable]
     public class Dialog : ScriptableObject
     {
-        [SerializeField] private int id;
-        [SerializeField] private List<Passage> passages;
-        
-        public int ID { get => id; }
+        public int id;
+        public List<DialogPassageNode> passages;
+        public int ID => id;
 
-        public bool GetPassage(int pid,out Passage wantedPassage)
+        public bool GetPassage(string guid,out DialogPassageNode wantedDialogPassageNode)
         {
-            wantedPassage = new Passage();
-            foreach (var dialogPassage in passages.Where(dialogPassage => dialogPassage.Pid == pid))
+            wantedDialogPassageNode = new DialogPassageNode();
+            foreach (var dialogPassage in passages.Where(dialogPassage => dialogPassage.guid == guid))
             {
-                wantedPassage = dialogPassage;
+                wantedDialogPassageNode = dialogPassage;
                 return true;
             }
             return false;
@@ -26,30 +26,26 @@ namespace Project.Scripts.DialogScripts
     }
 
     [Serializable]
-    public struct Passage
+    public class DialogPassageNode
     {
-        [SerializeField] private int pid;
-        [SerializeField] private string speaker;
-        [SerializeField] private string text;
-        [SerializeField] private AudioClip audioLine;
-        [SerializeField] private List<Link> links;
-        
-        public int Pid { get => pid; }
-        public string Text { get => text; }
-        public string Speaker { get => speaker; }
-        public List<Link> Links { get => links; }
-        public AudioClip AudioLine { get => audioLine; }
-
-        public int GetLinkPassageID(int index) => links[index].Pid;
+        public string guid;
+        public string speaker;
+        public string text;
+        public AudioClip audioLine;
+        public List<Link> links;
+        public Vector2 position;
+        public bool entryPoint;
+        public string GetLinkPassageGuid(int index) => links[index].Guid;
     }
 
     [Serializable]
     public struct Link
     {
-        [SerializeField] private string optionName;
-        [SerializeField] private int pid;
+        public string baseNodeGuid;
+        public string portName;
+        public string targetNodeGuid;
         
-        public string OptionName { get => optionName; }
-        public int Pid { get => pid; }
+        public string OptionName=> portName; 
+        public string Guid => targetNodeGuid;
     }
 }

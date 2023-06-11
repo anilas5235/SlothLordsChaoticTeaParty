@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
+  m_Name: New Narrative
+  m_EditorClassIdentifier: 
+  id: 0
+  passages:
+  - guid: 5d02fe4b-1bec-41d4-9d58-0b7872c05257
+    speaker: 
+    text: ENTRYPOINT
+    audioLine: {fileID: 0}
+    links:
+    - optionName: 
+      BaseNodeGuid: 5d02fe4b-1bec-41d4-9d58-0b7872c05257
+      PortName: Next
+      TargetNodeGuid: b6533d78-45ea-4aff-878f-ef0b8f117c88
+    position: {x: 150, y: 200}
+    entryPoint: 1
+  - guid: 8fb07b36-10e4-4b22-b2cb-15beedaf98c4
+    speaker: 
+    text: General Kenobi
+    audioLine: {fileID: 0}
+    links: []
+    position: {x: 593, y: 151}
+    entryPoint: 0
+  - guid: b6533d78-45ea-4aff-878f-ef0b8f117c88
+    speaker: 
+    text: Hello there !!!
+    audioLine: {fileID: 0}
+    links:
+    - optionName: 
+      BaseNodeGuid: b6533d78-45ea-4aff-878f-ef0b8f117c88
+      PortName: General Kenobi
+      TargetNodeGuid: 8fb07b36-10e4-4b22-b2cb-15beedaf98c4
+    - optionName: 
+      BaseNodeGuid: b6533d78-45ea-4aff-878f-ef0b8f117c88
+      PortName: .....
+      TargetNodeGuid: 5a024202-5087-452b-83d2-23e9ad8ee139
+    position: {x: 279, y: 200}
+    entryPoint: 0
+  - guid: 5a024202-5087-452b-83d2-23e9ad8ee139
+    speaker: 
+    text: Disapointing !
+    audioLine: {fileID: 0}
+    links: []
+    position: {x: 593, y: 322}
+    entryPoint: 0

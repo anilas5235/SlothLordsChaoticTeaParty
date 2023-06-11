@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Project.Scripts.General;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Project.Scripts.DialogScripts
@@ -11,7 +12,7 @@ namespace Project.Scripts.DialogScripts
         private DialogManager dialogManager;
         [Header("ID´s")]
         [SerializeField] private int dialogId;
-        [SerializeField] private int startPassageID;
+        [SerializeField] private string startPassageGuid;
 
         [Header("TextField´s")]
         [SerializeField] private TextMeshProUGUI nameText;
@@ -34,7 +35,7 @@ namespace Project.Scripts.DialogScripts
             dialogManager.OnChoiceOver += ChoiceMade;
             dialogManager.OnDialogEnd += DialogEnded;
             dialogManager.OnVoiceLine += PlayVoiceLine;
-            dialogManager.StartDialog(startPassageID,dialogId);
+            dialogManager.StartDialog(startPassageGuid,dialogId);
             ChoiceMade();
         }
 
