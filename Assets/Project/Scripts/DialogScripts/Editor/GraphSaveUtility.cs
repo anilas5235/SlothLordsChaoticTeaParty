@@ -41,6 +41,8 @@ namespace Project.Scripts.DialogScripts.Editor
                     text = currentNode.dialogText,
                     position = currentNode.GetPosition().position,
                     entryPoint = currentNode.entryPoint,
+                    speaker = currentNode.speaker,
+                    audioLine = currentNode.voiceLine,
                 });
 
                 
@@ -182,7 +184,7 @@ namespace Project.Scripts.DialogScripts.Editor
                 }
                 else
                 {
-                    tempNode = _targetGraphView.CreateDialogNote(passage.text);
+                    tempNode = _targetGraphView.CreateDialogNote(passage.text,passage.speaker,passage.audioLine);
                     tempNode.guid = passage.guid;
 
                     List<Link> nodePorts = passage.links;

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,6 +11,8 @@ namespace Project.Scripts.DialogScripts.Editor
     public class DialogGraphView : GraphView
     {
         public readonly Vector2 defaultNodeSize = new Vector2(150, 200);
+        private float defaultLabelWidth = 70f;
+
         public DialogGraphView(Dialog dialog = null)
         {
             styleSheets.Add(Resources.Load<StyleSheet>("DialogGraph"));
@@ -77,13 +80,15 @@ namespace Project.Scripts.DialogScripts.Editor
         }
 
 
-        public DialogNode CreateDialogNote(string nodeName)
+        public DialogNode CreateDialogNote(string nodeName, string speakerName ="speaker" , AudioClip audioClip = null)
         {
             var newNode = new DialogNode
             {
-                title = nodeName,
                 dialogText = nodeName,
+                title = nodeName,
                 guid = Guid.NewGuid().ToString(),
+                speaker = speakerName,
+                voiceLine = audioClip,
             };
 
             var inputPort = GeneratePort(newNode, Direction.Input, Port.Capacity.Multi);
@@ -100,16 +105,51 @@ namespace Project.Scripts.DialogScripts.Editor
             };
             
             newNode.titleContainer.Add(createOutputButton);
+            
+            
+            newNode.mainContainer.Add(new Label("   "));
 
-            var dialogText = new TextField(string.Empty);
+            TextField speakerTextField = new TextField("Speaker:");
+            speakerTextField.SetValueWithoutNotify(newNode.speaker);
+            speakerTextField.RegisterValueChangedCallback(evt =>
+            {
+                newNode.speaker = evt.newValue;
+            });
+            
+            speakerTextField.labelElement.style.minWidth = defaultLabelWidth;
+            newNode.mainContainer.Add(speakerTextField);
+            
+            newNode.mainContainer.Add(new Label("   "));
+
+            TextField dialogText = new TextField(string.Empty);
             dialogText.RegisterValueChangedCallback(evt =>
             {
                 newNode.dialogText = evt.newValue;
-                newNode.title = evt.newValue;
+                newNode.title = (evt.newValue.Length < 20) ? evt.newValue : evt.newValue.Substring(0,20);
             });
+            dialogText.style.minHeight = 40f;
+            dialogText.style.maxWidth = 300f;
             dialogText.SetValueWithoutNotify(newNode.title);
             newNode.mainContainer.Add(dialogText);
             
+            newNode.mainContainer.Add(new Label("   "));
+
+            ObjectField audioField = new ObjectField("Voice Line")
+            {
+                objectType = typeof(AudioClip)
+            };
+            audioField.RegisterValueChangedCallback(evt =>
+            {
+                if (evt.newValue is AudioClip clip)
+                {
+                   newNode.voiceLine = clip; 
+                }
+            });
+            audioField.SetValueWithoutNotify(newNode.voiceLine);
+            audioField.labelElement.style.minWidth = defaultLabelWidth;
+            newNode.mainContainer.Add(audioField);
+            
+
             newNode.RefreshPorts();
             newNode.RefreshExpandedState();
             
@@ -130,12 +170,16 @@ namespace Project.Scripts.DialogScripts.Editor
             var choicePortName = string.IsNullOrEmpty(overridenPortName) ? $"Choice {outputCount}" : overridenPortName;
             
             generatedPort.portName = choicePortName;
-            var textField = new TextField()
+            var textField = new TextField
             {
                 name = string.Empty,
                 value = choicePortName,
+                style =
+                {
+                    minWidth = defaultLabelWidth,
+                    maxWidth = 150f,
+                }
             };
-
             textField.RegisterValueChangedCallback(evt => generatedPort.portName = evt.newValue);
             
             generatedPort.contentContainer.Add(new Label("   "));
@@ -161,9 +205,9 @@ namespace Project.Scripts.DialogScripts.Editor
                 x.output.portName == generatedPort.portName && x.output.node == generatedPort.node);
             if (targetEdge.Any())
             {
-                var edge = targetEdge.First();
+                Edge edge = targetEdge.First();
                 edge.input.Disconnect(edge);
-                RemoveElement(targetEdge.First());
+                RemoveElement(edge);
             }
 
             node.outputContainer.Remove(generatedPort);

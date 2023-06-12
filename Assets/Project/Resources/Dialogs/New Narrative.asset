@@ -24,17 +24,10 @@ MonoBehaviour:
       targetNodeGuid: b6533d78-45ea-4aff-878f-ef0b8f117c88
     position: {x: 150, y: 200}
     entryPoint: 1
-  - guid: 8fb07b36-10e4-4b22-b2cb-15beedaf98c4
-    speaker: 
-    text: General Kenobi
-    audioLine: {fileID: 0}
-    links: []
-    position: {x: 610, y: 75}
-    entryPoint: 0
   - guid: b6533d78-45ea-4aff-878f-ef0b8f117c88
-    speaker: 
+    speaker: Kenobi
     text: Hello there !!!
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 82f50591e88203c4b9536009c9bc07d8, type: 3}
     links:
     - baseNodeGuid: b6533d78-45ea-4aff-878f-ef0b8f117c88
       portName: Kenobi
@@ -44,10 +37,17 @@ MonoBehaviour:
       targetNodeGuid: 5a024202-5087-452b-83d2-23e9ad8ee139
     position: {x: 324, y: 124}
     entryPoint: 0
-  - guid: 5a024202-5087-452b-83d2-23e9ad8ee139
-    speaker: 
-    text: Disapointing !
-    audioLine: {fileID: 0}
+  - guid: 8fb07b36-10e4-4b22-b2cb-15beedaf98c4
+    speaker: Grevious
+    text: General Kenobi
+    audioLine: {fileID: 8300000, guid: 54c2f7f9aecf01d4b801b54c6aec9908, type: 3}
     links: []
-    position: {x: 620, y: 228}
+    position: {x: 610, y: 75}
+    entryPoint: 0
+  - guid: 5a024202-5087-452b-83d2-23e9ad8ee139
+    speaker: Kenobi
+    text: Disapointing !
+    audioLine: {fileID: 8300000, guid: 50b36fda510b25b419c3d379746367dc, type: 3}
+    links: []
+    position: {x: 614, y: 297}
     entryPoint: 0

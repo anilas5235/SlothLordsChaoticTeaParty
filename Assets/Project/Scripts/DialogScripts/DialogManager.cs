@@ -38,6 +38,10 @@ namespace Project.Scripts.DialogScripts
             else return;
             currentDialogID = dialogID;
             OnDialogStart?.Invoke();
+            if (string.IsNullOrEmpty(guid))
+            {
+                guid = currentStory.passages.First(x => x.entryPoint).guid;
+            }
             LoadPassage(guid);
         }
 
@@ -62,6 +66,12 @@ namespace Project.Scripts.DialogScripts
             if (currentStory.GetPassage(guid, out DialogPassageNode nextPassage))
                 dialogPassageNode = nextPassage;
             else return false;
+            
+            if(dialogPassageNode.entryPoint) 
+            {
+                NextPassage();
+                return true;
+            }
 
             // Handle Speaker Name
             speakerName = dialogPassageNode.speaker;

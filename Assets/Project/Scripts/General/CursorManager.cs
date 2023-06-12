@@ -20,8 +20,8 @@ namespace Project.Scripts.General
             base.Awake();
             cursorCollection = new[]
             {
-                Resources.Load<Texture2D>("ArtWork/Cursor/Cursor_grab"),
-                Resources.Load<Texture2D>("ArtWork/Cursor/Cursor_grabbing")
+                Resources.Load<Texture2D>("ArtWork/Cursor/open"),
+                Resources.Load<Texture2D>("ArtWork/Cursor/drag")
             };
             ActivateCursor();
         }

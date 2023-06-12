@@ -1,4 +1,5 @@
 using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 
 namespace Project.Scripts.DialogScripts.Editor
 {
@@ -7,6 +8,10 @@ namespace Project.Scripts.DialogScripts.Editor
         public string guid;
 
         public string dialogText;
+
+        public string speaker;
+
+        public AudioClip voiceLine;
 
         public bool entryPoint;
     }
