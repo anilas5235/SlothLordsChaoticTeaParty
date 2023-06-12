@@ -4,16 +4,16 @@ namespace Project.Scripts.UIScripts.InteractableUI
 {
     public class AudioSlider : CustomSliderBase
     {
-        private AudioOptionsUIWindow audioWindow;
+        private AudioOptionsUIMenuWindow audioMenuWindow;
         protected override void OnEnable()
         {
             base.OnEnable();
-            audioWindow ??=  GetComponentInParent<AudioOptionsUIWindow>();
+            audioMenuWindow ??=  GetComponentInParent<AudioOptionsUIMenuWindow>();
         }
 
         protected override void SliderChanged(float val)
         {
-            audioWindow.UpdateSoundOptions();
+            audioMenuWindow.UpdateSoundOptions();
         }
     }
 }

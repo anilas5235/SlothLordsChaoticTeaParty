@@ -4,9 +4,9 @@ namespace Project.Scripts.UIScripts.InteractableUI
 {
     public class StandardButtonFunctions : CustomButtonBase
     {
-        public UIWindowHandler.StandardUIButtonFunctions myFunction;
+        public UIMenuWindowHandler.StandardUIButtonFunctions myFunction;
 
-        public UIWindowHandler windowHandler;
+        public UIMenuWindowHandler menuWindowHandler;
         public int sceneID;
 
         protected override void Interact()
@@ -14,20 +14,20 @@ namespace Project.Scripts.UIScripts.InteractableUI
             base.Interact();
             switch (myFunction)
             {
-                case UIWindowHandler.StandardUIButtonFunctions.Esc:
-                    myWindowHandler.UIEsc();
+                case UIMenuWindowHandler.StandardUIButtonFunctions.Esc:
+                    MyMenuWindowHandler.UIEsc();
                     break;
-                case UIWindowHandler.StandardUIButtonFunctions.ChangeWindow:
-                    myWindowHandler.ChangeToWindow(windowHandler);
+                case UIMenuWindowHandler.StandardUIButtonFunctions.ChangeWindow:
+                    MyMenuWindowHandler.ChangeToWindow(menuWindowHandler);
                     break;
-                case UIWindowHandler.StandardUIButtonFunctions.OpenWindow:
-                    myWindowHandler.OpenWindow(windowHandler);
+                case UIMenuWindowHandler.StandardUIButtonFunctions.OpenWindow:
+                    MyMenuWindowHandler.OpenWindow(menuWindowHandler);
                     break;
-                case UIWindowHandler.StandardUIButtonFunctions.Quit:
-                    myWindowHandler.QuitApplication();
+                case UIMenuWindowHandler.StandardUIButtonFunctions.Quit:
+                    MyMenuWindowHandler.QuitApplication();
                     break;
-                case UIWindowHandler.StandardUIButtonFunctions.ChangeScene:
-                    myWindowHandler.ChangeScene(sceneID);
+                case UIMenuWindowHandler.StandardUIButtonFunctions.ChangeScene:
+                    MyMenuWindowHandler.ChangeScene(sceneID);
                     break;
 
                 default:

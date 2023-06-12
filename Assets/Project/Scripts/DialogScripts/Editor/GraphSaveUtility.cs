@@ -144,7 +144,7 @@ namespace Project.Scripts.DialogScripts.Editor
                         for (int j = 0; j < connections.Count; j++)
                         {
                             string targetNodeGuid = connections[j].targetNodeGuid;
-                            if (targetNodeGuid == currentPassage.guid) continue;
+                            if (targetNodeGuid == currentPassage.guid|| string.IsNullOrEmpty(targetNodeGuid)) continue;
                             DialogNode targetNode = Nodes.First(x => x.guid == targetNodeGuid);
                             LinkNodes(Nodes[i].outputContainer[j].Q<Port>(), (Port)targetNode.inputContainer[0]);
                         }

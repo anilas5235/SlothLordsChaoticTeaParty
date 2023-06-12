@@ -21,7 +21,7 @@ namespace Project.Scripts.Editor
             script = (StandardButtonFunctions)target;
 
             P_Function = serializedObject.FindProperty(nameof(script.myFunction));
-            P_WindowHandler = serializedObject.FindProperty(nameof(script.windowHandler));
+            P_WindowHandler = serializedObject.FindProperty(nameof(script.menuWindowHandler));
             P_sceneID = serializedObject.FindProperty(nameof(script.sceneID));
         }
 
@@ -35,21 +35,21 @@ namespace Project.Scripts.Editor
 
             switch (script.myFunction)
             {
-                case UIWindowHandler.StandardUIButtonFunctions.Esc:
+                case UIMenuWindowHandler.StandardUIButtonFunctions.Esc:
                     break;
-                case UIWindowHandler.StandardUIButtonFunctions.ChangeWindow:
+                case UIMenuWindowHandler.StandardUIButtonFunctions.ChangeWindow:
                     HasParameters();
                     EditorGUILayout.PropertyField(P_WindowHandler);
                     EditorGUILayout.EndVertical();
                     break;
-                case UIWindowHandler.StandardUIButtonFunctions.OpenWindow:
+                case UIMenuWindowHandler.StandardUIButtonFunctions.OpenWindow:
                     HasParameters();
                     EditorGUILayout.PropertyField(P_WindowHandler);
                     EditorGUILayout.EndVertical();
                     break;
-                case UIWindowHandler.StandardUIButtonFunctions.Quit:
+                case UIMenuWindowHandler.StandardUIButtonFunctions.Quit:
                     break;
-                case UIWindowHandler.StandardUIButtonFunctions.ChangeScene:
+                case UIMenuWindowHandler.StandardUIButtonFunctions.ChangeScene:
                     HasParameters();
                     EditorGUILayout.PropertyField(P_sceneID);
                     EditorGUILayout.EndVertical();

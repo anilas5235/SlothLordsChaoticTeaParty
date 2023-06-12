@@ -41,6 +41,8 @@ namespace Project.Scripts.Menu
                 transform.forward = (_cameraTransform.position - transform.position).normalized;
                 addRotation = transform.localEulerAngles;
                 Controller.FreezePlayerToggle();
+                myOutline.eraseRenderer = true;
+                transform.SetParent(null);
             }
             else
             {
@@ -48,6 +50,7 @@ namespace Project.Scripts.Menu
                 transform.forward = Vector3.forward;
                 transform.rotation = Quaternion.Euler( originalRotation);
                 Controller.FreezePlayerToggle();
+                myOutline.eraseRenderer = false;
             }
         }
 
