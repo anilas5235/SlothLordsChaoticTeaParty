@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Project.Scripts.General;
 using Project.Scripts.UIScripts;
+using Project.Scripts.UIScripts.Menu;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -21,6 +22,7 @@ namespace Project.Scripts.Tiles
         public int score, comboRoll, turns = 20;
         public float[] probabilities = { 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f };
         public Tile.TileType preferredTile, dislikedTile;
+        public int goodScore, perfectScore;
         
         private Vector3[][] fieldGridPositions;
         private Tile[][] fieldGridTiles;
@@ -140,6 +142,8 @@ namespace Project.Scripts.Tiles
             turns = data.Turns;
             preferredTile = data.PreferredTile;
             dislikedTile = data.DislikedTile;
+            goodScore = data.LevelCompleteScore;
+            perfectScore = data.LevelSuccessScore;
             
             fieldGridPositions = new Vector3[fieldSize.x][];
             fieldGridTiles = new Tile[fieldSize.x][];
@@ -445,6 +449,19 @@ namespace Project.Scripts.Tiles
                 interactable = true;
                 ComboRoll = 0;
                 fallingCount = 0;
+                if (Turns < 1)
+                {
+                    int levelID =PlayerPrefs.GetInt("levelID", 0);
+                    PlayPreviewWindow.Instance.levelID = levelID;
+                    SaveData saveData = SaveSystem.instance.GetActiveSave();
+                    if (score > saveData.highScoresForLevels[levelID])
+                    {
+                        saveData.highScoresForLevels[levelID] = score;
+                        if (!saveData.levelsUnlocked[levelID] && score >= levelData.LevelCompleteScore) saveData.levelsUnlocked[levelID] = true;
+                        SaveSystem.instance.Save();
+                    }
+                    MenuWindowsMaster.Instance.OpenWindow(PlayPreviewWindow.Instance);
+                }
             }
 
             List<Tile> Comp(Vector2Int localOrigin, Tile.TileType tileType)
@@ -627,7 +644,7 @@ namespace Project.Scripts.Tiles
             float[] probes = probabilities;
 
             Level level = ScriptableObject.CreateInstance<Level>();
-            level.LevelDataSet(data,probes, turns, preferredTile,dislikedTile);
+            level.LevelDataSet(data,probes, turns, preferredTile,dislikedTile,goodScore,perfectScore);
 
             int id = 0;
             string path; 

@@ -37,3 +37,5 @@ MonoBehaviour:
   - 18
   turns: 22
   random: 0
+  levelCompleteScore: 100
+  levelSuccessScore: 300

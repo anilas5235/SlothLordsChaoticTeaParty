@@ -1,5 +1,6 @@
 using Project.Scripts.General;
 using Project.Scripts.Menu;
+using Project.Scripts.Tiles;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,9 +25,19 @@ namespace Project.Scripts.UIScripts
             };
         }
 
-        public void UpdateDisplays()
+        public override void ActivateWindow()
+        {
+            base.ActivateWindow();
+            UpdateDisplays();
+        }
+
+        private void UpdateDisplays()
         {
             int currentHighScore = (int) SaveSystem.instance.GetActiveSave().highScoresForLevels[levelID];
+            Level data = LevelDataLoader.Instance.GetLevelData(levelID);
+            progressBar.value = Mathf.Clamp(currentHighScore / (data.LevelSuccessScore * 1.1f), 0f, 1f);
+            star1.sprite = currentHighScore < data.LevelCompleteScore ? stars[0] : stars[1];
+            star2.sprite = currentHighScore < data.LevelSuccessScore ? stars[0] : stars[2];
         }
 
         public void Play()
