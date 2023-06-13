@@ -43,7 +43,7 @@ namespace Project.Scripts.UIScripts
         public void QuitApplication() => Application.Quit();
         public void ChangeScene(int id) => SceneManager.LoadScene(id);
 
-        public void ActivateWindow()
+        public virtual void ActivateWindow()
         {
             gameObject.SetActive(true);
             myWindowsMaster ??= MenuWindowsMaster.Instance;

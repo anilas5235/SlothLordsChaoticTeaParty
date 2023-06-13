@@ -6,7 +6,7 @@ namespace Project.Scripts.Tiles
     [CreateAssetMenu]
     public class Level : ScriptableObject
     {
-        public void LevelDataSet(int[][] tileStartingGrid, float[] spawnProbabilities,int allowedTurns, Tile.TileType likedTileType, Tile.TileType dislikedTileType)
+        public void LevelDataSet(int[][] tileStartingGrid, float[] spawnProbabilities,int allowedTurns, Tile.TileType likedTileType, Tile.TileType dislikedTileType, int godScore, int perfectScore)
         {
             fieldSize = new Vector2Int(tileStartingGrid.Length, tileStartingGrid[0].Length);
             startingGrid = new Colum[tileStartingGrid.Length];
@@ -31,16 +31,8 @@ namespace Project.Scripts.Tiles
             turns = allowedTurns;
             preferredTile = likedTileType;
             dislikedTile = dislikedTileType;
-        }
-
-        public void LevelDataSet(Vector2Int tileFieldSize, float[] spawnProbabilities,int allowedTurns, Tile.TileType likedTileType, Tile.TileType dislikedTileType)
-        {
-            probabilities = spawnProbabilities;
-            fieldSize = tileFieldSize;
-            random = true;
-            turns = allowedTurns;
-            preferredTile = likedTileType;
-            dislikedTile = dislikedTileType;
+            levelCompleteScore = godScore;
+            levelSuccessScore = perfectScore;
         }
 
         [SerializeField] private Colum[] startingGrid; 
@@ -49,6 +41,8 @@ namespace Project.Scripts.Tiles
         [SerializeField] private float[] probabilities;
         [SerializeField] private int turns;
         [SerializeField] private bool random = false;
+        [SerializeField] private int levelCompleteScore;
+        [SerializeField] private int levelSuccessScore;
         
         public Colum[] StartingGrid { get => startingGrid; }
         public Vector2Int FieldSize{ get => fieldSize; }
@@ -57,6 +51,10 @@ namespace Project.Scripts.Tiles
         public float[] Probabilities { get => probabilities; }
         public int Turns { get => turns; }
         public bool Random { get => random; }
+        
+        public int LevelCompleteScore { get => levelCompleteScore; }
+        public int LevelSuccessScore { get => levelSuccessScore; }
+
     }
 
     [Serializable]
