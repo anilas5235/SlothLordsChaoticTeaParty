@@ -33,7 +33,7 @@ namespace Project.Scripts.UIScripts
 
         private void UpdateDisplays()
         {
-            int currentHighScore = (int) SaveSystem.instance.GetActiveSave().highScoresForLevels[levelID];
+            int currentHighScore = (int) SaveSystem.Instance.GetActiveSave().highScoresForLevels[levelID];
             Level data = LevelDataLoader.Instance.GetLevelData(levelID);
             progressBar.value = Mathf.Clamp(currentHighScore / (data.LevelSuccessScore * 1.1f), 0f, 1f);
             star1.sprite = currentHighScore < data.LevelCompleteScore ? stars[0] : stars[1];

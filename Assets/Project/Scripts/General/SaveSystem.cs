@@ -4,15 +4,13 @@ using UnityEngine;
 
 namespace Project.Scripts.General
 {
-    public class SaveSystem : MonoBehaviour
+    public class SaveSystem : Singleton<SaveSystem>
     {
-        public static SaveSystem instance;
-
         private SaveData activeSave;
 
-        private void Awake()
+        protected override void Awake()
         {
-            instance = this;
+            base.Awake();
             Load();
         }
 
@@ -82,6 +80,6 @@ namespace Project.Scripts.General
     {
         public float[] audioOptions = new float[10];
         public bool[] levelsUnlocked = new bool[10];
-        public float[] highScoresForLevels = new float[5];
+        public float[] highScoresForLevels = new float[10];
     }
 }

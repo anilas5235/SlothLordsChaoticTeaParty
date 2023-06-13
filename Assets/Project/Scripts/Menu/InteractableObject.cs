@@ -1,11 +1,12 @@
 using System;
 using cakeslice;
+using Project.Scripts.General;
 using UnityEngine;
 
 namespace Project.Scripts.Menu
 {
     [RequireComponent(typeof(Outline))]
-    public abstract class InteractableObject : MonoBehaviour, IInteractable
+    public abstract class InteractableObject : MonoBehaviour, IInteractable,IShouldForceAwake
     {
         protected Outline myOutline;
         public bool hightlighted { get; protected set; } = false;
@@ -28,6 +29,11 @@ namespace Project.Scripts.Menu
         {
             hightlighted = !hightlighted;
             myOutline.eraseRenderer = !hightlighted;
+        }
+
+        public void ForceAwake()
+        {
+            Awake();
         }
     }
 }

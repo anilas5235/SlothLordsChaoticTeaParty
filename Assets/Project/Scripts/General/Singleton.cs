@@ -10,7 +10,7 @@ namespace Project.Scripts.General
     {
         public static T Instance { get; private set; }
 
-        private bool woken;
+        private bool woken = false;
         protected virtual void Awake()
         {
             if(woken)return;

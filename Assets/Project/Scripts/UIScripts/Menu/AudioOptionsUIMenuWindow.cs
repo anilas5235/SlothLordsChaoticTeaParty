@@ -49,7 +49,7 @@ namespace Project.Scripts.UIScripts.Menu
 
         private void SaveOptionsToText()
         {
-            float[] optionsValues = SaveSystem.instance.GetActiveSave().audioOptions;
+            float[] optionsValues = SaveSystem.Instance.GetActiveSave().audioOptions;
             mainAudioMixer.GetFloat(paramMaster, out optionsValues[0]);
             mainAudioMixer.GetFloat(paramMusic, out optionsValues[1]);
             mainAudioMixer.GetFloat(paramEffects, out optionsValues[2]);
@@ -57,7 +57,7 @@ namespace Project.Scripts.UIScripts.Menu
         }
         private void LoadFromSaveText()
         {
-            float[] optionsValues = SaveSystem.instance.GetActiveSave().audioOptions;
+            float[] optionsValues = SaveSystem.Instance.GetActiveSave().audioOptions;
             mainAudioMixer.SetFloat(paramMaster, optionsValues[0]);
             mainAudioMixer.SetFloat(paramMusic, optionsValues[1]);
             mainAudioMixer.SetFloat(paramEffects, optionsValues[2]);

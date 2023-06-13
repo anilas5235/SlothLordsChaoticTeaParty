@@ -453,12 +453,17 @@ namespace Project.Scripts.Tiles
                 {
                     int levelID =PlayerPrefs.GetInt("levelID", 0);
                     PlayPreviewWindow.Instance.levelID = levelID;
-                    SaveData saveData = SaveSystem.instance.GetActiveSave();
+                    SaveData saveData = SaveSystem.Instance.GetActiveSave();
                     if (score > saveData.highScoresForLevels[levelID])
                     {
                         saveData.highScoresForLevels[levelID] = score;
-                        if (!saveData.levelsUnlocked[levelID] && score >= levelData.LevelCompleteScore) saveData.levelsUnlocked[levelID] = true;
-                        SaveSystem.instance.Save();
+                        if (saveData.levelsUnlocked.Length - 1 > levelID)
+                        {
+                            if (!saveData.levelsUnlocked[levelID + 1] && score >= levelData.LevelCompleteScore)
+                                saveData.levelsUnlocked[levelID + 1] = true;
+                        }
+
+                        SaveSystem.Instance.Save();
                     }
                     MenuWindowsMaster.Instance.OpenWindow(PlayPreviewWindow.Instance);
                 }
