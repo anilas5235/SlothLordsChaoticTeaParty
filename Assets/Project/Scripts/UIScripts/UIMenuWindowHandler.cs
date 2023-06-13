@@ -1,3 +1,4 @@
+using System;
 using Project.Scripts.UIScripts.Menu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,7 @@ namespace Project.Scripts.UIScripts
     {
         [SerializeField] protected UIMenuWindowHandler parentMenuWindow;
         private MenuWindowsMaster myWindowsMaster;
+
         
         public enum StandardUIButtonFunctions
         {
@@ -19,33 +21,33 @@ namespace Project.Scripts.UIScripts
         }
         public virtual void UIEsc()
         {
-            if (parentMenuWindow != null) parentMenuWindow.ActivateWindow(myWindowsMaster);
-            myWindowsMaster.CurrentlyActiveWindows.Remove(this);
+            if (parentMenuWindow != null) parentMenuWindow.ActivateWindow();
+            myWindowsMaster.currentlyActiveWindows.Remove(this);
             myWindowsMaster.UpdateState();
             gameObject.SetActive(false);
         }
 
         public virtual void ChangeToWindow(UIMenuWindowHandler menuWindowMaster)
         {
-            menuWindowMaster.ActivateWindow(myWindowsMaster);
-            myWindowsMaster.CurrentlyActiveWindows.Remove(this);
+            menuWindowMaster.ActivateWindow();
+            myWindowsMaster.currentlyActiveWindows.Remove(this);
             myWindowsMaster.UpdateState();
             gameObject.SetActive(false);
         }
 
         public virtual void OpenWindow(UIMenuWindowHandler menuWindowMaster)
         {
-            menuWindowMaster.ActivateWindow(myWindowsMaster);
+            menuWindowMaster.ActivateWindow();
         }
 
         public void QuitApplication() => Application.Quit();
         public void ChangeScene(int id) => SceneManager.LoadScene(id);
 
-        public void ActivateWindow(MenuWindowsMaster windowsMaster)
+        public void ActivateWindow()
         {
-            myWindowsMaster ??= windowsMaster;
             gameObject.SetActive(true);
-            myWindowsMaster.CurrentlyActiveWindows.Add(this);
+            myWindowsMaster ??= MenuWindowsMaster.Instance;
+            myWindowsMaster.currentlyActiveWindows.Add(this);
         }
     }
 }

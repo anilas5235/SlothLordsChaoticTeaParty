@@ -82,16 +82,8 @@ namespace Project.Scripts.Tiles
         private void Start()
         {
             int levelID = PlayerPrefs.GetInt("levelID", 0);
-            
-            
-            levelData = levelID switch
-            {
-                0 => Resources.LoadAll<Level>("LevelData/Tutorial")[0],
-                1 => Resources.LoadAll<Level>($"LevelData/Level {levelID}/")[0],
-                2 => Resources.LoadAll<Level>($"LevelData/Level {levelID}/")[0],
-                3 => Resources.LoadAll<Level>($"LevelData/Level {levelID}/")[0],
-                _ => throw new ArgumentOutOfRangeException()
-            };
+
+            levelData = LevelDataLoader.Instance.GetLevelData(levelID);
 
             CreateGrid();
         }

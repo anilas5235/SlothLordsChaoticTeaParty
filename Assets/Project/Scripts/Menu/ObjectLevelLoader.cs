@@ -1,3 +1,5 @@
+using Project.Scripts.UIScripts;
+using Project.Scripts.UIScripts.Menu;
 using UnityEngine;
 
 namespace Project.Scripts.Menu
@@ -9,7 +11,8 @@ namespace Project.Scripts.Menu
 
         public override void Interact()
         {
-            SceneMaster.Instance.ChangeToLevel(levelID);
+            MenuWindowsMaster.Instance.OpenWindow(PlayPreviewWindow.Instance);
+            PlayPreviewWindow.Instance.levelID = levelID;
         }
     }
 }

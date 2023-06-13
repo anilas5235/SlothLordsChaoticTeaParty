@@ -8,18 +8,19 @@ using UnityEngine;
 
 namespace Project.Scripts.UIScripts.Menu
 {
-    public class MenuWindowsMaster : MonoBehaviour
+    public class MenuWindowsMaster : Singleton<MenuWindowsMaster>
     {
         [SerializeField] private UIMenuWindowHandler menuWindowToOpen;
 
         private FirstPersonController playerController;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             playerController = FindObjectOfType<FirstPersonController>();
         }
 
-        public List<UIMenuWindowHandler> CurrentlyActiveWindows;
+        public List<UIMenuWindowHandler> currentlyActiveWindows = new List<UIMenuWindowHandler>();
 
         public bool menuActive;
 
@@ -27,21 +28,15 @@ namespace Project.Scripts.UIScripts.Menu
         {
             if (Input.GetButtonDown("Cancel"))
             {
-                if (!menuActive)
-                {
-                    OpenWindow();
-                }
-                else
-                {
-                    CurrentlyActiveWindows.Last().UIEsc();
-                }
+                if (!menuActive) OpenWindow(); else currentlyActiveWindows.Last().UIEsc();
             }
-            
         }
 
-        private void OpenWindow()
+        public void OpenWindow(UIMenuWindowHandler windowToOpen = null)
         {
-            menuWindowToOpen.ActivateWindow(this);
+            if (windowToOpen == null) menuWindowToOpen.ActivateWindow();
+            else windowToOpen.ActivateWindow();
+          
             menuActive = true;
             CursorManager.Instance.ActivateCursor();
             if (playerController != null) playerController.FreezePlayerToggle();
@@ -55,7 +50,7 @@ namespace Project.Scripts.UIScripts.Menu
         private IEnumerator UpdateMenuState()
         {
             yield return new WaitForEndOfFrame();
-            if (!CurrentlyActiveWindows.Any())
+            if (!currentlyActiveWindows.Any())
             {
                 menuActive = false;
                 CursorManager.Instance.DeActivateCursor();

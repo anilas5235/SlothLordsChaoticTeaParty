@@ -6,17 +6,26 @@ namespace Project.Scripts.General
     ///   <para>class driving form this class will act as Singletons</para>
     /// </summary>
 
-    public abstract class Singleton<T> : MonoBehaviour where T :MonoBehaviour
+    public abstract class Singleton<T> : MonoBehaviour,IShouldForceAwake where T :MonoBehaviour
     {
         public static T Instance { get; private set; }
 
+        private bool woken;
         protected virtual void Awake()
         {
+            if(woken)return;
             if (!Instance) Instance = gameObject.GetComponent<T>();
             else if(Instance.GetInstanceID() != GetInstanceID())
             {
                 Destroy(gameObject);
             }
+            woken = true;
+        }
+
+        public void ForceAwake()
+        {
+            if(woken)return;
+            Awake();
         }
     }
     
