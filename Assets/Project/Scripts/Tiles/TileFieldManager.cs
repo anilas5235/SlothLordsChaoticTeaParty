@@ -584,16 +584,43 @@ namespace Project.Scripts.Tiles
                             break;
                         }
                     }
+
                     
                     switch (left, right)
                     {
-                        case (false, false): return false;
+                        case (false, false):
+                            if (CheckUp(out Vector2Int switchPos))
+                            {switchPosition = switchPos; return true;}
+                            else return false;
+                        
                         case (true, true): switchPosition =
                                 Mathf.Abs(thisPosition.x - rightInlet.x) <= Mathf.Abs(thisPosition.x - leftInlet.x)
                                     ? thisPosition + Vector2Int.right : thisPosition + Vector2Int.left;
                             return true;
                         case (true, false): switchPosition = thisPosition + Vector2Int.left; return true;
                         case (false, true): switchPosition = thisPosition + Vector2Int.right; return true;
+                    }
+
+                    bool CheckUp(out Vector2Int upPosition)
+                    {
+                        bool up = false;
+                        upPosition = thisPosition;
+                        
+                        for (int i = thisPosition.y-1; i >= 0; i--)
+                        {
+                            upPosition = new Vector2Int(i,thisPosition.y-1);
+                            if (!IsPositionInGrid(upPosition)) break;
+                            Tile tileToCheck = GetTile(upPosition);
+                            if (!tileToCheck) {
+                                up = true;
+                                break;
+                            }
+                            if(tileToCheck.GetTileType() != Tile.TileType.Clear)  {
+                                up = true;
+                                break;
+                            }
+                        }
+                        return up;
                     }
 
                 }
