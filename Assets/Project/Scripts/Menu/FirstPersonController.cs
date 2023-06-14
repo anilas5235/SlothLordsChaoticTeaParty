@@ -137,8 +137,9 @@ namespace Project.Scripts.Menu
             if (!myCharacterController.isGrounded) moveDirection.y -= gravity * Time.deltaTime;
             myCharacterController.Move(moveDirection * Time.deltaTime);
         }
+        public void FreezePlayer() => CanMove = false;
 
-        public void FreezePlayerToggle() => CanMove = !CanMove;
+        public void UnFreezePlayer() => CanMove = true;
 
         private IEnumerator TransitionCrouch(Vector3 bodyCenter, float height)
         {

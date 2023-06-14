@@ -86,6 +86,7 @@ namespace Project.Scripts.Tiles
             int levelID = PlayerPrefs.GetInt("levelID", 0);
 
             levelData = LevelDataLoader.Instance.GetLevelData(levelID);
+            MenuWindowsMaster.Instance.OnMenuActiveChange += MenuChange;
 
             CreateGrid();
         }
@@ -369,6 +370,11 @@ namespace Project.Scripts.Tiles
             tileFieldSize = fieldSize;
             tileSize = TileSize;
             tileSpacing = TileSpacing;
+        }
+
+        public void MenuChange(bool state)
+        {
+            interactable = !state;
         }
 
         #endregion

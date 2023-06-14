@@ -12,6 +12,8 @@ namespace Project.Scripts.UIScripts.Menu
     {
         [SerializeField] private UIMenuWindowHandler menuWindowToOpen;
 
+        public Action<bool> OnMenuActiveChange;
+
         private FirstPersonController playerController;
 
         protected override void Awake()
@@ -22,13 +24,27 @@ namespace Project.Scripts.UIScripts.Menu
 
         public List<UIMenuWindowHandler> currentlyActiveWindows = new List<UIMenuWindowHandler>();
 
-        public bool menuActive;
+        [SerializeField] private bool menuActive;
+
+        public bool MenuActive
+        {
+            get => menuActive;
+            set
+            {
+                if (!value == menuActive)
+                {
+                    menuActive = value;
+                    OnMenuActiveChange?.Invoke(menuActive);
+                }
+            }
+        }
+
 
         private void Update()
         {
             if (Input.GetButtonDown("Cancel"))
             {
-                if (!menuActive) OpenWindow(); else currentlyActiveWindows.Last().UIEsc();
+                if (!MenuActive) OpenWindow(); else currentlyActiveWindows.Last().UIEsc();
             }
         }
 
@@ -37,9 +53,9 @@ namespace Project.Scripts.UIScripts.Menu
             if (windowToOpen == null) menuWindowToOpen.ActivateWindow();
             else windowToOpen.ActivateWindow();
           
-            menuActive = true;
+            MenuActive = true;
             CursorManager.Instance.ActivateCursor();
-            if (playerController != null) playerController.FreezePlayerToggle();
+            if (playerController != null) playerController.FreezePlayer();
         }
 
         public void UpdateState()
@@ -52,9 +68,9 @@ namespace Project.Scripts.UIScripts.Menu
             yield return new WaitForEndOfFrame();
             if (!currentlyActiveWindows.Any())
             {
-                menuActive = false;
+                MenuActive = false;
                 CursorManager.Instance.DeActivateCursor();
-                if (playerController != null) playerController.FreezePlayerToggle();
+                if (playerController != null) playerController.UnFreezePlayer();
             }
         }
     }

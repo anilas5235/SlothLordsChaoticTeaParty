@@ -20,9 +20,9 @@ namespace Project.Scripts.Menu
 
         public override void Interact()
         {
-            if(!unlocked)return;
-            MenuWindowsMaster.Instance.OpenWindow(PlayPreviewWindow.Instance);
+            if(!unlocked || MenuWindowsMaster.Instance.MenuActive)return;
             PlayPreviewWindow.Instance.levelID = levelID;
+            MenuWindowsMaster.Instance.OpenWindow(PlayPreviewWindow.Instance);
         }
     }
 }

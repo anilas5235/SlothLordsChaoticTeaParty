@@ -11,7 +11,7 @@ namespace Project.Scripts.General
         protected override void Awake()
         {
             base.Awake();
-            Load();
+            if(activeSave == null) Load();
         }
 
         private void OnApplicationQuit()

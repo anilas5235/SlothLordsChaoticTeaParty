@@ -40,7 +40,7 @@ namespace Project.Scripts.Menu
                 transform.position = _cameraTransform.position + _cameraTransform.TransformDirection(Vector3.forward) * InspectingDistance;
                 transform.forward = (_cameraTransform.position - transform.position).normalized;
                 addRotation = transform.localEulerAngles;
-                Controller.FreezePlayerToggle();
+                Controller.FreezePlayer();
                 myOutline.eraseRenderer = true;
                 transform.SetParent(null);
             }
@@ -49,7 +49,7 @@ namespace Project.Scripts.Menu
                 transform.position = originalPosition;
                 transform.forward = Vector3.forward;
                 transform.rotation = Quaternion.Euler( originalRotation);
-                Controller.FreezePlayerToggle();
+                Controller.UnFreezePlayer();
                 myOutline.eraseRenderer = false;
             }
         }
