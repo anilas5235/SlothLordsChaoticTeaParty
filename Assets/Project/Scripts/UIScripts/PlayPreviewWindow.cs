@@ -17,12 +17,7 @@ namespace Project.Scripts.UIScripts
         protected override void Awake()
         {
             base.Awake();
-            stars = new[]
-            {
-                Resources.Load<Sprite>("Artwork/UI/LevelProgressDisplay/emptystar"),
-                Resources.Load<Sprite>("Artwork/UI/LevelProgressDisplay/star1"),
-                Resources.Load<Sprite>("Artwork/UI/LevelProgressDisplay/star2"),
-            };
+            stars = Resources.LoadAll<Sprite>("ArtWork/UI/LevelProgressDisplay/Stars");
         }
 
         public override void ActivateWindow()
@@ -35,9 +30,10 @@ namespace Project.Scripts.UIScripts
         {
             int currentHighScore = (int) SaveSystem.Instance.GetActiveSave().highScoresForLevels[levelID];
             Level data = LevelDataLoader.Instance.GetLevelData(levelID);
-            progressBar.value = Mathf.Clamp(currentHighScore / (data.LevelSuccessScore * 1.1f), 0f, 1f);
-            star1.sprite = currentHighScore < data.LevelCompleteScore ? stars[0] : stars[1];
-            star2.sprite = currentHighScore < data.LevelSuccessScore ? stars[0] : stars[2];
+            float progress = (float) currentHighScore / data.PerfectScore;
+            progressBar.value = Mathf.Clamp(progress, 0f, 1f);
+            star1.sprite = progress < 0.5f? stars[0] : stars[1];
+            star2.sprite = progress < 0.99f? stars[0] : stars[2];
         }
 
         public void Play()

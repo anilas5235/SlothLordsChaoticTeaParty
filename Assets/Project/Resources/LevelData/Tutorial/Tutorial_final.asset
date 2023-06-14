@@ -31,3 +31,4 @@ MonoBehaviour:
   - 18
   turns: 10
   random: 0
+  prefectScore: 200

@@ -2,38 +2,40 @@ using Project.Scripts.General;
 using Project.Scripts.Tiles;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Project.Scripts.UIScripts
 {
     public class StatsUIManager : Singleton<StatsUIManager>
     {
-        [SerializeField] private TextMeshProUGUI scoreText, comboRollText, turnText ;
+        [SerializeField] private TextMeshProUGUI scoreText, turnText ;
+        [SerializeField] private Slider progressBar;
+        private TileFieldManager FieldManager => TileFieldManager.Instance;
 
         private void Start()
         {
             UpdateAllUIFields();
         }
 
-        public void UpdateScore()
+        public void UpdateScore(int score)
         {
-            scoreText.text = $"Score: {TileFieldManager.Instance.Score}";
+            scoreText.text = $"{score}";
+            UpdateProgress(score);
         }
 
-        public void UpdateComboRoll()
-        {
-            comboRollText.text = $"Combos: {TileFieldManager.Instance.ComboRoll}";
-        }
+        public void UpdateTurn(int turns) => turnText.text = $"{turns}";
 
-        public void UpdateTurn()
+        public void UpdateProgress(int score)
         {
-            turnText.text = $"Turns: {TileFieldManager.Instance.turns}";
+            Level data = FieldManager.CurrentLevelData;
+            float progress = (float) score / data.PerfectScore;
+            progressBar.value = Mathf.Clamp(progress, 0f, 1f);
         }
 
         public void UpdateAllUIFields()
         {
-            UpdateScore();
-            UpdateComboRoll();
-            UpdateTurn();
+            UpdateScore(FieldManager.Score);
+            UpdateTurn(FieldManager.Turns);
         }
 
     }

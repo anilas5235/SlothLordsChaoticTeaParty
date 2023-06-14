@@ -14,15 +14,17 @@ namespace Project.Scripts.Tiles
     ///   <para>This component managers the tile play field and its behaviours</para>
     /// </summary>
     public class TileFieldManager : Singleton<TileFieldManager>
-    {
+    { 
+        public bool interactable = true;
+        
         [Header("Data")]
         [SerializeField] private Level levelData;
         
         public Vector2Int fieldSize = new Vector2Int( 10, 7);
-        public int score, comboRoll, turns = 20;
+        [SerializeField] private int score, comboRoll, turns = 20;
         public float[] probabilities = { 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f };
         public Tile.TileType preferredTile, dislikedTile;
-        public int goodScore, perfectScore;
+        public int perfectScore;
         
         private Vector3[][] fieldGridPositions;
         private Tile[][] fieldGridTiles;
@@ -47,18 +49,14 @@ namespace Project.Scripts.Tiles
             private set
             {
                 score = value;
-                StatsUIManager.Instance.UpdateScore();
+                StatsUIManager.Instance.UpdateScore(score);
             }
         }
 
         public int ComboRoll
         {
             get => comboRoll;
-            private set
-            {
-                comboRoll = value;
-                StatsUIManager.Instance.UpdateComboRoll();
-            }
+            private set => comboRoll = value;
         }
 
         public int Turns
@@ -67,13 +65,32 @@ namespace Project.Scripts.Tiles
             set
             {
                 turns = value;
-                StatsUIManager.Instance.UpdateTurn();
+                StatsUIManager.Instance.UpdateTurn(turns);
             }
+        }
+
+        public Level CurrentLevelData => levelData;
+
+        #endregion
+
+        #region Enums
+
+        public enum ComboAppraisal
+        {
+            Neutral,
+            Good,
+            Bad,
+            Party,
         }
 
         #endregion
 
-        public bool interactable = true;
+        #region Events
+
+        public Action<ComboAppraisal> OnCombo;
+
+        #endregion
+
 
         protected override void Awake()
         {
@@ -143,8 +160,7 @@ namespace Project.Scripts.Tiles
             turns = data.Turns;
             preferredTile = data.PreferredTile;
             dislikedTile = data.DislikedTile;
-            goodScore = data.LevelCompleteScore;
-            perfectScore = data.LevelSuccessScore;
+            perfectScore = data.PerfectScore;
             
             fieldGridPositions = new Vector3[fieldSize.x][];
             fieldGridTiles = new Tile[fieldSize.x][];
@@ -460,12 +476,12 @@ namespace Project.Scripts.Tiles
                     int levelID =PlayerPrefs.GetInt("levelID", 0);
                     PlayPreviewWindow.Instance.levelID = levelID;
                     SaveData saveData = SaveSystem.Instance.GetActiveSave();
-                    if (score > saveData.highScoresForLevels[levelID])
+                    if (Score > saveData.highScoresForLevels[levelID])
                     {
-                        saveData.highScoresForLevels[levelID] = score;
+                        saveData.highScoresForLevels[levelID] = Score;
                         if (saveData.levelsUnlocked.Length - 1 > levelID)
                         {
-                            if (!saveData.levelsUnlocked[levelID + 1] && score >= levelData.LevelCompleteScore)
+                            if (!saveData.levelsUnlocked[levelID + 1] && Score >= levelData.PerfectScore*.5f)
                                 saveData.levelsUnlocked[levelID + 1] = true;
                         }
 
@@ -649,13 +665,17 @@ namespace Project.Scripts.Tiles
             if (comboTileType == Tile.TileType.Clear)return;
 
             int scoreToAdd = comboSize * comboRoll;
+            ComboAppraisal appraisal = ComboAppraisal.Neutral;
             switch ((comboTileType == preferredTile, comboTileType == dislikedTile))
             {
-                case (true,false): scoreToAdd *= 3; break;
-                case (false,true): scoreToAdd *= 0; break;
-                default: scoreToAdd *= 1; break; 
+                case (true,false): scoreToAdd *= 3; appraisal = ComboAppraisal.Good; break;
+                case (false,true): scoreToAdd *= 0; appraisal = ComboAppraisal.Bad; break;
+                default: scoreToAdd *= 1; appraisal = ComboAppraisal.Neutral; break; 
             }
+            if (comboRoll > 2) appraisal = ComboAppraisal.Good;
+            if (comboRoll > 6) appraisal = ComboAppraisal.Party;
             Score += scoreToAdd;
+            OnCombo?.Invoke(appraisal);
         }
         
         #endregion
@@ -682,7 +702,7 @@ namespace Project.Scripts.Tiles
             float[] probes = probabilities;
 
             Level level = ScriptableObject.CreateInstance<Level>();
-            level.LevelDataSet(data,probes, turns, preferredTile,dislikedTile,goodScore,perfectScore);
+            level.LevelDataSet(data,probes, turns, preferredTile,dislikedTile,perfectScore);
 
             int id = 0;
             string path; 
