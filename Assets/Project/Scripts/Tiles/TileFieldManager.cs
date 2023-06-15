@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Project.Scripts.DialogScripts;
 using Project.Scripts.General;
 using Project.Scripts.UIScripts;
 using Project.Scripts.UIScripts.Menu;
+using Project.Scripts.UIScripts.Windows;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -25,6 +27,8 @@ namespace Project.Scripts.Tiles
         public float[] probabilities = { 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f, 100 / 6f };
         public Tile.TileType preferredTile, dislikedTile;
         public int perfectScore;
+        [SerializeField] private CharacterAnimator.Characters characterForLevel;
+        public int currentLevelID;
         
         private Vector3[][] fieldGridPositions;
         private Tile[][] fieldGridTiles;
@@ -89,6 +93,12 @@ namespace Project.Scripts.Tiles
 
         public Action<ComboAppraisal> OnCombo;
 
+        public Action<CharacterAnimator.Characters> OnSelectCharacter;
+
+        public Action OnGameStart;
+
+        public Action OnGameEnd;
+
         #endregion
 
 
@@ -100,12 +110,13 @@ namespace Project.Scripts.Tiles
 
         private void Start()
         {
-            int levelID = PlayerPrefs.GetInt("levelID", 0);
+            currentLevelID = PlayerPrefs.GetInt("levelID", 0);
 
-            levelData = LevelDataLoader.Instance.GetLevelData(levelID);
+            levelData = LevelDataLoader.Instance.GetLevelData(currentLevelID);
             MenuWindowsMaster.Instance.OnMenuActiveChange += MenuChange;
 
             CreateGrid();
+            OnGameStart?.Invoke();
         }
 
         #region GridMoveFunctions
@@ -161,6 +172,7 @@ namespace Project.Scripts.Tiles
             preferredTile = data.PreferredTile;
             dislikedTile = data.DislikedTile;
             perfectScore = data.PerfectScore;
+            characterForLevel = data.Character;
             
             fieldGridPositions = new Vector3[fieldSize.x][];
             fieldGridTiles = new Tile[fieldSize.x][];
@@ -252,6 +264,7 @@ namespace Project.Scripts.Tiles
                 fieldGridTiles = newTileField;
             }
             CameraControl.Instance.PlayFieldSizeChanged();
+            OnSelectCharacter?.Invoke(characterForLevel);
         }
         
         /// <summary>
@@ -473,21 +486,20 @@ namespace Project.Scripts.Tiles
                 fallingCount = 0;
                 if (Turns < 1)
                 {
-                    int levelID =PlayerPrefs.GetInt("levelID", 0);
-                    PlayPreviewWindow.Instance.levelID = levelID;
                     SaveData saveData = SaveSystem.Instance.GetActiveSave();
-                    if (Score > saveData.highScoresForLevels[levelID])
+                    if (Score > saveData.highScoresForLevels[currentLevelID])
                     {
-                        saveData.highScoresForLevels[levelID] = Score;
-                        if (saveData.levelsUnlocked.Length - 1 > levelID)
+                        saveData.highScoresForLevels[currentLevelID] = Score;
+                        if (saveData.levelsUnlocked.Length > currentLevelID)
                         {
-                            if (!saveData.levelsUnlocked[levelID + 1] && Score >= levelData.PerfectScore*.5f)
-                                saveData.levelsUnlocked[levelID + 1] = true;
+                            if (!saveData.levelsUnlocked[currentLevelID + 1] && Score >= levelData.PerfectScore*.5f)
+                                saveData.levelsUnlocked[currentLevelID + 1] = true;
                         }
 
                         SaveSystem.Instance.Save();
                     }
-                    MenuWindowsMaster.Instance.OpenWindow(PlayPreviewWindow.Instance);
+                    MenuWindowsMaster.Instance.OpenWindow(LevelEndWindow.Instance);
+                    OnGameEnd?.Invoke();
                 }
             }
 
@@ -651,7 +663,7 @@ namespace Project.Scripts.Tiles
             interactable = false;
             do
             {
-                yield return new WaitForSeconds(StepTime * Mathf.Pow(0.95f,fallingCount) +.05f);
+                yield return new WaitForSeconds(StepTime * Mathf.Pow(0.95f,fallingCount) +.1f);
                 fallingCount++;
             } while (!CheckAndFall());
 
@@ -702,8 +714,7 @@ namespace Project.Scripts.Tiles
             float[] probes = probabilities;
 
             Level level = ScriptableObject.CreateInstance<Level>();
-            level.LevelDataSet(data,probes, turns, preferredTile,dislikedTile,perfectScore);
-
+            level.LevelDataSet(data,probes, turns, preferredTile,dislikedTile,perfectScore,characterForLevel);
             int id = 0;
             string path; 
             do

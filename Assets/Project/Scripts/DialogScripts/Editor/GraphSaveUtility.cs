@@ -43,6 +43,8 @@ namespace Project.Scripts.DialogScripts.Editor
                     entryPoint = currentNode.entryPoint,
                     speaker = currentNode.speaker,
                     audioLine = currentNode.voiceLine,
+                    mood = currentNode.mood,
+                    imageOverride = currentNode.imageOverride,
                 });
 
                 
@@ -184,7 +186,7 @@ namespace Project.Scripts.DialogScripts.Editor
                 }
                 else
                 {
-                    tempNode = _targetGraphView.CreateDialogNote(passage.text,passage.speaker,passage.audioLine);
+                    tempNode = _targetGraphView.CreateDialogNote(passage.text,passage.speaker,passage.audioLine,(int)passage.mood,passage.imageOverride);
                     tempNode.guid = passage.guid;
 
                     List<Link> nodePorts = passage.links;

@@ -35,6 +35,8 @@ namespace Project.Scripts.DialogScripts
         public List<Link> links;
         public Vector2 position;
         public bool entryPoint;
+        public CharacterAnimator.CharacterMoods mood;
+        public Sprite imageOverride;
         public string GetLinkPassageGuid(int index) => links[index].Guid;
     }
 

@@ -14,5 +14,9 @@ namespace Project.Scripts.DialogScripts.Editor
         public AudioClip voiceLine;
 
         public bool entryPoint;
+        
+        public CharacterAnimator.CharacterMoods mood;
+        
+        public Sprite imageOverride;
     }
 }

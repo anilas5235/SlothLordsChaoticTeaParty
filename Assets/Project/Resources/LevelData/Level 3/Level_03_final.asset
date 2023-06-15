@@ -39,3 +39,4 @@ MonoBehaviour:
   turns: 15
   random: 0
   prefectScore: 2300
+  character: 1

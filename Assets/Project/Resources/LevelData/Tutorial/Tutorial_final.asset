@@ -32,3 +32,4 @@ MonoBehaviour:
   turns: 10
   random: 0
   prefectScore: 200
+  character: 2

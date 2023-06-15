@@ -7,7 +7,7 @@ namespace Project.Scripts.DialogScripts
     [RequireComponent(typeof(Image))]
     public class CharacterAnimator : MonoBehaviour
     {
-        [SerializeField] private CharacterMods currentMode;
+        [SerializeField] private CharacterMoods currentMode;
         [SerializeField] private Characters currentCharacter;
 
         private Sprite[] characterIcons;
@@ -22,7 +22,7 @@ namespace Project.Scripts.DialogScripts
             Sheldon,
         }
         
-        public enum CharacterMods
+        public enum CharacterMoods
         {
             Neutral,
             Happy,
@@ -33,7 +33,7 @@ namespace Project.Scripts.DialogScripts
 
       #region Properties
 
-      public CharacterMods CurrentMode
+      public CharacterMoods CurrentMode
       {
           get => currentMode;
           set
@@ -60,7 +60,7 @@ namespace Project.Scripts.DialogScripts
 
       #region Events
 
-      public Action<CharacterMods> OnModeChange;
+      public Action<CharacterMoods> OnModeChange;
 
       public Action<Characters> OnCharacterChange;
       

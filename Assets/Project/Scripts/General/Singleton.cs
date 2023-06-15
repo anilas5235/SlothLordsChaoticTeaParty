@@ -24,7 +24,6 @@ namespace Project.Scripts.General
 
         public void ForceAwake()
         {
-            if(woken)return;
             Awake();
         }
     }

@@ -80,7 +80,8 @@ namespace Project.Scripts.DialogScripts.Editor
         }
 
 
-        public DialogNode CreateDialogNote(string nodeName, string speakerName ="speaker" , AudioClip audioClip = null)
+        public DialogNode CreateDialogNote(string nodeName, string speakerName ="speaker" , AudioClip audioClip = null,
+           int characterMoodIndex = 0, Sprite overrideImage = null)
         {
             var newNode = new DialogNode
             {
@@ -89,6 +90,8 @@ namespace Project.Scripts.DialogScripts.Editor
                 guid = Guid.NewGuid().ToString(),
                 speaker = speakerName,
                 voiceLine = audioClip,
+                mood = (CharacterAnimator.CharacterMoods) characterMoodIndex,
+                imageOverride = overrideImage,
             };
 
             var inputPort = GeneratePort(newNode, Direction.Input, Port.Capacity.Multi);
@@ -148,7 +151,29 @@ namespace Project.Scripts.DialogScripts.Editor
             audioField.SetValueWithoutNotify(newNode.voiceLine);
             audioField.labelElement.style.minWidth = defaultLabelWidth;
             newNode.mainContainer.Add(audioField);
-            
+
+            EnumField moodField = new EnumField("Mood:", CharacterAnimator.CharacterMoods.Neutral);
+            moodField.RegisterValueChangedCallback(evt =>
+            {
+                newNode.mood = (CharacterAnimator.CharacterMoods)evt.newValue;
+            });
+            moodField.SetValueWithoutNotify(newNode.mood);
+            moodField.labelElement.style.minWidth = defaultLabelWidth;
+            newNode.mainContainer.Add(moodField);
+
+            ObjectField imageOverrideField = new ObjectField("OverrideImage:")
+            {
+                objectType = typeof(Sprite),
+            };
+            imageOverrideField.RegisterValueChangedCallback(evt =>
+            {
+                if (evt.newValue is Sprite sprite)
+                {
+                    newNode.imageOverride = sprite; 
+                }
+            } );
+            imageOverrideField.labelElement.style.minWidth = defaultLabelWidth;
+            newNode.mainContainer.Add(imageOverrideField);
 
             newNode.RefreshPorts();
             newNode.RefreshExpandedState();

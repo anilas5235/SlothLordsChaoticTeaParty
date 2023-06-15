@@ -1,4 +1,5 @@
 using System;
+using Project.Scripts.DialogScripts;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -7,7 +8,8 @@ namespace Project.Scripts.Tiles
     [CreateAssetMenu]
     public class Level : ScriptableObject
     {
-        public void LevelDataSet(int[][] tileStartingGrid, float[] spawnProbabilities,int allowedTurns, Tile.TileType likedTileType, Tile.TileType dislikedTileType, int perfectScore)
+        public void LevelDataSet(int[][] tileStartingGrid, float[] spawnProbabilities, int allowedTurns,
+            Tile.TileType likedTileType, Tile.TileType dislikedTileType, int perfectScore, CharacterAnimator.Characters levelCharacter)
         {
             fieldSize = new Vector2Int(tileStartingGrid.Length, tileStartingGrid[0].Length);
             startingGrid = new Colum[tileStartingGrid.Length];
@@ -33,6 +35,7 @@ namespace Project.Scripts.Tiles
             preferredTile = likedTileType;
             dislikedTile = dislikedTileType;
             prefectScore = perfectScore;
+            character = levelCharacter;
         }
 
         [SerializeField] private Colum[] startingGrid; 
@@ -42,6 +45,7 @@ namespace Project.Scripts.Tiles
         [SerializeField] private int turns;
         [SerializeField] private bool random = false;
         [SerializeField] private int prefectScore;
+        [SerializeField] private CharacterAnimator.Characters character;
         
         public Colum[] StartingGrid { get => startingGrid; }
         public Vector2Int FieldSize{ get => fieldSize; }
@@ -51,7 +55,7 @@ namespace Project.Scripts.Tiles
         public int Turns { get => turns; }
         public bool Random { get => random; }
         public int PerfectScore { get => prefectScore; }
-
+        public CharacterAnimator.Characters Character { get => character; }
     }
 
     [Serializable]

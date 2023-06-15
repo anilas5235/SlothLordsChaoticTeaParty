@@ -18,25 +18,32 @@ namespace Project.Scripts.DialogScripts
         {
             tileFieldManager = TileFieldManager.Instance;
             tileFieldManager.OnCombo += ChangeCharacterMode;
+            tileFieldManager.OnSelectCharacter += SelectCharacter;
         }
 
         private void OnDisable()
         {
             tileFieldManager.OnCombo -= ChangeCharacterMode;
+            tileFieldManager.OnSelectCharacter -= SelectCharacter;
         }
 
-        public void ChangeCharacterMode(TileFieldManager.ComboAppraisal appraisal)
+        private void ChangeCharacterMode(TileFieldManager.ComboAppraisal appraisal)
         {
-            CharacterAnimator.CharacterMods mode = appraisal switch
+            CharacterAnimator.CharacterMoods mode = appraisal switch
             {
-                TileFieldManager.ComboAppraisal.Neutral => CharacterAnimator.CharacterMods.Neutral,
-                TileFieldManager.ComboAppraisal.Good => CharacterAnimator.CharacterMods.Happy,
-                TileFieldManager.ComboAppraisal.Bad => CharacterAnimator.CharacterMods.Offended,
-                TileFieldManager.ComboAppraisal.Party => CharacterAnimator.CharacterMods.Party,
+                TileFieldManager.ComboAppraisal.Neutral => CharacterAnimator.CharacterMoods.Neutral,
+                TileFieldManager.ComboAppraisal.Good => CharacterAnimator.CharacterMoods.Happy,
+                TileFieldManager.ComboAppraisal.Bad => CharacterAnimator.CharacterMoods.Offended,
+                TileFieldManager.ComboAppraisal.Party => CharacterAnimator.CharacterMoods.Party,
                 _ => throw new ArgumentOutOfRangeException(nameof(appraisal), appraisal, null)
             };
 
             myCharacterAnimator.CurrentMode = mode;
+        }
+
+        private void SelectCharacter(CharacterAnimator.Characters character)
+        {
+            myCharacterAnimator.CurrentCharacter = character;
         }
     }
 }

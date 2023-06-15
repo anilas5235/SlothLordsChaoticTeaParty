@@ -24,6 +24,8 @@ MonoBehaviour:
       targetNodeGuid: b6533d78-45ea-4aff-878f-ef0b8f117c88
     position: {x: 150, y: 200}
     entryPoint: 1
+    mood: 0
+    imageOverride: {fileID: 0}
   - guid: b6533d78-45ea-4aff-878f-ef0b8f117c88
     speaker: Kenobi
     text: Hello there !!!
@@ -37,6 +39,8 @@ MonoBehaviour:
       targetNodeGuid: 5a024202-5087-452b-83d2-23e9ad8ee139
     position: {x: 324, y: 124}
     entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
   - guid: 8fb07b36-10e4-4b22-b2cb-15beedaf98c4
     speaker: Grevious
     text: General Kenobi
@@ -44,10 +48,14 @@ MonoBehaviour:
     links: []
     position: {x: 610, y: 75}
     entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
   - guid: 5a024202-5087-452b-83d2-23e9ad8ee139
     speaker: Kenobi
     text: Disapointing !
     audioLine: {fileID: 8300000, guid: 50b36fda510b25b419c3d379746367dc, type: 3}
     links: []
-    position: {x: 614, y: 297}
+    position: {x: 602, y: 365}
     entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}

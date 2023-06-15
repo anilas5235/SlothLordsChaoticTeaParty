@@ -1313,6 +1313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Menues
       objectReference: {fileID: 0}
+    - target: {fileID: 6011266656783574642, guid: 75d5a1b2067a3344fbe3a98db1b9cc7b, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75d5a1b2067a3344fbe3a98db1b9cc7b, type: 3}
 --- !u!114 &945550960 stripped
@@ -2402,6 +2406,18 @@ PrefabInstance:
     - target: {fileID: 3517953758791727507, guid: cbe73155d114c5641ab1072df8aa5a71, type: 3}
       propertyPath: m_Name
       value: Level End
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517953758791727507, guid: cbe73155d114c5641ab1072df8aa5a71, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361228175455644663, guid: cbe73155d114c5641ab1072df8aa5a71, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361228175455644663, guid: cbe73155d114c5641ab1072df8aa5a71, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbe73155d114c5641ab1072df8aa5a71, type: 3}
