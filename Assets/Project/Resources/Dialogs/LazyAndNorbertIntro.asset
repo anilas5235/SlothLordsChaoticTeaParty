@@ -1,0 +1,254 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
+  m_Name: LazyAndNorbertIntro
+  m_EditorClassIdentifier: 
+  id: 0
+  passages:
+  - guid: f433cd56-a3db-48e5-a8cb-5a4d007b9f06
+    speaker: 
+    text: ENTRYPOINT
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: f433cd56-a3db-48e5-a8cb-5a4d007b9f06
+      portName: Next
+      targetNodeGuid: ce04e5a5-189e-4371-b494-ea6745336899
+    position: {x: 101, y: 135}
+    entryPoint: 1
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: ce04e5a5-189e-4371-b494-ea6745336899
+    speaker: Lazy
+    text: "Norbert? \u2026 Norbert? \u2026 NORBERT!\u202F"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: ce04e5a5-189e-4371-b494-ea6745336899
+      portName: Choice 0
+      targetNodeGuid: 869d4a05-78bd-4903-826d-ae43304103ad
+    position: {x: 251, y: 135}
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 869d4a05-78bd-4903-826d-ae43304103ad
+    speaker: Norbert
+    text: "Do you know what time it is?!\u202F "
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 869d4a05-78bd-4903-826d-ae43304103ad
+      portName: Choice 0
+      targetNodeGuid: c114cd89-dee9-4152-bdf0-a0d987f315d1
+    position: {x: 516, y: 137}
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
+  - guid: c114cd89-dee9-4152-bdf0-a0d987f315d1
+    speaker: Lazy
+    text: No
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: c114cd89-dee9-4152-bdf0-a0d987f315d1
+      portName: Choice 0
+      targetNodeGuid: 18d135d3-c480-48d6-b0ed-b7abde457841
+    position: {x: 792, y: 137}
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 18d135d3-c480-48d6-b0ed-b7abde457841
+    speaker: Norbert
+    text: Time to be quiet and to let me sleep in peace!
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 18d135d3-c480-48d6-b0ed-b7abde457841
+      portName: Choice 0
+      targetNodeGuid: 5e821a7d-9d22-472e-acc4-49e0c1d780cb
+    position: {x: 1018, y: 136}
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
+  - guid: 5e821a7d-9d22-472e-acc4-49e0c1d780cb
+    speaker: Lazy
+    text: "But I need your help!\u202F"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 5e821a7d-9d22-472e-acc4-49e0c1d780cb
+      portName: Choice 0
+      targetNodeGuid: 6d050522-cb0d-4570-94e2-3718efe6eeea
+    position: {x: 1300, y: 137}
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: b2a2d26c-3cf2-4d07-bcf9-80e3245c17a4
+    speaker: Lazy
+    text: ...
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: b2a2d26c-3cf2-4d07-bcf9-80e3245c17a4
+      portName: Choice 0
+      targetNodeGuid: 4704abf4-f8c1-4986-89d1-37956a3865a7
+    position: {x: 500, y: 394}
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
+  - guid: 4704abf4-f8c1-4986-89d1-37956a3865a7
+    speaker: Norbert
+    text: "Make it quick\u2026"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 4704abf4-f8c1-4986-89d1-37956a3865a7
+      portName: Choice 0
+      targetNodeGuid: 121c478b-e721-41e1-bcc4-a4d62d4b46f6
+    position: {x: 724, y: 395}
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
+  - guid: 121c478b-e721-41e1-bcc4-a4d62d4b46f6
+    speaker: Lazy
+    text: "Okay! Listen! \u2026 TEA PARTY!\u202F "
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 121c478b-e721-41e1-bcc4-a4d62d4b46f6
+      portName: Choice 0
+      targetNodeGuid: b5ab4465-5d10-43b1-840b-f80a5b699697
+    position: {x: 961, y: 401}
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: b5ab4465-5d10-43b1-840b-f80a5b699697
+    speaker: Norbert
+    text: "What?\u202F"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: b5ab4465-5d10-43b1-840b-f80a5b699697
+      portName: Choice 0
+      targetNodeGuid: 3b964758-de28-4425-ba8a-2f0269c40192
+    position: {x: 1222, y: 402}
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
+  - guid: 3b964758-de28-4425-ba8a-2f0269c40192
+    speaker: Lazy
+    text: "I had a Dream last night \u2026 we had tea with our family, so I\u2019ve
+      been thinking\u2026 Let\u2019s have a tea party, like the good old days.\u202F"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 3b964758-de28-4425-ba8a-2f0269c40192
+      portName: Choice 0
+      targetNodeGuid: 96e03db5-2a70-4a36-8e3c-63ffad6fc4c6
+    position: {x: 1458, y: 402}
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 96e03db5-2a70-4a36-8e3c-63ffad6fc4c6
+    speaker: Norbert
+    text: "On our own?\u202F "
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 96e03db5-2a70-4a36-8e3c-63ffad6fc4c6
+      portName: Choice 0
+      targetNodeGuid: 23bbf113-50cc-4ac2-b86d-291d349426cb
+    position: {x: 257, y: 650}
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
+  - guid: 23bbf113-50cc-4ac2-b86d-291d349426cb
+    speaker: Lazy
+    text: "\u2026 and that\u2019s where you come in!\u202F "
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 23bbf113-50cc-4ac2-b86d-291d349426cb
+      portName: Choice 0
+      targetNodeGuid: dd7ce03d-81f3-4a32-9941-0f920d3a0fee
+    position: {x: 479, y: 651}
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: dd7ce03d-81f3-4a32-9941-0f920d3a0fee
+    speaker: Norbert
+    text: No!
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: dd7ce03d-81f3-4a32-9941-0f920d3a0fee
+      portName: Choice 0
+      targetNodeGuid: 449e89aa-9b40-4633-b443-6068e090a628
+    position: {x: 736, y: 652}
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
+  - guid: 449e89aa-9b40-4633-b443-6068e090a628
+    speaker: Lazy
+    text: "Yes!\u202F"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 449e89aa-9b40-4633-b443-6068e090a628
+      portName: Choice 0
+      targetNodeGuid: 3403d3f2-2e4a-4eb6-b9a5-ed15ba7f3998
+    position: {x: 961, y: 653}
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 3403d3f2-2e4a-4eb6-b9a5-ed15ba7f3998
+    speaker: Norbert
+    text: NO!
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 3403d3f2-2e4a-4eb6-b9a5-ed15ba7f3998
+      portName: Choice 0
+      targetNodeGuid: da445d08-745f-46f6-a31f-18172c6247e4
+    position: {x: 1191, y: 651}
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
+  - guid: a2ac8a77-2c7d-4654-9953-477a4f387009
+    speaker: Norbert
+    text: "Fine\u2026 but you\u2019ll have to do, what I tell you!"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: a2ac8a77-2c7d-4654-9953-477a4f387009
+      portName: Choice 0
+      targetNodeGuid: aa6e4375-b4ef-43b4-99e5-2f6e30d31a53
+    position: {x: 261, y: 914}
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
+  - guid: da445d08-745f-46f6-a31f-18172c6247e4
+    speaker: Lazy
+    text: "Pleaseeeeeee\u2026."
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: da445d08-745f-46f6-a31f-18172c6247e4
+      portName: Choice 0
+      targetNodeGuid: a2ac8a77-2c7d-4654-9953-477a4f387009
+    position: {x: 1416, y: 655}
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: aa6e4375-b4ef-43b4-99e5-2f6e30d31a53
+    speaker: Lazy
+    text: "YAY!\u202F"
+    audioLine: {fileID: 0}
+    links: []
+    position: {x: 516, y: 915}
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 6d050522-cb0d-4570-94e2-3718efe6eeea
+    speaker: Norbert
+    text: "I think I\u2019ll pass\u2026\u202F"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 6d050522-cb0d-4570-94e2-3718efe6eeea
+      portName: Choice 0
+      targetNodeGuid: b2a2d26c-3cf2-4d07-bcf9-80e3245c17a4
+    position: {x: 253, y: 393}
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
