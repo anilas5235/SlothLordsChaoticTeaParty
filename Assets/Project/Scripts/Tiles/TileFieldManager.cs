@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Project.Scripts.DialogScripts;
 using Project.Scripts.General;
 using Project.Scripts.UIScripts;
+using Project.Scripts.UIScripts.Effects;
 using Project.Scripts.UIScripts.Menu;
 using Project.Scripts.UIScripts.Windows;
 using Unity.Mathematics;
@@ -39,14 +40,11 @@ namespace Project.Scripts.Tiles
         public bool brushTool = false;
         public Tile.TileType brushTileType;
 
-        private int fallingCount;
-
         private const float TileSize =2f, TileSpacing = 0.2f;
         private const int MinComboSize = 3;
-        private const float StepTime = .2f;
+        public const float StepTime = .2f;
 
         #region Properties
-
         public int Score
         {
             get => score;
@@ -95,6 +93,8 @@ namespace Project.Scripts.Tiles
 
         public Action<CharacterAnimator.Characters> OnSelectCharacter;
 
+        public Action OnDoneFalling;
+
         public Action OnGameStart;
 
         public Action OnGameEnd;
@@ -108,15 +108,19 @@ namespace Project.Scripts.Tiles
             tilePreFap =  Resources.Load<GameObject>("Prefaps/Tiles/Tile1");
         }
 
-        private void Start()
+        private void OnEnable()
         {
             currentLevelID = PlayerPrefs.GetInt("levelID", 0);
 
             levelData = LevelDataLoader.Instance.GetLevelData(currentLevelID);
             MenuWindowsMaster.Instance.OnMenuActiveChange += MenuChange;
+        }
 
-            CreateGrid();
+        private void Start()
+        {
+             CreateGrid();
             OnGameStart?.Invoke();
+            OnSelectCharacter?.Invoke(characterForLevel);
         }
 
         #region GridMoveFunctions
@@ -418,11 +422,12 @@ namespace Project.Scripts.Tiles
             if(!IsPositionInGrid(tilePosition)) return;
             if(!GetTile(tilePosition)) return;
             Tile.TileType tileType = GetTile(tilePosition).GetTileType();
+            if (tileType == Tile.TileType.Clear) return;
+            
             List<Tile> comboTiles = new List<Tile> { fieldGridTiles[tilePosition.x][tilePosition.y] };
             Comp(tilePosition);
-            
-            if(comboTiles.Count < MinComboSize) return;
-            if (tileType == Tile.TileType.Clear) return;
+
+            if (comboTiles.Count < MinComboSize) return;
             ComboRoll++;
             foreach (var t in comboTiles)
             {
@@ -430,7 +435,7 @@ namespace Project.Scripts.Tiles
                 fieldGridTiles[pos.x][pos.y] = null;
                 Destroy(t.gameObject);
             }
-            ScoreCalculator( comboTiles.Count, tileType);
+            ScoreCalculator( comboTiles.Count, tileType, GetScenePosition(tilePosition));
 
             void Comp(Vector2Int localOrigin)
             {
@@ -458,14 +463,16 @@ namespace Project.Scripts.Tiles
             {
                 for (int j = 0; j < fieldSize.x; j++)
                 {
-                    if (!checkedTiles.Contains(fieldGridTiles[j][i]))
+                    Tile tile = fieldGridTiles[j][i];
+                    if (!checkedTiles.Contains(tile))
                     {
-                        List<Tile> combTiles = Comp(fieldGridTiles[j][i].GetTilePosition(), fieldGridTiles[j][i].GetTileType());
-                        Tile.TileType tileType = fieldGridTiles[j][i].GetTileType();
+                        
+                        List<Tile> combTiles = Comp(tile.GetTilePosition(), tile.GetTileType());
+                        Tile.TileType tileType = tile.GetTileType();
                         if (combTiles.Count < 3 || tileType == Tile.TileType.Clear) continue;
                         toBeDeleteTiles.AddRange(combTiles);
                         ComboRoll++;
-                        ScoreCalculator(combTiles.Count,tileType);
+                        ScoreCalculator(combTiles.Count,tileType,tile.PositionInScene);
                     }
                 }
             }
@@ -483,7 +490,6 @@ namespace Project.Scripts.Tiles
                 //Falling done
                 interactable = true;
                 ComboRoll = 0;
-                fallingCount = 0;
                 if (Turns < 1)
                 {
                     SaveData saveData = SaveSystem.Instance.GetActiveSave();
@@ -501,6 +507,7 @@ namespace Project.Scripts.Tiles
                     MenuWindowsMaster.Instance.OpenWindow(LevelEndWindow.Instance);
                     OnGameEnd?.Invoke();
                 }
+                OnDoneFalling?.Invoke();
             }
 
             List<Tile> Comp(Vector2Int localOrigin, Tile.TileType tileType)
@@ -548,7 +555,7 @@ namespace Project.Scripts.Tiles
 
             void EmptyTile(Vector2Int thisPosition)
             {
-                if (thisPosition.y == 0) {NewTile(thisPosition); return;}
+                if (thisPosition.y == 0 &&!toSkip.Contains(thisPosition)) {NewTile(thisPosition); return;}
 
                 Tile aboveTile = GetTile(thisPosition + Vector2Int.down);
                 if (aboveTile && !toSkip.Contains(thisPosition))
@@ -661,33 +668,39 @@ namespace Project.Scripts.Tiles
         private IEnumerator Falling()
         {
             interactable = false;
-            do
-            {
-                yield return new WaitForSeconds(StepTime * Mathf.Pow(0.95f,fallingCount) +.1f);
-                fallingCount++;
-            } while (!CheckAndFall());
-
+            
+            do { yield return new WaitForSeconds(StepTime); } while (!CheckAndFall());
+            
             interactable = true;
             CheckForAllCombos();
         }
 
-        private void ScoreCalculator(int comboSize, Tile.TileType comboTileType)
+        private void ScoreCalculator(int comboSize, Tile.TileType comboTileType, Vector3 position)
         {
             if (comboSize < MinComboSize) return;
             if (comboTileType == Tile.TileType.Clear)return;
 
             int scoreToAdd = comboSize * comboRoll;
-            ComboAppraisal appraisal = ComboAppraisal.Neutral;
+            ComboAppraisal appraisal;
+            Color colorForText;
             switch ((comboTileType == preferredTile, comboTileType == dislikedTile))
             {
-                case (true,false): scoreToAdd *= 3; appraisal = ComboAppraisal.Good; break;
-                case (false,true): scoreToAdd *= 0; appraisal = ComboAppraisal.Bad; break;
-                default: scoreToAdd *= 1; appraisal = ComboAppraisal.Neutral; break; 
+                case (true,false): scoreToAdd *= 3; appraisal = ComboAppraisal.Good; colorForText = Color.green; break;
+                case (false,true): scoreToAdd *= 0; appraisal = ComboAppraisal.Bad; colorForText = Color.red; break;
+                default: scoreToAdd *= 1; appraisal = ComboAppraisal.Neutral; colorForText = Color.blue; break; 
             }
             if (comboRoll > 2) appraisal = ComboAppraisal.Good;
             if (comboRoll > 6) appraisal = ComboAppraisal.Party;
             Score += scoreToAdd;
+            GetScorePopUp(scoreToAdd,position,colorForText);
             OnCombo?.Invoke(appraisal);
+        }
+
+        private void GetScorePopUp(int comboScore, Vector3 position,Color textColor)
+        {
+            ScorePopUp popUp = ScorePopUpPool.Instance.GetObjectFromPool().GetComponent<ScorePopUp>();
+            popUp.PassValues(textColor,(int)(80-70*math.pow((float)Math.E,-.006f*comboScore)),comboScore.ToString());
+            popUp.transform.position = position;
         }
         
         #endregion

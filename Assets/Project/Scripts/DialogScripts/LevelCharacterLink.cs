@@ -14,17 +14,19 @@ namespace Project.Scripts.DialogScripts
             myCharacterAnimator = GetComponent<CharacterAnimator>();
         }
 
-        private void Start()
+        private void OnEnable()
         {
             tileFieldManager = TileFieldManager.Instance;
             tileFieldManager.OnCombo += ChangeCharacterMode;
             tileFieldManager.OnSelectCharacter += SelectCharacter;
+            tileFieldManager.OnDoneFalling += Calm;
         }
 
         private void OnDisable()
         {
             tileFieldManager.OnCombo -= ChangeCharacterMode;
             tileFieldManager.OnSelectCharacter -= SelectCharacter;
+            tileFieldManager.OnDoneFalling -= Calm;
         }
 
         private void ChangeCharacterMode(TileFieldManager.ComboAppraisal appraisal)
@@ -44,6 +46,12 @@ namespace Project.Scripts.DialogScripts
         private void SelectCharacter(CharacterAnimator.Characters character)
         {
             myCharacterAnimator.CurrentCharacter = character;
+        }
+
+        private void Calm()
+        {
+            if(myCharacterAnimator.CurrentMode == CharacterAnimator.CharacterMoods.Party)
+                myCharacterAnimator.CurrentMode = CharacterAnimator.CharacterMoods.Neutral;
         }
     }
 }

@@ -9,22 +9,27 @@ namespace Project.Scripts.Tiles
     {
         private SpriteRenderer myItem,myBackground;
 
-        public TileType myTileType;
+        [SerializeField] private TileType myTileType;
         [SerializeField] private Vector2Int positionInGrid;
         [SerializeField] private Vector3 positionInScene, dragVector;
         
         
         private Tile previewDragedTile;
-        private Camera _camera;
-        private TileFieldManager myTileFieldManager;
         private LineRenderer myLineRenderer;
-        private static Vector3[] LineRenderPoints = new []{new Vector3(1,1,0),new Vector3(-1,1,0),new Vector3(-1,-1,0),new Vector3(1,-1,0)};
-
-        private bool currentlyDraged = false;
-        private bool highLighted = false;
+        private bool currentlyDraged, highLighted, falling;
+        private Vector3 oldPosition;
+        private float transitionVar;
         
-        private const float DragRange = 2.2f, MoveThreshold = .5f;
+        private static Camera _camera;
+        private static TileFieldManager myTileFieldManager;
+        private static Vector3[] LineRenderPoints = new []{new Vector3(1,1,0),new Vector3(-1,1,0),
+            new Vector3(-1,-1,0),new Vector3(1,-1,0)};
 
+        private const float DragRange = 2.2f, MoveThreshold = .5f;
+        
+        public Vector3 PositionInScene { get => positionInScene; }
+
+        #region Enums
         public enum TileType
         {
             Clear = -1,
@@ -35,31 +40,41 @@ namespace Project.Scripts.Tiles
             StrawberryCake = 4,
             MoonCake = 5,
         }
-
+        #endregion
         private void Awake()
         {
             myBackground = transform.GetChild(0).GetComponent<SpriteRenderer>();
             myItem = transform.GetChild(1).GetComponent<SpriteRenderer>();
-            _camera = Camera.main;
-            myTileFieldManager = TileFieldManager.Instance;
+            _camera ??= Camera.main;
+            myTileFieldManager ??= TileFieldManager.Instance;
             myLineRenderer = GetComponent<LineRenderer>();
         }
 
         private void FixedUpdate()
         {
-            if (highLighted)
+            if (highLighted) HighLight();
+        }
+
+        private void Update()
+        {
+            if (falling)
             {
-                HighLight();
+                if (transitionVar<=1f)
+                {
+                    transitionVar += Time.deltaTime;
+                    transform.position = Vector3.Lerp(oldPosition,positionInScene,transitionVar/TileFieldManager.StepTime);
+                }
+                else
+                {
+                    falling = false;
+                    transform.position = positionInScene;
+                }
             }
         }
 
         #region TileInfoFunctions
 
-        public TileType GetTileType()
-        {
-            return myTileType;
-        }
-
+        public TileType GetTileType() { return myTileType; }
         public Tile[] GetNeighbours()
         {
             List<Tile> neighbours = new List<Tile>();
@@ -80,15 +95,9 @@ namespace Project.Scripts.Tiles
             return neighbours.ToArray();
         }
 
-        public Tile GetNeighbour(Vector2Int offset)
-        {
-            return myTileFieldManager.GetTile(positionInGrid + offset);
-        }
+        public Tile GetNeighbour(Vector2Int offset) { return myTileFieldManager.GetTile(positionInGrid + offset); }
 
-        public Vector2Int GetTilePosition()
-        {
-            return positionInGrid;
-        }
+        public Vector2Int GetTilePosition() { return positionInGrid; }
         
         #endregion
 
@@ -131,9 +140,11 @@ namespace Project.Scripts.Tiles
 
         public void SetNewPosition(Vector2Int newPos)
         {
+            falling = true;
+            oldPosition = positionInScene;
+            transitionVar = 0;
             positionInGrid = newPos;
             positionInScene = myTileFieldManager.GetScenePosition(positionInGrid);
-            transform.localPosition = positionInScene;
         }
 
         public void HighLight()
