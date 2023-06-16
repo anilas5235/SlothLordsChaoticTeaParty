@@ -54,6 +54,8 @@ namespace Project.Scripts.Editor
                     EditorGUILayout.PropertyField(P_sceneID);
                     EditorGUILayout.EndVertical();
                     break;
+                case UIMenuWindowHandler.StandardUIButtonFunctions.MainMenu:
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

@@ -1,4 +1,4 @@
-using Project.Scripts.UIScripts.Menu;
+using Project.Scripts.UIScripts.Windows;
 
 namespace Project.Scripts.UIScripts.InteractableUI
 {
@@ -13,6 +13,7 @@ namespace Project.Scripts.UIScripts.InteractableUI
 
         protected override void SliderChanged(float val)
         {
+            if(!gameObject.activeInHierarchy) return;
             audioMenuWindow.UpdateSoundOptions();
         }
     }

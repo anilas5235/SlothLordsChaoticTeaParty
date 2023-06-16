@@ -23,6 +23,15 @@ namespace Project.Scripts.UIScripts.Windows
             playerController = FindObjectOfType<FirstPersonController>();
         }
 
+        private void Start()
+        {
+            AudioOptionsUIMenuWindow audioOptions = FindObjectOfType<AudioOptionsUIMenuWindow>(true);
+            if (audioOptions)
+            {
+                audioOptions.LoadFromSaveText();
+            }
+        }
+
         public List<UIMenuWindowHandler> currentlyActiveWindows = new List<UIMenuWindowHandler>();
 
         [SerializeField] private bool menuActive;

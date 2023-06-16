@@ -1,5 +1,4 @@
 using System;
-using Project.Scripts.UIScripts.Menu;
 using Project.Scripts.UIScripts.Windows;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,6 +18,7 @@ namespace Project.Scripts.UIScripts
             OpenWindow,
             Quit,
             ChangeScene,
+            MainMenu,
         }
         public virtual void UIEsc()
         {
@@ -49,6 +49,16 @@ namespace Project.Scripts.UIScripts
             gameObject.SetActive(true);
             myWindowsMaster ??= MenuWindowsMaster.Instance;
             myWindowsMaster.currentlyActiveWindows.Add(this);
+        }
+
+        public virtual void SwitchToMainMenu()
+        {
+            ChangeScene(0);
+        }
+
+        public virtual void RetryLevel()
+        {
+            ChangeScene(1);
         }
     }
 }

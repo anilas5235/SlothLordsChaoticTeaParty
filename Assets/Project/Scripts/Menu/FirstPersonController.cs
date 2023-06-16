@@ -2,13 +2,16 @@ using System;
 using System.Collections;
 using Project.Scripts.General;
 using UnityEngine;
+/*
+ * This PlayerController is based on the First Person Player Controller by Comp-3 Interactive https://www.youtube.com/@comp3interactive
+ */
 
 namespace Project.Scripts.Menu
 {
     [RequireComponent(typeof(CharacterController))]
     public class FirstPersonController : MonoBehaviour
     {
-        public bool CanMove { get; private set; } = true;
+        private bool CanMove { get; set; } = true;
         private bool IsSprinting => canSprint && Input.GetButton(sprintInput);
         private bool ShouldJump => Input.GetButtonDown(jumpInput) && myCharacterController.isGrounded;
 

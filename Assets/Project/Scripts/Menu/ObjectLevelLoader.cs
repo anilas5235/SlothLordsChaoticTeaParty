@@ -1,6 +1,5 @@
 using Project.Scripts.General;
 using Project.Scripts.UIScripts;
-using Project.Scripts.UIScripts.Menu;
 using Project.Scripts.UIScripts.Windows;
 using UnityEngine;
 

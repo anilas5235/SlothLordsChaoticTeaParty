@@ -3,21 +3,21 @@ using Project.Scripts.General;
 using Project.Scripts.UIScripts.InteractableUI;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
 
-namespace Project.Scripts.UIScripts.Menu
+namespace Project.Scripts.UIScripts.Windows
 {
     public class AudioOptionsUIMenuWindow : UIMenuWindowHandler
     {
-        [Header("Slider")] 
-        [SerializeField] private AudioSlider main;
-        [SerializeField] private AudioSlider music, effects,voice;
-        [Header("NamesOfExposedParameters")]
-        [SerializeField] private string paramMaster = "Master";
+        [Header("Slider")] [SerializeField] private AudioSlider main;
+        [SerializeField] private AudioSlider music, effects, voice;
+
+        [Header("NamesOfExposedParameters")] [SerializeField]
+        private string paramMaster = "Master";
+
         [SerializeField] private string paramMusic = "Music", paramEffects = "Effects", paramVoice = "Voice";
 
-        [Header("AudioMixer")]
-        [SerializeField] private AudioMixer mainAudioMixer;
+        [Header("AudioMixer")] [SerializeField]
+        private AudioMixer mainAudioMixer;
 
         private void OnEnable()
         {
@@ -34,11 +34,6 @@ namespace Project.Scripts.UIScripts.Menu
             SaveOptionsToText();
         }
 
-        private void OnApplicationQuit()
-        {
-            SaveOptionsToText();
-        }
-
         public void UpdateSoundOptions()
         {
             mainAudioMixer.SetFloat(paramMaster, ConvertSliderValueTodB(main.Value));
@@ -47,15 +42,18 @@ namespace Project.Scripts.UIScripts.Menu
             mainAudioMixer.SetFloat(paramVoice, ConvertSliderValueTodB(voice.Value));
         }
 
-        private void SaveOptionsToText()
+        public void SaveOptionsToText()
         {
             float[] optionsValues = SaveSystem.Instance.GetActiveSave().audioOptions;
             mainAudioMixer.GetFloat(paramMaster, out optionsValues[0]);
             mainAudioMixer.GetFloat(paramMusic, out optionsValues[1]);
             mainAudioMixer.GetFloat(paramEffects, out optionsValues[2]);
             mainAudioMixer.GetFloat(paramVoice, out optionsValues[3]);
+            
+            SaveSystem.Instance.Save();
         }
-        private void LoadFromSaveText()
+
+        public void LoadFromSaveText()
         {
             float[] optionsValues = SaveSystem.Instance.GetActiveSave().audioOptions;
             mainAudioMixer.SetFloat(paramMaster, optionsValues[0]);
@@ -68,9 +66,16 @@ namespace Project.Scripts.UIScripts.Menu
             effects.Value = ConvertDBToSliderValue(optionsValues[2]);
             voice.Value = ConvertDBToSliderValue(optionsValues[3]);
         }
-        
-        private float ConvertSliderValueTodB(float sliderValue) { return Mathf.Log10(sliderValue) * 20f; }
-        private float ConvertDBToSliderValue(float dBValue) { return Mathf.Pow(10,(dBValue) / 20f); }
+
+        private float ConvertSliderValueTodB(float sliderValue)
+        {
+            return Mathf.Log10(sliderValue) * 20f;
+        }
+
+        private float ConvertDBToSliderValue(float dBValue)
+        {
+            return Mathf.Pow(10, (dBValue) / 20f);
+        }
 
     }
 }

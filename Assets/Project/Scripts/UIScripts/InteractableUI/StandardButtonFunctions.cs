@@ -30,6 +30,9 @@ namespace Project.Scripts.UIScripts.InteractableUI
                     MyMenuWindowHandler.ChangeScene(sceneID);
                     break;
 
+                case UIMenuWindowHandler.StandardUIButtonFunctions.MainMenu:
+                    MyMenuWindowHandler.SwitchToMainMenu();
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

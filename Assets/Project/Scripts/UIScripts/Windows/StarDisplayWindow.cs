@@ -1,6 +1,8 @@
+using Project.Scripts.DialogScripts;
 using Project.Scripts.General;
 using Project.Scripts.Menu;
 using Project.Scripts.Tiles;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +12,8 @@ namespace Project.Scripts.UIScripts.Windows
     {
         [SerializeField] protected Image star1, star2;
         [SerializeField] protected Slider progressBar;
+        [SerializeField] protected TextMeshProUGUI scoreText;
+        [SerializeField] protected CharacterAnimator characterAnimator;
         
         public int levelID;
         [SerializeField] protected int score;
@@ -30,11 +34,10 @@ namespace Project.Scripts.UIScripts.Windows
         }
 
         protected abstract void UpdateDisplays();
-
+        
         public void Play()
         {
             SceneMaster.Instance.ChangeToLevel(levelID);   
         }
-    
     }
 }
