@@ -29,7 +29,7 @@ namespace Project.Scripts.UIScripts.Effects
         {
             while(grow)
             {
-                if (myText.fontSize < maximumFontSize) myText.fontSize+=maximumFontSize/20f;
+                if (myText.fontSize < maximumFontSize) myText.fontSize+=maximumFontSize/2f;
                 else if (myText.color.a > 0) myText.color -= new Color(0, 0, 0, .1f);
                 else
                 {

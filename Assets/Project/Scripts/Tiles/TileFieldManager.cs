@@ -42,7 +42,7 @@ namespace Project.Scripts.Tiles
 
         private const float TileSize =2f, TileSpacing = 0.2f;
         private const int MinComboSize = 3;
-        public const float StepTime = .2f;
+        public const float StepTime = .15f;
 
         #region Properties
         public int Score
@@ -129,15 +129,17 @@ namespace Project.Scripts.Tiles
         ///   <para>Switches two tile at given positions</para>
         ///   <para>Will aboard if any of the positions are outside the current grid</para>   
         /// </summary>
-        public void SwitchTiles(Vector2Int tile1, Vector2Int tile2)
+        public void SwitchTiles(Vector2Int tile1, Vector2Int tile2, bool isPlayerMove = false)
         {
             if (!IsPositionInGrid(tile1) || !IsPositionInGrid(tile2)) return;
             GetTile(tile1).SetNewPosition(tile2);
             GetTile(tile2).SetNewPosition(tile1);
             (fieldGridTiles[tile1.x][tile1.y], fieldGridTiles[tile2.x][tile2.y]) =
                 (fieldGridTiles[tile2.x][tile2.y], fieldGridTiles[tile1.x][tile1.y]);
-            CheckForCombo(tile2);
-            CheckForCombo(tile1);
+
+            if (!CheckForCombo(tile2) && !CheckForCombo(tile1) && isPlayerMove){}
+            else Turns--;
+
             StartCoroutine(Falling());
         }
         
@@ -417,17 +419,17 @@ namespace Project.Scripts.Tiles
         /// <summary>
         ///   <para>Checks if a tile is part of valid combo</para>
         /// </summary>
-        private void CheckForCombo(Vector2Int tilePosition)
+        private bool CheckForCombo(Vector2Int tilePosition)
         {
-            if(!IsPositionInGrid(tilePosition)) return;
-            if(!GetTile(tilePosition)) return;
+            if(!IsPositionInGrid(tilePosition)) return false;
+            if(!GetTile(tilePosition)) return false;
             Tile.TileType tileType = GetTile(tilePosition).GetTileType();
-            if (tileType == Tile.TileType.Clear) return;
+            if (tileType == Tile.TileType.Clear) return false;
             
             List<Tile> comboTiles = new List<Tile> { fieldGridTiles[tilePosition.x][tilePosition.y] };
             Comp(tilePosition);
 
-            if (comboTiles.Count < MinComboSize) return;
+            if (comboTiles.Count < MinComboSize) return false;
             ComboRoll++;
             foreach (var t in comboTiles)
             {
@@ -449,6 +451,8 @@ namespace Project.Scripts.Tiles
                     }
                 }
             }
+
+            return true;
         }
         
         /// <summary>
