@@ -68,6 +68,28 @@ namespace Project.Scripts.DialogScripts.Editor
 
             return node;
         }
+        
+        public DialogNode GenerateEntryPoint( Rect position,string guid = "")
+        {
+            var node = new DialogNode()
+            {
+                title = "START",
+                guid = string.IsNullOrEmpty(guid) ? Guid.NewGuid().ToString():guid,
+                dialogText = "ENTRYPOINT",
+                entryPoint = true,
+            };
+
+            var port =  GeneratePort(node, Direction.Output);
+            port.portName = "Next";
+            node.outputContainer.Add(port);
+            
+            node.RefreshPorts();
+            node.RefreshExpandedState();
+            
+            node.SetPosition(position);
+
+            return node;
+        }
 
         private Port GeneratePort(DialogNode targetNode, Direction portDirection, Port.Capacity portCapacity = Port.Capacity.Single)
         {

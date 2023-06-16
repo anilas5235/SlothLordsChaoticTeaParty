@@ -39,7 +39,7 @@ namespace Project.Scripts.DialogScripts.Editor
                 {
                     guid = currentNode.guid,
                     text = currentNode.dialogText,
-                    position = currentNode.GetPosition().position,
+                    rect = currentNode.GetPosition(),
                     entryPoint = currentNode.entryPoint,
                     speaker = currentNode.speaker,
                     audioLine = currentNode.voiceLine,
@@ -155,7 +155,7 @@ namespace Project.Scripts.DialogScripts.Editor
                     }
                 }
 
-                Nodes[i].SetPosition(new Rect(_dialogCached.passages[i].position, _targetGraphView.defaultNodeSize));
+                Nodes[i].SetPosition(_dialogCached.passages[i].rect);
 
                 Nodes[i].RefreshPorts();
                 Nodes[i].RefreshExpandedState();
@@ -182,7 +182,7 @@ namespace Project.Scripts.DialogScripts.Editor
                 DialogNode tempNode;
                 if (passage.entryPoint)
                 {
-                   tempNode = _targetGraphView.GenerateEntryPoint(passage.position, passage.guid);
+                   tempNode = _targetGraphView.GenerateEntryPoint(passage.rect, passage.guid);
                 }
                 else
                 {

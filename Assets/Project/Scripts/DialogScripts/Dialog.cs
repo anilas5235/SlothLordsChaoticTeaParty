@@ -33,7 +33,7 @@ namespace Project.Scripts.DialogScripts
         public string text;
         public AudioClip audioLine;
         public List<Link> links;
-        public Vector2 position;
+        public Rect rect;
         public bool entryPoint;
         public CharacterAnimator.CharacterMoods mood;
         public Sprite imageOverride;
