@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
+  m_Name: LazyandNorbertAfterTeaPartyTutorial
+  m_EditorClassIdentifier: 
+  id: 0
+  passages:
+  - guid: 9dbb3b03-2844-46b1-bea6-4b81547384e2
+    speaker: 
+    text: ENTRYPOINT
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 9dbb3b03-2844-46b1-bea6-4b81547384e2
+      portName: Next
+      targetNodeGuid: e45614ec-8cc7-4b9d-91c8-b8846ca83fe7
+    rect:
+      serializedVersion: 2
+      x: 150
+      y: 200
+      width: 87
+      height: 77
+    entryPoint: 1
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: e45614ec-8cc7-4b9d-91c8-b8846ca83fe7
+    speaker: Lazy
+    text: "That\u2026was\u2026AMAZING!\u202F"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: e45614ec-8cc7-4b9d-91c8-b8846ca83fe7
+      portName: Choice 0
+      targetNodeGuid: de2fdc41-86be-424a-9345-95e5a99b5c89
+    rect:
+      serializedVersion: 2
+      x: 248
+      y: 199
+      width: 264
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: de2fdc41-86be-424a-9345-95e5a99b5c89
+    speaker: Norbert
+    text: " \u2026 I\u2019m sooo full\u2026 *burp*"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: de2fdc41-86be-424a-9345-95e5a99b5c89
+      portName: Choice 0
+      targetNodeGuid: 835ceb39-7cb2-4025-a893-5cdeee871d53
+    rect:
+      serializedVersion: 2
+      x: 520
+      y: 204
+      width: 240
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 835ceb39-7cb2-4025-a893-5cdeee871d53
+    speaker: 
+    text: 
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 835ceb39-7cb2-4025-a893-5cdeee871d53
+      portName: Choice 0
+      targetNodeGuid: 791b2c0c-d4b9-49d2-9d4d-7874b61b7edd
+    rect:
+      serializedVersion: 2
+      x: 771
+      y: 203
+      width: 225
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 21300000, guid: eebcdb8b3bd40a3459a99eea7919a531, type: 3}
+  - guid: 791b2c0c-d4b9-49d2-9d4d-7874b61b7edd
+    speaker: Lazy
+    text: Oh no! Norbert, be careful!
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 791b2c0c-d4b9-49d2-9d4d-7874b61b7edd
+      portName: Choice 0
+      targetNodeGuid: 8727488f-0e3f-40e0-9159-bb3e83d2f6db
+    rect:
+      serializedVersion: 2
+      x: 991
+      y: 206
+      width: 244
+      height: 246
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 21300000, guid: eebcdb8b3bd40a3459a99eea7919a531, type: 3}
+  - guid: 8727488f-0e3f-40e0-9159-bb3e83d2f6db
+    speaker: Norbert
+    text: "That\u2019s just great! I guess my sleep has to wait a little longer.
+      Why don\u2019t you have a look around, while I clean this sh\u2026 up!\u202F "
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 8727488f-0e3f-40e0-9159-bb3e83d2f6db
+      portName: Choice 0
+      targetNodeGuid: 32baf773-a531-4bfb-bf73-a83071b19905
+    rect:
+      serializedVersion: 2
+      x: 1244
+      y: 206
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
+  - guid: 32baf773-a531-4bfb-bf73-a83071b19905
+    speaker: speaker
+    text: New Dialog Node
+    audioLine: {fileID: 0}
+    links: []
+    rect:
+      serializedVersion: 2
+      x: 1558
+      y: 206
+      width: 231
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}

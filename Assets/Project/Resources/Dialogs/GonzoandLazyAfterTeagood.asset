@@ -1,0 +1,185 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
+  m_Name: GonzoandLazyAfterTeagood
+  m_EditorClassIdentifier: 
+  id: 0
+  passages:
+  - guid: 864f52dd-7ad7-4d0f-a127-c2859ffda9e6
+    speaker: 
+    text: ENTRYPOINT
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 864f52dd-7ad7-4d0f-a127-c2859ffda9e6
+      portName: Next
+      targetNodeGuid: e9f579bf-4e91-492a-9400-a30fbf7d959a
+    rect:
+      serializedVersion: 2
+      x: 150
+      y: 200
+      width: 87
+      height: 77
+    entryPoint: 1
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: e9f579bf-4e91-492a-9400-a30fbf7d959a
+    speaker: Lazy
+    text: "That was fun, don\u2019t you think?"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: e9f579bf-4e91-492a-9400-a30fbf7d959a
+      portName: Choice 0
+      targetNodeGuid: 69e32361-0e8d-42b0-a9b8-ae86a6fa23c7
+    rect:
+      serializedVersion: 2
+      x: 243
+      y: 202
+      width: 242
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 69e32361-0e8d-42b0-a9b8-ae86a6fa23c7
+    speaker: Gonzo
+    text: "S\xED, Mija! This did indeed remind me of the old days."
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 69e32361-0e8d-42b0-a9b8-ae86a6fa23c7
+      portName: Choice 0
+      targetNodeGuid: 2b2b851c-b70b-4023-8216-394d966d08e9
+    rect:
+      serializedVersion: 2
+      x: 492
+      y: 202
+      width: 302
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 2b2b851c-b70b-4023-8216-394d966d08e9
+    speaker: Lazy
+    text: I hope our family comes back soon, so we can show them what we learned
+      while they were gone.
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 2b2b851c-b70b-4023-8216-394d966d08e9
+      portName: Choice 0
+      targetNodeGuid: 97ae51cd-b150-44d7-9d8b-c509ca5fbe45
+    rect:
+      serializedVersion: 2
+      x: 799
+      y: 205
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: e78648b6-2f40-4736-ae8d-7e393279819f
+    speaker: Lazy
+    text: ' I miss them Gonzo.'
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: e78648b6-2f40-4736-ae8d-7e393279819f
+      portName: Choice 0
+      targetNodeGuid: b05b8269-5ece-470f-89d8-83e2f47a6a7b
+    rect:
+      serializedVersion: 2
+      x: 1435
+      y: 207
+      width: 241
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: b05b8269-5ece-470f-89d8-83e2f47a6a7b
+    speaker: Gonzo
+    text: You know what? While they were gone, I took some time to look over those
+      old books over there. How about I show you something.
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: b05b8269-5ece-470f-89d8-83e2f47a6a7b
+      portName: Choice 0
+      targetNodeGuid: f0a78c72-de53-4e69-9e20-6c6d6a3c1917
+    rect:
+      serializedVersion: 2
+      x: 1687
+      y: 214
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 97ae51cd-b150-44d7-9d8b-c509ca5fbe45
+    speaker: Gonzo
+    text: "Smart idea! They must be back soon, it\xB4s been quite a while."
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 97ae51cd-b150-44d7-9d8b-c509ca5fbe45
+      portName: Choice 0
+      targetNodeGuid: e78648b6-2f40-4736-ae8d-7e393279819f
+    rect:
+      serializedVersion: 2
+      x: 1110
+      y: 204
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: f0a78c72-de53-4e69-9e20-6c6d6a3c1917
+    speaker: 
+    text: 
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: f0a78c72-de53-4e69-9e20-6c6d6a3c1917
+      portName: Choice 0
+      targetNodeGuid: e963bd5e-fd4e-4df7-a59c-3e761cbb764e
+    rect:
+      serializedVersion: 2
+      x: 2004
+      y: 216
+      width: 215
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 21300000, guid: d913d4156b5dd194199e6b1a1d92d05f, type: 3}
+  - guid: e963bd5e-fd4e-4df7-a59c-3e761cbb764e
+    speaker: Lazy
+    text: 'This is perfect after all! Muchas Gracias Gonzo! '
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: e963bd5e-fd4e-4df7-a59c-3e761cbb764e
+      portName: Choice 0
+      targetNodeGuid: b381c3cc-5c5a-4281-8f5a-d08db8d61cb9
+    rect:
+      serializedVersion: 2
+      x: 2233
+      y: 217
+      width: 288
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: b381c3cc-5c5a-4281-8f5a-d08db8d61cb9
+    speaker: Gonzo
+    text: 'De nada, Mija! '
+    audioLine: {fileID: 0}
+    links: []
+    rect:
+      serializedVersion: 2
+      x: 2531
+      y: 221
+      width: 216
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}

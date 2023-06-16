@@ -1,0 +1,208 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
+  m_Name: SheldonandLazyperfect
+  m_EditorClassIdentifier: 
+  id: 0
+  passages:
+  - guid: 15e83178-8a7f-47c1-8ad4-1519dbf7154a
+    speaker: 
+    text: ENTRYPOINT
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 15e83178-8a7f-47c1-8ad4-1519dbf7154a
+      portName: Next
+      targetNodeGuid: 9cf39f44-3300-46b1-95f1-b4a3a3400db7
+    rect:
+      serializedVersion: 2
+      x: 150
+      y: 200
+      width: 87
+      height: 77
+    entryPoint: 1
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 9cf39f44-3300-46b1-95f1-b4a3a3400db7
+    speaker: Lazy
+    text: "Someone\u2019s in a good mood now, and it\u2019s not just me\u2026 *giggle*"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 9cf39f44-3300-46b1-95f1-b4a3a3400db7
+      portName: Choice 0
+      targetNodeGuid: e7551960-50e4-4a37-983b-5f55d11ef807
+    rect:
+      serializedVersion: 2
+      x: 253
+      y: 203
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}
+  - guid: e7551960-50e4-4a37-983b-5f55d11ef807
+    speaker: Sheldon
+    text: 'One could say that. One could say that. (Smiles satisfied.) '
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: e7551960-50e4-4a37-983b-5f55d11ef807
+      portName: Choice 0
+      targetNodeGuid: ee3979a8-2a40-4d6b-8a49-8130a8087424
+    rect:
+      serializedVersion: 2
+      x: 564
+      y: 204
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}
+  - guid: ee3979a8-2a40-4d6b-8a49-8130a8087424
+    speaker: Lazy
+    text: (Smiles back.)
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: ee3979a8-2a40-4d6b-8a49-8130a8087424
+      portName: Choice 0
+      targetNodeGuid: 424f18b0-9586-4867-a22b-91c719f1bac8
+    rect:
+      serializedVersion: 2
+      x: 871
+      y: 204
+      width: 215
+      height: 246
+    entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}
+  - guid: 424f18b0-9586-4867-a22b-91c719f1bac8
+    speaker: Sheldon
+    text: I am relieved that you know what you are doing. I will speak to Lady Eleanor
+      about this in the highest tones.
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 424f18b0-9586-4867-a22b-91c719f1bac8
+      portName: Choice 0
+      targetNodeGuid: 8026d7b9-3b4a-4a3f-890f-3cee1de42042
+    rect:
+      serializedVersion: 2
+      x: 1092
+      y: 205
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}
+  - guid: 8026d7b9-3b4a-4a3f-890f-3cee1de42042
+    speaker: Lazy
+    text: You would do that, LETS GOOO!
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 8026d7b9-3b4a-4a3f-890f-3cee1de42042
+      portName: Choice 0
+      targetNodeGuid: 150b5df7-0e45-4d55-a41b-77c51e8fd335
+    rect:
+      serializedVersion: 2
+      x: 1404
+      y: 206
+      width: 247
+      height: 246
+    entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}
+  - guid: 150b5df7-0e45-4d55-a41b-77c51e8fd335
+    speaker: Sheldon
+    text: ' I am not quite sure when our humans will be back. At the door and over
+      there are some letter papers. The things I could read quite worry me. '
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 150b5df7-0e45-4d55-a41b-77c51e8fd335
+      portName: Choice 0
+      targetNodeGuid: 9b88de43-b325-43dc-ab36-3cb419a09aaf
+    rect:
+      serializedVersion: 2
+      x: 1660
+      y: 208
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 9b88de43-b325-43dc-ab36-3cb419a09aaf
+    speaker: Lazy
+    text: "I don\u2019t like how you say that Sheldon\u2026 what do they say?"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 9b88de43-b325-43dc-ab36-3cb419a09aaf
+      portName: Choice 0
+      targetNodeGuid: 3a3d1be3-4735-4c47-bd4a-1f4a7a236adb
+    rect:
+      serializedVersion: 2
+      x: 1976
+      y: 208
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 3a3d1be3-4735-4c47-bd4a-1f4a7a236adb
+    speaker: Sheldon
+    text: "At the door are some letter papers. And over there is one as well. I could
+      read the words \u201Eplane\u201C,  hunt, the names of our humans and their
+      cousin Franklyn. I am not quite sure what they mean yet. "
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 3a3d1be3-4735-4c47-bd4a-1f4a7a236adb
+      portName: Choice 0
+      targetNodeGuid: 60914d9e-9685-4755-9903-e3da38dd42f6
+    rect:
+      serializedVersion: 2
+      x: 2303
+      y: 210
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 60914d9e-9685-4755-9903-e3da38dd42f6
+    speaker: Lazy
+    text: "Why are you worrying? Sounds like they are hunting a plane with cousin
+      Franklin\u2026 sounds like a lot of work, makes sense that they\u2019re taking
+      so long."
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 60914d9e-9685-4755-9903-e3da38dd42f6
+      portName: Choice 0
+      targetNodeGuid: d5dbf4d5-2313-4384-83de-e44fc055d138
+    rect:
+      serializedVersion: 2
+      x: 2625
+      y: 208
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: d5dbf4d5-2313-4384-83de-e44fc055d138
+    speaker: Sheldon
+    text: Maybe. Those loud things in the sky sure look hard to catch. I will think
+      about it with some poppy seeds at my usual spot... (Goes to  sit and look at
+      the garden through the window.)
+    audioLine: {fileID: 0}
+    links: []
+    rect:
+      serializedVersion: 2
+      x: 2949
+      y: 212
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
