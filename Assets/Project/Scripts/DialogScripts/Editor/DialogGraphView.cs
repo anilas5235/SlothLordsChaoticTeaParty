@@ -108,7 +108,7 @@ namespace Project.Scripts.DialogScripts.Editor
             var newNode = new DialogNode
             {
                 dialogText = nodeName,
-                title = nodeName,
+                title = (nodeName.Length < 20) ? nodeName : nodeName.Substring(0,20),
                 guid = Guid.NewGuid().ToString(),
                 speaker = speakerName,
                 voiceLine = audioClip,
