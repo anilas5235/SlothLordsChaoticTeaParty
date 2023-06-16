@@ -30,7 +30,7 @@ namespace Project.Scripts.UIScripts.Windows
                      star1.sprite = stars[1];
                      star1Achieved = true;
                 }
-                else if(!(progress < .99f) && !star2Achieved)
+                else if(!(progress < 1f) && !star2Achieved)
                 {
                     star2.sprite = stars[2];
                     star2Achieved = true;

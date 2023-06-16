@@ -102,11 +102,7 @@ namespace Project.Scripts.DialogScripts.Editor
 
         public void LoadGraph(Dialog dialogData)
         {
-            if (dialogData == null)
-            {
-                EditorUtility.DisplayDialog("File Not Found", "The input file path does not exist", "OK");
-                return;
-            }
+            if (!dialogData) { return; }
 
             _dialogCached = dialogData;
             

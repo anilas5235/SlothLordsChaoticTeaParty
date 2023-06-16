@@ -1,46 +1,45 @@
+using Project.Scripts.UIScripts.Windows;
 using UnityEngine;
 
 namespace Project.Scripts.Menu
 {
     public class InspectableObject : InteractableObject
     {
-        [SerializeField] private float InspectingDistance = 1f;
-        private Transform _cameraTransform;
-        private bool Inspecting;
+        [SerializeField] private float inspectingDistance = 1f;
+        private Transform cameraTransform;
+        private bool inspecting;
         private Vector3 originalPosition, originalRotation;
         private Vector3 addRotation;
 
-        private FirstPersonController Controller;
+        private FirstPersonController controller;
 
-        private const float rotationSpeed = 1000;
+        private const float RotationSpeed = 1000;
 
         protected override void Awake()
         {
             base.Awake();
             originalPosition = transform.position;
             originalRotation = transform.rotation.eulerAngles;
-            Controller = FindObjectOfType<FirstPersonController>();
+            controller = FindObjectOfType<FirstPersonController>();
         }
 
         private void Start()
         {
-            _cameraTransform = Controller.PlayerCamera.transform;
+            cameraTransform = controller.PlayerCamera.transform;
         }
 
-        public override void Interact()
-        {
-            ToggleInspection();
-        }
+        public override void Interact() => ToggleInspection();
 
         private void ToggleInspection()
         {
-            Inspecting = !Inspecting;
-            if (Inspecting)
+            if(MenuWindowsMaster.Instance.MenuActive) return;
+            inspecting = !inspecting;
+            if (inspecting)
             {
-                transform.position = _cameraTransform.position + _cameraTransform.TransformDirection(Vector3.forward) * InspectingDistance;
-                transform.forward = (_cameraTransform.position - transform.position).normalized;
+                transform.position = cameraTransform.position + cameraTransform.TransformDirection(Vector3.forward) * inspectingDistance;
+                transform.forward = (cameraTransform.position - transform.position).normalized;
                 addRotation = transform.localEulerAngles;
-                Controller.FreezePlayer();
+                controller.FreezePlayer();
                 myOutline.eraseRenderer = true;
                 transform.SetParent(null);
             }
@@ -49,16 +48,16 @@ namespace Project.Scripts.Menu
                 transform.position = originalPosition;
                 transform.forward = Vector3.forward;
                 transform.rotation = Quaternion.Euler( originalRotation);
-                Controller.UnFreezePlayer();
+                controller.UnFreezePlayer();
                 myOutline.eraseRenderer = false;
             }
         }
 
         private void Update()
         {
-            if (Inspecting)
+            if (inspecting)
             {
-                Vector2 mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * (rotationSpeed * Time.deltaTime);
+                Vector2 mouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * (RotationSpeed * Time.deltaTime);
                 
                 addRotation.x -= mouseInput.y;
                 if (addRotation.x >= 360 || addRotation.x <= -360) addRotation.x = 0;

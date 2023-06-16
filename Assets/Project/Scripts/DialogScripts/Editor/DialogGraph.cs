@@ -1,40 +1,53 @@
 using UnityEditor;
-using UnityEditor.UIElements;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEditor.UIElements;
 using UnityEngine.UIElements;
+
+/*
+ * This System is based on a NoteDialogSystem by Mert Kirimgeri  https://www.youtube.com/@MertKirimgeriGameDev
+ */
 
 namespace Project.Scripts.DialogScripts.Editor
 {
     public class DialogGraph : EditorWindow
     {
-        private DialogGraphView _graphView;
-        private string _fileName = "New Narrative";
+        public static DialogGraph Window { get; protected set; }
+        private DialogGraphView graphView;
+        private string fileName = "New Narrative";
         private static Dialog _dialogData;
         
         [MenuItem("Graph/Dialog Graph")]
         public static void OpenDialogGraphWindow()
         {
-            var window = GetWindow<DialogGraph>();
-            window.titleContent = new GUIContent("Dialog Graph");
+            SetWindow();
             _dialogData = null;
         }
 
-        public static void OpenWindow(Dialog dialogData)
+        public void OpenWindow(Dialog dialogData)
         {
-            var window = GetWindow<DialogGraph>();
-            window.titleContent = new GUIContent("Dialog Graph");
+            SetWindow();
             _dialogData = dialogData;
+            LoadData();
+        }
+
+        private static void SetWindow()
+        {
+            if (Window) Window.Close();
+
+            Window = GetWindow<DialogGraph>();
+            Window.titleContent = new GUIContent("Dialog Graph");
         }
 
         private void ConstructGraphView()
         {
-            _graphView = new DialogGraphView()
+            graphView = new DialogGraphView()
             {
                 name = "Dialog Graph"
             };
             
-            _graphView.StretchToParentSize();
-            rootVisualElement.Add(_graphView);
+            graphView.StretchToParentSize();
+            rootVisualElement.Add(graphView);
         }
 
         private void GenerateToolBar()
@@ -42,9 +55,9 @@ namespace Project.Scripts.DialogScripts.Editor
             var toolbar = new Toolbar();
 
             var fileNameTextField = new TextField("File Name:");
-            fileNameTextField.SetValueWithoutNotify(_fileName);
+            fileNameTextField.SetValueWithoutNotify(fileName);
             fileNameTextField.MarkDirtyRepaint();
-            fileNameTextField.RegisterValueChangedCallback(evt => _fileName = evt.newValue);
+            fileNameTextField.RegisterValueChangedCallback(evt => fileName = evt.newValue);
             toolbar.Add(fileNameTextField);
             
             toolbar.Add(new Button( () => RequestDataOperation(true)){text = "Save Data"});
@@ -52,7 +65,7 @@ namespace Project.Scripts.DialogScripts.Editor
 
             var createNodeButton = new Button(() =>
             {
-                _graphView.CreateNode("New Dialog Node");
+                graphView.CreateNode("New Dialog Node");
             })
             {
                 text = "Create Node"
@@ -64,39 +77,33 @@ namespace Project.Scripts.DialogScripts.Editor
 
         private void LoadData()
         {
-            GraphSaveUtility.GetInstance(_graphView).LoadGraph(_dialogData);
+            if(_dialogData) GraphSaveUtility.GetInstance(graphView).LoadGraph(_dialogData);
         }
 
         private void RequestDataOperation(bool save)
         {
-            if (string.IsNullOrEmpty(_fileName))
+            if (string.IsNullOrEmpty(fileName))
             {
                 EditorUtility.DisplayDialog("Invalid file name", "Please enter a valid file name","OK");
                 return;
             }
 
-            var saveUtility = GraphSaveUtility.GetInstance(_graphView);
+            var saveUtility = GraphSaveUtility.GetInstance(graphView);
 
-            if (save)
-            {
-                saveUtility.SaveGraph(_fileName);
-            }
-            else
-            {
-                saveUtility.LoadGraph(_fileName);
-            }
+            if (save) saveUtility.SaveGraph(fileName);
+            else saveUtility.LoadGraph(fileName);
         }
 
         private void OnEnable()
         {
             ConstructGraphView();
             GenerateToolBar();
-            if (_dialogData != null) LoadData();
+            LoadData();
         }
 
         private void OnDisable()
         {
-            rootVisualElement.Remove(_graphView);
+            rootVisualElement.Remove(graphView);
         }
     }
 }

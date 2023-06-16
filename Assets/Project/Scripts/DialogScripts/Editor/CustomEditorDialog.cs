@@ -12,7 +12,8 @@ namespace Project.Scripts.DialogScripts.Editor
             Dialog obj = EditorUtility.InstanceIDToObject(instanceID) as Dialog;
             if (obj != null)
             {
-                DialogGraph.OpenWindow(obj);
+                if(DialogGraph.Window ==null) DialogGraph.OpenDialogGraphWindow();
+                DialogGraph.Window.OpenWindow(obj);
                 return true;
             }
             return false;
@@ -25,14 +26,12 @@ namespace Project.Scripts.DialogScripts.Editor
         {
             if (GUILayout.Button("Open Graph"))
             { OpenGraph(); }
-
-            
             base.OnInspectorGUI();
         }
 
         private void OpenGraph()
         {
-            DialogGraph.OpenWindow((Dialog)target);
+            DialogGraph.Window.OpenWindow((Dialog)target);
         }
     }
 }

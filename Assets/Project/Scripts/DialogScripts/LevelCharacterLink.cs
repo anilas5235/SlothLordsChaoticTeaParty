@@ -51,7 +51,7 @@ namespace Project.Scripts.DialogScripts
         private void Calm()
         {
             if(myCharacterAnimator.CurrentMode == CharacterAnimator.CharacterMoods.Party)
-                myCharacterAnimator.CurrentMode = CharacterAnimator.CharacterMoods.Neutral;
+                myCharacterAnimator.CurrentMode = CharacterAnimator.CharacterMoods.Happy;
         }
     }
 }

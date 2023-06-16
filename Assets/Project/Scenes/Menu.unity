@@ -706,7 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd701981cb5a4fc47923eb4bbc68fa1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InspectingDistance: 1
+  inspectingDistance: 1
 --- !u!114 &405719138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,8 +999,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a78da3f00f3328541b4526c0b0b5ec5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineThickness: 1.25
-  lineIntensity: 0.5
+  lineThickness: 2.87
+  lineIntensity: 3.25
   fillAmount: 0
   lineColor0: {r: 1, g: 0, b: 0, a: 1}
   lineColor1: {r: 0, g: 1, b: 0, a: 1}
@@ -2086,7 +2086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd701981cb5a4fc47923eb4bbc68fa1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InspectingDistance: 1
+  inspectingDistance: 1
 --- !u!114 &1190384660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3607,6 +3607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuWindowToOpen: {fileID: 1099101239}
+  DeactivateCursorOnMenuClose: 1
   currentlyActiveWindows: []
   menuActive: 0
 --- !u!1 &2142591874 stripped

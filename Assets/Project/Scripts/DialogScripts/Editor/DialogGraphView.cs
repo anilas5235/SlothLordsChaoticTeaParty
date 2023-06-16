@@ -154,7 +154,7 @@ namespace Project.Scripts.DialogScripts.Editor
             });
             dialogText.style.minHeight = 40f;
             dialogText.style.maxWidth = 300f;
-            dialogText.SetValueWithoutNotify(newNode.title);
+            dialogText.SetValueWithoutNotify(nodeName);
             newNode.mainContainer.Add(dialogText);
             
             newNode.mainContainer.Add(new Label("   "));

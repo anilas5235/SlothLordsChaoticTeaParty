@@ -5,7 +5,6 @@ using Project.Scripts.DialogScripts;
 using Project.Scripts.General;
 using Project.Scripts.UIScripts;
 using Project.Scripts.UIScripts.Effects;
-using Project.Scripts.UIScripts.Menu;
 using Project.Scripts.UIScripts.Windows;
 using Unity.Mathematics;
 using UnityEngine;
@@ -18,7 +17,7 @@ namespace Project.Scripts.Tiles
     /// </summary>
     public class TileFieldManager : Singleton<TileFieldManager>
     { 
-        public bool interactable = true;
+        [SerializeField] private bool interactable = true;
         
         [Header("Data")]
         [SerializeField] private Level levelData;
@@ -45,6 +44,13 @@ namespace Project.Scripts.Tiles
         public const float StepTime = .15f;
 
         #region Properties
+        
+        public bool Interactable
+        {
+            get => interactable;
+            set => interactable = value;
+        }
+
         public int Score
         {
             get => score;
@@ -118,9 +124,10 @@ namespace Project.Scripts.Tiles
 
         private void Start()
         {
-             CreateGrid();
+            CreateGrid();
             OnGameStart?.Invoke();
             OnSelectCharacter?.Invoke(characterForLevel);
+            Interactable = true;
         }
 
         #region GridMoveFunctions
@@ -407,10 +414,7 @@ namespace Project.Scripts.Tiles
             tileSpacing = TileSpacing;
         }
 
-        public void MenuChange(bool state)
-        {
-            interactable = !state;
-        }
+        private void MenuChange(bool state) => Interactable = !state;
 
         #endregion
 
@@ -492,10 +496,11 @@ namespace Project.Scripts.Tiles
             else
             {
                 //Falling done
-                interactable = true;
+                Interactable = true;
                 ComboRoll = 0;
                 if (Turns < 1)
                 {
+                    //GameOver
                     SaveData saveData = SaveSystem.Instance.GetActiveSave();
                     if (Score > saveData.highScoresForLevels[currentLevelID])
                     {
@@ -671,11 +676,11 @@ namespace Project.Scripts.Tiles
         /// </summary>
         private IEnumerator Falling()
         {
-            interactable = false;
+            Interactable = false;
             
             do { yield return new WaitForSeconds(StepTime); } while (!CheckAndFall());
             
-            interactable = true;
+            Interactable = true;
             CheckForAllCombos();
         }
 
@@ -703,7 +708,7 @@ namespace Project.Scripts.Tiles
         private void GetScorePopUp(int comboScore, Vector3 position,Color textColor)
         {
             ScorePopUp popUp = ScorePopUpPool.Instance.GetObjectFromPool().GetComponent<ScorePopUp>();
-            popUp.PassValues(textColor,(int)(80-70*math.pow((float)Math.E,-.006f*comboScore)),comboScore.ToString());
+            popUp.PassValues(textColor,(int)(65-65*math.pow((float)Math.E,-.006f*comboScore)),comboScore.ToString());
             popUp.transform.position = position;
         }
         

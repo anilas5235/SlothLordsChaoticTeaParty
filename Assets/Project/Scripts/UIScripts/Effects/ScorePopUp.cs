@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -9,7 +8,7 @@ namespace Project.Scripts.UIScripts.Effects
     {
         private TMP_Text myText;
         private int maximumFontSize;
-        private bool grow;
+        private bool fade;
         private void OnEnable()
         {
             myText ??= GetComponent<TMP_Text>();
@@ -17,27 +16,35 @@ namespace Project.Scripts.UIScripts.Effects
         
         public void PassValues(Color textColor, int maxFontSize, string text)
         {
-            myText.color = textColor+ new Color(0, 0, 0, 1);
+            myText.color = textColor;
             maximumFontSize = maxFontSize;
-            myText.fontSize = 10;
-            grow = true;
+            myText.fontSize = maximumFontSize;
+            fade = true;
             myText.text = text;
             StartCoroutine(Grow());
         }
 
         private IEnumerator Grow()
         {
-            while(grow)
+            float fadeTime = 1f;
+            float count = 0;
+            float fadeStepTime = .1f;
+            float fadeConstant = fadeStepTime / fadeTime;
+            while(fade)
             {
-                if (myText.fontSize < maximumFontSize) myText.fontSize+=maximumFontSize/2f;
-                else if (myText.color.a > 0) myText.color -= new Color(0, 0, 0, .1f);
+                if (count <= fadeTime)
+                {
+                    if(count>.5f) myText.color -= new Color(0, 0, 0, fadeConstant);
+                    myText.fontSize = 10 + maximumFontSize*count;
+                }
                 else
                 {
-                    grow = false;
+                    fade = false;
                     ScorePopUpPool.Instance.AddObjectToPool(gameObject);
                 }
 
-                yield return new WaitForSeconds(.1f);
+                count+=fadeConstant;
+                yield return new WaitForSeconds(fadeStepTime);
             }
         }
     }
