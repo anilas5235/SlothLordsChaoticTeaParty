@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
+  m_Name: EleanorandLazygood
+  m_EditorClassIdentifier: 
+  id: 0
+  passages:
+  - guid: 2503edef-b60b-4f74-a45a-5a282f0aee21
+    speaker: 
+    text: ENTRYPOINT
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 2503edef-b60b-4f74-a45a-5a282f0aee21
+      portName: Next
+      targetNodeGuid: 43f71d5b-f798-4720-aebd-2c4ed1621b71
+    rect:
+      serializedVersion: 2
+      x: 150
+      y: 200
+      width: 87
+      height: 77
+    entryPoint: 1
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 43f71d5b-f798-4720-aebd-2c4ed1621b71
+    speaker: Eleanor
+    text: What a fine afternoon delight. Thank you my dear.
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 43f71d5b-f798-4720-aebd-2c4ed1621b71
+      portName: Choice 0
+      targetNodeGuid: 1f7822d4-2909-440a-a959-b2c11510afd1
+    rect:
+      serializedVersion: 2
+      x: 237
+      y: 200
+      width: 299
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 1f7822d4-2909-440a-a959-b2c11510afd1
+    speaker: Lazy
+    text: It was a real pleasure Miss Eleanor!
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 1f7822d4-2909-440a-a959-b2c11510afd1
+      portName: Choice 0
+      targetNodeGuid: 8d7bb168-1b32-47fe-ac48-c481efa22d3d
+    rect:
+      serializedVersion: 2
+      x: 541
+      y: 202
+      width: 240
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 8d7bb168-1b32-47fe-ac48-c481efa22d3d
+    speaker: Eleanor
+    text: ' I wish our humans will be back soon though. I hope they are all right.
+      Especially Lady Guinevere. I miss draping me around her while she is painting...'
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 8d7bb168-1b32-47fe-ac48-c481efa22d3d
+      portName: Choice 0
+      targetNodeGuid: e4bbedec-003a-4ebc-b48f-d9f804c9ebfc
+    rect:
+      serializedVersion: 2
+      x: 787
+      y: 201
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: e4bbedec-003a-4ebc-b48f-d9f804c9ebfc
+    speaker: Lazy
+    text: "Yes \u2026 yes, I do agree\u2026 "
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: e4bbedec-003a-4ebc-b48f-d9f804c9ebfc
+      portName: Choice 0
+      targetNodeGuid: 1fbfbec8-a5b5-4b26-8ac3-777eb15047e2
+    rect:
+      serializedVersion: 2
+      x: 1101
+      y: 201
+      width: 244
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 1fbfbec8-a5b5-4b26-8ac3-777eb15047e2
+    speaker: Eleanor
+    text: '(Sigh.) Thank you for the tasty distraction though. I wish you a nice
+      day: (Slithers to the family portrait.)'
+    audioLine: {fileID: 0}
+    links: []
+    rect:
+      serializedVersion: 2
+      x: 1348
+      y: 202
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}

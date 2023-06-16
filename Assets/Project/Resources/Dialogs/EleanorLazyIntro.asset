@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
+  m_Name: EleanorLazyIntro
+  m_EditorClassIdentifier: 
+  id: 0
+  passages:
+  - guid: 324a4f81-1a88-4620-b2c9-2bd5c2fc9e00
+    speaker: 
+    text: ENTRYPOINT
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 324a4f81-1a88-4620-b2c9-2bd5c2fc9e00
+      portName: Next
+      targetNodeGuid: 4b420b8e-e4d6-4ba9-ab98-c8e7b861a2dc
+    rect:
+      serializedVersion: 2
+      x: 150
+      y: 200
+      width: 87
+      height: 77
+    entryPoint: 1
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 4b420b8e-e4d6-4ba9-ab98-c8e7b861a2dc
+    speaker: Eleanor
+    text: Oh my. All allone by ourselfes.We are not surely to be expected to catch
+      our own food, are we?
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 4b420b8e-e4d6-4ba9-ab98-c8e7b861a2dc
+      portName: Choice 0
+      targetNodeGuid: de261a74-a6aa-495f-b088-c0f6dbe27506
+    rect:
+      serializedVersion: 2
+      x: 245
+      y: 203
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: de261a74-a6aa-495f-b088-c0f6dbe27506
+    speaker: Lazy
+    text: I mean, there are mice outside, you could catch them, pretty sure.
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: de261a74-a6aa-495f-b088-c0f6dbe27506
+      portName: Choice 0
+      targetNodeGuid: c4562baa-65f6-4dd1-a17c-efd1b9ce0661
+    rect:
+      serializedVersion: 2
+      x: 564
+      y: 204
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: c4562baa-65f6-4dd1-a17c-efd1b9ce0661
+    speaker: Eleanor
+    text: " Eww. Those fuzzy little mongrels?! Their quality is even below off-brand
+      feeder rodents. And they are coated with gushy blood suckers. You know very
+      well that I only consume \u201ETyrellis\xB4 Vat Grown Bio Plus Mice Morsels\u201C."
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: c4562baa-65f6-4dd1-a17c-efd1b9ce0661
+      portName: Choice 0
+      targetNodeGuid: fbbe8631-9853-4636-99ad-91e3a3cd3d56
+    rect:
+      serializedVersion: 2
+      x: 875
+      y: 205
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
+  - guid: fbbe8631-9853-4636-99ad-91e3a3cd3d56
+    speaker: Lazy
+    text: "I know something better! We still got some mice biscuits left in that
+      big jar over there. I could get them for you and \u2026 maybe we could add
+      some tea and snacks, don\u2019t you agree Ma\u2019am. "
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: fbbe8631-9853-4636-99ad-91e3a3cd3d56
+      portName: Choice 0
+      targetNodeGuid: 7cf29d0e-8eba-499f-90c6-0d8d41d748e8
+    rect:
+      serializedVersion: 2
+      x: 1193
+      y: 205
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 7cf29d0e-8eba-499f-90c6-0d8d41d748e8
+    speaker: 
+    text: 
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 7cf29d0e-8eba-499f-90c6-0d8d41d748e8
+      portName: Choice 0
+      targetNodeGuid: 8be10e55-4d2a-4d65-827c-608bda853f88
+    rect:
+      serializedVersion: 2
+      x: 1503
+      y: 206
+      width: 215
+      height: 246
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 21300000, guid: 8563ad2d82341b9428fbec2c2c81d9e9, type: 3}
+  - guid: 8be10e55-4d2a-4d65-827c-608bda853f88
+    speaker: Eleanor
+    text: 'Tea without the humans? What a dashing proposal you make Lazy. '
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 8be10e55-4d2a-4d65-827c-608bda853f88
+      portName: Choice 0
+      targetNodeGuid: 2835b375-2753-469d-92eb-536789453a45
+    rect:
+      serializedVersion: 2
+      x: 1738
+      y: 205
+      width: 308
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 2835b375-2753-469d-92eb-536789453a45
+    speaker: Lazy
+    text: I know, right?
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 2835b375-2753-469d-92eb-536789453a45
+      portName: Choice 0
+      targetNodeGuid: 889efefb-a5ba-42e1-bcf8-c440d3d475c8
+    rect:
+      serializedVersion: 2
+      x: 2056
+      y: 207
+      width: 215
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 889efefb-a5ba-42e1-bcf8-c440d3d475c8
+    speaker: Eleanor
+    text: If you are sure let us commence.
+    audioLine: {fileID: 0}
+    links: []
+    rect:
+      serializedVersion: 2
+      x: 2279
+      y: 205
+      width: 232
+      height: 246
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
