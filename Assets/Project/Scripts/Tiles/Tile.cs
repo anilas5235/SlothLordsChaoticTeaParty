@@ -116,6 +116,7 @@ namespace Project.Scripts.Tiles
                 myItem.enabled = true;
                 myBackground.enabled = true;
                 myItem.sprite = TileRecourseKeeper.Instance.tileSprites[(int)myTileType];
+                myBackground.color = TileRecourseKeeper.Instance.tileBackgroundColors[(int)myTileType];
             }
         }
 
@@ -131,7 +132,9 @@ namespace Project.Scripts.Tiles
             else
             {
                 myItem.enabled = true;
+                myBackground.enabled = true;
                 myItem.sprite = TileRecourseKeeper.Instance.tileSprites[(int)myTileType];
+                myBackground.color = TileRecourseKeeper.Instance.tileBackgroundColors[(int)myTileType];
             }
 
             positionInScene = localPos;
@@ -265,8 +268,7 @@ namespace Project.Scripts.Tiles
                 return;
             }
             
-            myTileFieldManager.SwitchTiles(positionInGrid,positionInGrid+tileOffset);
-            myTileFieldManager.Turns--;
+            myTileFieldManager.SwitchTiles(positionInGrid,positionInGrid+tileOffset,true);
         }
         #endregion
     }

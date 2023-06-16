@@ -1,3 +1,4 @@
+using System;
 using Project.Scripts.General;
 using Project.Scripts.Tiles;
 using TMPro;
@@ -10,13 +11,13 @@ namespace Project.Scripts.UIScripts
     {
         [SerializeField] private TextMeshProUGUI scoreText, turnText ;
         [SerializeField] private Slider progressBar;
+        [SerializeField] private Image likeTile, dislikeTile;
         private TileFieldManager FieldManager => TileFieldManager.Instance;
 
-        private void Start()
+        private void OnEnable()
         {
-            UpdateAllUIFields();
+            FieldManager.OnGameStart += UpdateAllUIFields;
         }
-
         public void UpdateScore(int score)
         {
             scoreText.text = $"{score}";
@@ -25,17 +26,24 @@ namespace Project.Scripts.UIScripts
 
         public void UpdateTurn(int turns) => turnText.text = $"{turns}";
 
-        public void UpdateProgress(int score)
+        private void UpdateProgress(int score)
         {
             Level data = FieldManager.CurrentLevelData;
             float progress = (float) score / data.PerfectScore;
             progressBar.value = Mathf.Clamp(progress, 0f, 1f);
         }
 
-        public void UpdateAllUIFields()
+        private void SetPrefImages()
+        {
+            likeTile.sprite = TileRecourseKeeper.Instance.tileSprites[(int)FieldManager.preferredTile];
+            dislikeTile.sprite = TileRecourseKeeper.Instance.tileSprites[(int)FieldManager.dislikedTile];
+        }
+
+        private void UpdateAllUIFields()
         {
             UpdateScore(FieldManager.Score);
             UpdateTurn(FieldManager.Turns);
+            SetPrefImages();
         }
 
     }
