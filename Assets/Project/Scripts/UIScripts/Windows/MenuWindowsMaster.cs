@@ -6,11 +6,12 @@ using Project.Scripts.General;
 using Project.Scripts.Menu;
 using UnityEngine;
 
-namespace Project.Scripts.UIScripts.Menu
+namespace Project.Scripts.UIScripts.Windows
 {
     public class MenuWindowsMaster : Singleton<MenuWindowsMaster>
     {
         [SerializeField] private UIMenuWindowHandler menuWindowToOpen;
+        [SerializeField] private bool DeactivateCursorOnMenuClose = true;
 
         public Action<bool> OnMenuActiveChange;
 
@@ -69,7 +70,7 @@ namespace Project.Scripts.UIScripts.Menu
             if (!currentlyActiveWindows.Any())
             {
                 MenuActive = false;
-                CursorManager.Instance.DeActivateCursor();
+                if(DeactivateCursorOnMenuClose) CursorManager.Instance.DeActivateCursor();
                 if (playerController != null) playerController.UnFreezePlayer();
             }
         }
