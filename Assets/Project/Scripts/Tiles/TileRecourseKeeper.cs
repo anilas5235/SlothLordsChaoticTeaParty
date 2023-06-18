@@ -6,6 +6,7 @@ namespace Project.Scripts.Tiles
     public class TileRecourseKeeper : Singleton<TileRecourseKeeper>
     {
         public Sprite[] tileSprites;
+        public Sprite[] brokenTileSprites;
         public Color32[] tileBackgroundColors = new Color32[6];
 
         protected override void Awake()
@@ -20,6 +21,16 @@ namespace Project.Scripts.Tiles
                 Resources.Load<Sprite>("ArtWork/Tiles/cookie"),
                 Resources.Load<Sprite>("ArtWork/Tiles/strawberry"),
                 Resources.Load<Sprite>("ArtWork/Tiles/mooncake"),
+            };
+
+            brokenTileSprites = new[]
+            {
+                Resources.Load<Sprite>("ArtWork/Tiles/BrokenEukalyptus"),
+                Resources.Load<Sprite>("ArtWork/Tiles/BrokenTea"),
+                Resources.Load<Sprite>("ArtWork/Tiles/BrokenMaus"),
+                Resources.Load<Sprite>("ArtWork/Tiles/BrokenCookie"),
+                Resources.Load<Sprite>("ArtWork/Tiles/BrokenStrawberry"),
+                Resources.Load<Sprite>("ArtWork/Tiles/BrokenMooncake"),
             };
 
             tileBackgroundColors = new[]

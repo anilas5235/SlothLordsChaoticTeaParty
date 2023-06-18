@@ -41,7 +41,7 @@ namespace Project.Scripts.Tiles
 
         private const float TileSize =2f, TileSpacing = 0.2f;
         private const int MinComboSize = 3;
-        public const float StepTime = .15f;
+        public const float StepTime = .15f, TileBreakTime = .3f;
 
         #region Properties
         
@@ -435,11 +435,11 @@ namespace Project.Scripts.Tiles
 
             if (comboTiles.Count < MinComboSize) return false;
             ComboRoll++;
-            foreach (var t in comboTiles)
+            foreach (var tile in comboTiles)
             {
-                Vector2Int pos = t.GetTilePosition();
+                Vector2Int pos = tile.GetTilePosition();
                 fieldGridTiles[pos.x][pos.y] = null;
-                Destroy(t.gameObject);
+                tile.Break();
             }
             ScoreCalculator( comboTiles.Count, tileType, GetScenePosition(tilePosition));
 
@@ -485,11 +485,11 @@ namespace Project.Scripts.Tiles
                 }
             }
 
-            foreach (var t in toBeDeleteTiles)
+            foreach (var tile in toBeDeleteTiles)
             {
-                Vector2Int pos = t.GetTilePosition();
+                Vector2Int pos = tile.GetTilePosition();
                 fieldGridTiles[pos.x][pos.y] = null;
-                Destroy(t.gameObject);
+                tile.Break();
             }
 
             if (toBeDeleteTiles.Count > 0) StartCoroutine(Falling());
@@ -677,6 +677,8 @@ namespace Project.Scripts.Tiles
         private IEnumerator Falling()
         {
             Interactable = false;
+
+            yield return new WaitForSeconds(TileBreakTime);
             
             do { yield return new WaitForSeconds(StepTime); } while (!CheckAndFall());
             
@@ -708,7 +710,7 @@ namespace Project.Scripts.Tiles
         private void GetScorePopUp(int comboScore, Vector3 position,Color textColor)
         {
             ScorePopUp popUp = ScorePopUpPool.Instance.GetObjectFromPool().GetComponent<ScorePopUp>();
-            popUp.PassValues(textColor,(int)(65-65*math.pow((float)Math.E,-.006f*comboScore)),comboScore.ToString());
+            popUp.PassValues(textColor,(int)(65-65*math.pow((float)Math.E,-.006f*comboScore)),comboScore);
             popUp.transform.position = position;
         }
         

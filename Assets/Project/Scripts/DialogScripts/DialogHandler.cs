@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using Project.Scripts.General;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Project.Scripts.DialogScripts
@@ -25,15 +23,20 @@ namespace Project.Scripts.DialogScripts
         [Header("Audio")]
         [SerializeField] private AudioSource audioSource;
 
+        [Header("Image")] 
+        [SerializeField] private Image screenSceneImage;
+
+        private bool isAllowedToWrite = true;
+
         private void Start()
         {
             dialogManager = DialogManager.Instance;
-            dialogManager.OnDialogStart += DialogStarted;
+            dialogManager.OnDialogStart += ClearTextFields;
             dialogManager.OnSpeakerChanged += SetNameText;
             dialogManager.OnTextChanged += SetMainText;
             dialogManager.OnChoice += ChoiceHandler;
             dialogManager.OnChoiceOver += ChoiceMade;
-            dialogManager.OnDialogEnd += DialogEnded;
+            dialogManager.OnDialogEnd += ClearTextFields;
             dialogManager.OnVoiceLine += PlayVoiceLine;
             dialogManager.StartDialog(startPassageGuid,dialogId);
             ChoiceMade();
@@ -46,21 +49,18 @@ namespace Project.Scripts.DialogScripts
 
         private void SetNameText(string name)
         {
+            SetFullSceneImage();
+            if (!isAllowedToWrite)return;
             nameText.text = name;
         }
 
         private void SetMainText(string text)
         {
+            if (!isAllowedToWrite)return;
             mainText.text = text;
         }
 
-        private void DialogStarted()
-        {
-            nameText.text = "";
-            mainText.text = "";
-        }
-
-        private void DialogEnded()
+        private void ClearTextFields()
         {
             nameText.text = "";
             mainText.text = "";
@@ -86,6 +86,22 @@ namespace Project.Scripts.DialogScripts
             {
                 if (choiceB.gameObject.activeSelf) choiceB.gameObject.SetActive(false);
                 else break;
+            }
+        }
+
+        private void SetFullSceneImage()
+        {
+            if (dialogManager.CurrentNode.imageOverride)
+            {
+                screenSceneImage.gameObject.SetActive(true);
+                isAllowedToWrite = false;
+                screenSceneImage.sprite = dialogManager.CurrentNode.imageOverride;
+                ClearTextFields();
+            }
+            else
+            {
+                isAllowedToWrite = true;
+                screenSceneImage.gameObject.SetActive(false);
             }
         }
     }

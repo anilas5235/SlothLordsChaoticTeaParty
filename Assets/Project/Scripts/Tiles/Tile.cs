@@ -98,7 +98,14 @@ namespace Project.Scripts.Tiles
         
         #endregion
 
+
         #region TileChangeFunctions
+
+        public void Break()
+        {
+            Destroy(gameObject,TileFieldManager.TileBreakTime);
+            myItem.sprite = TileRecourseKeeper.Instance.brokenTileSprites[(int)myTileType];
+        }
 
         private void ChangeTileType(TileType newTileType)
         {

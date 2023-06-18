@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: EleanorandLazybad
+  m_Name: EleonorAndLazyBad
   m_EditorClassIdentifier: 
   id: 0
   passages:
   - guid: 130e2d50-4534-4142-8341-d020337e8bf0
     speaker: 
+    character: 0
     text: ENTRYPOINT
     audioLine: {fileID: 0}
     links:
@@ -33,6 +34,7 @@ MonoBehaviour:
     imageOverride: {fileID: 0}
   - guid: b12117a9-4a8b-40cb-ab3f-61b7e444771f
     speaker: Lazy
+    character: 5
     text: Um. I...
     audioLine: {fileID: 0}
     links:
@@ -44,12 +46,13 @@ MonoBehaviour:
       x: 250
       y: 204
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 58832902-73ea-4f2e-9eda-1db3a565d2c0
     speaker: Eleanor
+    character: 1
     text: Enough of this! You spindly armed sod did pour scalding tea over all my
       biscuits. Are you a sloth or are you a buffoon?
     audioLine: {fileID: 0}
@@ -62,12 +65,13 @@ MonoBehaviour:
       x: 474
       y: 203
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: 591fc958-d8d0-46e0-bcf4-7361caf0531d
     speaker: Lazy
+    character: 5
     text: "Please\u2026 don\u2019t be mad\u2026 I\u2019m sorry\u2026 I didn\u2019t
       mean to\u2026 I just\u2026."
     audioLine: {fileID: 0}
@@ -80,12 +84,13 @@ MonoBehaviour:
       x: 790
       y: 204
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 6c63859d-9782-42c9-a86d-eeff0ced8938
     speaker: Eleanor
+    character: 1
     text: " Just? Just?! You did not just \u201Ejust\u201C me. Leave me alone. You
       have damned me to an existence of cottony low life, no brand diet... (Cries.) "
     audioLine: {fileID: 0}
@@ -98,12 +103,13 @@ MonoBehaviour:
       x: 1110
       y: 206
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: c0ca8ead-90a5-43f1-b8a6-022bd6fc8abb
     speaker: Lazy
+    character: 5
     text: '(...) '
     audioLine: {fileID: 0}
     links:
@@ -115,12 +121,13 @@ MonoBehaviour:
       x: 1427
       y: 208
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: e5de61d4-881c-4737-b137-2a19e56d670c
     speaker: Eleanor
+    character: 1
     text: (Goes to stare at the family portrait.)
     audioLine: {fileID: 0}
     links: []
@@ -129,7 +136,8 @@ MonoBehaviour:
       x: 1655
       y: 210
       width: 239
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
+  dialogCharacter: 1

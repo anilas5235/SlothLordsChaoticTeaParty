@@ -31,6 +31,7 @@ namespace Project.Scripts.DialogScripts.Editor
 
         private void OpenGraph()
         {
+            if(DialogGraph.Window ==null) DialogGraph.OpenDialogGraphWindow();
             DialogGraph.Window.OpenWindow((Dialog)target);
         }
     }

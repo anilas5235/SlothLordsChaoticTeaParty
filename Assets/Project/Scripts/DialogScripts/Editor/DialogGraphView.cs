@@ -102,7 +102,8 @@ namespace Project.Scripts.DialogScripts.Editor
         }
 
 
-        public DialogNode CreateDialogNote(string nodeName, string speakerName ="speaker" , AudioClip audioClip = null,
+        public DialogNode CreateDialogNote(string nodeName, string speakerName ="speaker", 
+            CharacterAnimator.Characters dataCharacter = CharacterAnimator.Characters.None , AudioClip audioClip = null,
            int characterMoodIndex = 0, Sprite overrideImage = null)
         {
             var newNode = new DialogNode
@@ -114,6 +115,7 @@ namespace Project.Scripts.DialogScripts.Editor
                 voiceLine = audioClip,
                 mood = (CharacterAnimator.CharacterMoods) characterMoodIndex,
                 imageOverride = overrideImage,
+                character = dataCharacter,
             };
 
             var inputPort = GeneratePort(newNode, Direction.Input, Port.Capacity.Multi);
@@ -140,6 +142,15 @@ namespace Project.Scripts.DialogScripts.Editor
             {
                 newNode.speaker = evt.newValue;
             });
+            
+            EnumField characterField = new EnumField("Character:", CharacterAnimator.Characters.None);
+            characterField.RegisterValueChangedCallback(evt =>
+            {
+                newNode.character = (CharacterAnimator.Characters)evt.newValue;
+            });
+            characterField.SetValueWithoutNotify(newNode.character);
+            characterField.labelElement.style.minWidth = defaultLabelWidth;
+            newNode.mainContainer.Add(characterField);
             
             speakerTextField.labelElement.style.minWidth = defaultLabelWidth;
             newNode.mainContainer.Add(speakerTextField);

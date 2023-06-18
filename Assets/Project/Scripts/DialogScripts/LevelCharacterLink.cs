@@ -4,16 +4,9 @@ using UnityEngine;
 
 namespace Project.Scripts.DialogScripts
 {
-    public class LevelCharacterLink : MonoBehaviour
+    public class LevelCharacterLink : CharacterLinkBase
     {
-        [SerializeField] private CharacterAnimator myCharacterAnimator;
         private TileFieldManager tileFieldManager;
-
-        private void Awake()
-        {
-            myCharacterAnimator = GetComponent<CharacterAnimator>();
-        }
-
         private void OnEnable()
         {
             tileFieldManager = TileFieldManager.Instance;
@@ -42,12 +35,6 @@ namespace Project.Scripts.DialogScripts
 
             myCharacterAnimator.CurrentMode = mode;
         }
-
-        private void SelectCharacter(CharacterAnimator.Characters character)
-        {
-            myCharacterAnimator.CurrentCharacter = character;
-        }
-
         private void Calm()
         {
             if(myCharacterAnimator.CurrentMode == CharacterAnimator.CharacterMoods.Party)

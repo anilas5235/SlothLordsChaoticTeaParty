@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,10 +17,12 @@ namespace Project.Scripts.DialogScripts
         #region Enums
         public enum Characters
         {
+            None,
             Elenor,
             Gonzo,
             Norbert,
             Sheldon,
+            Lazy
         }
         
         public enum CharacterMoods
@@ -79,20 +82,38 @@ namespace Project.Scripts.DialogScripts
 
       private void ModeChanged()
       {
+          switch (currentCharacter)
+          {
+              case Characters.Elenor: break;
+              case Characters.Gonzo: break;
+              case Characters.Norbert: break;
+              case Characters.Sheldon: break;
+              default: return;
+          }
           characterImage.sprite = characterIcons[(int)currentMode];
           OnModeChange?.Invoke(currentMode);
       }
 
       private void LoadCharacter()
       {
-          string characterName = currentCharacter switch
+          string characterName;
+
+          switch (currentCharacter)
           {
-              Characters.Elenor => "eleanor",
-              Characters.Gonzo => "gonzo",
-              Characters.Norbert => "norbert",
-              Characters.Sheldon => "sheldon",
-              _ => throw new ArgumentOutOfRangeException()
-          };
+              case Characters.Elenor:
+                  characterName = "eleanor";
+                  break;
+              case Characters.Gonzo:
+                  characterName = "gonzo";
+                  break;
+              case Characters.Norbert:
+                  characterName = "norbert";
+                  break;
+              case Characters.Sheldon:
+                  characterName = "sheldon";
+                  break;
+              default: return;
+          }
 
           characterIcons = new[]
           {

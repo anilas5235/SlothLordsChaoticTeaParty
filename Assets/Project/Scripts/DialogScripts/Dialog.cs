@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Project.Scripts.DialogScripts
 {
@@ -12,6 +11,8 @@ namespace Project.Scripts.DialogScripts
         public int id;
         public List<DialogPassageNode> passages;
         public int ID => id;
+
+        public CharacterAnimator.Characters dialogCharacter;
 
         public bool GetPassage(string guid,out DialogPassageNode wantedDialogPassageNode)
         {
@@ -30,6 +31,7 @@ namespace Project.Scripts.DialogScripts
     {
         public string guid;
         public string speaker;
+        public CharacterAnimator.Characters character;
         public string text;
         public AudioClip audioLine;
         public List<Link> links;

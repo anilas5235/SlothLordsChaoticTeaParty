@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
   m_Name: "LazyandNorbertIntro\u202F"
   m_EditorClassIdentifier: 
-  id: 0
+  id: 11
   passages:
   - guid: f433cd56-a3db-48e5-a8cb-5a4d007b9f06
     speaker: 

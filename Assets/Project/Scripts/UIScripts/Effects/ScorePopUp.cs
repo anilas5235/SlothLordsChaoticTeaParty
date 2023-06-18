@@ -14,19 +14,19 @@ namespace Project.Scripts.UIScripts.Effects
             myText ??= GetComponent<TMP_Text>();
         }
         
-        public void PassValues(Color textColor, int maxFontSize, string text)
+        public void PassValues(Color textColor, int maxFontSize, int score)
         {
             myText.color = textColor;
             maximumFontSize = maxFontSize;
             myText.fontSize = maximumFontSize;
             fade = true;
-            myText.text = text;
-            StartCoroutine(Grow());
+            myText.text = score.ToString();
+            StartCoroutine(Grow(score));
         }
 
-        private IEnumerator Grow()
+        private IEnumerator Grow(int score)
         {
-            float fadeTime = 1f;
+            float fadeTime = 1f+score/100f;
             float count = 0;
             float fadeStepTime = .1f;
             float fadeConstant = fadeStepTime / fadeTime;

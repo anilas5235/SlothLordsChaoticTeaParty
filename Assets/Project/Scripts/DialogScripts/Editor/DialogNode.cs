@@ -11,6 +11,8 @@ namespace Project.Scripts.DialogScripts.Editor
 
         public string speaker;
 
+        public CharacterAnimator.Characters character;
+
         public AudioClip voiceLine;
 
         public bool entryPoint;

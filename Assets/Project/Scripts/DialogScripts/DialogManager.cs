@@ -8,10 +8,12 @@ namespace Project.Scripts.DialogScripts
 {
     public class DialogManager : Singleton<DialogManager>
     {
-        public event Action<string> OnSpeakerChanged;
-        public event Action<string> OnTextChanged;
         public event Action OnDialogStart;
         public event Action OnDialogEnd;
+
+        public event Action OnNodeLoaded;
+        public event Action<string> OnSpeakerChanged;
+        public event Action<string> OnTextChanged;
         public event Action<string[]> OnChoice;
         public event Action OnChoiceOver;
         public event Action<AudioClip> OnVoiceLine;
@@ -19,7 +21,9 @@ namespace Project.Scripts.DialogScripts
         public float charactersPerSecond = 30;
 
         private Dialog currentStory;
+        public Dialog CurrentStory { get => currentStory; } 
         private DialogPassageNode dialogPassageNode;
+        public DialogPassageNode CurrentNode { get => dialogPassageNode; }
 
         private string speakerName;
         public bool FinishedLine { get; private set; }
@@ -74,7 +78,7 @@ namespace Project.Scripts.DialogScripts
             }
 
             // Handle Speaker Name
-            speakerName = dialogPassageNode.speaker;
+            speakerName =dialogPassageNode.character == CharacterAnimator.Characters.None? dialogPassageNode.speaker : dialogPassageNode.character.ToString();
             OnSpeakerChanged?.Invoke(speakerName);
 
             // Case: Choices
@@ -88,7 +92,7 @@ namespace Project.Scripts.DialogScripts
             StartCoroutine(Write(dialogPassageNode.text, dialogPassageNode.links.Count > 1));
 
             if (dialogPassageNode.audioLine) OnVoiceLine?.Invoke(dialogPassageNode.audioLine);
-            
+            OnNodeLoaded?.Invoke();
             return true;
         }
 
