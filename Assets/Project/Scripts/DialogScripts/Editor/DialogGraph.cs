@@ -16,6 +16,7 @@ namespace Project.Scripts.DialogScripts.Editor
         private DialogGraphView graphView;
         private string fileName = "New Narrative";
         private static Dialog _dialogData;
+        private TextField fileNameField;
         
         [MenuItem("Graph/Dialog Graph")]
         public static void OpenDialogGraphWindow()
@@ -28,12 +29,14 @@ namespace Project.Scripts.DialogScripts.Editor
         {
             SetWindow();
             _dialogData = dialogData;
+            fileName = dialogData.name;
+            fileNameField.SetValueWithoutNotify(fileName);
             LoadData();
         }
 
         private static void SetWindow()
         {
-            if (Window) Window.Close();
+            if (Window) return;
 
             Window = GetWindow<DialogGraph>();
             Window.titleContent = new GUIContent("Dialog Graph");
@@ -52,18 +55,18 @@ namespace Project.Scripts.DialogScripts.Editor
 
         private void GenerateToolBar()
         {
-            var toolbar = new Toolbar();
+            Toolbar toolbar = new Toolbar();
 
-            var fileNameTextField = new TextField("File Name:");
-            fileNameTextField.SetValueWithoutNotify(fileName);
-            fileNameTextField.MarkDirtyRepaint();
-            fileNameTextField.RegisterValueChangedCallback(evt => fileName = evt.newValue);
-            toolbar.Add(fileNameTextField);
+            fileNameField = new TextField("File Name:");
+            fileNameField.SetValueWithoutNotify(fileName);
+            fileNameField.MarkDirtyRepaint();
+            fileNameField.RegisterValueChangedCallback(evt => fileName = evt.newValue);
+            toolbar.Add(fileNameField);
             
             toolbar.Add(new Button( () => RequestDataOperation(true)){text = "Save Data"});
             toolbar.Add(new Button(() => RequestDataOperation(false)){text = "Load Data"});
 
-            var createNodeButton = new Button(() =>
+            Button createNodeButton = new Button(() =>
             {
                 graphView.CreateNode("New Dialog Node");
             })

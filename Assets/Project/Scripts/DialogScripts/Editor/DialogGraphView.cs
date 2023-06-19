@@ -10,8 +10,8 @@ namespace Project.Scripts.DialogScripts.Editor
 {
     public class DialogGraphView : GraphView
     {
-        public readonly Vector2 defaultNodeSize = new Vector2(150, 200);
-        private float defaultLabelWidth = 70f;
+        private readonly Vector2 defaultNodeSize = new Vector2(150, 200);
+        private readonly float defaultLabelWidth = 70f;
 
         public DialogGraphView(Dialog dialog = null)
         {
@@ -47,7 +47,7 @@ namespace Project.Scripts.DialogScripts.Editor
             return compatiblePorts;
         }
 
-        public DialogNode GenerateEntryPoint( Vector2 position,string guid = "")
+        private DialogNode GenerateEntryPoint( Vector2 position,string guid = "")
         {
             var node = new DialogNode()
             {
@@ -135,24 +135,29 @@ namespace Project.Scripts.DialogScripts.Editor
             
             
             newNode.mainContainer.Add(new Label("   "));
-
+            
+            
             TextField speakerTextField = new TextField("Speaker:");
             speakerTextField.SetValueWithoutNotify(newNode.speaker);
             speakerTextField.RegisterValueChangedCallback(evt =>
             {
                 newNode.speaker = evt.newValue;
             });
+            speakerTextField.labelElement.style.minWidth = defaultLabelWidth;
+            
             
             EnumField characterField = new EnumField("Character:", CharacterAnimator.Characters.None);
             characterField.RegisterValueChangedCallback(evt =>
             {
                 newNode.character = (CharacterAnimator.Characters)evt.newValue;
+                newNode.speaker = newNode.character.ToString();
+                speakerTextField.SetValueWithoutNotify(newNode.speaker);
             });
             characterField.SetValueWithoutNotify(newNode.character);
             characterField.labelElement.style.minWidth = defaultLabelWidth;
             newNode.mainContainer.Add(characterField);
             
-            speakerTextField.labelElement.style.minWidth = defaultLabelWidth;
+            
             newNode.mainContainer.Add(speakerTextField);
             
             newNode.mainContainer.Add(new Label("   "));

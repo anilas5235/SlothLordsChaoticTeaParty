@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: EleanorandLazyperfect
+  m_Name: EleanorAndLazyPerfect
   m_EditorClassIdentifier: 
   id: 2
   passages:
   - guid: 0aa75a97-f4d5-43be-aa1b-85d89ddb47b4
     speaker: 
+    character: 0
     text: ENTRYPOINT
     audioLine: {fileID: 0}
     links:
@@ -33,6 +34,7 @@ MonoBehaviour:
     imageOverride: {fileID: 0}
   - guid: 2dd09b16-8495-45e3-ae27-325bfc3e4ea7
     speaker: Eleanor
+    character: 1
     text: ' What as splendid experience this was. Such high class. I may even say
       the mighty Lord Gonzo would approve. Mice Morsels with tea. Extraordinary.'
     audioLine: {fileID: 0}
@@ -45,12 +47,13 @@ MonoBehaviour:
       x: 249
       y: 201
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: 817978eb-bc06-4783-a404-5f71fcedddee
     speaker: Lazy
+    character: 5
     text: "Miss Eleanor! Seeing you this excited\u2026 This is truly\u2026 EX-TRA-OR-DI-NA-RY! "
     audioLine: {fileID: 0}
     links:
@@ -62,12 +65,28 @@ MonoBehaviour:
       x: 575
       y: 203
       width: 308
-      height: 246
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: ec891667-3d70-48de-b6e8-24dd2ae9d9e3
+    speaker: Lazy
+    character: 5
+    text: Good Day, Miss Eleanor!
+    audioLine: {fileID: 0}
+    links: []
+    rect:
+      serializedVersion: 2
+      x: 1204
+      y: 206
+      width: 255
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 17b0f4f2-0cf0-4403-a788-1e1db199ce7d
     speaker: Eleanor
+    character: 1
     text: I think I would like to have some more of these new delicious morsels.
       For now I please excuse me. I will retreat to my place before the portrait.
     audioLine: {fileID: 0}
@@ -80,21 +99,8 @@ MonoBehaviour:
       x: 890
       y: 203
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
-  - guid: ec891667-3d70-48de-b6e8-24dd2ae9d9e3
-    speaker: Lazy
-    text: Good Day, Miss Eleanor!
-    audioLine: {fileID: 0}
-    links: []
-    rect:
-      serializedVersion: 2
-      x: 1204
-      y: 206
-      width: 255
-      height: 246
-    entryPoint: 0
-    mood: 0
-    imageOverride: {fileID: 0}
+  dialogCharacter: 1

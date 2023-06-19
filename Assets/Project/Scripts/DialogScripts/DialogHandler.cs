@@ -68,7 +68,8 @@ namespace Project.Scripts.DialogScripts
 
         private void PlayVoiceLine(AudioClip voiceLine)
         {
-            audioSource.PlayOneShot(voiceLine);
+            audioSource.clip = (voiceLine);
+            audioSource.Play();
         }
 
         private void ChoiceHandler(string[] choicesTexts)

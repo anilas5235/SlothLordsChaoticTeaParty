@@ -31,9 +31,11 @@ namespace Project.Scripts.DialogScripts
         private string[] choices;
         private int currentDialogID;
 
+        private Coroutine writeRoutine;
+
         private void Update()
         {
-            if (Input.GetButtonDown("Jump") && FinishedLine && choiceMade) NextPassage();
+            if (Input.GetButtonDown("Jump") && choiceMade) NextPassage();
         }
 
         public void StartDialog(string guid, int dialogID)
@@ -78,7 +80,7 @@ namespace Project.Scripts.DialogScripts
             }
 
             // Handle Speaker Name
-            speakerName =dialogPassageNode.character == CharacterAnimator.Characters.None? dialogPassageNode.speaker : dialogPassageNode.character.ToString();
+            speakerName =dialogPassageNode.character == CharacterAnimator.Characters.None ? dialogPassageNode.speaker : dialogPassageNode.character.ToString();
             OnSpeakerChanged?.Invoke(speakerName);
 
             // Case: Choices
@@ -88,8 +90,7 @@ namespace Project.Scripts.DialogScripts
             {
                 choices[i] = dialogPassageNode.links[i].OptionName;
             }
-
-            StartCoroutine(Write(dialogPassageNode.text, dialogPassageNode.links.Count > 1));
+            writeRoutine = StartCoroutine(Write(dialogPassageNode.text, dialogPassageNode.links.Count > 1));
 
             if (dialogPassageNode.audioLine) OnVoiceLine?.Invoke(dialogPassageNode.audioLine);
             OnNodeLoaded?.Invoke();
@@ -114,10 +115,13 @@ namespace Project.Scripts.DialogScripts
             }
 
             FinishedLine = true;
+            writeRoutine = null;
         }
 
         private void NextPassage(int linkID = 0)
         {
+            if(writeRoutine!= null) StopCoroutine(writeRoutine);
+            
             switch (dialogPassageNode.links.Count)
             {
                 case 0: OnDialogEnd?.Invoke(); break;
