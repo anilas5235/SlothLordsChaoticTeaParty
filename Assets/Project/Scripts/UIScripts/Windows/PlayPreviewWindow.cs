@@ -16,8 +16,8 @@ namespace Project.Scripts.UIScripts.Windows
             
             //Set Up Character
             CharacterAnimator.CharacterMoods mood = CharacterAnimator.CharacterMoods.Neutral;
-            if (progress >= 0.5f) mood = CharacterAnimator.CharacterMoods.Happy;
-            else if (progress >= 1f) mood = CharacterAnimator.CharacterMoods.Party;
+            if (progress >= 1f) mood = CharacterAnimator.CharacterMoods.Party;
+            else if (progress >= 0.5f) mood = CharacterAnimator.CharacterMoods.Happy;
             characterAnimator.CurrentCharacter = levelData.Character;
             characterAnimator.CurrentMode = mood;
 
