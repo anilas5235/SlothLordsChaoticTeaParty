@@ -211,6 +211,7 @@ namespace Project.Scripts.DialogScripts.Editor
                 }
             } );
             imageOverrideField.labelElement.style.minWidth = defaultLabelWidth;
+            imageOverrideField.SetValueWithoutNotify(newNode.imageOverride);
             newNode.mainContainer.Add(imageOverrideField);
 
             newNode.RefreshPorts();
