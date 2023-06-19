@@ -11,6 +11,10 @@ namespace Project.Scripts.DialogScripts
     public class DialogHandler : Singleton<DialogHandler>
     {
         private DialogManager dialogManager;
+        
+        [Header("TutorialMode")]
+        [SerializeField] private bool tutorialMode;
+        
         [Header("ID´s")]
         [SerializeField] private int dialogId;
         [SerializeField] private string startPassageGuid;
@@ -59,7 +63,7 @@ namespace Project.Scripts.DialogScripts
 
         private void LoadDialogID()
         {
-            dialogId = PlayerPrefs.GetInt("DialogID");
+            dialogId = tutorialMode? 1: PlayerPrefs.GetInt("DialogID");
             dialogManager.SetDialogId(dialogId);
         }
         private void SetNameText(string name)
@@ -129,6 +133,12 @@ namespace Project.Scripts.DialogScripts
 
         private void DialogEnded()
         {
+            if (tutorialMode)
+            {
+                nameText.transform.parent.gameObject.SetActive(false);
+                TileFieldManager.Instance.tutorialMode = false;
+                return;
+            }
             Level currenLevelData = LevelDataLoader.Instance.GetLevelData(PlayerPrefs.GetInt("levelID", 0));
             StartCoroutine(currenLevelData.intro == dialogManager.CurrentDialogID ? FadeAndContinueToLevel() : FadeAndContinueToMenu());
         }

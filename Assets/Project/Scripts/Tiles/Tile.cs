@@ -98,7 +98,6 @@ namespace Project.Scripts.Tiles
         
         #endregion
 
-
         #region TileChangeFunctions
 
         public void Break()
@@ -187,6 +186,7 @@ namespace Project.Scripts.Tiles
         private void OnMouseDrag()
         {
             if (MyTileFieldManager.editMode ||Camera.main == null ) return;
+            if (MyTileFieldManager.tutorialMode &&! MyTileFieldManager.tutorialTilesPositions.Contains(positionInGrid))return;
             if (!MyTileFieldManager.Interactable || myTileType == TileType.Clear) return;
             if (!currentlyDraged) DragStateChanged();
 

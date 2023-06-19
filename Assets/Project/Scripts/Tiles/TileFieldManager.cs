@@ -18,7 +18,11 @@ namespace Project.Scripts.Tiles
     public class TileFieldManager : Singleton<TileFieldManager>
     { 
         [SerializeField] private bool interactable = true;
-        
+
+        [Header("TutorialMode")]
+        public bool tutorialMode;
+        public List<Vector2Int> tutorialTilesPositions;
+
         [Header("Data")]
         [SerializeField] private Level levelData;
         
@@ -116,7 +120,7 @@ namespace Project.Scripts.Tiles
 
         private void OnEnable()
         {
-            currentLevelID = PlayerPrefs.GetInt("levelID", 0);
+            currentLevelID = tutorialMode ? 0 : PlayerPrefs.GetInt("levelID", 0);
 
             levelData = LevelDataLoader.Instance.GetLevelData(currentLevelID);
             MenuWindowsMaster.Instance.OnMenuActiveChange += MenuChange;
@@ -496,6 +500,7 @@ namespace Project.Scripts.Tiles
             else
             {
                 //Falling done
+                GetTextPopUp(comboRoll,transform.position,new Color(0xEE,0xD9,0x8C,0xFF),"xCOMBO");
                 Interactable = true;
                 ComboRoll = 0;
                 if (Turns < 1)
@@ -711,6 +716,13 @@ namespace Project.Scripts.Tiles
         {
             ScorePopUp popUp = ScorePopUpPool.Instance.GetObjectFromPool().GetComponent<ScorePopUp>();
             popUp.PassValues(textColor,(int)(65-65*math.pow((float)Math.E,-.006f*comboScore)),comboScore);
+            popUp.transform.position = position;
+        }
+        
+        private void GetTextPopUp(int combRoll, Vector3 position,Color textColor,string text)
+        {
+            ScorePopUp popUp = ScorePopUpPool.Instance.GetObjectFromPool().GetComponent<ScorePopUp>();
+            popUp.PassValues(textColor,(int)(65-65*math.pow((float)Math.E,-.006f*comboRoll*5)),comboRoll,text);
             popUp.transform.position = position;
         }
         

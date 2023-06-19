@@ -23,6 +23,16 @@ namespace Project.Scripts.UIScripts.Effects
             myText.text = score.ToString();
             StartCoroutine(Grow(score));
         }
+        
+        public void PassValues(Color textColor, int maxFontSize,int comboRoll , string text)
+        {
+            myText.color = textColor;
+            maximumFontSize = maxFontSize;
+            myText.fontSize = maximumFontSize;
+            fade = true;
+            myText.text = comboRoll+text;
+            StartCoroutine(Grow(comboRoll*5));
+        }
 
         private IEnumerator Grow(int score)
         {

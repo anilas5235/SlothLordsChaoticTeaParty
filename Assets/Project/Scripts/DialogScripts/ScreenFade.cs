@@ -11,7 +11,12 @@ namespace Project.Scripts.DialogScripts
     {
         private CanvasGroup blackScreen;
 
-        public float FadeDuration { get; private set; } = 3;
+        [SerializeField] private float fadeDuration = 3f;
+        public float FadeDuration
+        {
+            get => fadeDuration;
+            private set => fadeDuration = value;
+        }
         protected override void Awake()
         {
             base.Awake();
