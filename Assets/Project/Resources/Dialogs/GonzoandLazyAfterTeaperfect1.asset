@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: GonzoandLazyAfterTeaperfect
+  m_Name: GonzoandLazyAfterTeaperfect1
   m_EditorClassIdentifier: 
-  id: 6
+  id: 0
   passages:
   - guid: beb3a905-3a3f-4e38-b333-5edef44a5ce4
     speaker: 
+    character: 0
     text: ENTRYPOINT
     audioLine: {fileID: 0}
     links:
@@ -33,6 +34,7 @@ MonoBehaviour:
     imageOverride: {fileID: 0}
   - guid: b88ec608-d9d3-4dcf-92b4-230a56faaacc
     speaker: Gonzo
+    character: 2
     text: '*claps his wings* Very well done, Mija!'
     audioLine: {fileID: 0}
     links:
@@ -44,12 +46,13 @@ MonoBehaviour:
       x: 256
       y: 200
       width: 248
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: 5a5178e3-b3f6-4c6d-866a-52973572d4c2
     speaker: Lazy
+    character: 5
     text: Thank you!!! Norbert was a great teacher.
     audioLine: {fileID: 0}
     links:
@@ -61,12 +64,13 @@ MonoBehaviour:
       x: 515
       y: 199
       width: 252
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: 13ad4fcb-1e85-49b3-8f10-79c1e2fabff7
     speaker: Lazy
+    character: 5
     text: What?
     audioLine: {fileID: 0}
     links:
@@ -78,12 +82,13 @@ MonoBehaviour:
       x: 1032
       y: 205
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: 83fbe502-73a7-4297-87a3-e7cfc867729b
     speaker: Gonzo
+    character: 2
     text: "Nothing! Don\u2019t worry\u2026 Oh, by the way, I recently found an old
       book that might interest you. How about we have a look at that. I think you\xB4ll
       like. "
@@ -97,12 +102,13 @@ MonoBehaviour:
       x: 1270
       y: 207
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: 84106286-e63e-4843-bbb3-e8a54b7dafb3
     speaker: Gonzo
+    character: 2
     text: "(to himself) Al menos sirve para algo\u2026 "
     audioLine: {fileID: 0}
     links:
@@ -114,12 +120,13 @@ MonoBehaviour:
       x: 774
       y: 200
       width: 243
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: 25321c30-5e48-4109-a960-3a2b7354a04c
-    speaker: speaker
+    speaker: Lazy
+    character: 5
     text: Oh, yes pleaseee!!!
     audioLine: {fileID: 0}
     links:
@@ -131,12 +138,13 @@ MonoBehaviour:
       x: 1595
       y: 208
       width: 238
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: 06d6d372-39c9-457e-980d-667fb874b6ec
     speaker: 
+    character: 0
     text: 
     audioLine: {fileID: 0}
     links:
@@ -148,12 +156,28 @@ MonoBehaviour:
       x: 1847
       y: 210
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 21300000, guid: d913d4156b5dd194199e6b1a1d92d05f, type: 3}
-  - guid: ff4fa65a-03a5-424c-9ca3-0c1111c586ec
+  - guid: 09be5f94-2c32-494f-b92a-ab4cef0484b0
     speaker: Gonzo
+    character: 2
+    text: De nada, Mija!
+    audioLine: {fileID: 0}
+    links: []
+    rect:
+      serializedVersion: 2
+      x: 2378
+      y: 213
+      width: 215
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: ff4fa65a-03a5-424c-9ca3-0c1111c586ec
+    speaker: Lazy
+    character: 5
     text: This is perfect after all! Muchas Gracias Gonzo!
     audioLine: {fileID: 0}
     links:
@@ -165,22 +189,8 @@ MonoBehaviour:
       x: 2075
       y: 213
       width: 285
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
-  - guid: 09be5f94-2c32-494f-b92a-ab4cef0484b0
-    speaker: speaker
-    text: De nada, Mija!
-    audioLine: {fileID: 0}
-    links: []
-    rect:
-      serializedVersion: 2
-      x: 2378
-      y: 213
-      width: 215
-      height: 246
-    entryPoint: 0
-    mood: 0
-    imageOverride: {fileID: 0}
-  dialogCharacter: 1
+  dialogCharacter: 0

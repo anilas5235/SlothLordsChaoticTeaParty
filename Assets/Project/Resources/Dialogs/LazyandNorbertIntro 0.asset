@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: "LazyandNorbertIntro\u202F"
+  m_Name: "LazyandNorbertIntro\u202F0"
   m_EditorClassIdentifier: 
-  id: 11
+  id: 0
   passages:
   - guid: f433cd56-a3db-48e5-a8cb-5a4d007b9f06
     speaker: 
+    character: 0
     text: ENTRYPOINT
     audioLine: {fileID: 0}
     links:
@@ -33,6 +34,7 @@ MonoBehaviour:
     imageOverride: {fileID: 0}
   - guid: ce04e5a5-189e-4371-b494-ea6745336899
     speaker: Lazy
+    character: 5
     text: "Norbert? \u2026 Norbert? \u2026 NORBERT!\u202F"
     audioLine: {fileID: 0}
     links:
@@ -44,12 +46,13 @@ MonoBehaviour:
       x: 162
       y: -21
       width: 248
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: 869d4a05-78bd-4903-826d-ae43304103ad
     speaker: Norbert
+    character: 3
     text: "Do you know what time it is?!\u202F "
     audioLine: {fileID: 0}
     links:
@@ -61,12 +64,13 @@ MonoBehaviour:
       x: 453
       y: -21
       width: 258
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: c114cd89-dee9-4152-bdf0-a0d987f315d1
     speaker: Lazy
+    character: 5
     text: No
     audioLine: {fileID: 0}
     links:
@@ -78,12 +82,13 @@ MonoBehaviour:
       x: 759
       y: -11
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 18d135d3-c480-48d6-b0ed-b7abde457841
     speaker: Norbert
+    character: 3
     text: Time to be quiet and to let me sleep in peace!
     audioLine: {fileID: 0}
     links:
@@ -94,13 +99,14 @@ MonoBehaviour:
       serializedVersion: 2
       x: 1004
       y: -5
-      width: 247
-      height: 246
+      width: 273
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: 5e821a7d-9d22-472e-acc4-49e0c1d780cb
     speaker: Lazy
+    character: 5
     text: "But I need your help!\u202F"
     audioLine: {fileID: 0}
     links:
@@ -112,12 +118,13 @@ MonoBehaviour:
       x: 1268
       y: -4
       width: 244
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: 6d050522-cb0d-4570-94e2-3718efe6eeea
     speaker: Norbert
+    character: 3
     text: "I think I\u2019ll pass\u2026\u202F"
     audioLine: {fileID: 0}
     links:
@@ -129,12 +136,13 @@ MonoBehaviour:
       x: 1535
       y: -2
       width: 223
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: b2a2d26c-3cf2-4d07-bcf9-80e3245c17a4
     speaker: Lazy
+    character: 5
     text: ...
     audioLine: {fileID: 0}
     links:
@@ -146,12 +154,13 @@ MonoBehaviour:
       x: 1765
       y: 7
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: 4704abf4-f8c1-4986-89d1-37956a3865a7
     speaker: Norbert
+    character: 3
     text: "Make it quick\u2026"
     audioLine: {fileID: 0}
     links:
@@ -163,12 +172,13 @@ MonoBehaviour:
       x: 1991
       y: 7
       width: 219
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: 121c478b-e721-41e1-bcc4-a4d62d4b46f6
     speaker: Lazy
+    character: 5
     text: "Okay! Listen! \u2026 TEA PARTY!\u202F "
     audioLine: {fileID: 0}
     links:
@@ -180,12 +190,13 @@ MonoBehaviour:
       x: 2240
       y: 8
       width: 248
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: 3b964758-de28-4425-ba8a-2f0269c40192
     speaker: Lazy
+    character: 5
     text: "I had a Dream last night \u2026 we had tea with our family, so I\u2019ve
       been thinking\u2026 Let\u2019s have a tea party, like the good old days.\u202F"
     audioLine: {fileID: 0}
@@ -197,13 +208,14 @@ MonoBehaviour:
       serializedVersion: 2
       x: 2764
       y: 5
-      width: 243
-      height: 246
+      width: 308
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: b5ab4465-5d10-43b1-840b-f80a5b699697
     speaker: Norbert
+    character: 3
     text: "What?\u202F"
     audioLine: {fileID: 0}
     links:
@@ -215,12 +227,13 @@ MonoBehaviour:
       x: 2523
       y: 7
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: 96e03db5-2a70-4a36-8e3c-63ffad6fc4c6
     speaker: Norbert
+    character: 3
     text: "On our own?\u202F "
     audioLine: {fileID: 0}
     links:
@@ -232,12 +245,13 @@ MonoBehaviour:
       x: 3028
       y: 9
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: 23bbf113-50cc-4ac2-b86d-291d349426cb
     speaker: Lazy
+    character: 5
     text: "\u2026 and that\u2019s where you come in!\u202F "
     audioLine: {fileID: 0}
     links:
@@ -249,12 +263,13 @@ MonoBehaviour:
       x: 3256
       y: 17
       width: 248
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: dd7ce03d-81f3-4a32-9941-0f920d3a0fee
     speaker: Norbert
+    character: 3
     text: No!
     audioLine: {fileID: 0}
     links:
@@ -266,12 +281,13 @@ MonoBehaviour:
       x: 3522
       y: 16
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: 449e89aa-9b40-4633-b443-6068e090a628
     speaker: Lazy
+    character: 5
     text: "Yes!\u202F"
     audioLine: {fileID: 0}
     links:
@@ -283,12 +299,13 @@ MonoBehaviour:
       x: 3757
       y: 17
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: 3403d3f2-2e4a-4eb6-b9a5-ed15ba7f3998
     speaker: Norbert
+    character: 3
     text: NO!
     audioLine: {fileID: 0}
     links:
@@ -300,12 +317,13 @@ MonoBehaviour:
       x: 3990
       y: 18
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: da445d08-745f-46f6-a31f-18172c6247e4
     speaker: Lazy
+    character: 5
     text: "Pleaseeeeeee\u2026."
     audioLine: {fileID: 0}
     links:
@@ -317,12 +335,13 @@ MonoBehaviour:
       x: 4221
       y: 23
       width: 226
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: a2ac8a77-2c7d-4654-9953-477a4f387009
     speaker: Norbert
+    character: 3
     text: "Fine\u2026 but you\u2019ll have to do, what I tell you!"
     audioLine: {fileID: 0}
     links:
@@ -333,13 +352,14 @@ MonoBehaviour:
       serializedVersion: 2
       x: 4459
       y: 22
-      width: 244
-      height: 246
+      width: 257
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: aa6e4375-b4ef-43b4-99e5-2f6e30d31a53
     speaker: Lazy
+    character: 5
     text: "YAY!\u202F"
     audioLine: {fileID: 0}
     links: []
@@ -348,7 +368,8 @@ MonoBehaviour:
       x: 4727
       y: 19
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
+  dialogCharacter: 0

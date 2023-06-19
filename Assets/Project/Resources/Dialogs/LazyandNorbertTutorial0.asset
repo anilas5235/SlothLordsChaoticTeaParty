@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: LazyandNorbertTutorial
+  m_Name: LazyandNorbertTutorial0
   m_EditorClassIdentifier: 
-  id: 12
+  id: 0
   passages:
   - guid: 26273b81-e4fd-441a-b2e9-973692cc1ff4
     speaker: 
+    character: 0
     text: ENTRYPOINT
     audioLine: {fileID: 0}
     links:
@@ -33,6 +34,7 @@ MonoBehaviour:
     imageOverride: {fileID: 0}
   - guid: a8a2a06d-dcea-4011-9ed7-4aed182504e7
     speaker: Norbert
+    character: 3
     text: "Okay! First things first, why don\u2019t you go over to the cup shelf
       and choose one.\u202F "
     audioLine: {fileID: 0}
@@ -48,12 +50,13 @@ MonoBehaviour:
       x: 280
       y: 197
       width: 308
-      height: 270
+      height: 291
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: a5dbc36d-eaa3-4765-9315-98890ac7e406
     speaker: Norbert
+    character: 3
     text: "On your right\u2026 How long have you been living here?\u202F"
     audioLine: {fileID: 0}
     links:
@@ -65,12 +68,13 @@ MonoBehaviour:
       x: 607
       y: 87
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: 574db2d1-41c3-4e2a-a3e6-62ba52a99d35
     speaker: Lazy
+    character: 5
     text: Sorry, just a Little overexcited!
     audioLine: {fileID: 0}
     links:
@@ -82,12 +86,13 @@ MonoBehaviour:
       x: 921
       y: 91
       width: 230
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: de1a1fe4-d984-4949-bd3b-d7b2fb5af10f
     speaker: Norbert
+    character: 3
     text: "Good! Now choose the nicest cup of all!\u202F"
     audioLine: {fileID: 0}
     links:
@@ -105,12 +110,13 @@ MonoBehaviour:
       x: 1213
       y: 200
       width: 260
-      height: 294
+      height: 315
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: ba360604-9682-43ef-8071-0f8beef7653b
     speaker: Norbert
+    character: 3
     text: Nope
     audioLine: {fileID: 0}
     links:
@@ -122,12 +128,13 @@ MonoBehaviour:
       x: 1491
       y: -48
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: f55e620b-198e-4271-a02a-1eeae2ce94e0
     speaker: Norbert
+    character: 3
     text: Wrong!
     audioLine: {fileID: 0}
     links:
@@ -139,12 +146,13 @@ MonoBehaviour:
       x: 1492
       y: 211
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 42415a84-4d0f-4a84-bf98-9403dc408408
     speaker: Norbert
+    character: 3
     text: Are you kidding me?!
     audioLine: {fileID: 0}
     links:
@@ -156,12 +164,13 @@ MonoBehaviour:
       x: 1492
       y: 469
       width: 249
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: f5ceb239-8e31-4450-bd76-ad5959f9f74e
     speaker: Norbert
+    character: 3
     text: "Perfect! I know we were on the same page!\u202F "
     audioLine: {fileID: 0}
     links:
@@ -173,12 +182,13 @@ MonoBehaviour:
       x: 1826
       y: 215
       width: 267
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: cd654769-48a5-45ef-84e5-1b8ad88e754c
     speaker: Norbert
+    character: 3
     text: "Now we just have to make the tea and \u2026 well, have a tea party. At
       least three objects of the same kind make one snack or one full cup.\u202F"
     audioLine: {fileID: 0}
@@ -191,12 +201,13 @@ MonoBehaviour:
       x: 2100
       y: 213
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: d2011ba1-6259-49c7-ab2b-2fc218ab7774
     speaker: Lazy
+    character: 5
     text: "LET\u2019S GO THEN!\u202F"
     audioLine: {fileID: 0}
     links:
@@ -208,12 +219,13 @@ MonoBehaviour:
       x: 2408
       y: 213
       width: 228
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: 4b82ddf0-2346-4d6c-9abc-753f5f0475db
     speaker: Norbert
+    character: 3
     text: "Please calm down and for god\u2019s sake, stop yelling!\u202F "
     audioLine: {fileID: 0}
     links:
@@ -225,12 +237,13 @@ MonoBehaviour:
       x: 2642
       y: 216
       width: 306
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: d7392318-b569-4ce2-9f37-cd0a1ff13963
     speaker: Lazy
+    character: 5
     text: "Sorry\u2026"
     audioLine: {fileID: 0}
     links:
@@ -242,12 +255,13 @@ MonoBehaviour:
       x: 2949
       y: 219
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 76921d2d-2ab8-4059-b613-654fdb036483
     speaker: Norbert
+    character: 3
     text: How about you try to switch these two?
     audioLine: {fileID: 0}
     links:
@@ -259,12 +273,13 @@ MonoBehaviour:
       x: 3178
       y: 222
       width: 250
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: 57cea66b-b425-4b93-88a6-21b4e29ef977
     speaker: Norbert
+    character: 3
     text: "Yup, that\u2019s it! Now let\u2019s have your little tea party!"
     audioLine: {fileID: 0}
     links:
@@ -276,12 +291,13 @@ MonoBehaviour:
       x: 3442
       y: 217
       width: 288
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: f44599ee-037c-4f3a-8a48-8e7b1eef3bf5
     speaker: Lazy
+    character: 5
     text: Oh my god! Thank you! This is amazing!
     audioLine: {fileID: 0}
     links:
@@ -293,12 +309,13 @@ MonoBehaviour:
       x: 3740
       y: 218
       width: 259
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: 8ff83873-2a08-4cbb-a1a2-ae791f129c4c
     speaker: Norbert
+    character: 3
     text: "By the way, I really enjoy eucalyptus tea, but please, no poppy seed cake!\u202F"
     audioLine: {fileID: 0}
     links: []
@@ -307,7 +324,8 @@ MonoBehaviour:
       x: 4003
       y: 218
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
+  dialogCharacter: 0

@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: GonzoandLazySheldonBeforeTea
+  m_Name: GonzoandLazySheldonBeforeTea0
   m_EditorClassIdentifier: 
-  id: 8
+  id: 0
   passages:
   - guid: 382a9b18-8ac6-469c-9395-0b1efbd3aa3c
     speaker: 
+    character: 0
     text: ENTRYPOINT
     audioLine: {fileID: 0}
     links:
@@ -33,6 +34,7 @@ MonoBehaviour:
     imageOverride: {fileID: 0}
   - guid: ab9bfc0a-3f50-4c87-8392-3e3fcbdbdf28
     speaker: Gonzo
+    character: 2
     text: "\xA1Al\xE9jense de las drogas, hijos m\xEDos!"
     audioLine: {fileID: 0}
     links:
@@ -44,12 +46,13 @@ MonoBehaviour:
       x: 260
       y: 206
       width: 241
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: cea37419-77f2-4a55-9aef-dec489d5f7b1
     speaker: Lazy
+    character: 5
     text: "\xBFQu\xE9?"
     audioLine: {fileID: 0}
     links:
@@ -61,12 +64,13 @@ MonoBehaviour:
       x: 515
       y: 206
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 5d337211-e6e4-41b2-9e60-0a7713b6680e
     speaker: Gonzo
+    character: 2
     text: "Stay away from drugs!\u202F\u202F"
     audioLine: {fileID: 0}
     links:
@@ -78,12 +82,13 @@ MonoBehaviour:
       x: 736
       y: 208
       width: 255
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: fc63e123-c164-448c-8c48-d5cbeeef744e
     speaker: Lazy
+    character: 5
     text: ...
     audioLine: {fileID: 0}
     links:
@@ -95,12 +100,13 @@ MonoBehaviour:
       x: 1000
       y: 210
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: e5d0839b-88d2-47f1-a7b4-1e3e4daddf58
     speaker: Gonzo
+    character: 2
     text: "I Hope we can learn from this, peque\xF1o.\u202F"
     audioLine: {fileID: 0}
     links:
@@ -112,12 +118,13 @@ MonoBehaviour:
       x: 1218
       y: 211
       width: 247
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: b541b60a-1089-4a72-b3c2-c63634956d1d
     speaker: Gonzo
+    character: 2
     text: ' And what would that be Darling?'
     audioLine: {fileID: 0}
     links:
@@ -129,12 +136,13 @@ MonoBehaviour:
       x: 1791
       y: 216
       width: 251
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: c7ad992b-daff-48a0-8a88-df03935e25eb
     speaker: Lazy
+    character: 5
     text: "excited* Sooo\u2026 I know you like strawberry tarts, and I might have
       some left, so I\u2019ve been thinking, you remember the times we had cute little
       tea parties with our family, and how it was always so much fun\u2026"
@@ -148,12 +156,13 @@ MonoBehaviour:
       x: 2049
       y: 218
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: 13ff29b9-3f1e-45d4-a7f1-c8a60a8a5dee
     speaker: Lazy
+    character: 5
     text: Oh, by the way Gonzo! I wanted to ask you something anyways!
     audioLine: {fileID: 0}
     links:
@@ -165,12 +174,13 @@ MonoBehaviour:
       x: 1474
       y: 216
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: cd1bd390-5e34-4edb-bd8c-7c39c0c00f8a
     speaker: Gonzo
+    character: 2
     text: Mija! Mija! Calm down.
     audioLine: {fileID: 0}
     links:
@@ -182,12 +192,13 @@ MonoBehaviour:
       x: 2364
       y: 218
       width: 249
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 6f14c5da-0782-4de5-967f-b6cb80366189
     speaker: Lazy
+    character: 5
     text: "Lo siento Gonzo! \u2026 I was just wondering\u2026because I\u2019ve been
       having"
     audioLine: {fileID: 0}
@@ -200,12 +211,13 @@ MonoBehaviour:
       x: 2625
       y: 219
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 0d680430-ab2f-4836-83c4-153debef8979
     speaker: Gonzo
+    character: 2
     text: "You want to have a tea party with me?\u202F"
     audioLine: {fileID: 0}
     links:
@@ -217,12 +229,13 @@ MonoBehaviour:
       x: 2942
       y: 223
       width: 248
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: c5fc705f-4e0d-4843-a125-5be4ee552e81
     speaker: Lazy
+    character: 5
     text: YES! So, do you want to?
     audioLine: {fileID: 0}
     links:
@@ -234,12 +247,13 @@ MonoBehaviour:
       x: 3201
       y: 223
       width: 252
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: e0cd7aba-6eec-41bd-942b-24b874bef66f
     speaker: Gonzo
+    character: 2
     text: "Of course, darling, I\u2019ve already been wondering when you ask.\u202F"
     audioLine: {fileID: 0}
     links:
@@ -251,12 +265,13 @@ MonoBehaviour:
       x: 3463
       y: 222
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: ce002ac6-13fa-4a7c-8aac-4d3c86992ba2
-    speaker: speaker
+    speaker: Lazy
+    character: 5
     text: "Best day ever!\u202FAnd I promise, there won\u2019t be any eucalyptus
       tea!"
     audioLine: {fileID: 0}
@@ -266,8 +281,8 @@ MonoBehaviour:
       x: 3789
       y: 222
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
-  dialogCharacter: 1
+  dialogCharacter: 0

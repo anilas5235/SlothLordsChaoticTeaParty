@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: SheldonandLazyperfect
+  m_Name: SheldonandLazyperfect0
   m_EditorClassIdentifier: 
-  id: 17
+  id: 0
   passages:
   - guid: 15e83178-8a7f-47c1-8ad4-1519dbf7154a
     speaker: 
+    character: 0
     text: ENTRYPOINT
     audioLine: {fileID: 0}
     links:
@@ -33,6 +34,7 @@ MonoBehaviour:
     imageOverride: {fileID: 0}
   - guid: 9cf39f44-3300-46b1-95f1-b4a3a3400db7
     speaker: Lazy
+    character: 5
     text: "Someone\u2019s in a good mood now, and it\u2019s not just me\u2026 *giggle*"
     audioLine: {fileID: 0}
     links:
@@ -44,12 +46,13 @@ MonoBehaviour:
       x: 253
       y: 203
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: e7551960-50e4-4a37-983b-5f55d11ef807
     speaker: Sheldon
+    character: 4
     text: 'One could say that. One could say that. (Smiles satisfied.) '
     audioLine: {fileID: 0}
     links:
@@ -61,12 +64,13 @@ MonoBehaviour:
       x: 564
       y: 204
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: ee3979a8-2a40-4d6b-8a49-8130a8087424
     speaker: Lazy
+    character: 5
     text: (Smiles back.)
     audioLine: {fileID: 0}
     links:
@@ -78,12 +82,13 @@ MonoBehaviour:
       x: 871
       y: 204
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: 424f18b0-9586-4867-a22b-91c719f1bac8
     speaker: Sheldon
+    character: 4
     text: I am relieved that you know what you are doing. I will speak to Lady Eleanor
       about this in the highest tones.
     audioLine: {fileID: 0}
@@ -96,12 +101,13 @@ MonoBehaviour:
       x: 1092
       y: 205
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: 8026d7b9-3b4a-4a3f-890f-3cee1de42042
     speaker: Lazy
+    character: 5
     text: You would do that, LETS GOOO!
     audioLine: {fileID: 0}
     links:
@@ -113,12 +119,13 @@ MonoBehaviour:
       x: 1404
       y: 206
       width: 247
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 3
     imageOverride: {fileID: 0}
   - guid: 150b5df7-0e45-4d55-a41b-77c51e8fd335
     speaker: Sheldon
+    character: 4
     text: ' I am not quite sure when our humans will be back. At the door and over
       there are some letter papers. The things I could read quite worry me. '
     audioLine: {fileID: 0}
@@ -131,12 +138,13 @@ MonoBehaviour:
       x: 1660
       y: 208
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: 9b88de43-b325-43dc-ab36-3cb419a09aaf
     speaker: Lazy
+    character: 5
     text: "I don\u2019t like how you say that Sheldon\u2026 what do they say?"
     audioLine: {fileID: 0}
     links:
@@ -148,12 +156,13 @@ MonoBehaviour:
       x: 1976
       y: 208
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 3a3d1be3-4735-4c47-bd4a-1f4a7a236adb
     speaker: Sheldon
+    character: 4
     text: "At the door are some letter papers. And over there is one as well. I could
       read the words \u201Eplane\u201C,  hunt, the names of our humans and their
       cousin Franklyn. I am not quite sure what they mean yet. "
@@ -167,12 +176,13 @@ MonoBehaviour:
       x: 2303
       y: 210
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 60914d9e-9685-4755-9903-e3da38dd42f6
     speaker: Lazy
+    character: 5
     text: "Why are you worrying? Sounds like they are hunting a plane with cousin
       Franklin\u2026 sounds like a lot of work, makes sense that they\u2019re taking
       so long."
@@ -186,12 +196,13 @@ MonoBehaviour:
       x: 2625
       y: 208
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: d5dbf4d5-2313-4384-83de-e44fc055d138
     speaker: Sheldon
+    character: 4
     text: Maybe. Those loud things in the sky sure look hard to catch. I will think
       about it with some poppy seeds at my usual spot... (Goes to  sit and look at
       the garden through the window.)
@@ -202,8 +213,8 @@ MonoBehaviour:
       x: 2949
       y: 212
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
-  dialogCharacter: 3
+  dialogCharacter: 0

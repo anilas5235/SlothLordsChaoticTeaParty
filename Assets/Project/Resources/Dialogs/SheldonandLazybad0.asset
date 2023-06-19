@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: SheldonandLazybad
+  m_Name: SheldonandLazybad0
   m_EditorClassIdentifier: 
-  id: 15
+  id: 0
   passages:
   - guid: cca9ee80-37e7-461d-b7f3-6b27f5a91dcd
     speaker: 
+    character: 0
     text: ENTRYPOINT
     audioLine: {fileID: 0}
     links:
@@ -33,6 +34,7 @@ MonoBehaviour:
     imageOverride: {fileID: 0}
   - guid: 1c4686f3-d0f0-4f45-8329-9433185c5477
     speaker: Sheldon
+    character: 4
     text: 'I am not sure you know how to brew poppy tea correctly. '
     audioLine: {fileID: 0}
     links:
@@ -44,12 +46,13 @@ MonoBehaviour:
       x: 242
       y: 198
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: 2bfd98e9-d6c0-419b-811f-6fda682e4ba5
     speaker: Lazy
+    character: 5
     text: "I\u2019m sorry Sheldon, I seem to have missed something. "
     audioLine: {fileID: 0}
     links:
@@ -61,12 +64,13 @@ MonoBehaviour:
       x: 568
       y: 199
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 338a93ee-e5af-42a0-bc36-824c9696653e
     speaker: Sheldon
+    character: 4
     text: Something elementary I presume.
     audioLine: {fileID: 0}
     links:
@@ -78,12 +82,13 @@ MonoBehaviour:
       x: 887
       y: 200
       width: 259
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: d1e71437-b93f-4ae3-84b5-5edeb553f4a6
     speaker: Lazy
+    character: 5
     text: "Elementary, comes from Element\u2026 so you are talking about more fire
       under the stove. That\u2019s actually smart! "
     audioLine: {fileID: 0}
@@ -96,12 +101,13 @@ MonoBehaviour:
       x: 1154
       y: 202
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: f12f00cc-835f-48e2-8ff3-0b6dd125583d
     speaker: Sheldon
+    character: 4
     text: (Sigh.) Something like that. Also not quite.
     audioLine: {fileID: 0}
     links:
@@ -113,29 +119,13 @@ MonoBehaviour:
       x: 1470
       y: 202
       width: 253
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
-  - guid: 332d9a27-8482-4d87-8008-a44f4068d424
-    speaker: Lazy
-    text: "I\u2019m going to try that next time! How about we try again? "
-    audioLine: {fileID: 0}
-    links:
-    - baseNodeGuid: 332d9a27-8482-4d87-8008-a44f4068d424
-      portName: Choice 0
-      targetNodeGuid: bc1d4f4f-36ff-49ce-a35e-770e20ab5210
-    rect:
-      serializedVersion: 2
-      x: 1740
-      y: 204
-      width: 308
-      height: 246
-    entryPoint: 0
-    mood: 0
-    imageOverride: {fileID: 0}
   - guid: bc1d4f4f-36ff-49ce-a35e-770e20ab5210
     speaker: Sheldon
+    character: 4
     text: I can manage on my own. Fetch me those seeds. I have some thoughts that
       have to be thought through laboriously.
     audioLine: {fileID: 0}
@@ -148,12 +138,13 @@ MonoBehaviour:
       x: 2058
       y: 204
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: f221573e-d2c2-4ae5-949c-bc0770d081b1
     speaker: Lazy
+    character: 5
     text: "(\u2026)"
     audioLine: {fileID: 0}
     links:
@@ -165,12 +156,13 @@ MonoBehaviour:
       x: 2373
       y: 207
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: c2f34dbf-eee9-4d61-8487-c4b1c8932e0d
     speaker: Sheldon
+    character: 4
     text: (Goes to look through the window at the garden melancholically.)
     audioLine: {fileID: 0}
     links: []
@@ -179,8 +171,26 @@ MonoBehaviour:
       x: 2599
       y: 209
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
-  dialogCharacter: 3
+  - guid: 332d9a27-8482-4d87-8008-a44f4068d424
+    speaker: Lazy
+    character: 5
+    text: "I\u2019m going to try that next time! How about we try again? "
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 332d9a27-8482-4d87-8008-a44f4068d424
+      portName: Choice 0
+      targetNodeGuid: bc1d4f4f-36ff-49ce-a35e-770e20ab5210
+    rect:
+      serializedVersion: 2
+      x: 1740
+      y: 204
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  dialogCharacter: 0

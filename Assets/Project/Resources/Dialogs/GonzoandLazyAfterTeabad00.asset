@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: GonzoandLazyAfterTeabad0
+  m_Name: GonzoandLazyAfterTeabad00
   m_EditorClassIdentifier: 
-  id: 4
+  id: 0
   passages:
   - guid: 13a21567-d7fb-456d-b7d4-0b466386f1bd
     speaker: 
+    character: 0
     text: ENTRYPOINT
     audioLine: {fileID: 0}
     links:
@@ -33,6 +34,7 @@ MonoBehaviour:
     imageOverride: {fileID: 0}
   - guid: 961b1fa2-72ec-40b2-811a-5eb04b4e09b8
     speaker: Lazy
+    character: 5
     text: "\u2026 "
     audioLine: {fileID: 0}
     links:
@@ -44,12 +46,13 @@ MonoBehaviour:
       x: 246
       y: 201
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: aba032f3-d223-4d6b-bd2d-feb724697105
     speaker: Gonzo
+    character: 2
     text: "That was \u2026 something \u2026 "
     audioLine: {fileID: 0}
     links:
@@ -61,12 +64,13 @@ MonoBehaviour:
       x: 465
       y: 204
       width: 259
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: 072d039e-295c-4271-91da-fb790dc9217f
     speaker: Lazy
+    character: 5
     text: " I\xB4m sorry Gonzo. I thought I got the hang of it."
     audioLine: {fileID: 0}
     links:
@@ -78,12 +82,13 @@ MonoBehaviour:
       x: 739
       y: 213
       width: 275
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 21c59a12-faf6-4b50-9b05-154440580821
     speaker: Gonzo
+    character: 2
     text: "No te preocupes, mija! It\xB4s okay."
     audioLine: {fileID: 0}
     links:
@@ -95,12 +100,13 @@ MonoBehaviour:
       x: 1023
       y: 214
       width: 247
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
   - guid: 31d54e90-80d0-416c-b86e-8971fc50abe8
     speaker: Gonzo
+    character: 2
     text: "It\xB4s fine, darling. Nothing is ever perfect, that\xB4s what makes it
       special. La perfecci\xF3n es aburrida."
     audioLine: {fileID: 0}
@@ -113,12 +119,13 @@ MonoBehaviour:
       x: 1523
       y: 215
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: b6e499c7-6fda-4bc1-8c33-55fca27ac8a3
     speaker: Lazy
+    character: 5
     text: But I really wanted to be perfect.
     audioLine: {fileID: 0}
     links:
@@ -130,12 +137,13 @@ MonoBehaviour:
       x: 1274
       y: 218
       width: 240
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 53c4dedd-9646-458d-a6ce-c6cd5851e2ee
     speaker: Lazy
+    character: 5
     text: 'Thank you Gonzo! '
     audioLine: {fileID: 0}
     links:
@@ -147,12 +155,13 @@ MonoBehaviour:
       x: 1835
       y: 219
       width: 239
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: a2787821-8c85-4da0-bc2e-4d1545e7037b
     speaker: Gonzo
+    character: 2
     text: " Why don\xB4t we finish our tea party with remembering who we learned
       it from. "
     audioLine: {fileID: 0}
@@ -165,12 +174,13 @@ MonoBehaviour:
       x: 2065
       y: 221
       width: 308
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
   - guid: 2fac06a4-0ab2-4389-8117-616b5beb1fe4
     speaker: 
+    character: 0
     text: 
     audioLine: {fileID: 0}
     links:
@@ -181,13 +191,14 @@ MonoBehaviour:
       serializedVersion: 2
       x: 2377
       y: 224
-      width: 215
-      height: 246
+      width: 269
+      height: 267
     entryPoint: 0
     mood: 0
-    imageOverride: {fileID: 21300000, guid: d913d4156b5dd194199e6b1a1d92d05f, type: 3}
+    imageOverride: {fileID: 21300000, guid: c7460a35e869a364cbf0b15e8a9875da, type: 3}
   - guid: c3efcee9-b1d2-4248-8bd4-0f2d38f05e92
     speaker: Lazy
+    character: 5
     text: This is perfect after all! Muchas Gracias Gonzo!
     audioLine: {fileID: 0}
     links:
@@ -196,25 +207,26 @@ MonoBehaviour:
       targetNodeGuid: 7e69d01e-0212-4f38-94fe-9a4a450df1fd
     rect:
       serializedVersion: 2
-      x: 2601
-      y: 225
+      x: 2643
+      y: 224
       width: 285
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
   - guid: 7e69d01e-0212-4f38-94fe-9a4a450df1fd
     speaker: Gonzo
+    character: 2
     text: De nada, Mija!
     audioLine: {fileID: 0}
     links: []
     rect:
       serializedVersion: 2
-      x: 2890
-      y: 222
+      x: 2928
+      y: 220
       width: 215
-      height: 246
+      height: 267
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
-  dialogCharacter: 1
+  dialogCharacter: 0
