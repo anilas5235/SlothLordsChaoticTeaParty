@@ -38,4 +38,8 @@ MonoBehaviour:
   turns: 18
   random: 0
   prefectScore: 1900
-  character: 3
+  character: 4
+  intro: 8
+  badEnding: 9
+  goodEnding: 10
+  perfectEnding: 11

@@ -1,5 +1,5 @@
 using Project.Scripts.General;
-using Project.Scripts.UIScripts;
+using Project.Scripts.Tiles;
 using Project.Scripts.UIScripts.Windows;
 using UnityEngine;
 
@@ -21,7 +21,8 @@ namespace Project.Scripts.Menu
         public override void Interact()
         {
             if(!unlocked || MenuWindowsMaster.Instance.MenuActive)return;
-            PlayPreviewWindow.Instance.levelID = levelID;
+            
+            PlayPreviewWindow.Instance.SetLeveVar(levelID);
             MenuWindowsMaster.Instance.OpenWindow(PlayPreviewWindow.Instance);
         }
     }

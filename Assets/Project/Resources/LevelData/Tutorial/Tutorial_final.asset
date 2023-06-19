@@ -33,3 +33,7 @@ MonoBehaviour:
   random: 0
   prefectScore: 200
   character: 3
+  intro: 0
+  badEnding: 1
+  goodEnding: 2
+  perfectEnding: 3

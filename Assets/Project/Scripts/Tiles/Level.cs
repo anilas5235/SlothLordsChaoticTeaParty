@@ -37,15 +37,22 @@ namespace Project.Scripts.Tiles
             prefectScore = perfectScore;
             character = levelCharacter;
         }
-
+        
+        [Header("Field Properties")]
         [SerializeField] private Colum[] startingGrid; 
         [SerializeField] private Vector2Int fieldSize;
         [SerializeField] private Tile.TileType preferredTile, dislikedTile;
         [SerializeField] private float[] probabilities;
         [SerializeField] private int turns;
         [SerializeField] private bool random = false;
+        [Header("Score")]
         [SerializeField] private int prefectScore;
+        [Header("Character")]
         [SerializeField] private CharacterAnimator.Characters character;
+        
+        [Header("DialogIDs")] 
+        public int intro;
+        public int badEnding, goodEnding, perfectEnding;
         
         public Colum[] StartingGrid { get => startingGrid; }
         public Vector2Int FieldSize{ get => fieldSize; }

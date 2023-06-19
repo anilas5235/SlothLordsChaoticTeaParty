@@ -27,22 +27,23 @@ namespace Project.Scripts.DialogScripts
 
         private string speakerName;
         public bool FinishedLine { get; private set; }
+        public bool DialogFinished { get; private set; }
         private bool  choiceMade = true;
         private string[] choices;
-        private int currentDialogID;
+        public int CurrentDialogID { get; private set; }
 
         private Coroutine writeRoutine;
 
         private void Update()
         {
-            if (Input.GetButtonDown("Jump") && choiceMade) NextPassage();
+            if (Input.GetButtonDown("Jump") && choiceMade &&! DialogFinished) NextPassage();
         }
 
         public void StartDialog(string guid, int dialogID)
         {
-            if (GetDialog(currentDialogID, out Dialog newDialog)) currentStory = newDialog;
+            if (GetDialog(CurrentDialogID, out Dialog newDialog)) currentStory = newDialog;
             else return;
-            currentDialogID = dialogID;
+            CurrentDialogID = dialogID;
             OnDialogStart?.Invoke();
             if (string.IsNullOrEmpty(guid))
             {
@@ -124,7 +125,7 @@ namespace Project.Scripts.DialogScripts
             
             switch (dialogPassageNode.links.Count)
             {
-                case 0: OnDialogEnd?.Invoke(); break;
+                case 0: DialogFinished = true; OnDialogEnd?.Invoke(); break;
                 case 1: LoadPassage(dialogPassageNode.links[0].Guid);break;
                 default: LoadPassage(dialogPassageNode.links[linkID].Guid); break;
             }
@@ -135,6 +136,11 @@ namespace Project.Scripts.DialogScripts
             choiceMade = true;
             OnChoiceOver?.Invoke();
             NextPassage(choiceId);
+        }
+
+        public void SetDialogId(int id)
+        {
+            CurrentDialogID = id;
         }
     }
 }

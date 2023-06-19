@@ -12,10 +12,17 @@ namespace Project.Scripts.Menu
             SceneManager.LoadScene("Menu");
         }
 
-        public void ChangeToLevel(int levelID)
+        public void ChangeToLevelDialog(int levelID, int dialogID)
         {
             CursorManager.Instance.ActivateCursor();
             PlayerPrefs.SetInt("levelID", levelID);
+            PlayerPrefs.SetInt("DialogID",dialogID);
+            SceneManager.LoadScene("Dialog");
+        }
+
+        public void LoadLevel()
+        {
+            CursorManager.Instance.ActivateCursor();
             SceneManager.LoadScene("Main");
         }
     }

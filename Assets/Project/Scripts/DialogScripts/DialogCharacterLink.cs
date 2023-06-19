@@ -1,4 +1,6 @@
 using System;
+using Project.Scripts.Tiles;
+using UnityEngine;
 
 namespace Project.Scripts.DialogScripts
 {
@@ -9,20 +11,23 @@ namespace Project.Scripts.DialogScripts
         private void OnEnable()
         {
             myDialogManager = DialogManager.Instance;
-            myDialogManager.OnDialogStart += LoadDialogCharacter;
             myDialogManager.OnNodeLoaded += LoadNewMoodFromDialogData;
         }
 
         private void OnDisable()
         {
-            myDialogManager.OnDialogStart -= LoadDialogCharacter;
             myDialogManager.OnNodeLoaded -= LoadNewMoodFromDialogData;
+        }
+
+        private void Start()
+        {
+            LoadDialogCharacter();
         }
 
         private void LoadDialogCharacter()
         {
-            SelectCharacter(myDialogManager.CurrentStory.dialogCharacter);
-            ChangeCharacterMode(CharacterAnimator.CharacterMoods.Neutral);
+            myCharacterAnimator.CurrentCharacter = LevelDataLoader.Instance.GetLevelData(PlayerPrefs.GetInt("levelID", 0)).Character;
+            myCharacterAnimator.CurrentMode = CharacterAnimator.CharacterMoods.Happy;
         }
 
         private void LoadNewMoodFromDialogData()

@@ -10,6 +10,7 @@ namespace Project.Scripts.UIScripts.InteractableUI
         {
             Play,
             Retry,
+            EndDialog
         }
         public PlayButtonsFunctions myFunction;
         private StarDisplayWindow myStarDisplayWindow;
@@ -30,6 +31,9 @@ namespace Project.Scripts.UIScripts.InteractableUI
                     break;
                 case PlayButtonsFunctions.Retry:
                     MyMenuWindowHandler.RetryLevel();
+                    break;
+                case PlayButtonsFunctions.EndDialog:
+                    myStarDisplayWindow.PlayEndDialog();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

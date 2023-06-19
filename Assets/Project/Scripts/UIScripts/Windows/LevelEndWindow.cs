@@ -1,5 +1,6 @@
 using System.Collections;
 using Project.Scripts.DialogScripts;
+using Project.Scripts.Menu;
 using Project.Scripts.Tiles;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Project.Scripts.UIScripts.Windows
     public class LevelEndWindow : StarDisplayWindow
     {
         private TileFieldManager fieldManager;
+        private bool star1Achieved , star2Achieved , doneRevealing;
         protected override void UpdateDisplays()
         {
             fieldManager ??= TileFieldManager.Instance;
@@ -23,7 +25,7 @@ namespace Project.Scripts.UIScripts.Windows
         private IEnumerator SlowReveal()
         {
             float t = 0;
-            bool star1Achieved = false, star2Achieved = false;
+            
             while (t<=1)
             {
                 float progress = (float) score / levelData.PerfectScore;
@@ -45,6 +47,25 @@ namespace Project.Scripts.UIScripts.Windows
                 t += .01f;
                 yield return new WaitForFixedUpdate();
             }
+
+            scoreText.text = $"{(score)}";
+            doneRevealing = true;
+        }
+
+        public override void UIEsc() { }
+
+        public override void SwitchToMainMenu()
+        {
+            if(!doneRevealing) return;
+            base.SwitchToMainMenu();
+        }
+
+        public override void PlayEndDialog()
+        {
+            if(!doneRevealing) return;
+            if(star2){SceneMaster.Instance.ChangeToLevelDialog(fieldManager.currentLevelID,fieldManager.CurrentLevelData.perfectEnding);}
+            else if(star1) { SceneMaster.Instance.ChangeToLevelDialog(fieldManager.currentLevelID,fieldManager.CurrentLevelData.goodEnding); }
+            else { SceneMaster.Instance.ChangeToLevelDialog(fieldManager.currentLevelID,fieldManager.CurrentLevelData.badEnding); }
         }
     }
 }

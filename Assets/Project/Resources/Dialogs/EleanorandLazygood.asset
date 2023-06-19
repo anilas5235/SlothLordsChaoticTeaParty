@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
   m_Name: EleanorAndLazyGood
   m_EditorClassIdentifier: 
-  id: 1
+  id: 6
   passages:
   - guid: 2503edef-b60b-4f74-a45a-5a282f0aee21
     speaker: 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Project.Scripts.General;
 using UnityEngine;
@@ -10,58 +11,61 @@ namespace Project.Scripts.DialogScripts
     {
         private CanvasGroup blackScreen;
 
-        public float waitDuration;
-        public float fadeDuration;
+        public float FadeDuration { get; private set; } = 3;
         protected override void Awake()
         {
             base.Awake();
             blackScreen = GetComponent<CanvasGroup>();
         }
-    
+
+        private void Start()
+        {
+            StartFadeIn();
+        }
 
         public void StartFadeIn()
         {
             gameObject.SetActive(true);
-            StartCoroutine(FadeIn(waitDuration, fadeDuration));
+            StartCoroutine(FadeIn( FadeDuration));
         }
     
         public void StartFadeOut()
         {
             gameObject.SetActive(true);
-            StartCoroutine(FadeOut(waitDuration, fadeDuration));
+            StartCoroutine(FadeOut( FadeDuration));
         }
     
-        private IEnumerator FadeIn(float waitDuration, float fadeDuration)
+        private IEnumerator FadeIn(float fadeDuration)
         {
             blackScreen.alpha = 1;
-        
-            yield return new WaitForSeconds(waitDuration);
-        
-            for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+
+            float fadeStep = 1/( fadeDuration/Time.fixedDeltaTime);
+
+            while (blackScreen.alpha >0)
             {
-                blackScreen.alpha = Mathf.Lerp(1,0,t / fadeDuration);
-            
-                yield return null;
+                blackScreen.alpha -= fadeStep;
+
+                yield return new WaitForFixedUpdate();
             }
-        
+
             blackScreen.alpha = 0;
             gameObject.SetActive(false);
         }
     
-        private IEnumerator FadeOut(float waitDuration, float fadeDuration)
+        private IEnumerator FadeOut( float fadeDuration)
         {
             blackScreen.alpha = 0;
 
-            yield return new WaitForSeconds(waitDuration);
-        
-            for (float t = 0; t < fadeDuration; t += Time.deltaTime)
+            float fadeStep = 1/( fadeDuration/Time.fixedDeltaTime);
+
+            while (blackScreen.alpha <1)
             {
-                blackScreen.alpha = Mathf.Lerp(0,1,t / fadeDuration);
-            
-                yield return null;
+                blackScreen.alpha += fadeStep;
+
+                yield return new WaitForFixedUpdate();
             }
+
             blackScreen.alpha = 1;
-            gameObject.SetActive(false);
         }
     }
 }

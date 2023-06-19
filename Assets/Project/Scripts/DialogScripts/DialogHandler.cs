@@ -1,4 +1,7 @@
+using System.Collections;
 using Project.Scripts.General;
+using Project.Scripts.Menu;
+using Project.Scripts.Tiles;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,7 +30,7 @@ namespace Project.Scripts.DialogScripts
         [SerializeField] private Image screenSceneImage;
 
         private bool isAllowedToWrite = true;
-
+        
         private void Start()
         {
             dialogManager = DialogManager.Instance;
@@ -38,8 +41,10 @@ namespace Project.Scripts.DialogScripts
             dialogManager.OnChoiceOver += ChoiceMade;
             dialogManager.OnDialogEnd += ClearTextFields;
             dialogManager.OnVoiceLine += PlayVoiceLine;
-            dialogManager.StartDialog(startPassageGuid,dialogId);
+            dialogManager.OnDialogEnd += DialogEnded;
             ChoiceMade();
+            LoadDialogID();
+            StartCoroutine( StartDialogAfterFade());
         }
 
         private void Update()
@@ -47,6 +52,16 @@ namespace Project.Scripts.DialogScripts
             if (!dialogManager.FinishedLine) scrollbar.value = 0;
         }
 
+        public void StartTheDialog()
+        {
+            dialogManager.StartDialog(startPassageGuid,dialogId);
+        }
+
+        private void LoadDialogID()
+        {
+            dialogId = PlayerPrefs.GetInt("DialogID");
+            dialogManager.SetDialogId(dialogId);
+        }
         private void SetNameText(string name)
         {
             SetFullSceneImage();
@@ -104,6 +119,32 @@ namespace Project.Scripts.DialogScripts
                 isAllowedToWrite = true;
                 screenSceneImage.gameObject.SetActive(false);
             }
+        }
+
+        private IEnumerator StartDialogAfterFade()
+        {
+            yield return new WaitForSeconds(ScreenFade.Instance.FadeDuration);
+            StartTheDialog();
+        }
+
+        private void DialogEnded()
+        {
+            Level currenLevelData = LevelDataLoader.Instance.GetLevelData(PlayerPrefs.GetInt("levelID", 0));
+            StartCoroutine(currenLevelData.intro == dialogManager.CurrentDialogID ? FadeAndContinueToLevel() : FadeAndContinueToMenu());
+        }
+
+        private IEnumerator FadeAndContinueToLevel()
+        {
+            ScreenFade.Instance.StartFadeOut();
+            yield return new WaitForSeconds(ScreenFade.Instance.FadeDuration);
+            SceneMaster.Instance.LoadLevel();
+        }
+        
+        private IEnumerator FadeAndContinueToMenu()
+        {
+            ScreenFade.Instance.StartFadeOut();
+            yield return new WaitForSeconds(ScreenFade.Instance.FadeDuration);
+            SceneMaster.Instance.ChangeToMenuScene();
         }
     }
 }

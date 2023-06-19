@@ -8,6 +8,8 @@ namespace Project.Scripts.DialogScripts
     [RequireComponent(typeof(Image))]
     public class CharacterAnimator : MonoBehaviour
     {
+        [SerializeField] private bool dialogCharacter;
+        
         [SerializeField] private CharacterMoods currentMode;
         [SerializeField] private Characters currentCharacter;
 
@@ -31,6 +33,8 @@ namespace Project.Scripts.DialogScripts
             Happy,
             Offended,
             Party,
+            Serious,
+            Surprised,
         }
       #endregion
 
@@ -115,14 +119,29 @@ namespace Project.Scripts.DialogScripts
               default: return;
           }
 
-          characterIcons = new[]
+          if (dialogCharacter)
           {
-              Resources.Load<Sprite>($"ArtWork/UI/CharacterIcons/{characterName}/{characterName}_neutral"),
-              Resources.Load<Sprite>($"ArtWork/UI/CharacterIcons/{characterName}/{characterName}_happy"),
-              Resources.Load<Sprite>($"ArtWork/UI/CharacterIcons/{characterName}/{characterName}_offended"),
-              Resources.Load<Sprite>($"ArtWork/UI/CharacterIcons/{characterName}/{characterName}_party"),
-          };
-          
+              characterIcons = new[]
+              {
+                  Resources.Load<Sprite>($"ArtWork/UI/CharacterEmotions/{characterName}/{characterName}_neutral"),
+                  Resources.Load<Sprite>($"ArtWork/UI/CharacterEmotions/{characterName}/{characterName}_happy"),
+                  Resources.Load<Sprite>($"ArtWork/UI/CharacterEmotions/{characterName}/{characterName}_offended"),
+                  Resources.Load<Sprite>($"ArtWork/UI/CharacterEmotions/{characterName}/{characterName}_party"),
+                  Resources.Load<Sprite>($"ArtWork/UI/CharacterEmotions/{characterName}/{characterName}_serious"),
+                  Resources.Load<Sprite>($"ArtWork/UI/CharacterEmotions/{characterName}/{characterName}_surprised"),
+              };
+          }
+          else
+          {
+              characterIcons = new[]
+              {
+                  Resources.Load<Sprite>($"ArtWork/UI/CharacterIcons/{characterName}/{characterName}_neutral"),
+                  Resources.Load<Sprite>($"ArtWork/UI/CharacterIcons/{characterName}/{characterName}_happy"),
+                  Resources.Load<Sprite>($"ArtWork/UI/CharacterIcons/{characterName}/{characterName}_offended"),
+                  Resources.Load<Sprite>($"ArtWork/UI/CharacterIcons/{characterName}/{characterName}_party"),
+              };
+          }
+
           OnCharacterChange?.Invoke(currentCharacter);
       }
     }
