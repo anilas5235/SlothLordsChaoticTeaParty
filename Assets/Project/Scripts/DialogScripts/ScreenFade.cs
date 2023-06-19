@@ -33,8 +33,6 @@ namespace Project.Scripts.DialogScripts
     
         private IEnumerator FadeIn(float waitDuration, float fadeDuration)
         {
-            OnFadeStart?.Invoke();
-            myCanvas.sortingOrder = 10;
             blackScreen.alpha = 1;
         
             yield return new WaitForSeconds(waitDuration);
@@ -48,15 +46,12 @@ namespace Project.Scripts.DialogScripts
         
             blackScreen.alpha = 0;
             gameObject.SetActive(false);
-            OnFadeEnd?.Invoke();
         }
     
         private IEnumerator FadeOut(float waitDuration, float fadeDuration)
         {
-            OnFadeStart?.Invoke();
             blackScreen.alpha = 0;
-            myCanvas.sortingOrder = 10;
-        
+
             yield return new WaitForSeconds(waitDuration);
         
             for (float t = 0; t < fadeDuration; t += Time.deltaTime)
@@ -67,7 +62,6 @@ namespace Project.Scripts.DialogScripts
             }
             blackScreen.alpha = 1;
             gameObject.SetActive(false);
-            OnFadeEnd?.Invoke();
         }
     }
 }
