@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
   m_Name: SheldonandLazyperfect0
   m_EditorClassIdentifier: 
-  id: 0
+  id: 11
   passages:
   - guid: 15e83178-8a7f-47c1-8ad4-1519dbf7154a
     speaker: 
@@ -217,4 +217,4 @@ MonoBehaviour:
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
-  dialogCharacter: 0
+  dialogCharacter: 4

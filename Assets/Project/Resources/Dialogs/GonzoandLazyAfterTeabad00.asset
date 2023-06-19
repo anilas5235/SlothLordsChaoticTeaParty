@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
   m_Name: GonzoandLazyAfterTeabad00
   m_EditorClassIdentifier: 
-  id: 0
+  id: 13
   passages:
   - guid: 13a21567-d7fb-456d-b7d4-0b466386f1bd
     speaker: 
@@ -229,4 +229,4 @@ MonoBehaviour:
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
-  dialogCharacter: 0
+  dialogCharacter: 2

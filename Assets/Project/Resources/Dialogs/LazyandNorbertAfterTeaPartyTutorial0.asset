@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
   m_Name: LazyandNorbertAfterTeaPartyTutorial0
   m_EditorClassIdentifier: 
-  id: 0
+  id: 2
   passages:
   - guid: 9dbb3b03-2844-46b1-bea6-4b81547384e2
     speaker: 
@@ -120,4 +120,4 @@ MonoBehaviour:
     entryPoint: 0
     mood: 2
     imageOverride: {fileID: 0}
-  dialogCharacter: 0
+  dialogCharacter: 3

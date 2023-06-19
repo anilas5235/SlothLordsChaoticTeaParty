@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Level_03_final
   m_EditorClassIdentifier: 
   startingGrid:
-  - data: ffffffffffffffffffffffff0500000001000000ffffffffffffffffffffffff
   - data: ffffffffffffffffffffffff0100000003000000ffffffffffffffffffffffff
   - data: ffffffffffffffff05000000040000000200000002000000ffffffffffffffff
   - data: ffffffffffffffff00000000030000000500000005000000ffffffffffffffff
@@ -25,8 +24,7 @@ MonoBehaviour:
   - data: ffffffffffffffff00000000030000000000000002000000ffffffffffffffff
   - data: ffffffffffffffff01000000010000000300000001000000ffffffffffffffff
   - data: ffffffffffffffffffffffff0400000005000000ffffffffffffffffffffffff
-  - data: ffffffffffffffffffffffff0400000005000000ffffffffffffffffffffffff
-  fieldSize: {x: 13, y: 8}
+  fieldSize: {x: 11, y: 8}
   preferredTile: 4
   dislikedTile: 0
   probabilities:
@@ -36,10 +34,10 @@ MonoBehaviour:
   - 18
   - 10
   - 18
-  turns: 15
+  turns: 22
   random: 0
-  prefectScore: 2300
-  character: 3
+  prefectScore: 2000
+  character: 2
   intro: 12
   badEnding: 13
   goodEnding: 14

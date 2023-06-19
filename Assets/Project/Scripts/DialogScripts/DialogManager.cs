@@ -41,9 +41,13 @@ namespace Project.Scripts.DialogScripts
 
         public void StartDialog(string guid, int dialogID)
         {
-            if (GetDialog(CurrentDialogID, out Dialog newDialog)) currentStory = newDialog;
-            else return;
             CurrentDialogID = dialogID;
+            if (GetDialog(dialogID, out Dialog newDialog)) currentStory = newDialog;
+            else
+            {
+                OnDialogEnd?.Invoke();
+                return;
+            }
             OnDialogStart?.Invoke();
             if (string.IsNullOrEmpty(guid))
             {

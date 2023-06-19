@@ -63,8 +63,8 @@ namespace Project.Scripts.UIScripts.Windows
         public override void PlayEndDialog()
         {
             if(!doneRevealing) return;
-            if(star2){SceneMaster.Instance.ChangeToLevelDialog(fieldManager.currentLevelID,fieldManager.CurrentLevelData.perfectEnding);}
-            else if(star1) { SceneMaster.Instance.ChangeToLevelDialog(fieldManager.currentLevelID,fieldManager.CurrentLevelData.goodEnding); }
+            if(star2Achieved){SceneMaster.Instance.ChangeToLevelDialog(fieldManager.currentLevelID,fieldManager.CurrentLevelData.perfectEnding);}
+            else if(star1Achieved) { SceneMaster.Instance.ChangeToLevelDialog(fieldManager.currentLevelID,fieldManager.CurrentLevelData.goodEnding); }
             else { SceneMaster.Instance.ChangeToLevelDialog(fieldManager.currentLevelID,fieldManager.CurrentLevelData.badEnding); }
         }
     }

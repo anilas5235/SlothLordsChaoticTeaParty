@@ -19,7 +19,7 @@ namespace Project.Scripts.UIScripts
         protected override void Awake()
         {
             base.Awake();
-            stars = Resources.LoadAll<Sprite>("ArtWork/UI/LevelProgressDisplay/Stars");
+            stars = Resources.LoadAll<Sprite>("ArtWork/UI/LevelProgressDisplay/crown_all");
         }
 
         private void OnEnable()
