@@ -33,8 +33,11 @@ namespace Project.Scripts.DialogScripts.Editor
             
             dialogContainer.passages = new List<DialogPassageNode>();
 
-            dialogContainer.dialogCharacter = _dialogCached.dialogCharacter;
-            dialogContainer.id = _dialogCached.id;
+            if (_dialogCached)
+            {
+                dialogContainer.dialogCharacter = _dialogCached.dialogCharacter;
+                dialogContainer.id = _dialogCached.id;
+            }
 
             for (int i = 0; i < nodes.Length; i++)
             {

@@ -126,7 +126,7 @@ namespace Project.Scripts.DialogScripts
         private void NextPassage(int linkID = 0)
         {
             if(writeRoutine!= null) StopCoroutine(writeRoutine);
-            
+            if(dialogPassageNode.links == null)return;
             switch (dialogPassageNode.links.Count)
             {
                 case 0: DialogFinished = true; OnDialogEnd?.Invoke(); break;
