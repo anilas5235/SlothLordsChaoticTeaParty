@@ -31,7 +31,7 @@ namespace Project.Scripts.UIScripts.Effects
             myText.fontSize = maximumFontSize;
             fade = true;
             myText.text = comboRoll+text;
-            StartCoroutine(Grow(comboRoll*5));
+            StartCoroutine(Grow(comboRoll*2));
         }
 
         private IEnumerator Grow(int score)

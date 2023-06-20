@@ -2966,6 +2966,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCharacterAnimator: {fileID: 0}
+  overrideCharacter: 1
+  character: 3
 --- !u!114 &1204043827
 MonoBehaviour:
   m_ObjectHideFlags: 0

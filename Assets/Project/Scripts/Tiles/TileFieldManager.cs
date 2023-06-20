@@ -722,7 +722,7 @@ namespace Project.Scripts.Tiles
         private void GetTextPopUp(int combRoll, Vector3 position,Color textColor,string text)
         {
             ScorePopUp popUp = ScorePopUpPool.Instance.GetObjectFromPool().GetComponent<ScorePopUp>();
-            popUp.PassValues(textColor,(int)(65-65*math.pow((float)Math.E,-.006f*comboRoll*5)),comboRoll,text);
+            popUp.PassValues(textColor,(int)(65-65*math.pow((float)Math.E,-.006f*comboRoll*2)),combRoll,text);
             popUp.transform.position = position;
         }
         

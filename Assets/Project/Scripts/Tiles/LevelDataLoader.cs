@@ -9,7 +9,7 @@ namespace Project.Scripts.Tiles
         {
             return levelID switch
             {
-                0 => Resources.LoadAll<Level>("LevelData/Tutorial")[0],
+                0 => Resources.LoadAll<Level>("LevelData/Tutorial/")[0],
                 1 => Resources.LoadAll<Level>($"LevelData/Level {levelID}/")[0],
                 2 => Resources.LoadAll<Level>($"LevelData/Level {levelID}/")[0],
                 3 => Resources.LoadAll<Level>($"LevelData/Level {levelID}/")[0],

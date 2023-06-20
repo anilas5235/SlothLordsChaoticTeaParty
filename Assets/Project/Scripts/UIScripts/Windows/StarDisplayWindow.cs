@@ -16,7 +16,7 @@ namespace Project.Scripts.UIScripts.Windows
         [SerializeField] protected TextMeshProUGUI scoreText;
         [SerializeField] protected CharacterAnimator characterAnimator;
         
-        public int levelID,dialogID;
+        public int levelID;
         [SerializeField] protected int score;
         [SerializeField] protected Level levelData;
 
@@ -43,15 +43,16 @@ namespace Project.Scripts.UIScripts.Windows
         
         public void Play()
         {
+            PlayerPrefs.SetInt("levelID",levelID);
             if(levelID == 0)
             {
-                SceneMaster.Instance.LoadLevel();
                 SaveData data = SaveSystem.Instance.GetActiveSave();
                 if (!data.firstTimeTutorialDone)
                 {
                     data.firstTimeTutorialDone = true;
                     SaveSystem.Instance.Save();
                 }
+                SceneMaster.Instance.LoadLevel();
             }
             else
             {
