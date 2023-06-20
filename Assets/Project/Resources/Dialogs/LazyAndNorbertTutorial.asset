@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: LazyandNorbertTutorial0
+  m_Name: LazyAndNorbertTutorial
   m_EditorClassIdentifier: 
   id: 1
   passages:
@@ -22,7 +22,7 @@ MonoBehaviour:
     links:
     - baseNodeGuid: 26273b81-e4fd-441a-b2e9-973692cc1ff4
       portName: Next
-      targetNodeGuid: a8a2a06d-dcea-4011-9ed7-4aed182504e7
+      targetNodeGuid: cd654769-48a5-45ef-84e5-1b8ad88e754c
     rect:
       serializedVersion: 2
       x: 150
@@ -31,160 +31,6 @@ MonoBehaviour:
       height: 77
     entryPoint: 1
     mood: 0
-    imageOverride: {fileID: 0}
-  - guid: a8a2a06d-dcea-4011-9ed7-4aed182504e7
-    speaker: Norbert
-    character: 3
-    text: "Okay! First things first, why don\u2019t you go over to the cup shelf
-      and choose one.\u202F "
-    audioLine: {fileID: 0}
-    links:
-    - baseNodeGuid: a8a2a06d-dcea-4011-9ed7-4aed182504e7
-      portName: Choice 0
-      targetNodeGuid: a5dbc36d-eaa3-4765-9315-98890ac7e406
-    - baseNodeGuid: a8a2a06d-dcea-4011-9ed7-4aed182504e7
-      portName: Choice 1
-      targetNodeGuid: de1a1fe4-d984-4949-bd3b-d7b2fb5af10f
-    rect:
-      serializedVersion: 2
-      x: 280
-      y: 197
-      width: 308
-      height: 291
-    entryPoint: 0
-    mood: 0
-    imageOverride: {fileID: 0}
-  - guid: a5dbc36d-eaa3-4765-9315-98890ac7e406
-    speaker: Norbert
-    character: 3
-    text: "On your right\u2026 How long have you been living here?\u202F"
-    audioLine: {fileID: 0}
-    links:
-    - baseNodeGuid: a5dbc36d-eaa3-4765-9315-98890ac7e406
-      portName: Choice 0
-      targetNodeGuid: 574db2d1-41c3-4e2a-a3e6-62ba52a99d35
-    rect:
-      serializedVersion: 2
-      x: 607
-      y: 87
-      width: 308
-      height: 267
-    entryPoint: 0
-    mood: 2
-    imageOverride: {fileID: 0}
-  - guid: 574db2d1-41c3-4e2a-a3e6-62ba52a99d35
-    speaker: Lazy
-    character: 5
-    text: Sorry, just a Little overexcited!
-    audioLine: {fileID: 0}
-    links:
-    - baseNodeGuid: 574db2d1-41c3-4e2a-a3e6-62ba52a99d35
-      portName: Choice 0
-      targetNodeGuid: de1a1fe4-d984-4949-bd3b-d7b2fb5af10f
-    rect:
-      serializedVersion: 2
-      x: 921
-      y: 91
-      width: 230
-      height: 267
-    entryPoint: 0
-    mood: 0
-    imageOverride: {fileID: 0}
-  - guid: de1a1fe4-d984-4949-bd3b-d7b2fb5af10f
-    speaker: Norbert
-    character: 3
-    text: "Good! Now choose the nicest cup of all!\u202F"
-    audioLine: {fileID: 0}
-    links:
-    - baseNodeGuid: de1a1fe4-d984-4949-bd3b-d7b2fb5af10f
-      portName: Choice 0
-      targetNodeGuid: ba360604-9682-43ef-8071-0f8beef7653b
-    - baseNodeGuid: de1a1fe4-d984-4949-bd3b-d7b2fb5af10f
-      portName: Choice 1
-      targetNodeGuid: f55e620b-198e-4271-a02a-1eeae2ce94e0
-    - baseNodeGuid: de1a1fe4-d984-4949-bd3b-d7b2fb5af10f
-      portName: Choice 2
-      targetNodeGuid: 42415a84-4d0f-4a84-bf98-9403dc408408
-    rect:
-      serializedVersion: 2
-      x: 1213
-      y: 200
-      width: 260
-      height: 315
-    entryPoint: 0
-    mood: 1
-    imageOverride: {fileID: 0}
-  - guid: ba360604-9682-43ef-8071-0f8beef7653b
-    speaker: Norbert
-    character: 3
-    text: Nope
-    audioLine: {fileID: 0}
-    links:
-    - baseNodeGuid: ba360604-9682-43ef-8071-0f8beef7653b
-      portName: Choice 0
-      targetNodeGuid: f5ceb239-8e31-4450-bd76-ad5959f9f74e
-    rect:
-      serializedVersion: 2
-      x: 1491
-      y: -48
-      width: 215
-      height: 267
-    entryPoint: 0
-    mood: 0
-    imageOverride: {fileID: 0}
-  - guid: f55e620b-198e-4271-a02a-1eeae2ce94e0
-    speaker: Norbert
-    character: 3
-    text: Wrong!
-    audioLine: {fileID: 0}
-    links:
-    - baseNodeGuid: f55e620b-198e-4271-a02a-1eeae2ce94e0
-      portName: Choice 0
-      targetNodeGuid: f5ceb239-8e31-4450-bd76-ad5959f9f74e
-    rect:
-      serializedVersion: 2
-      x: 1492
-      y: 211
-      width: 215
-      height: 267
-    entryPoint: 0
-    mood: 0
-    imageOverride: {fileID: 0}
-  - guid: 42415a84-4d0f-4a84-bf98-9403dc408408
-    speaker: Norbert
-    character: 3
-    text: Are you kidding me?!
-    audioLine: {fileID: 0}
-    links:
-    - baseNodeGuid: 42415a84-4d0f-4a84-bf98-9403dc408408
-      portName: Choice 0
-      targetNodeGuid: f5ceb239-8e31-4450-bd76-ad5959f9f74e
-    rect:
-      serializedVersion: 2
-      x: 1492
-      y: 469
-      width: 249
-      height: 267
-    entryPoint: 0
-    mood: 2
-    imageOverride: {fileID: 0}
-  - guid: f5ceb239-8e31-4450-bd76-ad5959f9f74e
-    speaker: Norbert
-    character: 3
-    text: "Perfect! I know we were on the same page!\u202F "
-    audioLine: {fileID: 0}
-    links:
-    - baseNodeGuid: f5ceb239-8e31-4450-bd76-ad5959f9f74e
-      portName: Choice 0
-      targetNodeGuid: cd654769-48a5-45ef-84e5-1b8ad88e754c
-    rect:
-      serializedVersion: 2
-      x: 1826
-      y: 215
-      width: 267
-      height: 267
-    entryPoint: 0
-    mood: 3
     imageOverride: {fileID: 0}
   - guid: cd654769-48a5-45ef-84e5-1b8ad88e754c
     speaker: Norbert
@@ -318,7 +164,10 @@ MonoBehaviour:
     character: 3
     text: "By the way, I really enjoy eucalyptus tea, but please, no poppy seed cake!\u202F"
     audioLine: {fileID: 0}
-    links: []
+    links:
+    - baseNodeGuid: 8ff83873-2a08-4cbb-a1a2-ae791f129c4c
+      portName: Choice 0
+      targetNodeGuid: aaf28816-ddf1-4a0b-bd59-7c06cbbcb0a4
     rect:
       serializedVersion: 2
       x: 4003
@@ -327,5 +176,22 @@ MonoBehaviour:
       height: 267
     entryPoint: 0
     mood: 1
+    imageOverride: {fileID: 0}
+  - guid: aaf28816-ddf1-4a0b-bd59-7c06cbbcb0a4
+    speaker: Norbert
+    character: 3
+    text: '(Hint: You can switch the tiles  as much as you want, because it only
+      counts as a turn if you trigger a combination. Combinations count if there
+      are 3 or more tiles of the same type that touch eachother in any direction.'
+    audioLine: {fileID: 0}
+    links: []
+    rect:
+      serializedVersion: 2
+      x: 4363
+      y: 217
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 4
     imageOverride: {fileID: 0}
   dialogCharacter: 3

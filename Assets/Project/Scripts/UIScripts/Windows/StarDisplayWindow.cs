@@ -43,7 +43,11 @@ namespace Project.Scripts.UIScripts.Windows
         
         public void Play()
         {
-            SceneMaster.Instance.ChangeToLevelDialog(levelID,LevelDataLoader.Instance.GetLevelData(levelID).intro);   
+            if(levelID == 0){SceneMaster.Instance.LoadLevel();}
+            else
+            {
+                SceneMaster.Instance.ChangeToLevelDialog(levelID, LevelDataLoader.Instance.GetLevelData(levelID).intro);
+            }
         }
 
         public virtual void PlayEndDialog()

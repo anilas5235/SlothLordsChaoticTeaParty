@@ -69,6 +69,7 @@ namespace Project.Scripts.Menu
         private void Start()
         { 
             CursorManager.Instance.DeActivateCursor();
+            if (!SaveSystem.Instance.GetActiveSave().firstTimeTutorialDone) canJump = false;
         }
 
         void Update()

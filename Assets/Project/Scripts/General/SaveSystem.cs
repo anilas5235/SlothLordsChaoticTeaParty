@@ -78,6 +78,7 @@ namespace Project.Scripts.General
     [System.Serializable]
     public class SaveData
     {
+        public bool firstTimeTutorialDone;
         public float[] audioOptions = new float[10];
         public bool[] levelsUnlocked = new bool[10];
         public float[] highScoresForLevels = new float[10];

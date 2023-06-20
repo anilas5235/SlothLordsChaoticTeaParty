@@ -63,7 +63,7 @@ namespace Project.Scripts.DialogScripts
 
         private void LoadDialogID()
         {
-            dialogId = tutorialMode? 1: PlayerPrefs.GetInt("DialogID");
+            dialogId = tutorialMode? dialogId: PlayerPrefs.GetInt("DialogID");
             dialogManager.SetDialogId(dialogId);
         }
         private void SetNameText(string name)
@@ -95,6 +95,8 @@ namespace Project.Scripts.DialogScripts
         {
             for (int i = 0; i < choicesTexts.Length; i++)
             {
+                if(choiceButtons[i] == null) continue;
+                
                 choiceButtons[i].gameObject.SetActive(true);
                 choiceButtons[i].buttonText.text = choicesTexts[i];
             } 
@@ -111,10 +113,12 @@ namespace Project.Scripts.DialogScripts
 
         private void SetFullSceneImage()
         {
+            if(!screenSceneImage) return;
             if (dialogManager.CurrentNode.imageOverride)
             {
-                screenSceneImage.gameObject.SetActive(true);
                 isAllowedToWrite = false;
+               
+                screenSceneImage.gameObject.SetActive(true);
                 screenSceneImage.sprite = dialogManager.CurrentNode.imageOverride;
                 ClearTextFields();
             }
@@ -127,7 +131,7 @@ namespace Project.Scripts.DialogScripts
 
         private IEnumerator StartDialogAfterFade()
         {
-            yield return new WaitForSeconds(ScreenFade.Instance.FadeDuration);
+            if(ScreenFade.Instance) yield return new WaitForSeconds(ScreenFade.Instance.FadeDuration);
             StartTheDialog();
         }
 
@@ -135,8 +139,8 @@ namespace Project.Scripts.DialogScripts
         {
             if (tutorialMode)
             {
+                if(TileFieldManager.Instance)TileFieldManager.Instance.tutorialMode = false;
                 nameText.transform.parent.gameObject.SetActive(false);
-                TileFieldManager.Instance.tutorialMode = false;
                 return;
             }
             Level currenLevelData = LevelDataLoader.Instance.GetLevelData(PlayerPrefs.GetInt("levelID", 0));
