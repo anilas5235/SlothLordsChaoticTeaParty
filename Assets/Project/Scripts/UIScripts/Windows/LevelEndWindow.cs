@@ -25,7 +25,6 @@ namespace Project.Scripts.UIScripts.Windows
         private IEnumerator SlowReveal()
         {
             float t = 0;
-            
             while (t<=1)
             {
                 float progress = (float) score / levelData.PerfectScore;

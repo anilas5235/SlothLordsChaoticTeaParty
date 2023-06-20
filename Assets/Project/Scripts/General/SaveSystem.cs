@@ -69,10 +69,7 @@ namespace Project.Scripts.General
             if (File.Exists(path)) File.Delete(path);
         }
 
-        public SaveData GetActiveSave()
-        {
-            return activeSave;
-        }
+        public SaveData GetActiveSave() { return activeSave; }
     }
 
     [System.Serializable]
@@ -82,5 +79,8 @@ namespace Project.Scripts.General
         public float[] audioOptions = new float[10];
         public bool[] levelsUnlocked = new bool[10];
         public float[] highScoresForLevels = new float[10];
+        public bool[] unlockedSilverCrowns = new bool[10];
+        public bool[] unlockedGoldCrowns = new bool[10];
+        public bool[] unlockedEndings = new bool[4];
     }
 }

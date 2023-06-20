@@ -503,24 +503,8 @@ namespace Project.Scripts.Tiles
                 if(ComboRoll >6) GetTextPopUp(comboRoll,transform.position,new Color(0xEE,0xD9,0x8C,0xFF),"xCOMBO");
                 Interactable = true;
                 ComboRoll = 0;
-                if (Turns < 1)
-                {
-                    //GameOver
-                    SaveData saveData = SaveSystem.Instance.GetActiveSave();
-                    if (Score > saveData.highScoresForLevels[currentLevelID])
-                    {
-                        saveData.highScoresForLevels[currentLevelID] = Score;
-                        if (saveData.levelsUnlocked.Length > currentLevelID)
-                        {
-                            if (!saveData.levelsUnlocked[currentLevelID + 1] && Score >= levelData.PerfectScore*.5f)
-                                saveData.levelsUnlocked[currentLevelID + 1] = true;
-                        }
+                if (Turns < 1) { GameOver(); }
 
-                        SaveSystem.Instance.Save();
-                    }
-                    MenuWindowsMaster.Instance.OpenWindow(LevelEndWindow.Instance);
-                    OnGameEnd?.Invoke();
-                }
                 OnDoneFalling?.Invoke();
             }
 
@@ -712,21 +696,58 @@ namespace Project.Scripts.Tiles
             OnCombo?.Invoke(appraisal);
         }
 
-        private void GetScorePopUp(int comboScore, Vector3 position,Color textColor)
-        {
-            ScorePopUp popUp = ScorePopUpPool.Instance.GetObjectFromPool().GetComponent<ScorePopUp>();
-            popUp.PassValues(textColor,(int)(65-65*math.pow((float)Math.E,-.006f*comboScore)),comboScore);
-            popUp.transform.position = position;
-        }
-        
-        private void GetTextPopUp(int combRoll, Vector3 position,Color textColor,string text)
-        {
-            ScorePopUp popUp = ScorePopUpPool.Instance.GetObjectFromPool().GetComponent<ScorePopUp>();
-            popUp.PassValues(textColor,(int)(65-65*math.pow((float)Math.E,-.006f*comboRoll*2)),combRoll,text);
-            popUp.transform.position = position;
-        }
         
         #endregion
+
+        private void GameOver()
+        {
+            SaveData saveData = SaveSystem.Instance.GetActiveSave();
+            if (Score > saveData.highScoresForLevels[currentLevelID])
+                saveData.highScoresForLevels[currentLevelID] = Score;
+
+            if (Score >= levelData.PerfectScore * .5f)
+            {
+                if (!saveData.unlockedSilverCrowns[currentLevelID])
+                    saveData.unlockedSilverCrowns[currentLevelID] = true;
+                if (!saveData.levelsUnlocked[currentLevelID + 1])
+                    saveData.levelsUnlocked[currentLevelID + 1] = true;
+            }
+
+            if (Score >= levelData.PerfectScore)
+            {
+                if (!saveData.unlockedGoldCrowns[currentLevelID])
+                    saveData.unlockedGoldCrowns[currentLevelID] = true;
+            }
+
+            if (!saveData.unlockedEndings[0])
+            {
+                bool endingUnlock = true;
+                for (int i = 0; i < 4; i++)
+                {
+                    if (saveData.unlockedSilverCrowns[i]) continue;
+                    endingUnlock = false;
+                    break;
+                }
+                if (endingUnlock) saveData.unlockedEndings[0] = true;
+            }
+                    
+            if (!saveData.unlockedEndings[1])
+            {
+                bool endingUnlock = true;
+                for (int i = 0; i < 4; i++)
+                {
+                    if (saveData.unlockedGoldCrowns[i]) continue;
+                    endingUnlock = false;
+                    break;
+                }
+                if (endingUnlock) saveData.unlockedEndings[0] = true;
+            }
+
+            SaveSystem.Instance.Save();
+
+            MenuWindowsMaster.Instance.OpenWindow(LevelEndWindow.Instance);
+            OnGameEnd?.Invoke();
+        }
 
         #region EditorFunctions
         
@@ -763,6 +784,26 @@ namespace Project.Scripts.Tiles
             UnityEditor.AssetDatabase.SaveAssets();
 #endif        
         }
+        #endregion
+
+        #region Extra
+
+        private void GetScorePopUp(int comboScore, Vector3 position, Color textColor)
+        {
+            ScorePopUp popUp = ScorePopUpPool.Instance.GetObjectFromPool().GetComponent<ScorePopUp>();
+            popUp.PassValues(textColor, (int)(65 - 65 * math.pow((float)Math.E, -.006f * comboScore)), comboScore);
+            popUp.transform.position = position;
+        }
+
+        private void GetTextPopUp(int combRoll, Vector3 position, Color textColor, string text)
+        {
+            ScorePopUp popUp = ScorePopUpPool.Instance.GetObjectFromPool().GetComponent<ScorePopUp>();
+            popUp.PassValues(textColor, (int)(65 - 65 * math.pow((float)Math.E, -.006f * comboRoll * 2)), combRoll,
+                text);
+            popUp.transform.position = position;
+        }
+
+
         #endregion
     }
 }

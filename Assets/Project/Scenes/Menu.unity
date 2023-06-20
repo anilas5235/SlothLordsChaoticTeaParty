@@ -1546,7 +1546,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 614844632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd701981cb5a4fc47923eb4bbc68fa1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 32acc94ed8f9a3e4b9de0f1f88bfe7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inspectingDistance: 1
@@ -4187,6 +4187,7 @@ GameObject:
   - component: {fileID: 2021397178}
   - component: {fileID: 2021397180}
   - component: {fileID: 2021397179}
+  - component: {fileID: 2021397181}
   m_Layer: 5
   m_Name: Tip
   m_TagString: Untagged
@@ -4233,7 +4234,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ([Space] to continue)
+  m_text: '[Space] to continue'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4310,6 +4311,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021397177}
   m_CullTransparentMesh: 1
+--- !u!114 &2021397181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021397177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3d1c267a0fc4c54ca89ccb6a8ef449f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cycleTime: 2
+  minVisibility: 0.6
+  maxAddedFontSize: 1
+  maxSubtractedFontSize: 1
 --- !u!1001 &2075502425
 PrefabInstance:
   m_ObjectHideFlags: 0

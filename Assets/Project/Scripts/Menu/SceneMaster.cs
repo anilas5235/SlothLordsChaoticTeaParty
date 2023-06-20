@@ -8,7 +8,7 @@ namespace Project.Scripts.Menu
     {
         public void ChangeToMenuScene()
         {
-            CursorManager.Instance.DeActivateCursor();
+            if(CursorManager.Instance) CursorManager.Instance.DeActivateCursor();
             SceneManager.LoadScene("Menu");
         }
 

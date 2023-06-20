@@ -23,7 +23,7 @@ namespace Project.Scripts.Menu
             controller = FindObjectOfType<FirstPersonController>();
         }
 
-        private void Start()
+        protected virtual void Start()
         {
             cameraTransform = controller.PlayerCamera.transform;
         }
