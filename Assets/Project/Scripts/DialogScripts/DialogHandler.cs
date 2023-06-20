@@ -14,6 +14,9 @@ namespace Project.Scripts.DialogScripts
         
         [Header("TutorialMode")]
         [SerializeField] private bool tutorialMode;
+        [SerializeField] private bool inMenu;
+
+        [SerializeField] private GameObject dialogUIParent;
         
         [Header("ID´s")]
         [SerializeField] private int dialogId;
@@ -47,6 +50,11 @@ namespace Project.Scripts.DialogScripts
             dialogManager.OnVoiceLine += PlayVoiceLine;
             dialogManager.OnDialogEnd += DialogEnded;
             ChoiceMade();
+            if (inMenu && SaveSystem.Instance.GetActiveSave().firstTimeTutorialDone)
+            {
+                dialogUIParent.gameObject.SetActive(false);
+                return;
+            }
             LoadDialogID();
             StartCoroutine( StartDialogAfterFade());
         }
@@ -140,7 +148,7 @@ namespace Project.Scripts.DialogScripts
             if (tutorialMode)
             {
                 if(TileFieldManager.Instance)TileFieldManager.Instance.tutorialMode = false;
-                nameText.transform.parent.gameObject.SetActive(false);
+                dialogUIParent.gameObject.SetActive(false);
                 return;
             }
             Level currenLevelData = LevelDataLoader.Instance.GetLevelData(PlayerPrefs.GetInt("levelID", 0));

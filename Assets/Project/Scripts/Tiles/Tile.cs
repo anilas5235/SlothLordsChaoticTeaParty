@@ -47,6 +47,12 @@ namespace Project.Scripts.Tiles
             myLineRenderer = GetComponent<LineRenderer>();
         }
 
+        private void Start()
+        {
+            if (MyTileFieldManager.tutorialMode && MyTileFieldManager.tutorialTilesPositions.Contains(positionInGrid))
+                highLighted = true;
+        }
+
         private void FixedUpdate()
         {
             if (highLighted) HighLight();
@@ -218,12 +224,18 @@ namespace Project.Scripts.Tiles
             if (Mathf.Abs( dragVector.x) > Mathf.Abs(dragVector.y)) tileOffset.x = dragVector.x > 0 ? 1 : -1;
             else tileOffset.y = dragVector.y > 0 ? -1 : 1;
 
-            if (!MyTileFieldManager.IsPositionInGrid(positionInGrid + tileOffset) || MyTileFieldManager.GetTile(positionInGrid+tileOffset).GetTileType() == TileType.Clear)
+            if (!MyTileFieldManager.IsPositionInGrid(positionInGrid + tileOffset) ||
+                MyTileFieldManager.GetTile(positionInGrid+tileOffset).GetTileType() == TileType.Clear)
             {
-                if (previewDragedTile) previewDragedTile.transform.localPosition = previewDragedTile.positionInScene;
+                if (previewDragedTile)
+                {
+                    
+                    previewDragedTile.transform.localPosition = previewDragedTile.positionInScene;
+                }
                 return;
             }
 
+           
             Tile currentTile = MyTileFieldManager.GetTile(positionInGrid + tileOffset);
             if (previewDragedTile != currentTile)
             {
@@ -266,13 +278,26 @@ namespace Project.Scripts.Tiles
             if (Mathf.Abs( dragVector.x) > Mathf.Abs(dragVector.y)) tileOffset.x = dragVector.x > 0 ? 1 : -1;
             else tileOffset.y = dragVector.y > 0 ? -1 : 1;
 
-            if (!MyTileFieldManager.IsPositionInGrid(positionInGrid+tileOffset) || 
-                MyTileFieldManager.GetTile(positionInGrid+tileOffset).GetTileType() == TileType.Clear)
+            if (MyTileFieldManager.tutorialMode)
             {
-                transform.localPosition = positionInScene;
-                return;
+                if (MyTileFieldManager.tutorialMode &&
+                    !MyTileFieldManager.tutorialTilesPositions.Contains(previewDragedTile.positionInGrid))
+                {
+                    transform.localPosition = positionInScene;
+                    previewDragedTile.transform.localPosition = previewDragedTile.PositionInScene;
+                    return;
+                }
             }
-            
+            else
+            {
+                if (!MyTileFieldManager.IsPositionInGrid(positionInGrid + tileOffset) ||
+                    MyTileFieldManager.GetTile(positionInGrid + tileOffset).GetTileType() == TileType.Clear)
+                {
+                    transform.localPosition = positionInScene;
+                    return;
+                }
+            }
+
             MyTileFieldManager.SwitchTiles(positionInGrid,positionInGrid+tileOffset,true);
         }
         #endregion

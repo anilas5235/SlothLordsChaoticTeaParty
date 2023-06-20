@@ -500,7 +500,7 @@ namespace Project.Scripts.Tiles
             else
             {
                 //Falling done
-                GetTextPopUp(comboRoll,transform.position,new Color(0xEE,0xD9,0x8C,0xFF),"xCOMBO");
+                if(ComboRoll >6) GetTextPopUp(comboRoll,transform.position,new Color(0xEE,0xD9,0x8C,0xFF),"xCOMBO");
                 Interactable = true;
                 ComboRoll = 0;
                 if (Turns < 1)

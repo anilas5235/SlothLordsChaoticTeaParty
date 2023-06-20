@@ -43,7 +43,16 @@ namespace Project.Scripts.UIScripts.Windows
         
         public void Play()
         {
-            if(levelID == 0){SceneMaster.Instance.LoadLevel();}
+            if(levelID == 0)
+            {
+                SceneMaster.Instance.LoadLevel();
+                SaveData data = SaveSystem.Instance.GetActiveSave();
+                if (!data.firstTimeTutorialDone)
+                {
+                    data.firstTimeTutorialDone = true;
+                    SaveSystem.Instance.Save();
+                }
+            }
             else
             {
                 SceneMaster.Instance.ChangeToLevelDialog(levelID, LevelDataLoader.Instance.GetLevelData(levelID).intro);

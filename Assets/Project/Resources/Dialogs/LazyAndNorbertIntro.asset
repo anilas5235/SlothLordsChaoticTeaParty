@@ -379,7 +379,7 @@ MonoBehaviour:
     speaker: Norbert
     character: 3
     text: "Okay! First things first, why don\u2019t you go over to the cup shelf
-      and choose one.(happy)"
+      and choose one."
     audioLine: {fileID: 0}
     links:
     - baseNodeGuid: 6059e868-34ab-4931-bb66-568efa68f5d8
