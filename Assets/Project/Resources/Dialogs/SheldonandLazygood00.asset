@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
+  m_Name: SheldonandLazygood00
+  m_EditorClassIdentifier: 
+  id: 10
+  passages:
+  - guid: 70322193-5c40-4a46-a35e-f50997f92c34
+    speaker: 
+    character: 0
+    text: ENTRYPOINT
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 70322193-5c40-4a46-a35e-f50997f92c34
+      portName: Next
+      targetNodeGuid: 6bdcae87-8a03-4403-9f6a-1ea22f4edb62
+    rect:
+      serializedVersion: 2
+      x: 150
+      y: 200
+      width: 87
+      height: 77
+    entryPoint: 1
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 6bdcae87-8a03-4403-9f6a-1ea22f4edb62
+    speaker: Sheldon
+    character: 4
+    text: That was quite adequate. Not half bad. (Smiles.)
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 6bdcae87-8a03-4403-9f6a-1ea22f4edb62
+      portName: Choice 0
+      targetNodeGuid: 35314555-3c3e-48e0-a62b-906ab99b039e
+    rect:
+      serializedVersion: 2
+      x: 256
+      y: 202
+      width: 288
+      height: 267
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 3a99ccca-200d-4844-a6a3-dd127d0fcf90
+    speaker: Sheldon
+    character: 4
+    text: "That\u2019s the spirit. One can never do wrong sharpening ones mind and
+      skills. "
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 3a99ccca-200d-4844-a6a3-dd127d0fcf90
+      portName: Choice 0
+      targetNodeGuid: bbc58da7-13ab-4eb9-8528-e3e24908d35a
+    rect:
+      serializedVersion: 2
+      x: 863
+      y: 201
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 35314555-3c3e-48e0-a62b-906ab99b039e
+    speaker: Lazy
+    character: 5
+    text: "I did good! Thank you! But it sure wasn\u2019t perfect\u2026 which means\u2026
+      MORE TEA PARTIES!"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 35314555-3c3e-48e0-a62b-906ab99b039e
+      portName: Choice 0
+      targetNodeGuid: 3a99ccca-200d-4844-a6a3-dd127d0fcf90
+    rect:
+      serializedVersion: 2
+      x: 550
+      y: 201
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: bbc58da7-13ab-4eb9-8528-e3e24908d35a
+    speaker: Lazy
+    character: 5
+    text: "I do miss our family, though! You think they\u2019re going to be back
+      soon? "
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: bbc58da7-13ab-4eb9-8528-e3e24908d35a
+      portName: Choice 0
+      targetNodeGuid: d4d63393-9f60-4777-84ef-3b34c1bb96f7
+    rect:
+      serializedVersion: 2
+      x: 1181
+      y: 203
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 99623aa4-9e51-42e7-8694-af6cc96698e6
+    speaker: Lazy
+    character: 5
+    text: "Sheldon\u2026 what do you mean?!"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 99623aa4-9e51-42e7-8694-af6cc96698e6
+      portName: Choice 0
+      targetNodeGuid: 51045f17-429b-4766-aef0-4db0cb52611f
+    rect:
+      serializedVersion: 2
+      x: 1805
+      y: 207
+      width: 261
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: d4d63393-9f60-4777-84ef-3b34c1bb96f7
+    speaker: Sheldon
+    character: 4
+    text: 'I am not quite sure when our humans will be back. At the door and over
+      there are some letter papers. The things I could read quite worry me. '
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: d4d63393-9f60-4777-84ef-3b34c1bb96f7
+      portName: Choice 0
+      targetNodeGuid: 99623aa4-9e51-42e7-8694-af6cc96698e6
+    rect:
+      serializedVersion: 2
+      x: 1495
+      y: 206
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 4
+    imageOverride: {fileID: 0}
+  - guid: 51045f17-429b-4766-aef0-4db0cb52611f
+    speaker: Sheldon
+    character: 4
+    text: " It\u2019s to early to say my friend. Give me some more poppy seeds and
+      let me think about it. (Proceeds to his spot in front of the garden windows.)"
+    audioLine: {fileID: 0}
+    links: []
+    rect:
+      serializedVersion: 2
+      x: 2074
+      y: 207
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  dialogCharacter: 4
