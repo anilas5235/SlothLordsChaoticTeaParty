@@ -27,7 +27,7 @@ namespace Project.Scripts.DialogScripts.Editor
             grid.StretchToParentSize();
             if (dialog != null)
             {
-                GraphSaveUtility.GetInstance(this).LoadGraph(dialog);
+                GraphSaveUtility.GetInstance(this,dialog).LoadGraph(dialog);
             }
             AddElement(GenerateEntryPoint(new Vector2(150,200)));
         }

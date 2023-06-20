@@ -14,11 +14,12 @@ namespace Project.Scripts.DialogScripts.Editor
         private List<Edge> Edges => _targetGraphView.edges.ToList();
         private List<DialogNode> Nodes => _targetGraphView.nodes.ToList().Cast<DialogNode>().ToList();
 
-        public static GraphSaveUtility GetInstance(DialogGraphView targetGraphView)
+        public static GraphSaveUtility GetInstance(DialogGraphView targetGraphView, Dialog oldData)
         {
             return new GraphSaveUtility()
             {
                 _targetGraphView = targetGraphView,
+                _dialogCached = oldData,
             };
         }
 

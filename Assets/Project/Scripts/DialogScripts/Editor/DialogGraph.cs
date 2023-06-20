@@ -80,7 +80,7 @@ namespace Project.Scripts.DialogScripts.Editor
 
         private void LoadData()
         {
-            if(_dialogData) GraphSaveUtility.GetInstance(graphView).LoadGraph(_dialogData);
+            if(_dialogData) GraphSaveUtility.GetInstance(graphView,_dialogData).LoadGraph(_dialogData);
         }
 
         private void RequestDataOperation(bool save)
@@ -91,7 +91,7 @@ namespace Project.Scripts.DialogScripts.Editor
                 return;
             }
 
-            var saveUtility = GraphSaveUtility.GetInstance(graphView);
+            GraphSaveUtility saveUtility = GraphSaveUtility.GetInstance(graphView, _dialogData);
 
             if (save) saveUtility.SaveGraph(fileName);
             else saveUtility.LoadGraph(fileName);
