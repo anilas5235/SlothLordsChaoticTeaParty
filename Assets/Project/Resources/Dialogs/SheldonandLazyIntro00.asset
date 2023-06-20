@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: SheldonandLazyIntro0
+  m_Name: SheldonandLazyIntro00
   m_EditorClassIdentifier: 
   id: 8
   passages:
@@ -37,7 +37,7 @@ MonoBehaviour:
     character: 5
     text: "SHELDON\u2026 sorry\u2026*whispers* Sheldon!? Would you like to\u2026SHELDON\u2026
       sorry\u2026*whispers* Sheldon!? Would you like to\u2026"
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: fd9ede77466379548b4a8d10ce6f683c, type: 3}
     links:
     - baseNodeGuid: 5336f9d3-93a5-435a-bbda-8bc6c607f633
       portName: Choice 0
@@ -56,7 +56,7 @@ MonoBehaviour:
     character: 4
     text: "Drink Tea with you? Especially made of these delicious poppy seeds. Oh.
       Did I interrupt you? I\u2019m sorry."
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 87fdf3f37b64012428ce049465ce77ce, type: 3}
     links:
     - baseNodeGuid: ae9729ba-94f0-43ae-aeda-c4239ec1658e
       portName: Choice 0
@@ -93,8 +93,11 @@ MonoBehaviour:
     character: 5
     text: " How did you..? You must have seen me with Norbert\u2026 or maybe\u2026
       Miss Eleanor?"
-    audioLine: {fileID: 0}
-    links: []
+    audioLine: {fileID: 8300000, guid: 1ca892ab2a1aca74d9df1db2a4e24b53, type: 3}
+    links:
+    - baseNodeGuid: 7f4c2ebd-1e18-433e-857f-b725b4a35c10
+      portName: Choice 0
+      targetNodeGuid: 8c5a357d-d131-47dc-b115-7ddd3f8a34fa
     rect:
       serializedVersion: 2
       x: 1179
@@ -110,7 +113,7 @@ MonoBehaviour:
     text: "That\u2019s actually pretty easy to deduce, if you think about it. Our
       humans are gone for a while now. And you were always the fondest of young master
       Raymonds tea parties. And I love poppy seeds. See?"
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 26b792de0bfbbfa4aaf8d6ba754ec5ac, type: 3}
     links:
     - baseNodeGuid: 8c5a357d-d131-47dc-b115-7ddd3f8a34fa
       portName: Choice 0
@@ -128,7 +131,7 @@ MonoBehaviour:
     speaker: Sheldon
     character: 4
     text: ...Maybe a little.
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 06eeb463db8d15e4e81fa8f15245b01c, type: 3}
     links: []
     rect:
       serializedVersion: 2
@@ -144,7 +147,7 @@ MonoBehaviour:
     character: 5
     text: "True\u2026 But your telling me, that the tea I just had with Miss Eleanor
       hat nothing to do with your conclusion?"
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 359edc6c61f4685428192bb001de781d, type: 3}
     links:
     - baseNodeGuid: 0ac0e42f-f781-4f0a-ab5a-4b37942d717c
       portName: Choice 0

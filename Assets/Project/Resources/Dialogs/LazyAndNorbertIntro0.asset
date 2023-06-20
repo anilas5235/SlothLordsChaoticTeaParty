@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: LazyAndNorbertIntro
+  m_Name: LazyAndNorbertIntro0
   m_EditorClassIdentifier: 
   id: 0
   passages:
@@ -36,7 +36,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: "Norbert? \u2026 Norbert? \u2026 NORBERT!\u202F"
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 46904c279608f4c479d7ebe5de9e8468, type: 3}
     links:
     - baseNodeGuid: ce04e5a5-189e-4371-b494-ea6745336899
       portName: Choice 0
@@ -54,7 +54,7 @@ MonoBehaviour:
     speaker: Norbert
     character: 3
     text: "Do you know what time it is?!\u202F "
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 33faf55a8f6a32b4281c4bd846a93e36, type: 3}
     links:
     - baseNodeGuid: 869d4a05-78bd-4903-826d-ae43304103ad
       portName: Choice 0
@@ -72,7 +72,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: No
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 05f1dfc8d5221c348ba779182295d55b, type: 3}
     links:
     - baseNodeGuid: c114cd89-dee9-4152-bdf0-a0d987f315d1
       portName: Choice 0
@@ -81,7 +81,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 759
       y: -11
-      width: 215
+      width: 211
       height: 267
     entryPoint: 0
     mood: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
     speaker: Norbert
     character: 3
     text: Time to be quiet and to let me sleep in peace!
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 7647c8fa2fa812149804477c2af0dbc5, type: 3}
     links:
     - baseNodeGuid: 18d135d3-c480-48d6-b0ed-b7abde457841
       portName: Choice 0
@@ -108,7 +108,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: "But I need your help!\u202F"
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 6887931f682bf654192b5621581a43f2, type: 3}
     links:
     - baseNodeGuid: 5e821a7d-9d22-472e-acc4-49e0c1d780cb
       portName: Choice 0
@@ -126,7 +126,7 @@ MonoBehaviour:
     speaker: Norbert
     character: 3
     text: "I think I\u2019ll pass\u2026\u202F"
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 5a89be3f59f119f4c905d7603b93a587, type: 3}
     links:
     - baseNodeGuid: 6d050522-cb0d-4570-94e2-3718efe6eeea
       portName: Choice 0
@@ -162,7 +162,7 @@ MonoBehaviour:
     speaker: Norbert
     character: 3
     text: "Make it quick\u2026"
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 654cafe3dc78f53438b8c37cf1f10081, type: 3}
     links:
     - baseNodeGuid: 4704abf4-f8c1-4986-89d1-37956a3865a7
       portName: Choice 0
@@ -180,7 +180,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: "Okay! Listen! \u2026 TEA PARTY!\u202F "
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: ce073b9335fda294797f39912769d41f, type: 3}
     links:
     - baseNodeGuid: 121c478b-e721-41e1-bcc4-a4d62d4b46f6
       portName: Choice 0
@@ -199,7 +199,7 @@ MonoBehaviour:
     character: 5
     text: "I had a Dream last night \u2026 we had tea with our family, so I\u2019ve
       been thinking\u2026 Let\u2019s have a tea party, like the good old days.\u202F"
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: c0f98eec790f10b4abbba45f3443262d, type: 3}
     links:
     - baseNodeGuid: 3b964758-de28-4425-ba8a-2f0269c40192
       portName: Choice 0
@@ -217,7 +217,7 @@ MonoBehaviour:
     speaker: Norbert
     character: 3
     text: "What?\u202F"
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: e8f6b446b1aee114fb0edc62b1f145aa, type: 3}
     links:
     - baseNodeGuid: b5ab4465-5d10-43b1-840b-f80a5b699697
       portName: Choice 0
@@ -226,7 +226,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 2523
       y: 7
-      width: 215
+      width: 211
       height: 267
     entryPoint: 0
     mood: 5
@@ -235,7 +235,7 @@ MonoBehaviour:
     speaker: Norbert
     character: 3
     text: "On our own?\u202F "
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: ce7d0fa603dd3064b9acde999f35a294, type: 3}
     links:
     - baseNodeGuid: 96e03db5-2a70-4a36-8e3c-63ffad6fc4c6
       portName: Choice 0
@@ -244,7 +244,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 3028
       y: 9
-      width: 215
+      width: 211
       height: 267
     entryPoint: 0
     mood: 4
@@ -253,7 +253,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: "\u2026 and that\u2019s where you come in!\u202F "
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 44a3c5007ae52c441bb8eb0bd78e51fa, type: 3}
     links:
     - baseNodeGuid: 23bbf113-50cc-4ac2-b86d-291d349426cb
       portName: Choice 0
@@ -271,7 +271,7 @@ MonoBehaviour:
     speaker: Norbert
     character: 3
     text: No!
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 878e7cb8fcfc41d4c86a209668855402, type: 3}
     links:
     - baseNodeGuid: dd7ce03d-81f3-4a32-9941-0f920d3a0fee
       portName: Choice 0
@@ -280,7 +280,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 3522
       y: 16
-      width: 215
+      width: 211
       height: 267
     entryPoint: 0
     mood: 0
@@ -289,7 +289,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: "Yes!\u202F"
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: c35ec07fe8753da4abefe4b84771418a, type: 3}
     links:
     - baseNodeGuid: 449e89aa-9b40-4633-b443-6068e090a628
       portName: Choice 0
@@ -298,7 +298,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 3757
       y: 17
-      width: 215
+      width: 211
       height: 267
     entryPoint: 0
     mood: 1
@@ -307,7 +307,7 @@ MonoBehaviour:
     speaker: Norbert
     character: 3
     text: NO!
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 1294530ea06260840aba05ba7eee8563, type: 3}
     links:
     - baseNodeGuid: 3403d3f2-2e4a-4eb6-b9a5-ed15ba7f3998
       portName: Choice 0
@@ -316,7 +316,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 3990
       y: 18
-      width: 215
+      width: 211
       height: 267
     entryPoint: 0
     mood: 4
@@ -325,7 +325,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: "Pleaseeeeeee\u2026."
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: bef089152f7280e46ab8f4c30e8cd489, type: 3}
     links:
     - baseNodeGuid: da445d08-745f-46f6-a31f-18172c6247e4
       portName: Choice 0
@@ -343,7 +343,7 @@ MonoBehaviour:
     speaker: Norbert
     character: 3
     text: "Fine\u2026 but you\u2019ll have to do, what I tell you!"
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 739866c78f7783443bb10fe9c20104a0, type: 3}
     links:
     - baseNodeGuid: a2ac8a77-2c7d-4654-9953-477a4f387009
       portName: Choice 0
@@ -361,7 +361,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: "YAY!\u202F"
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 1604fbad402381d47b1c00862f8a3911, type: 3}
     links:
     - baseNodeGuid: aa6e4375-b4ef-43b4-99e5-2f6e30d31a53
       portName: Choice 0
@@ -370,7 +370,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 4735
       y: 22
-      width: 215
+      width: 211
       height: 267
     entryPoint: 0
     mood: 1
@@ -380,7 +380,7 @@ MonoBehaviour:
     character: 3
     text: "Okay! First things first, why don\u2019t you go over to the cup shelf
       and choose one."
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 05bfb24688e3c3340851cdf2e946ab17, type: 3}
     links:
     - baseNodeGuid: 6059e868-34ab-4931-bb66-568efa68f5d8
       portName: Choice 0
@@ -398,7 +398,7 @@ MonoBehaviour:
     speaker: Norbert
     character: 3
     text: Good! Now choose the nicest cup of all!
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 8710ed172a214674f98f8570c9d1a7ad, type: 3}
     links:
     - baseNodeGuid: 27cac529-42e6-4e33-aadd-9e1b124210a7
       portName: Choice 0
@@ -416,7 +416,7 @@ MonoBehaviour:
     speaker: Norbert
     character: 3
     text: Perfect! I know we were on the same page!
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 733c5e0dc2af347498af2d31a7d82192, type: 3}
     links: []
     rect:
       serializedVersion: 2

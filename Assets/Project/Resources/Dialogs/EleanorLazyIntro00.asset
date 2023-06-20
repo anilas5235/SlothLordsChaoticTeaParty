@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: EleanorLazyIntro0
+  m_Name: EleanorLazyIntro00
   m_EditorClassIdentifier: 
   id: 4
   passages:
@@ -37,7 +37,7 @@ MonoBehaviour:
     character: 1
     text: Oh my. All allone by ourselfes.We are not surely to be expected to catch
       our own food, are we?
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 1577c3005e2f80d43b030b4311718068, type: 3}
     links:
     - baseNodeGuid: 4b420b8e-e4d6-4ba9-ab98-c8e7b861a2dc
       portName: Choice 0
@@ -55,7 +55,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: I mean, there are mice outside, you could catch them, pretty sure.
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 9b1268e0e2795c04bb3b5c6799de7ca2, type: 3}
     links:
     - baseNodeGuid: de261a74-a6aa-495f-b088-c0f6dbe27506
       portName: Choice 0
@@ -75,7 +75,7 @@ MonoBehaviour:
     text: " Eww. Those fuzzy little mongrels?! Their quality is even below off-brand
       feeder rodents. And they are coated with gushy blood suckers. You know very
       well that I only consume \u201ETyrellis\xB4 Vat Grown Bio Plus Mice Morsels\u201C."
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 256ff1c6784734e409917f9224fbac8c, type: 3}
     links:
     - baseNodeGuid: c4562baa-65f6-4dd1-a17c-efd1b9ce0661
       portName: Choice 0
@@ -95,7 +95,7 @@ MonoBehaviour:
     text: "I know something better! We still got some mice biscuits left in that
       big jar over there. I could get them for you and \u2026 maybe we could add
       some tea and snacks, don\u2019t you agree Ma\u2019am. "
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 8be3570f941f81c40a647483830d940f, type: 3}
     links:
     - baseNodeGuid: fbbe8631-9853-4636-99ad-91e3a3cd3d56
       portName: Choice 0
@@ -131,7 +131,7 @@ MonoBehaviour:
     speaker: Elenor
     character: 1
     text: 'Tea without the humans? What a dashing proposal you make Lazy. '
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: da787b35cd1476d44a215c65be9f945e, type: 3}
     links:
     - baseNodeGuid: 8be10e55-4d2a-4d65-827c-608bda853f88
       portName: Choice 0
@@ -149,7 +149,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: I know, right?
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 6095fdb0f2c48b8459ad756356628ff0, type: 3}
     links:
     - baseNodeGuid: 2835b375-2753-469d-92eb-536789453a45
       portName: Choice 0
@@ -158,7 +158,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 2107
       y: 200
-      width: 215
+      width: 211
       height: 267
     entryPoint: 0
     mood: 1
@@ -167,7 +167,7 @@ MonoBehaviour:
     speaker: Elenor
     character: 1
     text: If you are sure let us commence.
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: b09fdb121b8824c47b4ca81eef66ac8f, type: 3}
     links: []
     rect:
       serializedVersion: 2

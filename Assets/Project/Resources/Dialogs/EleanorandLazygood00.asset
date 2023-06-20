@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: EleanorandLazygood0
+  m_Name: EleanorandLazygood00
   m_EditorClassIdentifier: 
   id: 6
   passages:
@@ -36,7 +36,7 @@ MonoBehaviour:
     speaker: Eleanor
     character: 1
     text: What a fine afternoon delight. Thank you my dear.
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: f84a24cad8cbeb84580b9ea7aaae85af, type: 3}
     links:
     - baseNodeGuid: 43f71d5b-f798-4720-aebd-2c4ed1621b71
       portName: Choice 0
@@ -54,7 +54,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: It was a real pleasure Miss Eleanor!
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: ae914178ac67e3344be667c3bac86620, type: 3}
     links:
     - baseNodeGuid: 1f7822d4-2909-440a-a959-b2c11510afd1
       portName: Choice 0
@@ -73,7 +73,7 @@ MonoBehaviour:
     character: 1
     text: ' I wish our humans will be back soon though. I hope they are all right.
       Especially Lady Guinevere. I miss draping me around her while she is painting...'
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: f621ad6e0607df143b417056b7798658, type: 3}
     links:
     - baseNodeGuid: 8d7bb168-1b32-47fe-ac48-c481efa22d3d
       portName: Choice 0
@@ -91,7 +91,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: "Yes \u2026 yes, I do agree\u2026 "
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 286751f3751f5434f8c11d31c38afa6a, type: 3}
     links:
     - baseNodeGuid: e4bbedec-003a-4ebc-b48f-d9f804c9ebfc
       portName: Choice 0
@@ -110,7 +110,7 @@ MonoBehaviour:
     character: 1
     text: '(Sigh.) Thank you for the tasty distraction though. I wish you a nice
       day: (Slithers to the family portrait.)'
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 75af337e59409aa498229ba699c346ea, type: 3}
     links: []
     rect:
       serializedVersion: 2

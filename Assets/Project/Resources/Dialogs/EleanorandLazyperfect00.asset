@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: EleanorandLazyperfect0
+  m_Name: EleanorandLazyperfect00
   m_EditorClassIdentifier: 
   id: 7
   passages:
@@ -37,7 +37,7 @@ MonoBehaviour:
     character: 1
     text: ' What as splendid experience this was. Such high class. I may even say
       the mighty Lord Gonzo would approve. Mice Morsels with tea. Extraordinary.'
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: e1a35d206e03f2e44b315ce1f0028b77, type: 3}
     links:
     - baseNodeGuid: 2dd09b16-8495-45e3-ae27-325bfc3e4ea7
       portName: Choice 0
@@ -55,7 +55,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: "Miss Eleanor! Seeing you this excited\u2026 This is truly\u2026 EX-TRA-OR-DI-NA-RY! "
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 32b0d0a716eaef54e93b9e9d115fb332, type: 3}
     links:
     - baseNodeGuid: 817978eb-bc06-4783-a404-5f71fcedddee
       portName: Choice 0
@@ -73,7 +73,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: Good Day, Miss Eleanor!
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 5fc1183d3cb73614eb847e90fd1ce8f5, type: 3}
     links: []
     rect:
       serializedVersion: 2
@@ -89,7 +89,7 @@ MonoBehaviour:
     character: 1
     text: I think I would like to have some more of these new delicious morsels.
       For now I please excuse me. I will retreat to my place before the portrait.
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: ae92d3f90480e044a9b295ef887a9fc8, type: 3}
     links:
     - baseNodeGuid: 17b0f4f2-0cf0-4403-a788-1e1db199ce7d
       portName: Choice 0

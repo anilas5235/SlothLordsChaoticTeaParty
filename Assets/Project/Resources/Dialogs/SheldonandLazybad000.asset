@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: SheldonandLazybad00
+  m_Name: SheldonandLazybad000
   m_EditorClassIdentifier: 
   id: 9
   passages:
@@ -36,7 +36,7 @@ MonoBehaviour:
     speaker: Sheldon
     character: 4
     text: 'I am not sure you know how to brew poppy tea correctly. '
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 048a86ab2212f994a8e80517c42f4a31, type: 3}
     links:
     - baseNodeGuid: 1c4686f3-d0f0-4f45-8329-9433185c5477
       portName: Choice 0
@@ -54,7 +54,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: "I\u2019m sorry Sheldon, I seem to have missed something. "
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 0c02ef473dd39f54b90c9ca9b8bfe52d, type: 3}
     links:
     - baseNodeGuid: 2bfd98e9-d6c0-419b-811f-6fda682e4ba5
       portName: Choice 0
@@ -72,7 +72,7 @@ MonoBehaviour:
     speaker: Sheldon
     character: 4
     text: Something elementary I presume.
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 4c9ac8eefc6547f438363bb56481b78a, type: 3}
     links:
     - baseNodeGuid: 338a93ee-e5af-42a0-bc36-824c9696653e
       portName: Choice 0
@@ -91,7 +91,7 @@ MonoBehaviour:
     character: 5
     text: "Elementary, comes from Element\u2026 so you are talking about more fire
       under the stove. That\u2019s actually smart! "
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: c0bc05b464eb92f41a86b297ac9cf1bf, type: 3}
     links:
     - baseNodeGuid: d1e71437-b93f-4ae3-84b5-5edeb553f4a6
       portName: Choice 0
@@ -109,7 +109,7 @@ MonoBehaviour:
     speaker: Sheldon
     character: 4
     text: (Sigh.) Something like that. Also not quite.
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: 35a6700a305443b4799c4887f7e8ed7c, type: 3}
     links:
     - baseNodeGuid: f12f00cc-835f-48e2-8ff3-0b6dd125583d
       portName: Choice 0
@@ -128,7 +128,7 @@ MonoBehaviour:
     character: 4
     text: I can manage on my own. Fetch me those seeds. I have some thoughts that
       have to be thought through laboriously.
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: e90a4d253a2557147aab5124fbcb2227, type: 3}
     links:
     - baseNodeGuid: bc1d4f4f-36ff-49ce-a35e-770e20ab5210
       portName: Choice 0
@@ -179,7 +179,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: "I\u2019m going to try that next time! How about we try again? "
-    audioLine: {fileID: 0}
+    audioLine: {fileID: 8300000, guid: c7281f7ffd2943b49a7dc219803e7e98, type: 3}
     links:
     - baseNodeGuid: 332d9a27-8482-4d87-8008-a44f4068d424
       portName: Choice 0
