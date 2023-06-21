@@ -1,7 +1,9 @@
 using System.Collections;
+using Project.Scripts.Audio;
 using Project.Scripts.General;
 using Project.Scripts.Menu;
 using Project.Scripts.Tiles;
+using Project.Scripts.UIScripts.Effects;
 using Project.Scripts.UIScripts.Windows;
 using TMPro;
 using UnityEngine;
@@ -63,6 +65,7 @@ namespace Project.Scripts.DialogScripts
                     if (MenuWindowsMaster.Instance) MenuWindowsMaster.Instance.enabled = false;
                 }
             }
+            if (AudioManager.Instance) AudioManager.Instance.StopMusic();
             LoadDialogID();
             StartCoroutine( StartDialogAfterFade());
         }
@@ -155,6 +158,7 @@ namespace Project.Scripts.DialogScripts
 
         private void DialogEnded()
         {
+            audioSource.clip = null;
             if (tutorialMode)
             {
                 if(TileFieldManager.Instance)TileFieldManager.Instance.tutorialMode = false;
@@ -165,6 +169,7 @@ namespace Project.Scripts.DialogScripts
                 }
                
                 dialogUIParent.gameObject.SetActive(false);
+                if (AudioManager.Instance) AudioManager.Instance.StartMusic();
                 return;
             }
 
@@ -174,7 +179,7 @@ namespace Project.Scripts.DialogScripts
             Level currenLevelData = LevelDataLoader.Instance.GetLevelData(levelID);
             if (levelID == 3 && SaveSystem.Instance.GetActiveSave().unlockedEndings[0] && dialogManager.CurrentDialogID != currenLevelData.intro)
             {
-                StartCoroutine(FadeAndContinueEnding(0));
+                StartCoroutine(FadeAndContinueEnding(20));
                 return;
             }
             StartCoroutine(currenLevelData.intro == dialogManager.CurrentDialogID ? FadeAndContinueToLevel() : FadeAndContinueToMenu());
@@ -194,11 +199,11 @@ namespace Project.Scripts.DialogScripts
             SceneMaster.Instance.ChangeToMenuScene();
         }
         
-        private IEnumerator FadeAndContinueEnding(int ending)
+        private IEnumerator FadeAndContinueEnding(int endingDialogID)
         {
             ScreenFade.Instance.StartFadeOut();
             yield return new WaitForSeconds(ScreenFade.Instance.FadeDuration);
-            SceneMaster.Instance.ChangeToEndingDialog(ending);
+            SceneMaster.Instance.ChangeToEndingDialog(endingDialogID);
         }
     }
 }

@@ -72,7 +72,7 @@ MonoBehaviour:
     speaker: Eleanor
     character: 1
     text: ' I wish our humans will be back soon though. I hope they are all right.
-      Especially Lady Guinevere. I miss draping me around her while she is painting...'
+      Especially Lady Guinevere. I miss draping me around her while she  paints...'
     audioLine: {fileID: 8300000, guid: e512a81d8120b724a8b8cbe9cde6ed4d, type: 3}
     links:
     - baseNodeGuid: 8d7bb168-1b32-47fe-ac48-c481efa22d3d

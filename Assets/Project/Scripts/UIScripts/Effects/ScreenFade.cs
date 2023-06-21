@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using Project.Scripts.General;
 using UnityEngine;
 
-//Code from Shawn Okorie
+//Based on Code from Shawn Okorie
 
-namespace Project.Scripts.DialogScripts
+namespace Project.Scripts.UIScripts.Effects
 {
     public class ScreenFade : Singleton<ScreenFade>
     {

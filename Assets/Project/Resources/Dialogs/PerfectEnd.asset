@@ -68,24 +68,6 @@ MonoBehaviour:
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 0}
-  - guid: 7645c152-b3ae-45b0-8bd5-6baa5cbb4811
-    speaker: Gonzo
-    character: 2
-    text: We have been talking, Mija!
-    audioLine: {fileID: 8300000, guid: 04acc23c71a6dcd4f8c64c7fca1645a2, type: 3}
-    links:
-    - baseNodeGuid: 7645c152-b3ae-45b0-8bd5-6baa5cbb4811
-      portName: Choice 0
-      targetNodeGuid: 47028def-11fa-494e-8c31-6bf2aa43ad93
-    rect:
-      serializedVersion: 2
-      x: 801
-      y: 209
-      width: 254
-      height: 267
-    entryPoint: 0
-    mood: 0
-    imageOverride: {fileID: 0}
   - guid: 47028def-11fa-494e-8c31-6bf2aa43ad93
     speaker: Sheldon
     character: 4
@@ -121,24 +103,6 @@ MonoBehaviour:
       height: 267
     entryPoint: 0
     mood: 0
-    imageOverride: {fileID: 0}
-  - guid: d71ed11a-b3a2-4d98-b32f-3654b9d23376
-    speaker: All
-    character: 0
-    text: We did.
-    audioLine: {fileID: 0}
-    links:
-    - baseNodeGuid: d71ed11a-b3a2-4d98-b32f-3654b9d23376
-      portName: Choice 0
-      targetNodeGuid: 454441c1-2421-4332-994f-d44f9cead13f
-    rect:
-      serializedVersion: 2
-      x: 1573
-      y: 217
-      width: 215
-      height: 267
-    entryPoint: 0
-    mood: 1
     imageOverride: {fileID: 0}
   - guid: 454441c1-2421-4332-994f-d44f9cead13f
     speaker: Lazy
@@ -466,5 +430,41 @@ MonoBehaviour:
       height: 267
     entryPoint: 0
     mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 7645c152-b3ae-45b0-8bd5-6baa5cbb4811
+    speaker: Gonzo
+    character: 2
+    text: We have been talking, Mija!
+    audioLine: {fileID: 8300000, guid: 04acc23c71a6dcd4f8c64c7fca1645a2, type: 3}
+    links:
+    - baseNodeGuid: 7645c152-b3ae-45b0-8bd5-6baa5cbb4811
+      portName: Choice 0
+      targetNodeGuid: 47028def-11fa-494e-8c31-6bf2aa43ad93
+    rect:
+      serializedVersion: 2
+      x: 801
+      y: 209
+      width: 254
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: d71ed11a-b3a2-4d98-b32f-3654b9d23376
+    speaker: Elenor
+    character: 1
+    text: We did.
+    audioLine: {fileID: 8300000, guid: ca0dbe825eb2d5b4db3de32512a16684, type: 3}
+    links:
+    - baseNodeGuid: d71ed11a-b3a2-4d98-b32f-3654b9d23376
+      portName: Choice 0
+      targetNodeGuid: 454441c1-2421-4332-994f-d44f9cead13f
+    rect:
+      serializedVersion: 2
+      x: 1573
+      y: 217
+      width: 211
+      height: 267
+    entryPoint: 0
+    mood: 1
     imageOverride: {fileID: 0}
   dialogCharacter: 3

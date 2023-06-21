@@ -182,7 +182,7 @@ MonoBehaviour:
     character: 3
     text: '(Hint: You can switch the tiles  as much as you want, because it only
       counts as a turn if you trigger a combination. Combinations count if there
-      are 3 or more tiles of the same type that touch eachother in any direction.'
+      are 3 or more tiles of the same type that touch eachother in any direction.)'
     audioLine: {fileID: 0}
     links: []
     rect:

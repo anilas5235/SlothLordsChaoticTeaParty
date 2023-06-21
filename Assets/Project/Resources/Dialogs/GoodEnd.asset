@@ -466,4 +466,4 @@ MonoBehaviour:
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
-  dialogCharacter: 0
+  dialogCharacter: 3

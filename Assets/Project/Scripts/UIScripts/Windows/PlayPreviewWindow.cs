@@ -51,7 +51,7 @@ namespace Project.Scripts.UIScripts.Windows
                     endingUnlock = false;
                     break;
                 }
-                if (endingUnlock) saveData.unlockedEndings[0] = true;
+                if (endingUnlock) saveData.unlockedEndings[1] = true;
             }
             
             //Set Up Character

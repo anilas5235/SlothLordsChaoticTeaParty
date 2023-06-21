@@ -743,7 +743,7 @@ namespace Project.Scripts.Tiles
                     endingUnlock = false;
                     break;
                 }
-                if (endingUnlock) saveData.unlockedEndings[0] = true;
+                if (endingUnlock) saveData.unlockedEndings[1] = true;
             }
 
             SaveSystem.Instance.Save();

@@ -37,6 +37,8 @@ namespace Project.Scripts.Audio
         }
 
         public void StopMusic() => musicPlayer.Stop();
+        
+        public void StartMusic() => musicPlayer.Play();
         public void ButtonClicked() => audioSource1.PlayOneShot(buttonClick);
 
         public void TileBreakSound(Tile.TileType tileType)

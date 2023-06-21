@@ -29,7 +29,7 @@ namespace Project.Scripts.Menu
 
         public void LoadLevel()
         {
-            CursorManager.Instance.ActivateCursor();
+            if(CursorManager.Instance) CursorManager.Instance.ActivateCursor();
             SceneManager.LoadScene(PlayerPrefs.GetInt("levelID", 0) == 0 ? "Tutorial" : "Main");
         }
     }

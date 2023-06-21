@@ -97,7 +97,7 @@ namespace Project.Scripts.DialogScripts
             }
             writeRoutine = StartCoroutine(Write(dialogPassageNode.text, dialogPassageNode.links.Count > 1));
 
-            if (dialogPassageNode.audioLine) OnVoiceLine?.Invoke(dialogPassageNode.audioLine);
+            OnVoiceLine?.Invoke(dialogPassageNode.audioLine);
             OnNodeLoaded?.Invoke();
             return true;
         }
@@ -126,7 +126,7 @@ namespace Project.Scripts.DialogScripts
         private void NextPassage(int linkID = 0)
         {
             if(writeRoutine!= null) StopCoroutine(writeRoutine);
-            if(dialogPassageNode.links == null)return;
+            if(dialogPassageNode?.links == null)return;
             switch (dialogPassageNode.links.Count)
             {
                 case 0: DialogFinished = true; OnDialogEnd?.Invoke(); break;

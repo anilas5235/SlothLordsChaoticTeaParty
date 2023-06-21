@@ -231,24 +231,6 @@ MonoBehaviour:
     entryPoint: 0
     mood: 5
     imageOverride: {fileID: 0}
-  - guid: 96e03db5-2a70-4a36-8e3c-63ffad6fc4c6
-    speaker: Norbert
-    character: 3
-    text: "On our own?\u202F "
-    audioLine: {fileID: 8300000, guid: 3d6954022305816468e840f028d0b795, type: 3}
-    links:
-    - baseNodeGuid: 96e03db5-2a70-4a36-8e3c-63ffad6fc4c6
-      portName: Choice 0
-      targetNodeGuid: 23bbf113-50cc-4ac2-b86d-291d349426cb
-    rect:
-      serializedVersion: 2
-      x: 3028
-      y: 9
-      width: 211
-      height: 267
-    entryPoint: 0
-    mood: 4
-    imageOverride: {fileID: 0}
   - guid: 23bbf113-50cc-4ac2-b86d-291d349426cb
     speaker: Lazy
     character: 5
@@ -415,7 +397,7 @@ MonoBehaviour:
   - guid: 45059266-a135-4cb8-bfa3-45fcac0dc7cd
     speaker: Norbert
     character: 3
-    text: Perfect! I know we were on the same page!
+    text: Perfect! I knew we were on the same page!
     audioLine: {fileID: 8300000, guid: b1d103d46b0825b44b0ca4f030120478, type: 3}
     links: []
     rect:
@@ -426,5 +408,23 @@ MonoBehaviour:
       height: 267
     entryPoint: 0
     mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 96e03db5-2a70-4a36-8e3c-63ffad6fc4c6
+    speaker: Norbert
+    character: 3
+    text: "On our own?\u202F "
+    audioLine: {fileID: 8300000, guid: 3d6954022305816468e840f028d0b795, type: 3}
+    links:
+    - baseNodeGuid: 96e03db5-2a70-4a36-8e3c-63ffad6fc4c6
+      portName: Choice 0
+      targetNodeGuid: 23bbf113-50cc-4ac2-b86d-291d349426cb
+    rect:
+      serializedVersion: 2
+      x: 3028
+      y: 9
+      width: 211
+      height: 267
+    entryPoint: 0
+    mood: 4
     imageOverride: {fileID: 0}
   dialogCharacter: 3

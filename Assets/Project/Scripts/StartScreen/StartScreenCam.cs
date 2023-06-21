@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Project.Scripts.DialogScripts;
 using Project.Scripts.Menu;
+using Project.Scripts.UIScripts.Effects;
 using UnityEngine;
 using UnityEngine.UI;
 
