@@ -1,0 +1,197 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
+  m_Name: LazyAndNorbertTutorial0
+  m_EditorClassIdentifier: 
+  id: 1
+  passages:
+  - guid: 26273b81-e4fd-441a-b2e9-973692cc1ff4
+    speaker: 
+    character: 0
+    text: ENTRYPOINT
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 26273b81-e4fd-441a-b2e9-973692cc1ff4
+      portName: Next
+      targetNodeGuid: cd654769-48a5-45ef-84e5-1b8ad88e754c
+    rect:
+      serializedVersion: 2
+      x: 150
+      y: 200
+      width: 87
+      height: 77
+    entryPoint: 1
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: cd654769-48a5-45ef-84e5-1b8ad88e754c
+    speaker: Norbert
+    character: 3
+    text: "Now we just have to make the tea and \u2026 well, have a tea party. At
+      least three objects of the same kind make one snack or one full cup.\u202F"
+    audioLine: {fileID: 8300000, guid: a96828e87b09bc84dba410d20762b0fa, type: 3}
+    links:
+    - baseNodeGuid: cd654769-48a5-45ef-84e5-1b8ad88e754c
+      portName: Choice 0
+      targetNodeGuid: d2011ba1-6259-49c7-ab2b-2fc218ab7774
+    rect:
+      serializedVersion: 2
+      x: 253
+      y: 195
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: d2011ba1-6259-49c7-ab2b-2fc218ab7774
+    speaker: Lazy
+    character: 5
+    text: "LET\u2019S GO THEN!\u202F"
+    audioLine: {fileID: 8300000, guid: 356977601d2dad74eaf8e4d7c3851d6f, type: 3}
+    links:
+    - baseNodeGuid: d2011ba1-6259-49c7-ab2b-2fc218ab7774
+      portName: Choice 0
+      targetNodeGuid: 4b82ddf0-2346-4d6c-9abc-753f5f0475db
+    rect:
+      serializedVersion: 2
+      x: 561
+      y: 195
+      width: 228
+      height: 267
+    entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}
+  - guid: 4b82ddf0-2346-4d6c-9abc-753f5f0475db
+    speaker: Norbert
+    character: 3
+    text: "Please calm down and for god\u2019s sake, stop yelling!\u202F "
+    audioLine: {fileID: 8300000, guid: 7b455fc5df6d76b43a592416d23714cd, type: 3}
+    links:
+    - baseNodeGuid: 4b82ddf0-2346-4d6c-9abc-753f5f0475db
+      portName: Choice 0
+      targetNodeGuid: d7392318-b569-4ce2-9f37-cd0a1ff13963
+    rect:
+      serializedVersion: 2
+      x: 795
+      y: 198
+      width: 306
+      height: 267
+    entryPoint: 0
+    mood: 4
+    imageOverride: {fileID: 0}
+  - guid: d7392318-b569-4ce2-9f37-cd0a1ff13963
+    speaker: Lazy
+    character: 5
+    text: "Sorry\u2026"
+    audioLine: {fileID: 8300000, guid: 6c7827f32b588a9418fe1c83ac9433cd, type: 3}
+    links:
+    - baseNodeGuid: d7392318-b569-4ce2-9f37-cd0a1ff13963
+      portName: Choice 0
+      targetNodeGuid: 76921d2d-2ab8-4059-b613-654fdb036483
+    rect:
+      serializedVersion: 2
+      x: 1102
+      y: 201
+      width: 211
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 76921d2d-2ab8-4059-b613-654fdb036483
+    speaker: Norbert
+    character: 3
+    text: How about you try to switch these two?
+    audioLine: {fileID: 8300000, guid: 87c3f0d27b4265646a92366a834f16fb, type: 3}
+    links:
+    - baseNodeGuid: 76921d2d-2ab8-4059-b613-654fdb036483
+      portName: Choice 0
+      targetNodeGuid: 57cea66b-b425-4b93-88a6-21b4e29ef977
+    rect:
+      serializedVersion: 2
+      x: 1331
+      y: 204
+      width: 250
+      height: 267
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 57cea66b-b425-4b93-88a6-21b4e29ef977
+    speaker: Norbert
+    character: 3
+    text: "Yup, that\u2019s it! Now let\u2019s have your little tea party!"
+    audioLine: {fileID: 8300000, guid: 8013f9a53d5af0441b342a9b4f45c367, type: 3}
+    links:
+    - baseNodeGuid: 57cea66b-b425-4b93-88a6-21b4e29ef977
+      portName: Choice 0
+      targetNodeGuid: f44599ee-037c-4f3a-8a48-8e7b1eef3bf5
+    rect:
+      serializedVersion: 2
+      x: 1595
+      y: 199
+      width: 288
+      height: 267
+    entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}
+  - guid: f44599ee-037c-4f3a-8a48-8e7b1eef3bf5
+    speaker: Lazy
+    character: 5
+    text: Oh my god! Thank you! This is amazing!
+    audioLine: {fileID: 8300000, guid: 9635f543dce273443b24e023d4ff8308, type: 3}
+    links:
+    - baseNodeGuid: f44599ee-037c-4f3a-8a48-8e7b1eef3bf5
+      portName: Choice 0
+      targetNodeGuid: 8ff83873-2a08-4cbb-a1a2-ae791f129c4c
+    rect:
+      serializedVersion: 2
+      x: 1893
+      y: 200
+      width: 259
+      height: 267
+    entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}
+  - guid: 8ff83873-2a08-4cbb-a1a2-ae791f129c4c
+    speaker: Norbert
+    character: 3
+    text: "By the way, I really enjoy eucalyptus tea, but please, no poppy seed cake!\u202F"
+    audioLine: {fileID: 8300000, guid: ec9690180212c90448cff69aad708092, type: 3}
+    links:
+    - baseNodeGuid: 8ff83873-2a08-4cbb-a1a2-ae791f129c4c
+      portName: Choice 0
+      targetNodeGuid: aaf28816-ddf1-4a0b-bd59-7c06cbbcb0a4
+    rect:
+      serializedVersion: 2
+      x: 2156
+      y: 200
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: aaf28816-ddf1-4a0b-bd59-7c06cbbcb0a4
+    speaker: Norbert
+    character: 3
+    text: '(Hint: You can switch the tiles  as much as you want, because it only
+      counts as a turn if you trigger a combination. Combinations count if there
+      are 3 or more tiles of the same type that touch eachother in any direction.'
+    audioLine: {fileID: 0}
+    links: []
+    rect:
+      serializedVersion: 2
+      x: 2516
+      y: 199
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 4
+    imageOverride: {fileID: 0}
+  dialogCharacter: 3
