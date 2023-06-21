@@ -882,7 +882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968e85ce3a0a5b84fa3931ed384c7e53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myFunction: 4
+  myFunction: 5
   menuWindowHandler: {fileID: 0}
   sceneID: 0
 --- !u!1 &8180006697016766279

@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd701981cb5a4fc47923eb4bbc68fa1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactSound: {fileID: 8300000, guid: a5b47b14b2382bb4b9a652373f9f1317, type: 3}
   inspectingDistance: 1
 --- !u!114 &50604367
 MonoBehaviour:
@@ -532,6 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd701981cb5a4fc47923eb4bbc68fa1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactSound: {fileID: 8300000, guid: db54abb07fc7ab04e995297cf868ed63, type: 3}
   inspectingDistance: 1
 --- !u!114 &134490823
 MonoBehaviour:
@@ -564,6 +566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f027d7bc1fd7834f858e9197d9b5ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactSound: {fileID: 8300000, guid: db54abb07fc7ab04e995297cf868ed63, type: 3}
   levelID: 1
   constantHighlight: 0
 --- !u!114 &159067450
@@ -1416,6 +1419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f027d7bc1fd7834f858e9197d9b5ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactSound: {fileID: 8300000, guid: db54abb07fc7ab04e995297cf868ed63, type: 3}
   levelID: 2
   constantHighlight: 0
 --- !u!114 &612539183
@@ -1549,6 +1553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32acc94ed8f9a3e4b9de0f1f88bfe7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactSound: {fileID: 8300000, guid: 6571da8c474e4594f8bfdb85774d0c2d, type: 3}
   inspectingDistance: 1
 --- !u!114 &614844634
 MonoBehaviour:
@@ -1614,6 +1619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f027d7bc1fd7834f858e9197d9b5ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactSound: {fileID: 8300000, guid: db54abb07fc7ab04e995297cf868ed63, type: 3}
   levelID: 0
   constantHighlight: 0
 --- !u!114 &691762802
@@ -2888,6 +2894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd701981cb5a4fc47923eb4bbc68fa1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactSound: {fileID: 8300000, guid: 6571da8c474e4594f8bfdb85774d0c2d, type: 3}
   inspectingDistance: 1
 --- !u!114 &1164846270
 MonoBehaviour:
@@ -3038,6 +3045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f027d7bc1fd7834f858e9197d9b5ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactSound: {fileID: 8300000, guid: db54abb07fc7ab04e995297cf868ed63, type: 3}
   levelID: 3
   constantHighlight: 0
 --- !u!114 &1237783369
@@ -3161,6 +3169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd701981cb5a4fc47923eb4bbc68fa1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactSound: {fileID: 8300000, guid: a5b47b14b2382bb4b9a652373f9f1317, type: 3}
   inspectingDistance: 1
 --- !u!114 &1244970094
 MonoBehaviour:
@@ -3546,6 +3555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd701981cb5a4fc47923eb4bbc68fa1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactSound: {fileID: 8300000, guid: 6571da8c474e4594f8bfdb85774d0c2d, type: 3}
   inspectingDistance: 1
 --- !u!114 &1586356586
 MonoBehaviour:
@@ -4150,6 +4160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd701981cb5a4fc47923eb4bbc68fa1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactSound: {fileID: 8300000, guid: 6571da8c474e4594f8bfdb85774d0c2d, type: 3}
   inspectingDistance: 1
 --- !u!114 &1880157007
 MonoBehaviour:
@@ -4638,6 +4649,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd701981cb5a4fc47923eb4bbc68fa1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactSound: {fileID: 8300000, guid: 6571da8c474e4594f8bfdb85774d0c2d, type: 3}
   inspectingDistance: 1
 --- !u!114 &2106132136
 MonoBehaviour:
@@ -4805,8 +4817,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuWindowToOpen: {fileID: 1099101239}
   DeactivateCursorOnMenuClose: 1
-  currentlyActiveWindows: []
   menuActive: 0
+  currentlyActiveWindows: []
 --- !u!1001 &3517953760084743806
 PrefabInstance:
   m_ObjectHideFlags: 0

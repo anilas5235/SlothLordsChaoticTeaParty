@@ -32,6 +32,8 @@ namespace Project.Scripts.Menu
         {
             if(!unlocked || MenuWindowsMaster.Instance.MenuActive)return;
             
+            base.Interact();
+            
             PlayPreviewWindow.Instance.SetLeveVar(levelID);
             MenuWindowsMaster.Instance.OpenWindow(PlayPreviewWindow.Instance);
         }

@@ -2,6 +2,7 @@ using System.Collections;
 using Project.Scripts.General;
 using Project.Scripts.Menu;
 using Project.Scripts.Tiles;
+using Project.Scripts.UIScripts.Windows;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -50,10 +51,17 @@ namespace Project.Scripts.DialogScripts
             dialogManager.OnVoiceLine += PlayVoiceLine;
             dialogManager.OnDialogEnd += DialogEnded;
             ChoiceMade();
-            if (inMenu && SaveSystem.Instance.GetActiveSave().firstTimeTutorialDone)
+            if (inMenu)
             {
-                dialogUIParent.gameObject.SetActive(false);
-                return;
+                if (SaveSystem.Instance.GetActiveSave().firstTimeTutorialDone)
+                {
+                    dialogUIParent.gameObject.SetActive(false);
+                                    return;
+                }
+                else
+                {
+                    if (MenuWindowsMaster.Instance) MenuWindowsMaster.Instance.enabled = false;
+                }
             }
             LoadDialogID();
             StartCoroutine( StartDialogAfterFade());
@@ -125,7 +133,7 @@ namespace Project.Scripts.DialogScripts
             if (dialogManager.CurrentNode.imageOverride)
             {
                 isAllowedToWrite = false;
-               
+                if (MenuWindowsMaster.Instance) MenuWindowsMaster.Instance.enabled = true;
                 screenSceneImage.gameObject.SetActive(true);
                 screenSceneImage.sprite = dialogManager.CurrentNode.imageOverride;
                 ClearTextFields();
@@ -148,6 +156,12 @@ namespace Project.Scripts.DialogScripts
             if (tutorialMode)
             {
                 if(TileFieldManager.Instance)TileFieldManager.Instance.tutorialMode = false;
+                if (inMenu)
+                {
+                    FirstPersonController player = FindObjectOfType<FirstPersonController>();
+                    if(player)player.SetJumpAbility(true); 
+                }
+               
                 dialogUIParent.gameObject.SetActive(false);
                 return;
             }

@@ -1,4 +1,5 @@
 using System.Collections;
+using Project.Scripts.Audio;
 using Project.Scripts.DialogScripts;
 using Project.Scripts.Menu;
 using Project.Scripts.Tiles;
@@ -48,6 +49,10 @@ namespace Project.Scripts.UIScripts.Windows
             }
 
             scoreText.text = $"{(score)}";
+            int s = 0;
+            if (star1Achieved) s++;
+            if (star2Achieved) s++;
+            AudioManager.Instance.TriggerEndSound(s);
             doneRevealing = true;
         }
 

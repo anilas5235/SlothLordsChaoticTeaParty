@@ -58,7 +58,6 @@ namespace Project.Scripts.Menu
         private Coroutine transition;
 
         private float rotationX = 0;
-
         private void Awake()
         {
             PlayerCamera = GetComponentInChildren<Camera>();
@@ -164,5 +163,7 @@ namespace Project.Scripts.Menu
             myCharacterController.height = height;
             transition = null;
         }
+
+        public void SetJumpAbility(bool val) => canJump = val;
     }
 }
