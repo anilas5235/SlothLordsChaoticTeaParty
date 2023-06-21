@@ -41,7 +41,6 @@ namespace Project.Scripts.DialogScripts
             switch (myDialogManager.CurrentNode.character)
             {
                 case CharacterAnimator.Characters.None: return;
-                    break;
                 case CharacterAnimator.Characters.Elenor:
                     break;
                 case CharacterAnimator.Characters.Gonzo:
@@ -51,7 +50,6 @@ namespace Project.Scripts.DialogScripts
                 case CharacterAnimator.Characters.Sheldon:
                     break;
                 case CharacterAnimator.Characters.Lazy: return;
-                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

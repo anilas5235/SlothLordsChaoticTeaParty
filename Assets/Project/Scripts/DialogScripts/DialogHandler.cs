@@ -171,12 +171,12 @@ namespace Project.Scripts.DialogScripts
             if (dialogId == 20 || dialogId == 21) { StartCoroutine(FadeAndContinueToMenu()); return;}
 
             int levelID = PlayerPrefs.GetInt("levelID", 0);
-            if (levelID == 3 && SaveSystem.Instance.GetActiveSave().unlockedEndings[0])
+            Level currenLevelData = LevelDataLoader.Instance.GetLevelData(levelID);
+            if (levelID == 3 && SaveSystem.Instance.GetActiveSave().unlockedEndings[0] && dialogManager.CurrentDialogID != currenLevelData.intro)
             {
                 StartCoroutine(FadeAndContinueEnding(0));
                 return;
             }
-            Level currenLevelData = LevelDataLoader.Instance.GetLevelData(levelID);
             StartCoroutine(currenLevelData.intro == dialogManager.CurrentDialogID ? FadeAndContinueToLevel() : FadeAndContinueToMenu());
         }
 
