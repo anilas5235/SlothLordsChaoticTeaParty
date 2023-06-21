@@ -43,6 +43,8 @@ namespace Project.Scripts.UIScripts
 
         public void QuitApplication() => Application.Quit();
         public void ChangeScene(int id) => SceneManager.LoadScene(id);
+        
+        public void ChangeScene(string name) => SceneManager.LoadScene(name);
 
         public virtual void ActivateWindow()
         {
@@ -53,12 +55,12 @@ namespace Project.Scripts.UIScripts
 
         public virtual void SwitchToMainMenu()
         {
-            ChangeScene(0);
+            ChangeScene("Menu");
         }
 
         public virtual void RetryLevel()
         {
-            ChangeScene(1);
+            ChangeScene("Main");
         }
     }
 }

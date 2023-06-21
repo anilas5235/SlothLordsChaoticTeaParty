@@ -79,7 +79,9 @@ namespace Project.Scripts.DialogScripts
 
         private void LoadDialogID()
         {
-            dialogId = tutorialMode? dialogId: PlayerPrefs.GetInt("DialogID");
+            int id = PlayerPrefs.GetInt("DialogID", 0);
+            dialogId = tutorialMode? dialogId: id;
+            
             dialogManager.SetDialogId(dialogId);
         }
         private void SetNameText(string name)
@@ -147,7 +149,7 @@ namespace Project.Scripts.DialogScripts
 
         private IEnumerator StartDialogAfterFade()
         {
-            if(ScreenFade.Instance) yield return new WaitForSeconds(ScreenFade.Instance.FadeDuration);
+            if(ScreenFade.Instance) yield return new WaitForSeconds(ScreenFade.Instance.FadeDuration-1f);
             StartTheDialog();
         }
 
@@ -165,6 +167,9 @@ namespace Project.Scripts.DialogScripts
                 dialogUIParent.gameObject.SetActive(false);
                 return;
             }
+
+            if (dialogId == 20 || dialogId == 21) { StartCoroutine(FadeAndContinueToMenu()); return;}
+            
             Level currenLevelData = LevelDataLoader.Instance.GetLevelData(PlayerPrefs.GetInt("levelID", 0));
             StartCoroutine(currenLevelData.intro == dialogManager.CurrentDialogID ? FadeAndContinueToLevel() : FadeAndContinueToMenu());
         }

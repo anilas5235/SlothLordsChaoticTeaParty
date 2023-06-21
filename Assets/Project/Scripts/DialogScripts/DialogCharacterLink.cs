@@ -37,7 +37,26 @@ namespace Project.Scripts.DialogScripts
 
         private void LoadNewMoodFromDialogData()
         {
-            if(myDialogManager.CurrentNode.character != myCharacterAnimator.CurrentCharacter) return;
+
+            switch (myDialogManager.CurrentNode.character)
+            {
+                case CharacterAnimator.Characters.None: return;
+                    break;
+                case CharacterAnimator.Characters.Elenor:
+                    break;
+                case CharacterAnimator.Characters.Gonzo:
+                    break;
+                case CharacterAnimator.Characters.Norbert:
+                    break;
+                case CharacterAnimator.Characters.Sheldon:
+                    break;
+                case CharacterAnimator.Characters.Lazy: return;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            myCharacterAnimator.CurrentCharacter = myDialogManager.CurrentNode.character;
             ChangeCharacterMode(myDialogManager.CurrentNode.mood);
         }
     }

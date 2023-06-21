@@ -20,6 +20,13 @@ namespace Project.Scripts.Menu
             SceneManager.LoadScene("Dialog");
         }
 
+        public void ChangeToEndingDialog(int dialogID)
+        {
+            CursorManager.Instance.ActivateCursor();
+            PlayerPrefs.SetInt("DialogID",dialogID);
+            SceneManager.LoadScene("Dialog");
+        }
+
         public void LoadLevel()
         {
             CursorManager.Instance.ActivateCursor();

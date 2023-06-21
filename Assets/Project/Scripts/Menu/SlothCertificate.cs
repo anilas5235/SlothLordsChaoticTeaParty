@@ -3,12 +3,17 @@ using UnityEngine;
 
 namespace Project.Scripts.Menu
 {
-    public class SlothCertificate : InspectableObject
+    public class SlothCertificate : InteractableObject
     {
-        protected override void Start()
+        protected  void Start()
         {
-            base.Start();
             gameObject.SetActive(SaveSystem.Instance.GetActiveSave().unlockedEndings[1]);
+        }
+
+        public override void Interact()
+        {
+            base.Interact();
+            SceneMaster.Instance.ChangeToEndingDialog(21);
         }
     }
 }

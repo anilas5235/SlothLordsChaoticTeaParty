@@ -123,7 +123,7 @@ MonoBehaviour:
     mood: 0
     imageOverride: {fileID: 0}
   - guid: d71ed11a-b3a2-4d98-b32f-3654b9d23376
-    speaker: speaker
+    speaker: All
     character: 0
     text: We did.
     audioLine: {fileID: 0}
@@ -159,14 +159,14 @@ MonoBehaviour:
     mood: 0
     imageOverride: {fileID: 0}
   - guid: d323d532-5cd0-423c-a737-c1efcab80902
-    speaker: speaker
-    character: 0
+    speaker: Gonzo
+    character: 2
     text: "\xA1Absolutamente! That is why we have been talking."
     audioLine: {fileID: 0}
     links:
     - baseNodeGuid: d323d532-5cd0-423c-a737-c1efcab80902
       portName: Choice 0
-      targetNodeGuid: e372f32c-20d3-47d6-ac2f-0f131005ba12
+      targetNodeGuid: 5c6ad277-03e9-4ed2-921a-510bcfc48c00
     rect:
       serializedVersion: 2
       x: 2070
@@ -175,24 +175,6 @@ MonoBehaviour:
       height: 267
     entryPoint: 0
     mood: 3
-    imageOverride: {fileID: 0}
-  - guid: e372f32c-20d3-47d6-ac2f-0f131005ba12
-    speaker: speaker
-    character: 0
-    text: New Dialog Node
-    audioLine: {fileID: 0}
-    links:
-    - baseNodeGuid: e372f32c-20d3-47d6-ac2f-0f131005ba12
-      portName: Choice 0
-      targetNodeGuid: 5c6ad277-03e9-4ed2-921a-510bcfc48c00
-    rect:
-      serializedVersion: 2
-      x: 2392
-      y: 231
-      width: 231
-      height: 267
-    entryPoint: 0
-    mood: 0
     imageOverride: {fileID: 0}
   - guid: 5c6ad277-03e9-4ed2-921a-510bcfc48c00
     speaker: Elenor
@@ -485,4 +467,4 @@ MonoBehaviour:
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 21300000, guid: 901775c8ee51d494480c2ed35148f31a, type: 3}
-  dialogCharacter: 0
+  dialogCharacter: 3
