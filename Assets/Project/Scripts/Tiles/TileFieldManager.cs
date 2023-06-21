@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Project.Scripts.Audio;
 using Project.Scripts.DialogScripts;
 using Project.Scripts.General;
 using Project.Scripts.UIScripts;
@@ -151,6 +152,7 @@ namespace Project.Scripts.Tiles
             if (!CheckForCombo(tile2) && !CheckForCombo(tile1) && isPlayerMove){}
             else Turns--;
 
+            AudioManager.Instance.PlayTileSwitch();
             StartCoroutine(Falling());
         }
         
@@ -691,6 +693,7 @@ namespace Project.Scripts.Tiles
             }
             if (comboRoll > 2) appraisal = ComboAppraisal.Good;
             if (comboRoll > 6) appraisal = ComboAppraisal.Party;
+            AudioManager.Instance.ComboSound(comboRoll);
             Score += scoreToAdd;
             GetScorePopUp(scoreToAdd,position,colorForText);
             OnCombo?.Invoke(appraisal);

@@ -28,7 +28,11 @@ namespace Project.Scripts.Menu
             cameraTransform = controller.PlayerCamera.transform;
         }
 
-        public override void Interact() => ToggleInspection();
+        public override void Interact()
+        {
+            base.Interact();
+            ToggleInspection();
+        }
 
         private void ToggleInspection()
         {

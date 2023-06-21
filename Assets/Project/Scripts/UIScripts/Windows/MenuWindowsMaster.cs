@@ -13,7 +13,8 @@ namespace Project.Scripts.UIScripts.Windows
         [SerializeField] private UIMenuWindowHandler menuWindowToOpen;
         [SerializeField] private bool DeactivateCursorOnMenuClose = true;
 
-        public Action<bool> OnMenuActiveChange;
+        public Action<bool> OnMenuActiveChange; 
+        [SerializeField] private bool menuActive;
 
         private FirstPersonController playerController;
 
@@ -34,7 +35,7 @@ namespace Project.Scripts.UIScripts.Windows
 
         public List<UIMenuWindowHandler> currentlyActiveWindows = new List<UIMenuWindowHandler>();
 
-        [SerializeField] private bool menuActive;
+     
 
         public bool MenuActive
         {

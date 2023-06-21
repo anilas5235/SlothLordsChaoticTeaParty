@@ -437,9 +437,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c368d3c4069d10d46b1766e2d7581133, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -665,6 +665,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCharacterAnimator: {fileID: 0}
+  overrideCharacter: 0
+  character: 0
 --- !u!114 &866497727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1114,6 +1116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialMode: 0
+  inMenu: 0
+  dialogUIParent: {fileID: 0}
   dialogId: 0
   startPassageGuid: 
   nameText: {fileID: 1964368195}
@@ -1258,6 +1262,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2646537989771470920, guid: 5899e8c5a7ee8a64896b89f1a0ce75d0, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646537989854817425, guid: 5899e8c5a7ee8a64896b89f1a0ce75d0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646537989854817425, guid: 5899e8c5a7ee8a64896b89f1a0ce75d0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646537989854817425, guid: 5899e8c5a7ee8a64896b89f1a0ce75d0, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2646537990477175346, guid: 5899e8c5a7ee8a64896b89f1a0ce75d0, type: 3}

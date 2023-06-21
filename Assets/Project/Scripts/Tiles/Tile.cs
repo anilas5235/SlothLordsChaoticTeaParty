@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Project.Scripts.Audio;
 using Project.Scripts.General;
 using UnityEngine;
 
@@ -109,6 +110,7 @@ namespace Project.Scripts.Tiles
         public void Break()
         {
             Destroy(gameObject,TileFieldManager.TileBreakTime);
+            AudioManager.Instance.TileBreakSound(myTileType);
             myItem.sprite = TileRecourseKeeper.Instance.brokenTileSprites[(int)myTileType];
         }
 
