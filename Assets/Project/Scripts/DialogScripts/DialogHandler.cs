@@ -169,8 +169,14 @@ namespace Project.Scripts.DialogScripts
             }
 
             if (dialogId == 20 || dialogId == 21) { StartCoroutine(FadeAndContinueToMenu()); return;}
-            
-            Level currenLevelData = LevelDataLoader.Instance.GetLevelData(PlayerPrefs.GetInt("levelID", 0));
+
+            int levelID = PlayerPrefs.GetInt("levelID", 0);
+            if (levelID == 3 && SaveSystem.Instance.GetActiveSave().unlockedEndings[0])
+            {
+                StartCoroutine(FadeAndContinueEnding(0));
+                return;
+            }
+            Level currenLevelData = LevelDataLoader.Instance.GetLevelData(levelID);
             StartCoroutine(currenLevelData.intro == dialogManager.CurrentDialogID ? FadeAndContinueToLevel() : FadeAndContinueToMenu());
         }
 
@@ -186,6 +192,13 @@ namespace Project.Scripts.DialogScripts
             ScreenFade.Instance.StartFadeOut();
             yield return new WaitForSeconds(ScreenFade.Instance.FadeDuration);
             SceneMaster.Instance.ChangeToMenuScene();
+        }
+        
+        private IEnumerator FadeAndContinueEnding(int ending)
+        {
+            ScreenFade.Instance.StartFadeOut();
+            yield return new WaitForSeconds(ScreenFade.Instance.FadeDuration);
+            SceneMaster.Instance.ChangeToEndingDialog(ending);
         }
     }
 }
