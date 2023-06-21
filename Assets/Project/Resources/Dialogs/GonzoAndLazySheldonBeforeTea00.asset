@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: GonzoAndLazySheldonBeforeTea0
+  m_Name: GonzoAndLazySheldonBeforeTea00
   m_EditorClassIdentifier: 
   id: 12
   passages:
@@ -69,8 +69,8 @@ MonoBehaviour:
     mood: 4
     imageOverride: {fileID: 0}
   - guid: fc63e123-c164-448c-8c48-d5cbeeef744e
-    speaker: Lazy
-    character: 5
+    speaker: Sheldon
+    character: 4
     text: ...
     audioLine: {fileID: 0}
     links:
