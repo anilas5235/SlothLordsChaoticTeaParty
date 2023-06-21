@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
-  m_Name: GoodEnd0
+  m_Name: GoodEnd00
   m_EditorClassIdentifier: 
   id: 20
   passages:
@@ -72,7 +72,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: Yeah sure!
-    audioLine: {fileID: 8300000, guid: bc8499458ed33604bb2a14971d6b0dbc, type: 3}
+    audioLine: {fileID: 8300000, guid: fe0aa1fadeb983b44b85f5d0c3c5d34d, type: 3}
     links:
     - baseNodeGuid: 6dab9048-01b9-49f5-a788-9588dce82aec
       portName: Choice 0
@@ -126,7 +126,7 @@ MonoBehaviour:
     speaker: Lazy
     character: 5
     text: 'I did! Even if not everything went perfect. '
-    audioLine: {fileID: 8300000, guid: c817f2b33abd3a646a4c00823f80633a, type: 3}
+    audioLine: {fileID: 8300000, guid: bc8499458ed33604bb2a14971d6b0dbc, type: 3}
     links:
     - baseNodeGuid: 8f78a5b5-9d48-4f1b-aae1-5282b52b541f
       portName: Choice 0
@@ -414,25 +414,6 @@ MonoBehaviour:
     entryPoint: 0
     mood: 1
     imageOverride: {fileID: 0}
-  - guid: 32d43b74-7419-4555-a1dd-7a6312755b1e
-    speaker: Elenor
-    character: 1
-    text: Really? There are times when you have just the most marvelous thoughts,
-      Lord Sheldon.
-    audioLine: {fileID: 8300000, guid: c6322bbbd88cf1b4e83c6971a12fd653, type: 3}
-    links:
-    - baseNodeGuid: 32d43b74-7419-4555-a1dd-7a6312755b1e
-      portName: Choice 0
-      targetNodeGuid: d39e1bc2-a815-46ee-9487-cbb38504dceb
-    rect:
-      serializedVersion: 2
-      x: 6153
-      y: 234
-      width: 308
-      height: 267
-    entryPoint: 0
-    mood: 1
-    imageOverride: {fileID: 0}
   - guid: d39e1bc2-a815-46ee-9487-cbb38504dceb
     speaker: Sheldon
     character: 4
@@ -466,4 +447,23 @@ MonoBehaviour:
     entryPoint: 0
     mood: 0
     imageOverride: {fileID: 21300000, guid: 901775c8ee51d494480c2ed35148f31a, type: 3}
+  - guid: 32d43b74-7419-4555-a1dd-7a6312755b1e
+    speaker: Elenor
+    character: 1
+    text: Really? There are times when you have just the most marvelous thoughts,
+      Lord Sheldon.
+    audioLine: {fileID: 8300000, guid: c6322bbbd88cf1b4e83c6971a12fd653, type: 3}
+    links:
+    - baseNodeGuid: 32d43b74-7419-4555-a1dd-7a6312755b1e
+      portName: Choice 0
+      targetNodeGuid: d39e1bc2-a815-46ee-9487-cbb38504dceb
+    rect:
+      serializedVersion: 2
+      x: 6154
+      y: 231
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
   dialogCharacter: 0
