@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
+  m_Name: SheldonAndLazyIntro00
+  m_EditorClassIdentifier: 
+  id: 8
+  passages:
+  - guid: ba102500-b807-46a2-9440-1258b2876c08
+    speaker: 
+    character: 0
+    text: ENTRYPOINT
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: ba102500-b807-46a2-9440-1258b2876c08
+      portName: Next
+      targetNodeGuid: 5336f9d3-93a5-435a-bbda-8bc6c607f633
+    rect:
+      serializedVersion: 2
+      x: 150
+      y: 200
+      width: 87
+      height: 77
+    entryPoint: 1
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 5336f9d3-93a5-435a-bbda-8bc6c607f633
+    speaker: Lazy
+    character: 5
+    text: "SHELDON\u2026 sorry\u2026*whispers* Sheldon!? Would you like to\u2026"
+    audioLine: {fileID: 8300000, guid: 8db6044308edfaa4ca1cef23b7d3ade8, type: 3}
+    links:
+    - baseNodeGuid: 5336f9d3-93a5-435a-bbda-8bc6c607f633
+      portName: Choice 0
+      targetNodeGuid: ae9729ba-94f0-43ae-aeda-c4239ec1658e
+    rect:
+      serializedVersion: 2
+      x: 239
+      y: 199
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 5
+    imageOverride: {fileID: 0}
+  - guid: ae9729ba-94f0-43ae-aeda-c4239ec1658e
+    speaker: Sheldon
+    character: 4
+    text: "Drink Tea with you? Especially made of these delicious poppy seeds. Oh.
+      Did I interrupt you? I\u2019m sorry."
+    audioLine: {fileID: 8300000, guid: 875d658364504ac4ca86aa1b85392e50, type: 3}
+    links:
+    - baseNodeGuid: ae9729ba-94f0-43ae-aeda-c4239ec1658e
+      portName: Choice 0
+      targetNodeGuid: 4fb6ca88-26ca-4a20-852e-7a12dab8725e
+    rect:
+      serializedVersion: 2
+      x: 561
+      y: 204
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 5
+    imageOverride: {fileID: 0}
+  - guid: 4fb6ca88-26ca-4a20-852e-7a12dab8725e
+    speaker: 
+    character: 0
+    text: 
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 4fb6ca88-26ca-4a20-852e-7a12dab8725e
+      portName: Choice 0
+      targetNodeGuid: 7f4c2ebd-1e18-433e-857f-b725b4a35c10
+    rect:
+      serializedVersion: 2
+      x: 886
+      y: 206
+      width: 278
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 21300000, guid: 72ed5732f2bb22c4cbdf8bf28812ee39, type: 3}
+  - guid: 7f4c2ebd-1e18-433e-857f-b725b4a35c10
+    speaker: Lazy
+    character: 5
+    text: " How did you..? You must have seen me with Norbert\u2026 or maybe\u2026
+      Miss Eleanor?"
+    audioLine: {fileID: 8300000, guid: 75d707852d4e79a4eb705850a045c623, type: 3}
+    links:
+    - baseNodeGuid: 7f4c2ebd-1e18-433e-857f-b725b4a35c10
+      portName: Choice 0
+      targetNodeGuid: 8c5a357d-d131-47dc-b115-7ddd3f8a34fa
+    rect:
+      serializedVersion: 2
+      x: 1179
+      y: 210
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 8c5a357d-d131-47dc-b115-7ddd3f8a34fa
+    speaker: Sheldon
+    character: 4
+    text: "That\u2019s actually pretty easy to deduce, if you think about it. Our
+      humans are gone for a while now. And you were always the fondest of young master
+      Raymonds tea parties. And I love poppy seeds. See?"
+    audioLine: {fileID: 8300000, guid: 5731e319d0b82b443b6b37057091ebc1, type: 3}
+    links:
+    - baseNodeGuid: 8c5a357d-d131-47dc-b115-7ddd3f8a34fa
+      portName: Choice 0
+      targetNodeGuid: 0ac0e42f-f781-4f0a-ab5a-4b37942d717c
+    rect:
+      serializedVersion: 2
+      x: 1495
+      y: 213
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 81385841-df20-4043-8878-5fa50faf8823
+    speaker: Sheldon
+    character: 4
+    text: ...Maybe a little.
+    audioLine: {fileID: 8300000, guid: 5302295eb4b976b48bf8edf8619c8d90, type: 3}
+    links: []
+    rect:
+      serializedVersion: 2
+      x: 2147
+      y: 217
+      width: 221
+      height: 267
+    entryPoint: 0
+    mood: 4
+    imageOverride: {fileID: 0}
+  - guid: 0ac0e42f-f781-4f0a-ab5a-4b37942d717c
+    speaker: Lazy
+    character: 5
+    text: "True\u2026 But your telling me, that the tea I just had with Miss Eleanor
+      hat nothing to do with your conclusion?"
+    audioLine: {fileID: 8300000, guid: f502787623bb44c43ac9bc608c5e8380, type: 3}
+    links:
+    - baseNodeGuid: 0ac0e42f-f781-4f0a-ab5a-4b37942d717c
+      portName: Choice 0
+      targetNodeGuid: 81385841-df20-4043-8878-5fa50faf8823
+    rect:
+      serializedVersion: 2
+      x: 1828
+      y: 217
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  dialogCharacter: 4

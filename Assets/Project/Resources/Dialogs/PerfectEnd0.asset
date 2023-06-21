@@ -1,0 +1,470 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5627ebb05d710144aaf83be36bfd170, type: 3}
+  m_Name: PerfectEnd0
+  m_EditorClassIdentifier: 
+  id: 21
+  passages:
+  - guid: 58ac0469-ff20-41d0-9b0f-a872fee5b98e
+    speaker: 
+    character: 0
+    text: ENTRYPOINT
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 58ac0469-ff20-41d0-9b0f-a872fee5b98e
+      portName: Next
+      targetNodeGuid: 6e69547a-3dc1-4751-b916-7ce1270f70e4
+    rect:
+      serializedVersion: 2
+      x: 150
+      y: 200
+      width: 87
+      height: 77
+    entryPoint: 1
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 6e69547a-3dc1-4751-b916-7ce1270f70e4
+    speaker: Norbert
+    character: 3
+    text: Hey Lazy! Got a minute?
+    audioLine: {fileID: 8300000, guid: 32f7693667e072f48921b88a6f46da36, type: 3}
+    links:
+    - baseNodeGuid: 6e69547a-3dc1-4751-b916-7ce1270f70e4
+      portName: Choice 0
+      targetNodeGuid: 948bdc97-be17-44f3-a401-6476d6b09663
+    rect:
+      serializedVersion: 2
+      x: 249
+      y: 203
+      width: 253
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 948bdc97-be17-44f3-a401-6476d6b09663
+    speaker: Lazy
+    character: 5
+    text: "Oh, Norbert! Of course! Wait\u2026 what\u2019s going on?"
+    audioLine: {fileID: 8300000, guid: 0846c7140bd7b684a9c1ded162377962, type: 3}
+    links:
+    - baseNodeGuid: 948bdc97-be17-44f3-a401-6476d6b09663
+      portName: Choice 0
+      targetNodeGuid: 7645c152-b3ae-45b0-8bd5-6baa5cbb4811
+    rect:
+      serializedVersion: 2
+      x: 516
+      y: 205
+      width: 282
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 7645c152-b3ae-45b0-8bd5-6baa5cbb4811
+    speaker: Gonzo
+    character: 2
+    text: We have been talking, Mija!
+    audioLine: {fileID: 8300000, guid: 04acc23c71a6dcd4f8c64c7fca1645a2, type: 3}
+    links:
+    - baseNodeGuid: 7645c152-b3ae-45b0-8bd5-6baa5cbb4811
+      portName: Choice 0
+      targetNodeGuid: 47028def-11fa-494e-8c31-6bf2aa43ad93
+    rect:
+      serializedVersion: 2
+      x: 801
+      y: 209
+      width: 254
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 47028def-11fa-494e-8c31-6bf2aa43ad93
+    speaker: Sheldon
+    character: 4
+    text: es. About your tea partys to be more precise.
+    audioLine: {fileID: 8300000, guid: 35862f1e967a232469f08793cda33611, type: 3}
+    links:
+    - baseNodeGuid: 47028def-11fa-494e-8c31-6bf2aa43ad93
+      portName: Choice 0
+      targetNodeGuid: 8d5d2793-31bc-4838-b283-655f77c7d7a0
+    rect:
+      serializedVersion: 2
+      x: 1064
+      y: 212
+      width: 269
+      height: 267
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 8d5d2793-31bc-4838-b283-655f77c7d7a0
+    speaker: Lazy
+    character: 5
+    text: You did?
+    audioLine: {fileID: 8300000, guid: 770af840682b7b949a324db63ed20c03, type: 3}
+    links:
+    - baseNodeGuid: 8d5d2793-31bc-4838-b283-655f77c7d7a0
+      portName: Choice 0
+      targetNodeGuid: d71ed11a-b3a2-4d98-b32f-3654b9d23376
+    rect:
+      serializedVersion: 2
+      x: 1344
+      y: 216
+      width: 211
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: d71ed11a-b3a2-4d98-b32f-3654b9d23376
+    speaker: Elenor
+    character: 1
+    text: We did.
+    audioLine: {fileID: 8300000, guid: ca0dbe825eb2d5b4db3de32512a16684, type: 3}
+    links:
+    - baseNodeGuid: d71ed11a-b3a2-4d98-b32f-3654b9d23376
+      portName: Choice 0
+      targetNodeGuid: 454441c1-2421-4332-994f-d44f9cead13f
+    rect:
+      serializedVersion: 2
+      x: 1573
+      y: 217
+      width: 211
+      height: 267
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 454441c1-2421-4332-994f-d44f9cead13f
+    speaker: Lazy
+    character: 5
+    text: So I hope you all were satisfied with today!
+    audioLine: {fileID: 8300000, guid: cbcefd9a66c9534479dbc7d90a36f4c5, type: 3}
+    links:
+    - baseNodeGuid: 454441c1-2421-4332-994f-d44f9cead13f
+      portName: Choice 0
+      targetNodeGuid: d323d532-5cd0-423c-a737-c1efcab80902
+    rect:
+      serializedVersion: 2
+      x: 1796
+      y: 222
+      width: 259
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 5c6ad277-03e9-4ed2-921a-510bcfc48c00
+    speaker: Elenor
+    character: 1
+    text: You have hassled the whole day simply to give us a good time. That work
+      surely deserves a kindness in return.
+    audioLine: {fileID: 8300000, guid: 5b5b36063d8ab5848a29ba3ab7483bd8, type: 3}
+    links:
+    - baseNodeGuid: 5c6ad277-03e9-4ed2-921a-510bcfc48c00
+      portName: Choice 0
+      targetNodeGuid: 3207d558-1dde-418e-aec2-3d2ea98db172
+    rect:
+      serializedVersion: 2
+      x: 2634
+      y: 235
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: 3207d558-1dde-418e-aec2-3d2ea98db172
+    speaker: Lazy
+    character: 5
+    text: "Oh you really didn\u2019t have to\u2026 WHAT IS IT?"
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: 3207d558-1dde-418e-aec2-3d2ea98db172
+      portName: Choice 0
+      targetNodeGuid: c12630b0-af1a-4578-bb8a-c3fd4d907ce3
+    rect:
+      serializedVersion: 2
+      x: 2957
+      y: 237
+      width: 256
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  - guid: c12630b0-af1a-4578-bb8a-c3fd4d907ce3
+    speaker: Norbert
+    character: 3
+    text: "Told you, they\u2019re going to be excited!"
+    audioLine: {fileID: 8300000, guid: 375c1475331763345b22ffa1686074f4, type: 3}
+    links:
+    - baseNodeGuid: c12630b0-af1a-4578-bb8a-c3fd4d907ce3
+      portName: Choice 0
+      targetNodeGuid: 77b4a9b7-1baf-46eb-b242-43915ac410ae
+    rect:
+      serializedVersion: 2
+      x: 3220
+      y: 242
+      width: 243
+      height: 267
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 77b4a9b7-1baf-46eb-b242-43915ac410ae
+    speaker: Gonzo
+    character: 2
+    text: Be quiet, you bear plushy
+    audioLine: {fileID: 8300000, guid: 89f4587f73feaaa46a91382765be982f, type: 3}
+    links:
+    - baseNodeGuid: 77b4a9b7-1baf-46eb-b242-43915ac410ae
+      portName: Choice 0
+      targetNodeGuid: 93e0950f-aad3-4b83-bcdf-fbd48d66d7c5
+    rect:
+      serializedVersion: 2
+      x: 3479
+      y: 241
+      width: 244
+      height: 267
+    entryPoint: 0
+    mood: 4
+    imageOverride: {fileID: 0}
+  - guid: 93e0950f-aad3-4b83-bcdf-fbd48d66d7c5
+    speaker: Norbert
+    character: 3
+    text: "\u2019m not a plushy, you big beaked dodo!"
+    audioLine: {fileID: 8300000, guid: 1f079030193c53a4fa995ffa1fb9e741, type: 3}
+    links:
+    - baseNodeGuid: 93e0950f-aad3-4b83-bcdf-fbd48d66d7c5
+      portName: Choice 0
+      targetNodeGuid: 8ac954bc-3fc9-4385-958e-7e9dac8cb3e5
+    rect:
+      serializedVersion: 2
+      x: 3730
+      y: 250
+      width: 243
+      height: 267
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
+  - guid: 0bbc4394-1e0b-4d60-8514-aa28a9362b28
+    speaker: Elenor
+    character: 1
+    text: Yes indeed. Lord Sheldon is right.
+    audioLine: {fileID: 8300000, guid: ba61396fb2b58a04984edb9dcd617fcf, type: 3}
+    links:
+    - baseNodeGuid: 0bbc4394-1e0b-4d60-8514-aa28a9362b28
+      portName: Choice 0
+      targetNodeGuid: fe32d51e-ad8d-416c-a871-f9faad88e099
+    rect:
+      serializedVersion: 2
+      x: 4309
+      y: 253
+      width: 251
+      height: 267
+    entryPoint: 0
+    mood: 2
+    imageOverride: {fileID: 0}
+  - guid: fe32d51e-ad8d-416c-a871-f9faad88e099
+    speaker: Sheldon
+    character: 4
+    text: "I am right?\u2026 I am right!"
+    audioLine: {fileID: 8300000, guid: 033efffcd2d5bd64d8dec2eb12527869, type: 3}
+    links:
+    - baseNodeGuid: fe32d51e-ad8d-416c-a871-f9faad88e099
+      portName: Choice 0
+      targetNodeGuid: d4d39283-238c-406e-aeb0-f3e065b684ed
+    rect:
+      serializedVersion: 2
+      x: 4567
+      y: 258
+      width: 236
+      height: 267
+    entryPoint: 0
+    mood: 5
+    imageOverride: {fileID: 0}
+  - guid: d4d39283-238c-406e-aeb0-f3e065b684ed
+    speaker: Elenor
+    character: 1
+    text: Lazy my darling. As WE are all Ladys and Lords with propoer titles we can
+      only imagine how hard it has been for you to be the only member of this family
+      without a propoer title. You are still new. But would our humans be here they
+      surely would have granted you your title by now.
+    audioLine: {fileID: 8300000, guid: e2249414c8ec8944d84a73d655ba0c2e, type: 3}
+    links:
+    - baseNodeGuid: d4d39283-238c-406e-aeb0-f3e065b684ed
+      portName: Choice 0
+      targetNodeGuid: 32fd15e4-9dda-46c3-b773-269cb62168c8
+    rect:
+      serializedVersion: 2
+      x: 4823
+      y: 262
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 32fd15e4-9dda-46c3-b773-269cb62168c8
+    speaker: Gonzo
+    character: 2
+    text: "That\u2019s why we decided to surprise you with this."
+    audioLine: {fileID: 8300000, guid: 2df6040290390514dae99e47379402f0, type: 3}
+    links:
+    - baseNodeGuid: 32fd15e4-9dda-46c3-b773-269cb62168c8
+      portName: Choice 0
+      targetNodeGuid: 7b544706-1029-4d32-b079-c90d7fd07a72
+    rect:
+      serializedVersion: 2
+      x: 5139
+      y: 263
+      width: 288
+      height: 267
+    entryPoint: 0
+    mood: 1
+    imageOverride: {fileID: 0}
+  - guid: 8ac954bc-3fc9-4385-958e-7e9dac8cb3e5
+    speaker: Sheldon
+    character: 4
+    text: "Excuse me. But wheren\u2019t we going going to tell Lazy what this whole
+      ordeal is about?"
+    audioLine: {fileID: 8300000, guid: 9c292570e3778a248acebba6978154d1, type: 3}
+    links:
+    - baseNodeGuid: 8ac954bc-3fc9-4385-958e-7e9dac8cb3e5
+      portName: Choice 0
+      targetNodeGuid: 0bbc4394-1e0b-4d60-8514-aa28a9362b28
+    rect:
+      serializedVersion: 2
+      x: 3982
+      y: 251
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 4
+    imageOverride: {fileID: 0}
+  - guid: 7b544706-1029-4d32-b079-c90d7fd07a72
+    speaker: Sheldon
+    character: 4
+    text: A real Lord title like you always wanted. With an official certificate
+      of course.
+    audioLine: {fileID: 8300000, guid: dc72673b2e3af574e9e34ebc678ddc80, type: 3}
+    links:
+    - baseNodeGuid: 7b544706-1029-4d32-b079-c90d7fd07a72
+      portName: Choice 0
+      targetNodeGuid: 45ca25c7-b5b6-4d54-9d0f-96f325fe287b
+    rect:
+      serializedVersion: 2
+      x: 5435
+      y: 258
+      width: 308
+      height: 267
+    entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}
+  - guid: 45ca25c7-b5b6-4d54-9d0f-96f325fe287b
+    speaker: Elenor
+    character: 1
+    text: And a Lords medal.
+    audioLine: {fileID: 8300000, guid: 30cc5cc2c49785d41b467ba9219e9610, type: 3}
+    links:
+    - baseNodeGuid: 45ca25c7-b5b6-4d54-9d0f-96f325fe287b
+      portName: Choice 0
+      targetNodeGuid: d0039846-1cef-435c-8d5c-f4255c0c2b38
+    rect:
+      serializedVersion: 2
+      x: 5760
+      y: 264
+      width: 239
+      height: 267
+    entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}
+  - guid: d0039846-1cef-435c-8d5c-f4255c0c2b38
+    speaker: Gonzo
+    character: 2
+    text: Just for you, Mija!
+    audioLine: {fileID: 8300000, guid: 5fcdee3752843e440b84800849bfa39c, type: 3}
+    links:
+    - baseNodeGuid: d0039846-1cef-435c-8d5c-f4255c0c2b38
+      portName: Choice 0
+      targetNodeGuid: 2612615a-bf44-456b-ba35-6860e6c4e257
+    rect:
+      serializedVersion: 2
+      x: 6008
+      y: 268
+      width: 232
+      height: 267
+    entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}
+  - guid: 2612615a-bf44-456b-ba35-6860e6c4e257
+    speaker: Norbert
+    character: 3
+    text: To Lord Lazy!
+    audioLine: {fileID: 8300000, guid: 658b4f346898bbb40a0acf6157eda6c3, type: 3}
+    links:
+    - baseNodeGuid: 2612615a-bf44-456b-ba35-6860e6c4e257
+      portName: Choice 0
+      targetNodeGuid: c2f22cf6-8212-4ded-94d0-fb90759f5039
+    rect:
+      serializedVersion: 2
+      x: 6255
+      y: 272
+      width: 211
+      height: 267
+    entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}
+  - guid: d9bce4ec-0cdb-4747-bf85-2922b6aefa97
+    speaker: 
+    character: 0
+    text: 
+    audioLine: {fileID: 0}
+    links: []
+    rect:
+      serializedVersion: 2
+      x: 6719
+      y: 277
+      width: 285
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 21300000, guid: 901775c8ee51d494480c2ed35148f31a, type: 3}
+  - guid: d323d532-5cd0-423c-a737-c1efcab80902
+    speaker: speaker
+    character: 0
+    text: "\xA1Absolutamente! That is why we have been talking."
+    audioLine: {fileID: 8300000, guid: c448ad1e3cb96194789a36b9b126daa6, type: 3}
+    links:
+    - baseNodeGuid: d323d532-5cd0-423c-a737-c1efcab80902
+      portName: Choice 0
+      targetNodeGuid: 5c6ad277-03e9-4ed2-921a-510bcfc48c00
+    rect:
+      serializedVersion: 2
+      x: 2205
+      y: 229
+      width: 305
+      height: 267
+    entryPoint: 0
+    mood: 3
+    imageOverride: {fileID: 0}
+  - guid: c2f22cf6-8212-4ded-94d0-fb90759f5039
+    speaker: All
+    character: 0
+    text: To Lord Lazy!
+    audioLine: {fileID: 0}
+    links:
+    - baseNodeGuid: c2f22cf6-8212-4ded-94d0-fb90759f5039
+      portName: Choice 0
+      targetNodeGuid: d9bce4ec-0cdb-4747-bf85-2922b6aefa97
+    rect:
+      serializedVersion: 2
+      x: 6479
+      y: 268
+      width: 215
+      height: 267
+    entryPoint: 0
+    mood: 0
+    imageOverride: {fileID: 0}
+  dialogCharacter: 0
