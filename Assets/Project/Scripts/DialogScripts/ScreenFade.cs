@@ -39,6 +39,12 @@ namespace Project.Scripts.DialogScripts
             gameObject.SetActive(true);
             StartCoroutine(FadeOut( FadeDuration));
         }
+        
+        public void StartFadeOut(float delay)
+        {
+            gameObject.SetActive(true);
+            StartCoroutine(FadeOut( FadeDuration,delay));
+        }
     
         private IEnumerator FadeIn(float fadeDuration)
         {
@@ -54,11 +60,11 @@ namespace Project.Scripts.DialogScripts
             }
 
             blackScreen.alpha = 0;
-            gameObject.SetActive(false);
         }
     
-        private IEnumerator FadeOut( float fadeDuration)
+        private IEnumerator FadeOut( float fadeDuration, float delay =0)
         {
+            yield return new WaitForSeconds(delay);
             blackScreen.alpha = 0;
 
             float fadeStep = 1/( fadeDuration/Time.fixedDeltaTime);
