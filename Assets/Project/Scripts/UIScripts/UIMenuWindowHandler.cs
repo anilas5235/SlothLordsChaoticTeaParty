@@ -7,10 +7,22 @@ namespace Project.Scripts.UIScripts
 {
     public class UIMenuWindowHandler : MonoBehaviour
     {
+        [SerializeField] protected bool interactable = true;
+        public bool Interactable
+        {
+            get => interactable;
+            protected set
+            {
+                interactable = value;
+                windowInteractabilityUpdate?.Invoke(interactable);
+            }
+        }
+        
         [SerializeField] protected UIMenuWindowHandler parentMenuWindow;
         private MenuWindowsMaster myWindowsMaster;
-
         
+        public Action<bool> windowInteractabilityUpdate;
+
         public enum StandardUIButtonFunctions
         {
             Esc,

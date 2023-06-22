@@ -15,23 +15,23 @@ namespace Project.Scripts.UIScripts.InteractableUI
             switch (myFunction)
             {
                 case UIMenuWindowHandler.StandardUIButtonFunctions.Esc:
-                    MyMenuWindowHandler.UIEsc();
+                    myMenuWindowHandler.UIEsc();
                     break;
                 case UIMenuWindowHandler.StandardUIButtonFunctions.ChangeWindow:
-                    MyMenuWindowHandler.ChangeToWindow(menuWindowHandler);
+                    myMenuWindowHandler.ChangeToWindow(menuWindowHandler);
                     break;
                 case UIMenuWindowHandler.StandardUIButtonFunctions.OpenWindow:
-                    MyMenuWindowHandler.OpenWindow(menuWindowHandler);
+                    myMenuWindowHandler.OpenWindow(menuWindowHandler);
                     break;
                 case UIMenuWindowHandler.StandardUIButtonFunctions.Quit:
-                    MyMenuWindowHandler.QuitApplication();
+                    myMenuWindowHandler.QuitApplication();
                     break;
                 case UIMenuWindowHandler.StandardUIButtonFunctions.ChangeScene:
-                    MyMenuWindowHandler.ChangeScene(sceneID);
+                    myMenuWindowHandler.ChangeScene(sceneID);
                     break;
 
                 case UIMenuWindowHandler.StandardUIButtonFunctions.MainMenu:
-                    MyMenuWindowHandler.SwitchToMainMenu();
+                    myMenuWindowHandler.SwitchToMainMenu();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

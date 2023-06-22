@@ -681,6 +681,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2646537989771470920, guid: 5899e8c5a7ee8a64896b89f1a0ce75d0, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2646537989854817425, guid: 5899e8c5a7ee8a64896b89f1a0ce75d0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -832,6 +836,10 @@ PrefabInstance:
     - target: {fileID: 2646537991411031166, guid: 5899e8c5a7ee8a64896b89f1a0ce75d0, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2646537991411031166, guid: 5899e8c5a7ee8a64896b89f1a0ce75d0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21.99999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5899e8c5a7ee8a64896b89f1a0ce75d0, type: 3}
@@ -1300,7 +1308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6011266656783574642, guid: 75d5a1b2067a3344fbe3a98db1b9cc7b, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7437505058794742072, guid: 75d5a1b2067a3344fbe3a98db1b9cc7b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1432,7 +1440,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350235771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1890,7 +1898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4799053193102662209, guid: c56c9ded3bd2f634aa24c92985cc0a5e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4799053193102662209, guid: c56c9ded3bd2f634aa24c92985cc0a5e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2264,7 +2272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &635441180
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8006,7 +8014,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 7
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -8131,7 +8139,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 31
+  m_AdditionalShaderChannelsFlag: 7
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -9637,7 +9645,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5952957023624926819, guid: 6460ee694d34c774389f81c97133ffef, type: 3}
       propertyPath: m_Volume
-      value: 0.8
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5952957023624926819, guid: 6460ee694d34c774389f81c97133ffef, type: 3}
       propertyPath: m_audioClip

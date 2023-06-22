@@ -6,14 +6,16 @@ namespace Project.Scripts.UIScripts.InteractableUI
 {
     public class PlayButton : CustomButtonBase
     {
+        public PlayButtonsFunctions myFunction;
+        
+        private StarDisplayWindow myStarDisplayWindow;
+
         public enum PlayButtonsFunctions
         {
             Play,
             Retry,
             EndDialog
         }
-        public PlayButtonsFunctions myFunction;
-        private StarDisplayWindow myStarDisplayWindow;
 
         protected override void OnEnable()
         {
@@ -23,6 +25,7 @@ namespace Project.Scripts.UIScripts.InteractableUI
 
         protected override void Interact()
         {
+            if(!myStarDisplayWindow.Interactable) return;
             base.Interact();
             switch (myFunction)
             {
@@ -30,7 +33,7 @@ namespace Project.Scripts.UIScripts.InteractableUI
                     myStarDisplayWindow.Play();
                     break;
                 case PlayButtonsFunctions.Retry:
-                    MyMenuWindowHandler.RetryLevel();
+                    myMenuWindowHandler.RetryLevel();
                     break;
                 case PlayButtonsFunctions.EndDialog:
                     myStarDisplayWindow.PlayEndDialog();

@@ -4,6 +4,7 @@ using Project.Scripts.DialogScripts;
 using Project.Scripts.Menu;
 using Project.Scripts.Tiles;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Project.Scripts.UIScripts.Windows
 {
@@ -11,6 +12,7 @@ namespace Project.Scripts.UIScripts.Windows
     {
         private TileFieldManager fieldManager;
         private bool star1Achieved , star2Achieved , doneRevealing;
+        
         protected override void UpdateDisplays()
         {
             fieldManager ??= TileFieldManager.Instance;
@@ -25,6 +27,7 @@ namespace Project.Scripts.UIScripts.Windows
 
         private IEnumerator SlowReveal()
         {
+            Interactable = false;
             float t = 0;
             while (t<=1)
             {
@@ -53,6 +56,7 @@ namespace Project.Scripts.UIScripts.Windows
             if (star1Achieved) s++;
             if (star2Achieved) s++;
             AudioManager.Instance.TriggerEndSound(s);
+            Interactable = true;
             doneRevealing = true;
         }
 

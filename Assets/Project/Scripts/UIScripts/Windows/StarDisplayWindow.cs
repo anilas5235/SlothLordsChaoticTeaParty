@@ -1,4 +1,3 @@
-using System.Xml;
 using Project.Scripts.DialogScripts;
 using Project.Scripts.General;
 using Project.Scripts.Menu;
@@ -11,11 +10,14 @@ namespace Project.Scripts.UIScripts.Windows
 {
     public abstract class StarDisplayWindow : SingleWindow<StarDisplayWindow>
     {
-        [SerializeField] protected Image star1, star2;
+        [Header("References")]
+        [SerializeField] protected Image star1; 
+        [SerializeField] protected Image star2;
         [SerializeField] protected Slider progressBar;
         [SerializeField] protected TextMeshProUGUI scoreText;
         [SerializeField] protected CharacterAnimator characterAnimator;
         
+        [Header("Data")]
         public int levelID;
         [SerializeField] protected int score;
         [SerializeField] protected Level levelData;
@@ -32,6 +34,7 @@ namespace Project.Scripts.UIScripts.Windows
         {
             base.ActivateWindow();
             UpdateDisplays();
+            windowInteractabilityUpdate?.Invoke(interactable);
         }
 
         protected abstract void UpdateDisplays();

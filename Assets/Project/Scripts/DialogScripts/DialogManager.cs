@@ -8,9 +8,20 @@ namespace Project.Scripts.DialogScripts
 {
     public class DialogManager : Singleton<DialogManager>
     {
+        public float charactersPerSecond = 20;
+        private bool  choiceMade = true;
+        private string speakerName;
+        private string[] choices;
+             
+        private Dialog currentStory;
+        private DialogPassageNode dialogPassageNode;
+        private Coroutine writeRoutine;
+
+        #region Events
+
         public event Action OnDialogStart;
         public event Action OnDialogEnd;
-
+        
         public event Action OnNodeLoaded;
         public event Action<string> OnSpeakerChanged;
         public event Action<string> OnTextChanged;
@@ -18,26 +29,23 @@ namespace Project.Scripts.DialogScripts
         public event Action OnChoiceOver;
         public event Action<AudioClip> OnVoiceLine;
 
-        public float charactersPerSecond = 30;
+        #endregion
 
-        private Dialog currentStory;
+        #region Properties
         public Dialog CurrentStory { get => currentStory; } 
-        private DialogPassageNode dialogPassageNode;
         public DialogPassageNode CurrentNode { get => dialogPassageNode; }
-
-        private string speakerName;
         public bool FinishedLine { get; private set; }
-        public bool DialogFinished { get; private set; }
-        private bool  choiceMade = true;
-        private string[] choices;
+        public bool DialogFinished { get; private set; } 
         public int CurrentDialogID { get; private set; }
 
-        private Coroutine writeRoutine;
+        #endregion
 
         private void Update()
         {
             if (Input.GetButtonDown("Jump") && choiceMade &&! DialogFinished) NextPassage();
         }
+        
+        #region SetUpFunctions
 
         public void StartDialog(string guid, int dialogID)
         {
@@ -101,7 +109,9 @@ namespace Project.Scripts.DialogScripts
             OnNodeLoaded?.Invoke();
             return true;
         }
+        #endregion
 
+        #region DialogInteractFunctions
         private IEnumerator Write(string completeText, bool choice)
         {
             FinishedLine = false;
@@ -125,7 +135,14 @@ namespace Project.Scripts.DialogScripts
 
         private void NextPassage(int linkID = 0)
         {
-            if(writeRoutine!= null) StopCoroutine(writeRoutine);
+            if (writeRoutine != null)
+            {
+                StopCoroutine(writeRoutine);
+                OnTextChanged?.Invoke(dialogPassageNode.text);
+                FinishedLine = true;
+                writeRoutine = null;
+                return;
+            }
             if(dialogPassageNode?.links == null)return;
             switch (dialogPassageNode.links.Count)
             {
@@ -141,10 +158,9 @@ namespace Project.Scripts.DialogScripts
             OnChoiceOver?.Invoke();
             NextPassage(choiceId);
         }
+        
+        #endregion
 
-        public void SetDialogId(int id)
-        {
-            CurrentDialogID = id;
-        }
+        public void SetDialogId(int id) => CurrentDialogID = id;
     }
 }
