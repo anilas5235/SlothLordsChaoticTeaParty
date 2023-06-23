@@ -25,7 +25,6 @@ namespace Project.Scripts.UIScripts.InteractableUI
 
         protected override void Interact()
         {
-            if(!myStarDisplayWindow.Interactable) return;
             base.Interact();
             switch (myFunction)
             {

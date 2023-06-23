@@ -39,6 +39,12 @@ namespace Project.Scripts.Tiles
         private Tile[][] fieldGridTiles;
         private GameObject tilePreFap;
 
+        [Header("TextPopUpColors")]
+        [SerializeField] private Color badScoreColor = Color.red;
+        [SerializeField] private Color neutralScoreColor = Color.blue;
+        [SerializeField] private Color goodScoreColor=Color.green;
+        [SerializeField] private Color comboCountColor = new Color32(0xEE,0xD9,0x8C,0xFF);
+
         [Header("EditMode")]
         public bool editMode = false;
         public bool brushTool = false;
@@ -502,7 +508,7 @@ namespace Project.Scripts.Tiles
             else
             {
                 //Falling done
-                if(ComboRoll >6) GetTextPopUp(comboRoll,transform.position,new Color(0xEE,0xD9,0x8C,0xFF),"xCOMBO");
+                if(ComboRoll >6) GetTextPopUp(comboRoll,transform.position,comboCountColor,"xCOMBO");
                 Interactable = true;
                 ComboRoll = 0;
                 if (Turns < 1) { GameOver(); }
@@ -687,9 +693,9 @@ namespace Project.Scripts.Tiles
             Color colorForText;
             switch ((comboTileType == preferredTile, comboTileType == dislikedTile))
             {
-                case (true,false): scoreToAdd *= 3; appraisal = ComboAppraisal.Good; colorForText = Color.green; break;
-                case (false,true): scoreToAdd *= 0; appraisal = ComboAppraisal.Bad; colorForText = Color.red; break;
-                default: scoreToAdd *= 1; appraisal = ComboAppraisal.Neutral; colorForText = Color.blue; break; 
+                case (true,false): scoreToAdd *= 3; appraisal = ComboAppraisal.Good; colorForText = goodScoreColor; break;
+                case (false,true): scoreToAdd *= 0; appraisal = ComboAppraisal.Bad; colorForText = badScoreColor; break;
+                default: scoreToAdd *= 1; appraisal = ComboAppraisal.Neutral; colorForText = neutralScoreColor; break; 
             }
             if (comboRoll > 2) appraisal = ComboAppraisal.Good;
             if (comboRoll > 6) appraisal = ComboAppraisal.Party;
